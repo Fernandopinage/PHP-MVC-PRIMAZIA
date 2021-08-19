@@ -14,7 +14,7 @@ include_once "../../layout/heard.php";
         </div>
 
 
-        <form action="registrocliente.php" method="post">
+        <form action="" method="post">
 
             <div id="form-row">
 
@@ -26,37 +26,37 @@ include_once "../../layout/heard.php";
                         <label class="fs-3">Que Tipo de Serviço Você Precisa?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <input class="form-check-input" type="checkbox" value="limpezaComercial" name="servico[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                             <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                                 Limpeza comercial
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <input class="form-check-input" type="checkbox" value="limpezaPadrao" name="servico[]" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
                             <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
                                 Limpeza padrão
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPesada" id="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
+                            <input class="form-check-input" type="checkbox" value="limpezaPesada" name="servico[]" id="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
                             <label class="form-check-label" for="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
                                 Limpeza pesada
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPosobra" id="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
+                            <input class="form-check-input" type="checkbox" value="limpezaPosobra" name="servico[]" id="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
                             <label class="form-check-label" for="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
                                 Limpeza pós obra
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPremudanca" id="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
+                            <input class="form-check-input" type="checkbox" value="limpezaPremudanca" name="servico[]" id="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
                             <label class="form-check-label" for="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
                                 Limpeza pré mudança
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="outros" id="outros" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="outros" name="outros" id="servico" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
                             </label>
                             <div>
@@ -68,9 +68,7 @@ include_once "../../layout/heard.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center">
-                            <button id='botaoEnviar' type="button" id="volta01" onclick="voltando01()" class="btn azulprima btn-lg">VOLTAR</button>
-                        </div>
+
                         <div class="col text-center">
                             <button id='botaoEnviar' type="button" id="avanca01" onclick="avançando01()" class="btn orangered btn-lg">AVANÇAR</button>
                         </div>
@@ -116,6 +114,7 @@ include_once "../../layout/heard.php";
                 <div id="pergunta03">
                     <div class="row g-6">
                         <div class="col">
+                            <label class="fs-3">Qual o Local do Serviço?</label>  
                             <select class="form-select" name="select[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
                                 <option value="1">Apartamento/Casa</option>
@@ -133,10 +132,98 @@ include_once "../../layout/heard.php";
                         </div>
                     </div>
                 </div>
+                <!--***************************************************************************** --->
 
+                <!--***************************************************************************** --->
+                <div id="pergunta04">
+                    <div class="row g-12 ms-2 p-2">
+                        <label class="fs-3">Há Criança ou Animal de Estimação no Local?</label>
+                        <br><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                                Crianças
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                                Animais de estimação
+                            </label>
+                        </div>
+                        
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col text-center">
+                            <button id='botaoEnviar' type="button" id="volta01" onclick="voltando04()" class="btn azulprima btn-lg">VOLTAR</button>
+                        </div>
+                        <div class="col text-center">
+                            <button id='botaoEnviar' type="button" id="avanca01" onclick="avançando04()" class="btn orangered btn-lg">AVANÇAR</button>
+                        </div>
+                    </div>
+                </div>
+                <!--***************************************************************************** --->
 
+                <!--***************************************************************************** --->
+                <div id="pergunta05">
+                    <div class="row g-12 ms-2 p-2">
+                        <label class="fs-3">Precisa de Serviços Adicionais?</label>
+                        <br><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                                Limpeza interna de armários
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                                Cozinhar
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            Limpeza de geladeira
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                                Lavar roupa
+                            </label>
+                        </div>
 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            Passar roupa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                              Não preciso
+                            </label>
+                        </div>
 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                             Outros
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col text-center">
+                            <button id='botaoEnviar' type="button" id="volta01" onclick="voltando05()" class="btn azulprima btn-lg">VOLTAR</button>
+                        </div>
+                        <div class="col text-center">
+                            <input id='botaoEnviar' type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </form>
@@ -183,8 +270,30 @@ include_once "../../layout/heard.php";
     }
 
     function avançando03() {
-        document.getElementById('pergunta02').style.display = 'none';
+        document.getElementById('pergunta03').style.display = 'none';
+        document.getElementById('pergunta04').style.display = 'block';
+
+    }
+
+    function voltando04() {
         document.getElementById('pergunta03').style.display = 'block';
+        document.getElementById('pergunta04').style.display = 'none';
+    }
+
+    function avançando04() {
+        document.getElementById('pergunta04').style.display = 'none';
+        document.getElementById('pergunta05').style.display = 'block';
+
+    }
+   
+    function voltando05() {
+        document.getElementById('pergunta04').style.display = 'block';
+        document.getElementById('pergunta05').style.display = 'none';
+    }
+
+    function avançando05() {
+        document.getElementById('pergunta04').style.display = 'none';
+        document.getElementById('pergunta05').style.display = 'block';
 
     }
 </script>
