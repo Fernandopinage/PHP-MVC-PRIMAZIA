@@ -44,7 +44,7 @@ require "../../layout/head.php";
                 
                 <div class="row g-6">
                     <div class="col">
-                        <center><button id='botaoEnviar' type="button" onclick="window.location = 'local.php';" class="btn btn-primary btn-lg">AVANÇAR</button></center>
+                        <button id='botaoEnviar' type="button" onclick="window.location = 'local.php';" class="btn btn-primary btn-lg">AVANÇAR</button></center>
                         
                     </div>
                 </div>

@@ -22,7 +22,7 @@ require "../../layout/head.php";
             <div id="form-row">
                 
                 
-                <div class="row g-6">
+                <div class="row g-6 text-center">
                     <div class="col">
                         <select class="form-select" name="select[]" aria-label="Default select example">
                             <option selected>Selecione sua Profissão</option>
@@ -38,13 +38,13 @@ require "../../layout/head.php";
                         </select><br>
                     </div>
                 </div>
-                
-                <div class="row g-6">
+                <div class="row g-6 ">
                     <div class="col">
-                        <center><button id='botaoEnviar' type="button" onclick="window.location = 'diaristacliente.php';" class="btn btn-primary btn-lg">AVANÇAR</button></center>
+                       <button id='botaoEnviar' type="button" onclick="window.location = 'diaristacliente.php';" class="btn btn-primary btn-lg">AVANÇAR</button>
                         
                     </div>
                 </div>
+                
             </div>
             </div>
         </div>
