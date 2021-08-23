@@ -9,39 +9,158 @@ if (isset($_POST['filtro'])) {
 
 
         case '1':
-            header('location: ../../view/cliente/pequenosreparos.php');
+
+?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: '',
+                    title: '<div class="spinner-border text-warning" role="status"> <span class="visually-hidden">Loading...</span></div>',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+
+        <?php
+            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/pequenosreparos.php');
             break;
 
         case '2':
             //header('location: ../../view/cliente/pequenosreparos.php');
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'warning',
+                    title: 'Em Manutenção',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+            </script>
+
+        <?php
             break;
 
         case '3':
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'warning',
+                    title: 'Em Manutenção',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+            </script>
+
+        <?php
             //header('location: ../../view/cliente/pequenosreparos.php');
             break;
 
         case '4':
+
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'warning',
+                    title: 'Em Manutenção',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+            </script>
+
+        <?php
             //header('location: ../../view/cliente/pequenosreparos.php');
             break;
 
         case '5':
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'warning',
+                    title: 'Em Manutenção',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+            </script>
+
+        <?php
             //header('location: ../../view/cliente/pequenosreparos.php');
             break;
 
         case '6':
-            header('location: ../../view/cliente/diarista.php');
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: '',
+                    title: '<div class="spinner-border text-warning" role="status"> <span class="visually-hidden">Loading...</span></div>',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+
+        <?php
+            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/diarista.php');
             break;
 
         case '7':
-            header('location: ../../view/cliente/lavanderia.php');
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: '',
+                    title: '<div class="spinner-border text-warning" role="status"> <span class="visually-hidden">Loading...</span></div>',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+
+        <?php
+            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/lavanderia.php');
             break;
 
         case '8':
-            header('location: ../../view/cliente/arcondicionado.php');
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: '',
+                    title: '<div class="spinner-border text-warning" role="status"> <span class="visually-hidden">Loading...</span></div>',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+
+        <?php
+            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/arcondicionado.php');
             break;
 
         case '9':
-            header('location: ../../view/cliente/motoboy.php');
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'top-center',
+                    icon: '',
+                    title: '<div class="spinner-border text-warning" role="status"> <span class="visually-hidden">Loading...</span></div>',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            </script>
+
+<?php
+            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/motoboy.php');
             break;
 
 
