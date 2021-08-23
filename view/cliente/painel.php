@@ -2,9 +2,6 @@
 
 require "../../layout/heard.php";
 ?>
-
-
-
     <div id="conteudo-top" class>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
