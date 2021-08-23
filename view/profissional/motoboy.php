@@ -21,7 +21,7 @@ require "../../layout/head.php";
 
                 <div id="form-row">
 
-                    <label>Que tipo de Serviço você oferece?</label>
+                    <label>Que Tipo de Serviço Você Oferece?</label>
                     <br><br>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="documento" name="documento" id="documento" title="Envio ou captação de documentos em diferentes locais da cidade com data e hora agendados.">

@@ -21,7 +21,7 @@ require "../../layout/head.php";
 
                 <div id="form-row">
 
-                    <label>Que tipo de Serviço você oferece?</label>
+                    <label>Que Tipo de Serviço Você Oferece?</label>
                     <br><br>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" name="hidraulica" id="hidraulica" title="Serviços de instalação e limpeza de torneiras, chuveiros, duchas, bebedouros; desentupimento de ralos e sifões; reparos em vazamentos.">
