@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once "../../layout/heard.php";
 include_once  "../../class/ClassCliente.php";
 include_once "../../dao/ClienteDAO.php";
@@ -16,9 +16,6 @@ if(isset($_POST['salvarCliente'])){
     $Cliente = new ClienteDAO();
     $Cliente->insertCliente($ClassCliente);
 
-
-
-   
 }
 
 
