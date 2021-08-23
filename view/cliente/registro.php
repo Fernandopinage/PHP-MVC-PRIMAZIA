@@ -18,23 +18,31 @@ include_once "../../layout/heard.php";
 
             <div id="form-row">
                 <div class="row" style="padding: 40px;">
-                    <center><img id="editarusuario" src="../../images/usuario.png" class="img" width="100"></center>
+                    <div class="text-center">
+                        <img id="editarusuario" src="../../images/usuario.png" class="img" width="100">
+                    </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <input type="text" name="nome" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" name="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                        <input type="text" name="cpf" class="form-control cpf-mask" placeholder="CPF">
                     </div>
                 </div>
 
+
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="cpf" class="form-control cpf-mask" placeholder="CPF">
+                        <input type="text" name="cep" class="form-control cpf-mask" placeholder="CEP">
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="telefone" class="form-control phone-ddd-mask" placeholder="Telefone">
+                    </div>
+                </div>
+                <div class="row g-3 mt-1">
+                    <div class="col-md-12">
+                        <input type="email" name="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                     </div>
                 </div>
 
