@@ -1,6 +1,6 @@
 <?php
 
-require "../../layout/head.php";
+require "../../layout/heard.php";
 ?>
 
 
