@@ -1,8 +1,21 @@
 <?php
 
 include_once "../../layout/heard.php";
+include_once  "../../class/ClassCliente.php";
+include_once "../../dao/ClienteDAO.php";
+
+    if(isset($_POST['loginenviar'])){
+
+        $ClienteClass = new Cliente();
+        $ClienteClass->SetEmail($_POST['email']);
+        $ClienteClass->SetSenha($_POST['senha']);
+
+        $Cliemte = new ClienteDAO();
+        $Cliemte->validarLogin($ClienteClass);
+    }   
 
 ?>
+
 <link href="../../layout/css/cliente_login.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="text-center">
@@ -13,7 +26,7 @@ include_once "../../layout/heard.php";
         <p>LOGIN CLIENTE</p>
     </div>
     <div class="container">
-        <form class="row g-4" id="form">
+        <form class="row g-4" id="form" method="POST">
             <div class="col-12">
                 <label for="exampleInputEmail1" class="form-label">E-mail</label>
                 <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -23,7 +36,7 @@ include_once "../../layout/heard.php";
                 <input type="password" class="form-control" name="senha" id="exampleInputPassword1">
             </div>
             <div class="d-grid gap-2 col-3 mx-auto">
-                <button type="submit" class="btn btn-lg orangered">ENVIAR</button>
+                <button type="submit" name="loginenviar" class="btn btn-lg orangered">ENVIAR</button>
             </div>
         </form>
     </div>
