@@ -79,20 +79,20 @@ if (isset($_POST['filtro'])) {
             break;
 
         case '5':
-        ?>
+            ?>
 
             <script>
                 Swal.fire({
                     position: 'top-center',
-                    icon: 'warning',
-                    title: 'Em Manutenção',
+                    icon: '',
+                    title: '<div class="spinner-border text-warning" role="status"> <span class="visually-hidden">Loading...</span></div>',
                     showConfirmButton: false,
-                    timer: 4500
+                    timer: 1500
                 })
             </script>
 
         <?php
-            //header('location: ../../view/cliente/pequenosreparos.php');
+            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/dedetizacao.php');
             break;
 
         case '6':
