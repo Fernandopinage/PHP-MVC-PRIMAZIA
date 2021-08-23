@@ -25,10 +25,11 @@
 
 #form{
     
-    max-width: 800px;
+    max-width: 600px;
     padding: 35px 35px 45px;
     margin:  auto;
     margin-top: 10px;
+    margin-left: 20px;
     background-color: #fff;
     /*border: 1px solid rgba(0,0,0,0.1);  */
     border-radius: 7px;

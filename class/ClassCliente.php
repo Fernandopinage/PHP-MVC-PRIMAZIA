@@ -10,6 +10,7 @@ private $cpf;
 private $telefone;
 private $cep;
 private $foto;
+private $senha;
 
     public function SetId($id){
 
@@ -69,6 +70,14 @@ private $foto;
     }
     public function GetFoto(){
         return $this->foto;
+    }
+
+    public function SetSenha($senha){
+        $this->senha = $senha;
+
+    }
+    public function GetSenha(){
+        return $this->senha;
     }
 
 }

@@ -13,7 +13,7 @@ class ClienteDAO extends DAO
 
 
 
-        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`) VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO)";
+        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`) VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
         $insert->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
@@ -21,10 +21,11 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
         $insert->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
         $insert->bindValue(':CLIENTE_FOTO', '');
+        $insert->bindValue(':CLIENTE_SENHA', $ClassCliente->GetSenha());
 
         try {
             $insert->execute();
-?>
+            ?>
 
             <script>
                 Swal.fire({

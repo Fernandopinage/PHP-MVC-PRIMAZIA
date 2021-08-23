@@ -6,16 +6,59 @@ include_once "../../dao/ClienteDAO.php";
 
 if(isset($_POST['salvarCliente'])){
 
-    $ClassCliente = new Cliente();
-    $ClassCliente->SetNome($_POST['nome']);
-    $ClassCliente->SetCpf($_POST['cpf']);
-    $ClassCliente->SetCep($_POST['cep']);
-    $ClassCliente->SetTelefone($_POST['telefone']);
-    $ClassCliente->SetEmail($_POST['email']);
 
-    $Cliente = new ClienteDAO();
-    $Cliente->insertCliente($ClassCliente);
+    if(!empty($_POST['nome']) and !empty($_POST['senha']) and !empty($_POST['cpf']) and !empty($_POST['cep']) and !empty($_POST['telefone']) and !empty($_POST['email'])){
 
+        if($_POST['senha'] === $_POST['confirmar']){
+            
+            
+            $ClassCliente = new Cliente();
+            $ClassCliente->SetNome($_POST['nome']);
+            $ClassCliente->SetSenha($_POST['senha']);
+            $ClassCliente->SetCpf($_POST['cpf']);
+            $ClassCliente->SetCep($_POST['cep']);
+            $ClassCliente->SetTelefone($_POST['telefone']);
+            $ClassCliente->SetEmail($_POST['email']);
+            
+            $Cliente = new ClienteDAO();
+            $Cliente->insertCliente($ClassCliente);
+        }else{
+
+            ?>
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Senhas Não Coincidem',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+
+
+    <?php
+
+        }
+     
+        
+    }else{
+        ?>
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: 'Preencha Todos os Campos',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+
+
+    <?php
+
+    }
 }
 
 
@@ -46,6 +89,15 @@ if(isset($_POST['salvarCliente'])){
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF">
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-1">
+                    <div class="col-md-6">
+                        <input type="password" name="senha" id="senha"  class="form-control" placeholder="Senha" aria-label="">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
 

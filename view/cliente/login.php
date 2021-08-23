@@ -19,8 +19,8 @@ include_once "../../layout/heard.php";
                 <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="col-12">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                <label for="exampleInputPassword1" class="form-label">Senha</label>
+                <input type="password" class="form-control" name="senha" id="exampleInputPassword1">
             </div>
             <div class="d-grid gap-2 col-3 mx-auto">
                 <button type="submit" class="btn btn-lg orangered">ENVIAR</button>
