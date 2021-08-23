@@ -2,6 +2,56 @@
 
 include_once "../../layout/heard.php";
 
+if (isset($_POST['filtro'])) {
+    $dado = $_POST['opcao'];
+
+    switch ($dado) {
+
+
+        case '1':
+            header('location: ../../view/cliente/pequenosreparos.php');
+            break;
+
+        case '2':
+            //header('location: ../../view/cliente/pequenosreparos.php');
+            break;
+
+        case '3':
+            //header('location: ../../view/cliente/pequenosreparos.php');
+            break;
+
+        case '4':
+            //header('location: ../../view/cliente/pequenosreparos.php');
+            break;
+
+        case '5':
+            //header('location: ../../view/cliente/pequenosreparos.php');
+            break;
+
+        case '6':
+            header('location: ../../view/cliente/diarista.php');
+            break;
+
+        case '7':
+            header('location: ../../view/cliente/lavanderia.php');
+            break;
+
+        case '8':
+            header('location: ../../view/cliente/arcondicionado.php');
+            break;
+
+        case '9':
+            header('location: ../../view/cliente/motoboy.php');
+            break;
+
+
+        default:
+            # code...
+            break;
+    }
+}
+
+
 ?>
 <link href="../../layout/css/cliente_pedido.css" rel="stylesheet">
 
@@ -16,10 +66,10 @@ include_once "../../layout/heard.php";
         </div>
 
 
-        <form action="registrocliente.php" method="post">
+        <form method="post">
             <div class="row g-12 ms-3 p-2">
                 <div class="col-11 ">
-                    <select class="form-select" name="select[]" aria-label="Default select example">
+                    <select class="form-select" name="opcao" aria-label="Default select example">
                         <option selected>Selecione sua Profissão</option>
                         <option value="1">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                         <option value="2">Babá</option>
@@ -27,16 +77,15 @@ include_once "../../layout/heard.php";
                         <option value="4">Cuidador(a) de Idoso</option>
                         <option value="5">Dedetização</option>
                         <option value="6">Diarista</option>
-                        <option value="4">Lavanderia</option>
-                        <option value="5">Manutenção de Ar Condicionado</option>
-                        <option value="6">Motoboy</option>
+                        <option value="7">Lavanderia</option>
+                        <option value="8">Manutenção de Ar Condicionado</option>
+                        <option value="9">Motoboy</option>
                     </select><br>
                 </div>
             </div>
             <div class="row g-6">
                 <div class="col text-center">
-                   <button id='botaoEnviar' type="button"  class="btn orangered btn-lg">AVANÇAR</button>
-
+                    <input type="submit" id='botaoEnviar' name="filtro" value="AVANÇAR" type="button" class="btn orangered btn-lg">
                 </div>
             </div>
         </form>
