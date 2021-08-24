@@ -1,5 +1,11 @@
 <?php
 session_start();
+include_once "../../layout/heard.php";
+include_once "../../dao/CategoriaDAO.php";
+include_once "../../class/ClassCategoria.php";
+
+
+
 if (empty($_SESSION['user'])) {
 
     header('location: ../../primazia_projeto/view/cliente/login.php');
@@ -8,20 +14,32 @@ if (empty($_SESSION['user'])) {
 
 if (isset($_POST['diaristafinal'])) {
 
-    if(!empty($_POST['categoria'])){
-    $dados = array(
+    if (!empty($_POST['categoria'])) {
 
-        'categoria' => $_POST['categoria'],
-        'area' => $_POST['area'],
-        'local' => $_POST['local'],
-        'dependente' => $_POST['dependente'],
+        $ClassRequest = new Categoria();
+        $ClassRequest->SetNome($_SESSION['user']['nome']);
+        $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
+        $ClassRequest->SetEmail($_SESSION['user']['email']);
+        $ClassRequest->SetCpf($_SESSION['user']['cpf']);
+        $ClassRequest->SetCep($_SESSION['user']['cep']);
 
+        $dados = array(
 
-    );
+            'categoria' => $_POST['categoria'],
+            'area' => $_POST['area'],
+            'local' => $_POST['local'],
+            'dependente' => $_POST['dependente'],
+            'serviço' => $_POST['serviço']
+        );
+        $ClassRequest->SetDescricao($dados);
+
+        
+        $Reparos = new CategoriaDAO();
+        $Reparos->insertReparos($ClassRequest);
+        
     }
 }
 
-include_once "../../layout/heard.php";
 ?>
 <link href="../../layout/css/cliente_diarista.css" rel="stylesheet">
 <div class="container-fluid">
@@ -139,7 +157,7 @@ include_once "../../layout/heard.php";
                             <label class="fs-3">Qual o Local do Serviço?</label>
                             <select class="form-select" name="local[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="Apartamento/Casa">Apartamento/Casa</option>
+                                <option value="Apartamento_Casa">Apartamento/Casa</option>
                                 <option value="Comercial">Comercial</option>
                                 <option value="Lojas">Lojas</option>
                             </select><br>
@@ -261,7 +279,7 @@ include_once "../../layout/heard.php";
         <img id='photo' src="../../images/diarista.gif" class="img">
     </div>
 
-
+    
 </div>
 
 <script>
@@ -323,19 +341,19 @@ include_once "../../layout/heard.php";
         var check05 = document.getElementById('limpezaPremudanca');
         var check06 = document.getElementById('outros');
 
-        if(check01.checked || check02.checked  || check03.checked  || check04.checked  || check05.checked || check06.checked){
-           
+        if (check01.checked || check02.checked || check03.checked || check04.checked || check05.checked || check06.checked) {
+
             document.getElementById('pergunta01').style.display = 'none';
             document.getElementById('pergunta02').style.display = 'block';
-       }else{
-           Swal.fire({
-                   position: 'top-center',
-                   icon: 'info',
-                   text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
-                   showConfirmButton: false,
-                   timer: 4500
-               })
-       }
+        } else {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'info',
+                text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                showConfirmButton: false,
+                timer: 4500
+            })
+        }
 
 
 
