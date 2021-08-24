@@ -1,10 +1,35 @@
 <?php
-session_start();
-if (empty($_SESSION['user'])) {
-
-    header('location: ../../primazia_projeto/view/cliente/login.php');
-}
 include_once "../../layout/heard.php";
+include_once "../../dao/CategoriaDAO.php";
+include_once "../../class/ClassCategoria.php";
+session_start();
+
+if (isset($_POST['finalizando'])) {
+
+    if (!empty($_POST['categoria'])) {
+
+        $ClassRequest = new Categoria();
+        $ClassRequest->SetNome($_SESSION['user']['nome']);
+        $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
+        $ClassRequest->SetEmail($_SESSION['user']['email']);
+        $ClassRequest->SetCpf($_SESSION['user']['cpf']);
+        $ClassRequest->SetCep($_SESSION['user']['cep']);
+
+        $dados = array(
+
+            'categoria' => $_POST['categoria'],
+            'descricao' => $_POST['descricao']
+
+        );
+        $ClassRequest->SetDescricao($dados);
+
+
+        $Dedetizacao = new CategoriaDAO();
+        $Dedetizacao->insertReparos($ClassRequest);
+    } else {
+    }
+}
+
 ?>
 <link href="../../layout/css/cliente_lavanderia.css" rel="stylesheet">
 <div class="container-fluid">
@@ -31,55 +56,56 @@ include_once "../../layout/heard.php";
                         <label>Que Tipo de Serviço Você Precisa?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="lavagemAgua" id="lavagemAgua" title="Processo de limpeza dos tecidos através de ação mecânica, temperatura adequada e tempo preciso, em conjunto com o tratamento requerido.">
+                            <input class="form-check-input" type="checkbox" value="Lavagem à água" name="categoria[]" id="lavagemAgua" title="Processo de limpeza dos tecidos através de ação mecânica, temperatura adequada e tempo preciso, em conjunto com o tratamento requerido.">
                             <label class="form-check-label" for="lavagemAgua" title="Processo de limpeza dos tecidos através de ação mecânica, temperatura adequada e tempo preciso, em conjunto com o tratamento requerido.">
                                 Lavagem à água
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="lavagemASeco" id="lavagemSeco" title="A limpeza a seco é um processo usado em peças que não podem ser lavadas a água, pois o tecido pode encolher, desbotar ou até mesmo perder a forma.">
+                            <input class="form-check-input" type="checkbox" value="Lavagem a seco" name="categoria[]" id="lavagemSeco" title="A limpeza a seco é um processo usado em peças que não podem ser lavadas a água, pois o tecido pode encolher, desbotar ou até mesmo perder a forma.">
                             <label class="form-check-label" for="lavagemSeco" title="A limpeza a seco é um processo usado em peças que não podem ser lavadas a água, pois o tecido pode encolher, desbotar ou até mesmo perder a forma. ">
                                 Lavagem a seco
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="impermeabilizar" id="impermeabilizar" title="Ao impermeabilizar tecidos, eles se tornam menos porosos, formando uma espécie de camada protetora invisível e impermeável, que cobre o tecido e previne a incrustação das manchas ou mesmo as moléculas de água.">
+                            <input class="form-check-input" type="checkbox" value="Impermeabilizar" name="categoria[]" id="impermeabilizar" title="Ao impermeabilizar tecidos, eles se tornam menos porosos, formando uma espécie de camada protetora invisível e impermeável, que cobre o tecido e previne a incrustação das manchas ou mesmo as moléculas de água.">
                             <label class="form-check-label" for="impermeabilizar" title="Ao impermeabilizar tecidos, eles se tornam menos porosos, formando uma espécie de camada protetora invisível e impermeável, que cobre o tecido e previne a incrustação das manchas ou mesmo as moléculas de água.">
                                 Impermeabilizar
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="revitalizar" id="revitalizar" title="revitalização das cores do tecido, fazendo com que elas permaneçam impecáveis em todas as circunstâncias e mantenham a flexibilidade.">
+                            <input class="form-check-input" type="checkbox" value="Revitalizar" name="categoria[]" id="revitalizar" title="revitalização das cores do tecido, fazendo com que elas permaneçam impecáveis em todas as circunstâncias e mantenham a flexibilidade.">
                             <label class="form-check-label" for="revitalizar" title="revitalização das cores do tecido, fazendo com que elas permaneçam impecáveis em todas as circunstâncias e mantenham a flexibilidade.">
                                 Revitalizar
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="alvejar" title="alvejamos suas peças brancas ou coloridas, sem adição de cloro e de forma altamente eficiente na remoção de manchas, revitalizando a cor branca e recuperando as peças.">
+                            <input class="form-check-input" type="checkbox" value="Alvejar" id="alvejar" name="categoria[]" title="alvejamos suas peças brancas ou coloridas, sem adição de cloro e de forma altamente eficiente na remoção de manchas, revitalizando a cor branca e recuperando as peças.">
                             <label class="form-check-label" for="alvejar" title="alvejamos suas peças brancas ou coloridas, sem adição de cloro e de forma altamente eficiente na remoção de manchas, revitalizando a cor branca e recuperando as peças.">
                                 Alvejar
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="bolsas" id="bolsas" title="bolsas.">
+                            <input class="form-check-input" type="checkbox" value="Bolsas" name="categoria[]" id="bolsas" title="bolsas.">
                             <label class="form-check-label" for="bolsas" title="bolsas.">
                                 Bolsas
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="sapatos" title="sapatos">
+                            <input class="form-check-input" type="checkbox" value="Sapatos" name="categoria[]" id="sapados" title="sapatos">
                             <label class="form-check-label" for="sapatos" title="sapatos.">
                                 Sapatos
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="outros" id="outros" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="outros" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
                             </label>
                             <div id="lista">
+
                                 <div class="mb-3">
                                     <label for="outros" class="form-label"></label>
-                                    <input type="text" class="form-control" id="outros" placeholder="">
+                                    <textarea name="categoria[]" class="form-control" id="outros2" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -101,97 +127,98 @@ include_once "../../layout/heard.php";
                         <label>Qual/Quais as Peças?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="calcaJeans" id="calcaJeans" title="calça jeans">
-                            <label class="form-check-label" for="calcaJeans" title="calça jeans"">
-                            Calça jeans
-                        </label>
-                    </div>
-                    <div class=" form-check">
-                                <input class="form-check-input" type="checkbox" value="" name="calcaAlfaitaria" id="calcaAlfaitaria" title="Calça Alfaitaria.">
-                                <label class="form-check-label" for="calcaAlfaitaria" title="Calça Alfaitaria">
-                                    Calça alfaiataria
-                                </label>
+                            <input class="form-check-input" type="checkbox" value="Calça jeans" name="descricao[]" id="calcaJeans" title="calça jeans">
+                            <label class="form-check-label" for="calcaJeans" title="calça jeans">
+                                Calça jeans
+                            </label>
+                        </div>
+                        <div class=" form-check">
+                            <input class="form-check-input" type="checkbox" value="Calça alfaiataria" name="descricao[]" id="calcaAlfaitaria" title="Calça Alfaitaria.">
+                            <label class="form-check-label" for="calcaAlfaitaria" title="Calça Alfaitaria">
+                                Calça alfaiataria
+                            </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="calcaLegging" id="calcaLegging" title="Calça Legging">
+                            <input class="form-check-input" type="checkbox" value="Calça legging" name="descricao[]" id="calcaLegging" title="Calça Legging">
                             <label class="form-check-label" for="calcaLegging" title="Calça Legging">
                                 Calça legging
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="camisa" id="camisa" title="camisa">
+                            <input class="form-check-input" type="checkbox" value="Camisa" name="descricao[]" id="camisa" title="camisa">
                             <label class="form-check-label" for="camisa" title="camisa.">
                                 Camisa
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="camiseta" title="camiseta.">
+                            <input class="form-check-input" type="checkbox" value="Camiseta" id="camiseta" name="descricao[]" title="camiseta.">
                             <label class="form-check-label" for="camiseta" title="camiseta.">
                                 Camiseta
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="regata" id="regata" title="regata.">
+                            <input class="form-check-input" type="checkbox" value="Regata" name="descricao[]" id="regata" title="regata.">
                             <label class="form-check-label" for="regata" title="regata.">
                                 Regata
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="bermudas" title="bermudas">
+                            <input class="form-check-input" type="checkbox" value="Bermudas" id="bermudas" name="descricao[]" title="bermudas">
                             <label class="form-check-label" for="bermudas" title="bermudas.">
                                 Bermudas
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="shorts" id="shorts" title="Shorts">
+                            <input class="form-check-input" type="checkbox" value="Shorts" name="descricao[]" id="shorts" title="Shorts">
                             <label class="form-check-label" for="shorts" title="Shorts">
                                 Shorts
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="vestido" id="vestido" title="vestido">
+                            <input class="form-check-input" type="checkbox" value="Vestidos" name="descricao[]" id="vestido" title="vestido">
                             <label class="form-check-label" for="vestido" title="vestido.">
                                 Vestidos
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="saias" title="saias.">
+                            <input class="form-check-input" type="checkbox" value="Saias" id="saias" name="descricao[]" title="saias.">
                             <label class="form-check-label" for="saias" title="saias.">
                                 Saias
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="lencolCama" id="lencolCama" title="Jogo lençol de cama.">
+                            <input class="form-check-input" type="checkbox" value="Jogo lençol de cama" name="descricao[]" id="lencolCama" title="Jogo lençol de cama.">
                             <label class="form-check-label" for="lencolCama" title="Jogo lençol de cama.">
                                 Jogo lençol de cama
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="edredom" title="edredom">
+                            <input class="form-check-input" type="checkbox" value="Edredom" id="edredom" name="descricao[]" title="edredom">
                             <label class="form-check-label" for="edredom" title="edredom.">
                                 Edredom
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="toalhaCorpo" id="toalhaCorpo" title="Toalha de Corpo">
+                            <input class="form-check-input" type="checkbox" value="Toalhas de corpo" name="descricao[]" id="toalhaCorpo" title="Toalha de Corpo">
                             <label class="form-check-label" for="toalhaCorpo" title="Toalha de Corpo.">
                                 Toalhas de corpo
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="toalhaRosto" title="Toalha de rosto.">
+                            <input class="form-check-input" type="checkbox" value="Toalhas de rosto" id="toalhaRosto" name="descricao[]" title="Toalha de rosto.">
                             <label class="form-check-label" for="toalhaRosto" title="Toalha de rosto.">
                                 Toalhas de rosto
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="outros" id="outros" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="Outros" name="descricao[]" id="divoutros" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
                             </label>
-                            <div id="lista">
+                            <div id="lista2">
+
                                 <div class="mb-3">
                                     <label for="outros" class="form-label"></label>
-                                    <input type="text" class="form-control" id="outros" placeholder="">
+                                    <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -201,7 +228,7 @@ include_once "../../layout/heard.php";
                             <button id='botaoEnviar' type="button" id="volta01" onclick="voltando02()" class="btn azulprima btn-lg">VOLTAR</button>
                         </div>
                         <div class="col text-center">
-                            <input id='botaoEnviar' type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                            <input id='botaoEnviar' type="submit" name="finalizando" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
                     </div>
                 </div>
@@ -219,17 +246,41 @@ include_once "../../layout/heard.php";
 
 <script>
     document.getElementById('pergunta02').style.display = 'none';
-  
+
 
 
     function voltando01() {
+
         document.getElementById('pergunta01').style.display = 'block';
         document.getElementById('pergunta02').style.display = 'none';
     }
 
     function avançando01() {
-        document.getElementById('pergunta01').style.display = 'none';
-        document.getElementById('pergunta02').style.display = 'block';
+
+
+        var check01 = document.getElementById('lavagemAgua');
+        var check02 = document.getElementById('lavagemSeco');
+        var check03 = document.getElementById('impermeabilizar');
+        var check04 = document.getElementById('revitalizar');
+        var check05 = document.getElementById('alvejar');
+        var check06 = document.getElementById('bolsas');
+        var check07 = document.getElementById('sapados');
+        var check08 = document.getElementById('outros');
+
+        if (check01.checked || check02.checked || check03.checked || check04.checked || check05.checked || check06.checked || check07.checked || check08.checked) {
+
+            document.getElementById('pergunta01').style.display = 'none';
+            document.getElementById('pergunta02').style.display = 'block';
+        } else {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'info',
+                text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                showConfirmButton: false,
+                timer: 4500
+            })
+        }
+
     }
 
     function voltando02() {
@@ -242,13 +293,13 @@ include_once "../../layout/heard.php";
         document.getElementById('pergunta03').style.display = 'block';
 
     }
-
-    
 </script>
 
 
 <script>
     $("#lista").hide();
+    $("#lista2").hide();
+
     $('#outros').click(function() {
 
         var outros = document.getElementById('outros');
@@ -261,6 +312,23 @@ include_once "../../layout/heard.php";
 
 
             $("#lista").hide();
+
+        }
+
+    });
+
+    $('#divoutros').click(function() {
+
+        var outros = document.getElementById('divoutros');
+
+        if (outros.checked) {
+
+            $("#lista2").show();
+
+        } else {
+
+
+            $("#lista2").hide();
 
         }
 
