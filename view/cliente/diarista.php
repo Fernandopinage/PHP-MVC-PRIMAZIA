@@ -8,6 +8,7 @@ if (empty($_SESSION['user'])) {
 
 if (isset($_POST['diaristafinal'])) {
 
+    if(!empty($_POST['categoria'])){
     $dados = array(
 
         'categoria' => $_POST['categoria'],
@@ -17,6 +18,7 @@ if (isset($_POST['diaristafinal'])) {
 
 
     );
+    }
 }
 
 include_once "../../layout/heard.php";
@@ -313,8 +315,31 @@ include_once "../../layout/heard.php";
     }
 
     function avançando01() {
-        document.getElementById('pergunta01').style.display = 'none';
-        document.getElementById('pergunta02').style.display = 'block';
+
+        var check01 = document.getElementById('limpezaComercial');
+        var check02 = document.getElementById('limpezaPadrao');
+        var check03 = document.getElementById('limpezaPesada');
+        var check04 = document.getElementById('limpezaPosobra');
+        var check05 = document.getElementById('limpezaPremudanca');
+        var check06 = document.getElementById('outros');
+
+        if(check01.checked || check02.checked  || check03.checked  || check04.checked  || check05.checked || check06.checked){
+           
+            document.getElementById('pergunta01').style.display = 'none';
+            document.getElementById('pergunta02').style.display = 'block';
+       }else{
+           Swal.fire({
+                   position: 'top-center',
+                   icon: 'info',
+                   text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                   showConfirmButton: false,
+                   timer: 4500
+               })
+       }
+
+
+
+
     }
 
     function voltando02() {
