@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (empty($_SESSION['user'])) {
+
+    header('location: ../../primazia_projeto/view/cliente/login.php');
+}
 include_once "../../layout/heard.php";
 ?>
 <link href="../../layout/css/cliente_dedetizacao.css" rel="stylesheet">

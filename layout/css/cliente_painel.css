@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @media screen and (min-width: 700px) {
+
+ 
+    
+    .nav-item{
+        margin-right: 20px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+    }
+
     #conteudo-left {
         margin-top: -20px;
         margin-left: 100px;
@@ -23,7 +32,7 @@
         background-color: white;
     }
     #caixalupa {
-        width: 700px;
+        width: 550px;
         border-bottom-left-radius: 20px;
         border-top-left-radius: 20px;
     }
@@ -37,12 +46,14 @@
         padding-right: 20px;
         border-bottom-right-radius: 20px;
         border-top-left-radius: 20px;
+        
     }
     #ola {
         color: #001457;
         background-color: transparent;
         border-color: transparent;
         margin-right: 20px;
+        margin-left: 5px;
     }
     #usuario {
         width: 200px;
@@ -91,21 +102,26 @@
     p {
         font-size: 15px;
     }
-    @media screen and (min-width: 700px) {
-        #pedidos {
-            align-content: center;
-            width: 300px;
-        }
-    }
-    @media screen and (max-width: 699px) {
-        #pedidos {
-            align-content: center;
-            width: 200px;
-        }
-    }
+
 }
 
 @media screen and (max-width: 699px) {
+
+
+    #profissional{
+        position: relative;
+        margin-top: -66px;
+        margin-left: 250px;
+    }
+    #logo{
+        margin-left: 20px;
+    }
+    .nav-item{
+
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
     #conteudo-left {
         width: 100%;
         float: left;
@@ -124,7 +140,7 @@
         background-color: white;
     }
     #caixalupa {
-        width: 700px;
+        width: 360px;
         border-bottom-left-radius: 20px;
         border-top-left-radius: 20px;
     }
@@ -191,17 +207,5 @@
     }
     p {
         font-size: 15px;
-    }
-    @media screen and (min-width: 700px) {
-        #pedidos {
-            align-content: center;
-            width: 300px;
-        }
-    }
-    @media screen and (max-width: 699px) {
-        #pedidos {
-            align-content: center;
-            width: 200px;
-        }
     }
 }
