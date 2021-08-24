@@ -37,7 +37,9 @@ class PequenosReparos extends DAO{
 
 
     <?php
-        
+
+      header('Refresh: 1.5; url=painel.php');
+
       } catch (PDOException $e) {
         ?>
 
