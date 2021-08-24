@@ -1,10 +1,43 @@
 <?php
+include_once "../../layout/heard.php";
+include_once "../../dao/CategoriaDAO.php";
+include_once "../../class/ClassCategoria.php";
+
 session_start();
 if (empty($_SESSION['user'])) {
 
     header('location: ../../primazia_projeto/view/cliente/login.php');
 }
-include_once "../../layout/heard.php";
+
+if(isset($_POST['motoboy'])){
+
+
+    if(!empty($_POST['categoria'])){
+
+        
+        $ClassRequest = new Categoria();
+        $ClassRequest->SetNome($_SESSION['user']['nome']);
+        $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
+        $ClassRequest->SetEmail($_SESSION['user']['email']);
+        $ClassRequest->SetCpf($_SESSION['user']['cpf']);
+        $ClassRequest->SetCep($_SESSION['user']['cep']);
+        
+        $dados = array(
+            
+            'categoria' => $_POST['categoria'],
+            
+            
+        );
+        $ClassRequest->SetDescricao($dados);
+        $Dedetizacao = new CategoriaDAO();
+        $Dedetizacao->insertReparos($ClassRequest);
+    }
+
+}
+
+
+
+
 ?>
 <link href="../../layout/css/cliente_motoboy.css" rel="stylesheet">
 <div class="container-fluid">
@@ -31,26 +64,26 @@ include_once "../../layout/heard.php";
                         <label class="fs-3">Que Tipo de Serviço Você Precisa?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="documento" name="documento" id="documento" title="Envio ou captação de documentos em diferentes locais da cidade com data e hora agendados.">
+                            <input class="form-check-input" type="checkbox" value="Enviar um documento" name="categoria[]" id="documento" title="Envio ou captação de documentos em diferentes locais da cidade com data e hora agendados.">
                             <label class="form-check-label" for="documento" title="Envio ou captação de documentos em diferentes locais da cidade com data e hora agendados.">
                                 Enviar um documento
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="servico" id="servico" title="Envio e captação de pacotes em diferentes locais da cidade com data e hora agendados.">
+                            <input class="form-check-input" type="checkbox" value="Realizar um serviço" name="categoria[]" id="servico" title="Envio e captação de pacotes em diferentes locais da cidade com data e hora agendados.">
                             <label class="form-check-label" for="servico" title="Envio e captação de pacotes em diferentes locais da cidade com data e hora agendados.">
                                 Realizar um serviço
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="urgencia" id="urgencia" title="Serviços realizados imediatamente após o contato com o motoboy">
+                            <input class="form-check-input" type="checkbox" value="Serviço de urgência" name="categoria[]" id="urgencia" title="Serviços realizados imediatamente após o contato com o motoboy">
                             <label class="form-check-label" for="urgencia" title="Serviços realizados imediatamente após o contato com o motoboy">
                                 Serviço de urgência
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="servicoNL" id="servicoNL" title="Serviço para zona norte e leste">
-                            <label class="form-check-label" for="servicoNL" title="Serviço para zona norte e leste">
+                            <input class="form-check-input" type="checkbox" value="Serviço para zona norte e leste" name="categoria[]" id="zona" title="Serviço para zona norte e leste">
+                            <label class="form-check-label" for="zona" title="Serviço para zona norte e leste">
                                 Serviço para zona norte e leste
                             </label>
                         </div>
@@ -62,7 +95,7 @@ include_once "../../layout/heard.php";
                     <div class="row" style="margin-top: 20px;">
                         
                         <div class="col text-center">
-                            <input id='botaoEnviar' type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                            <input id='botaoEnviar' type="submit" name="motoboy" onclick="avançando01()" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
                     </div>
                     
@@ -84,65 +117,36 @@ include_once "../../layout/heard.php";
 </div>
 
 <script>
-    document.getElementById('pergunta02').style.display = 'none';
-    document.getElementById('pergunta03').style.display = 'none';
-    document.getElementById('pergunta04').style.display = 'none';
-    document.getElementById('pergunta05').style.display = 'none';
 
 
-    function voltando01() {
-        document.getElementById('pergunta01').style.display = 'block';
-        document.getElementById('pergunta02').style.display = 'none';
-    }
+
 
     function avançando01() {
-        document.getElementById('pergunta01').style.display = 'none';
-        document.getElementById('pergunta02').style.display = 'block';
-    }
 
-    function voltando02() {
-        document.getElementById('pergunta01').style.display = 'block';
-        document.getElementById('pergunta02').style.display = 'none';
-    }
 
-    function avançando02() {
-        document.getElementById('pergunta02').style.display = 'none';
-        document.getElementById('pergunta03').style.display = 'block';
+        var check01 = document.getElementById('documento');
+        var check02 = document.getElementById('servico');
+        var check03 = document.getElementById('urgencia');
+        var check04 = document.getElementById('zona');
 
-    }
 
-    function voltando03() {
-        document.getElementById('pergunta02').style.display = 'block';
-        document.getElementById('pergunta03').style.display = 'none';
-    }
-
-    function avançando03() {
-        document.getElementById('pergunta03').style.display = 'none';
-        document.getElementById('pergunta04').style.display = 'block';
+        if(check01.checked || check02.checked  || check03.checked || check04.checked){
+            
+            document.getElementById('pergunta01').style.display = 'none';
+            document.getElementById('pergunta02').style.display = 'block';
+        }else{
+            Swal.fire({
+                    position: 'top-center',
+                    icon: 'info',
+                    text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+        }
 
     }
 
-    function voltando04() {
-        document.getElementById('pergunta03').style.display = 'block';
-        document.getElementById('pergunta04').style.display = 'none';
-    }
-
-    function avançando04() {
-        document.getElementById('pergunta04').style.display = 'none';
-        document.getElementById('pergunta05').style.display = 'block';
-
-    }
-
-    function voltando05() {
-        document.getElementById('pergunta04').style.display = 'block';
-        document.getElementById('pergunta05').style.display = 'none';
-    }
-
-    function avançando05() {
-        document.getElementById('pergunta04').style.display = 'none';
-        document.getElementById('pergunta05').style.display = 'block';
-
-    }
+    
 </script>
 
 

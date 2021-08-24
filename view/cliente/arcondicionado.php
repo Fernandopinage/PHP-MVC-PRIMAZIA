@@ -1,10 +1,41 @@
 <?php
 session_start();
+include_once "../../layout/heard.php";
+include_once "../../dao/CategoriaDAO.php";
+include_once "../../class/ClassCategoria.php";
+
+
 if (empty($_SESSION['user'])) {
 
     header('location: ../../primazia_projeto/view/cliente/login.php');
 }
-include_once "../../layout/heard.php";
+
+    if(isset($_POST['arcodicionado'])){
+
+        if(!empty($_POST['categoria'])){
+
+        
+            $ClassRequest = new Categoria();
+            $ClassRequest->SetNome($_SESSION['user']['nome']);
+            $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
+            $ClassRequest->SetEmail($_SESSION['user']['email']);
+            $ClassRequest->SetCpf($_SESSION['user']['cpf']);
+            $ClassRequest->SetCep($_SESSION['user']['cep']);
+            
+            $dados = array(
+                
+                'categoria' => $_POST['categoria'],
+                'descricao' => $_POST['descricao'],
+                'opcao' => $_POST['opcao'],
+
+            );
+            $ClassRequest->SetDescricao($dados);
+            $Dedetizacao = new CategoriaDAO();
+            $Dedetizacao->insertReparos($ClassRequest);
+        }
+
+    }
+
 ?>
 <link href="../../layout/css/cliente_arcondicionado.css" rel="stylesheet">
 <div class="container-fluid">
@@ -28,19 +59,19 @@ include_once "../../layout/heard.php";
                 <div id="pergunta01">
                     <label class="fs-3">Quantos Btus Possui a Sua Máquina?</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="7000_12000_btu" name="servico[]" id="7000_12000_btu" title="">
+                        <input class="form-check-input" type="checkbox" value="7000btus à 12000btus" name="categoria[]" id="7000_12000_btu" title="">
                         <label class="form-check-label" for="7000_12000_btu" title="">
                             7000btus à 12000btus (janela)
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="9000_12000_btu_janela" name="servico[]" id="9000_12000_btu_janela" title="">
+                        <input class="form-check-input" type="checkbox" value="9000btus à 12000btus" name="categoria[]" id="9000_12000_btu_janela" title="">
                         <label class="form-check-label" for="9000_12000_btu_janela" title="">
                             9000btus à 12000btus
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="18000_24000_btu" name="servico[]" id="18000_24000_btu" title="">
+                        <input class="form-check-input" type="checkbox" value="18000btus à 24000btus" name="categoria[]" id="18000_24000_btu" title="">
                         <label class="form-check-label" for="18000_24000_btu" title="">
                             18000btus à 24000btus
                         </label>
@@ -60,10 +91,10 @@ include_once "../../layout/heard.php";
                     <div class="row g-5">
                         <div class="col">
                             <label class="fs-3">Possui Acesso à Condensadora?</label>
-                            <select class="form-select" name="select[]" aria-label="Default select example">
+                            <select class="form-select" name="descricao[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="1">Sim</option>
-                                <option value="2">Não</option>
+                                <option value="Condensadora Sim">Sim</option>
+                                <option value="Condensadora Não">Não</option>
 
                             </select><br>
                         </div>
@@ -86,10 +117,10 @@ include_once "../../layout/heard.php";
                     <div class="row g-6">
                         <div class="col">
                             <label class="fs-3">É Possível Remover a Evaporadora?</label>
-                            <select class="form-select" name="select[]" aria-label="Default select example">
+                            <select class="form-select" name="opcao[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="1">Sim</option>
-                                <option value="2">Não</option>
+                                <option value="Remover a Evaporadora Sim">Sim</option>
+                                <option value="Remover a Evaporadora Não">Não</option>
                             </select><br>
                         </div>
                     </div>
@@ -98,7 +129,7 @@ include_once "../../layout/heard.php";
                             <button id='botaoEnviar' type="button" id="volta01" onclick="voltando03()" class="btn azulprima btn-lg">VOLTAR</button>
                         </div>
                         <div class="col text-center">
-                            <input id='botaoEnviar' type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                            <input id='botaoEnviar' type="submit" name="arcodicionado" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
                     </div>
                 </div>
@@ -126,8 +157,29 @@ include_once "../../layout/heard.php";
     }
 
     function avançando01() {
-        document.getElementById('pergunta01').style.display = 'none';
-        document.getElementById('pergunta02').style.display = 'block';
+
+
+        var check01 = document.getElementById('7000_12000_btu');
+        var check02 = document.getElementById('9000_12000_btu_janela');
+        var check03 = document.getElementById('18000_24000_btu');
+       
+
+
+        if(check01.checked || check02.checked  || check03.checked ){
+            
+            document.getElementById('pergunta01').style.display = 'none';
+            document.getElementById('pergunta02').style.display = 'block';
+        }else{
+            Swal.fire({
+                    position: 'top-center',
+                    icon: 'info',
+                    text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+        }
+
+
     }
 
     function voltando02() {
