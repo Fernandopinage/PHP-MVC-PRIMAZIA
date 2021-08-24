@@ -12,18 +12,29 @@ include_once "../../class/ClassPequenosReparos.php";
 
 if (isset($_POST['pequenosreparos'])) {
 
-    if(!empty($_POST['servico']) and !empty($_POST['descricao'])){
+    if(!empty($_POST['categoria'])){
        
         
         $ClassReparos = new PequenoReparo();
-        $ClassReparos->SetServico($_POST['servico']);
-        $ClassReparos->SetDescricao($_POST['descricao']);
+        $ClassReparos->SetNome($_SESSION['user']['nome']);
+        $ClassReparos->SetTelefone($_SESSION['user']['telefone']);
+        $ClassReparos->SetEmail($_SESSION['user']['email']);
+        $ClassReparos->SetCpf($_SESSION['user']['cpf']);
+        $ClassReparos->SetCep($_SESSION['user']['cep']);
+
+        $dados = array(
+
+            'categoria' => $_POST['categoria'],
+            'descricao' => $_POST['descricao']
+
+        );
+        $ClassReparos->SetDescricao($dados);
 
         $Reparos = new PequenosReparos();
         $Reparos->insertReparos($ClassReparos);
         
     }else{
-        echo "off";
+       
     }
 
     
@@ -55,31 +66,31 @@ if (isset($_POST['pequenosreparos'])) {
                         <label>Que tipo de Serviço Você Precisa?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="hidraulica" name="servico[]" id="hidraulica" title="Serviços de instalação e limpeza de torneiras, chuveiros, duchas, bebedouros; desentupimento de ralos e sifões; reparos em vazamentos.">
+                            <input class="form-check-input" type="checkbox" value="hidraulica" name="categoria[]" id="hidraulica" title="Serviços de instalação e limpeza de torneiras, chuveiros, duchas, bebedouros; desentupimento de ralos e sifões; reparos em vazamentos.">
                             <label class="form-check-label" for="hidraulica" title="Serviços de instalação e limpeza de torneiras, chuveiros, duchas, bebedouros; desentupimento de ralos e sifões; reparos em vazamentos.">
                                 Hidráulica
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="eletrica" name="servico[]" id="eletrica" title="Instalação de luminárias; substituição de interruptores; instalação de interruptor paralelo.">
+                            <input class="form-check-input" type="checkbox" value="eletrica" name="categoria[]" id="eletrica" title="Instalação de luminárias; substituição de interruptores; instalação de interruptor paralelo.">
                             <label class="form-check-label" for="eletrica" title="Instalação de luminárias; substituição de interruptores; instalação de interruptor paralelo.">
                                 Elétrica
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="gesso" name="servico[]" id="gesso" title="Instalação de cortineiro; Rebaixo para iluminação indireta; Sancas.">
+                            <input class="form-check-input" type="checkbox" value="gesso" name="categoria[]" id="gesso" title="Instalação de cortineiro; Rebaixo para iluminação indireta; Sancas.">
                             <label class="form-check-label" for="gesso" title="Instalação de cortineiro; Rebaixo para iluminação indireta; Sancas.">
                                 Gesso
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="pintura" name="servico[]" id="pintura" title="Emassamento; Pintura; Aplicação de textura">
+                            <input class="form-check-input" type="checkbox" value="pintura" name="categoria[]" id="pintura" title="Emassamento; Pintura; Aplicação de textura">
                             <label class="form-check-label" for="pintura" title="Emassamento; Pintura; Aplicação de textura">
                                 Pintura
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="pedreiro" name="servico[]" id="pedreiro" title="">
+                            <input class="form-check-input" type="checkbox" value="pedreiro" name="categoria[]" id="pedreiro" title="">
                             <label class="form-check-label" for="pedreiro" title="">
                                 Pedreiro
                             </label>
@@ -124,9 +135,6 @@ if (isset($_POST['pequenosreparos'])) {
 
 <script>
     document.getElementById('pergunta02').style.display = 'none';
-    document.getElementById('pergunta03').style.display = 'none';
-    document.getElementById('pergunta04').style.display = 'none';
-    document.getElementById('pergunta05').style.display = 'none';
 
 
     function voltando01() {
@@ -135,8 +143,27 @@ if (isset($_POST['pequenosreparos'])) {
     }
 
     function avançando01() {
-        document.getElementById('pergunta01').style.display = 'none';
-        document.getElementById('pergunta02').style.display = 'block';
+
+        var check01 = document.getElementById('hidraulica');
+        var check02 = document.getElementById('eletrica');
+        var check03 = document.getElementById('gesso');
+        var check04 = document.getElementById('pintura');
+        var check05 = document.getElementById('pedreiro');
+
+        if(check01.checked || check02.checked  || check03.checked  || check04.checked  || check05.checked){
+           
+            document.getElementById('pergunta01').style.display = 'none';
+            document.getElementById('pergunta02').style.display = 'block';
+        }else{
+            Swal.fire({
+                    position: 'top-center',
+                    icon: 'info',
+                    text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+        }
+
     }
 
     function voltando02() {
@@ -145,43 +172,12 @@ if (isset($_POST['pequenosreparos'])) {
     }
 
     function avançando02() {
+
         document.getElementById('pergunta02').style.display = 'none';
         document.getElementById('pergunta03').style.display = 'block';
 
     }
 
-    function voltando03() {
-        document.getElementById('pergunta02').style.display = 'block';
-        document.getElementById('pergunta03').style.display = 'none';
-    }
-
-    function avançando03() {
-        document.getElementById('pergunta03').style.display = 'none';
-        document.getElementById('pergunta04').style.display = 'block';
-
-    }
-
-    function voltando04() {
-        document.getElementById('pergunta03').style.display = 'block';
-        document.getElementById('pergunta04').style.display = 'none';
-    }
-
-    function avançando04() {
-        document.getElementById('pergunta04').style.display = 'none';
-        document.getElementById('pergunta05').style.display = 'block';
-
-    }
-
-    function voltando05() {
-        document.getElementById('pergunta04').style.display = 'block';
-        document.getElementById('pergunta05').style.display = 'none';
-    }
-
-    function avançando05() {
-        document.getElementById('pergunta04').style.display = 'none';
-        document.getElementById('pergunta05').style.display = 'block';
-
-    }
 </script>
 
 

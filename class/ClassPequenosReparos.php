@@ -3,17 +3,57 @@
 
 class PequenoReparo{
 
-    private $servico;
+    private $nome;
+    private $telefone;
+    private $email;
+    private $cpf;
+    private $cep;
     private $descricao;
 
 
-    public function SetServico($servico){
+    public function SetNome($nome){
 
-        $this->servico = $servico;
+        $this->nome = $nome;
     }
 
-    public function GetServico(){
-        return $this->servico;
+    public function GetNome(){
+        return $this->nome;
+    }
+
+    public function SetTelefone($telefone){
+
+        $this->telefone = $telefone;
+    }
+
+    public function GetTelefone(){
+        return $this->telefone;
+    }
+
+    public function SetEmail($email){
+
+        $this->email = $email;
+    }
+
+    public function GetEmail(){
+        return $this->email;
+    }
+
+    public function SetCpf($cpf){
+
+        $this->cpf = $cpf;
+    }
+
+    public function GetCpf(){
+        return $this->cpf;
+    }
+
+    public function SetCep($cep){
+
+        $this->cep = $cep;
+    }
+
+    public function GetCep(){
+        return $this->cep;
     }
 
     public function SetDescricao($descricao){
@@ -21,9 +61,10 @@ class PequenoReparo{
         $this->descricao = $descricao;
     }
 
-    public function GetSDescricao(){
+    public function GetDescricao(){
         return $this->descricao;
     }
+
 }
 
 
