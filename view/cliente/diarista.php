@@ -31,40 +31,40 @@ include_once "../../layout/heard.php";
                         <label class="fs-3">Que Tipo de Serviço Você Precisa?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaComercial" name="servico[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <input class="form-check-input" type="checkbox" value="limpezaComercial" name="categoria[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                             <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                                 Limpeza comercial
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPadrao" name="servico[]" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <input class="form-check-input" type="checkbox" value="limpezaPadrao" name="categoria[]" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
                             <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
                                 Limpeza padrão
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPesada" name="servico[]" id="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
+                            <input class="form-check-input" type="checkbox" value="limpezaPesada" name="categoria[]" id="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
                             <label class="form-check-label" for="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
                                 Limpeza pesada
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPosobra" name="servico[]" id="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
+                            <input class="form-check-input" type="checkbox" value="limpezaPosobra" name="categoria[]" id="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
                             <label class="form-check-label" for="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
                                 Limpeza pós obra
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPremudanca" name="servico[]" id="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
+                            <input class="form-check-input" type="checkbox" value="limpezaPremudanca" name="categoria[]" id="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
                             <label class="form-check-label" for="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
                                 Limpeza pré mudança
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="outros" name="outros" id="servico" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="outros" name="outros" id="outros" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
                             </label>
-                            <div>
+                            <div id="div_outros">
                                 <div class="mb-3">
                                     <label for="outros" class="form-label"></label>
                                     <textarea class="form-control" id="outros" rows="3"></textarea>
@@ -240,6 +240,30 @@ include_once "../../layout/heard.php";
 
 
 </div>
+
+<script>
+
+    var outros = document.getElementById('outros');
+
+    $("#div_outros").hide();
+    $('#outros').click(function() {
+
+        var outros = document.getElementById('outros');
+
+        if (outros.checked) {
+
+            $("#div_outros").show();
+
+        } else {
+
+
+            $("#div_outros").hide();
+
+        }
+
+    });
+
+</script>
 
 <script>
     document.getElementById('pergunta02').style.display = 'none';
