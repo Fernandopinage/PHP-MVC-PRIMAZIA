@@ -28,7 +28,7 @@ if (isset($_POST['filtro'])) {
             </script>
 
         <?php
-            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/pequenosreparos.php');
+            header('Refresh: 1.5; url=pequenosreparos.php');
             break;
 
         case '2':
@@ -97,7 +97,7 @@ if (isset($_POST['filtro'])) {
             </script>
 
         <?php
-            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/dedetizacao.php');
+            header('Refresh: 1.5; url=dedetizacao.php');
             break;
 
         case '6':
@@ -114,7 +114,7 @@ if (isset($_POST['filtro'])) {
             </script>
 
         <?php
-            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/diarista.php');
+            header('Refresh: 1.5; url=diarista.php');
             break;
 
         case '7':
@@ -131,7 +131,7 @@ if (isset($_POST['filtro'])) {
             </script>
 
         <?php
-            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/lavanderia.php');
+            header('Refresh: 1.5; url=lavanderia.php');
             break;
 
         case '8':
@@ -148,7 +148,7 @@ if (isset($_POST['filtro'])) {
             </script>
 
         <?php
-            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/arcondicionado.php');
+            header('Refresh: 1.5; url=arcondicionado.php');
             break;
 
         case '9':
@@ -165,7 +165,7 @@ if (isset($_POST['filtro'])) {
             </script>
 
 <?php
-            header('Refresh: 1.5; url=http://192.168.1.54/primazia_projeto/view/cliente/motoboy.php');
+            header('Refresh: 1.5; url=motoboy.php');
             break;
 
 
