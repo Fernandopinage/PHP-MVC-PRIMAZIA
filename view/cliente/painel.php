@@ -4,7 +4,7 @@ session_start();
 
 if(empty($_SESSION['user'])){
 
-    header('location: ../../primazia_projeto/view/cliente/login.php'); 
+    //header('location: ../../primazia_projeto/view/cliente/login.php'); 
 }
 
 ?>
@@ -59,7 +59,7 @@ if(empty($_SESSION['user'])){
     <nav class="navbar navbar-light bg-light">
         <div class="row align-items-center" style="margin-left: 14%;">
             <div class="col-3">
-                <a class="navbar-brand" href="http://localhost/primazia_projeto/view/cliente/pedido.php">
+                <a class="navbar-brand" href="../cliente/pedido.php">
                     <img src="../../images/encontreumprofissional.png" alt="" width="70" height="70">
                 </a>
                 <label> Encontre um Profissional</label>

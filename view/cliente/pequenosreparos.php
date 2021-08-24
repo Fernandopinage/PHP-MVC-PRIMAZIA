@@ -6,8 +6,8 @@ if (empty($_SESSION['user'])) {
 }
 
 include_once "../../layout/heard.php";
-include_once "../../dao/PequenosReparosDAO.php";
-include_once "../../class/ClassPequenosReparos.php";
+include_once "../../dao/CategoriaDAO.php";
+include_once "../../class/ClassCategoria.php";
 
 
 if (isset($_POST['pequenosreparos'])) {
@@ -15,12 +15,12 @@ if (isset($_POST['pequenosreparos'])) {
     if(!empty($_POST['categoria'])){
        
         
-        $ClassReparos = new PequenoReparo();
-        $ClassReparos->SetNome($_SESSION['user']['nome']);
-        $ClassReparos->SetTelefone($_SESSION['user']['telefone']);
-        $ClassReparos->SetEmail($_SESSION['user']['email']);
-        $ClassReparos->SetCpf($_SESSION['user']['cpf']);
-        $ClassReparos->SetCep($_SESSION['user']['cep']);
+        $ClassRequest = new Categoria();
+        $ClassRequest->SetNome($_SESSION['user']['nome']);
+        $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
+        $ClassRequest->SetEmail($_SESSION['user']['email']);
+        $ClassRequest->SetCpf($_SESSION['user']['cpf']);
+        $ClassRequest->SetCep($_SESSION['user']['cep']);
 
         $dados = array(
 
@@ -28,10 +28,10 @@ if (isset($_POST['pequenosreparos'])) {
             'descricao' => $_POST['descricao']
 
         );
-        $ClassReparos->SetDescricao($dados);
+        $ClassRequest->SetDescricao($dados);
 
-        $Reparos = new PequenosReparos();
-        $Reparos->insertReparos($ClassReparos);
+        $Reparos = new CategoriaDAO();
+        $Reparos->insertReparos($ClassRequest);
         
     }else{
        

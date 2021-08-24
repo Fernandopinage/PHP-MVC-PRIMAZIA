@@ -1,24 +1,27 @@
 <?php
 
-include_once "../../class/ClassPequenosReparos.php";
+include_once "../../class/ClassCategoria.php";
 include_once "../../dao/DAO.php";
 
 
-class PequenosReparos extends DAO{
+class CategoriaDAO extends DAO{
 
 
-    public function insertReparos($ClassReparos){
-
+    public function insertReparos($ClassRequest){
+      
+     
       $sql = "INSERT INTO `pedido`(`pedido_id`, `pedido_nome`, `pedido_telefone`, `pedido_email`, `pedido_cpf`, `pedido_cep`, `pedido_data`, `pedido_descricao`) VALUES (null, :pedido_nome, :pedido_telefone, :pedido_email, :pedido_cpf, :pedido_cep, :pedido_data, :pedido_descricao)";
       $insert = $this->con->prepare($sql);
-      $insert->bindValue(':pedido_nome',$ClassReparos->GetNome());
-      $insert->bindValue(':pedido_telefone',$ClassReparos->GetTelefone());
-      $insert->bindValue(':pedido_email',$ClassReparos->GetEmail());
-      $insert->bindValue(':pedido_cpf',$ClassReparos->GetCpf());
-      $insert->bindValue(':pedido_cep',$ClassReparos->GetCep());
-      $insert->bindValue(':pedido_data', date('Y-m-d'));
-      $insert->bindValue(':pedido_descricao',json_encode($ClassReparos->GetDescricao()));
+      $insert->bindValue(':pedido_nome',$ClassRequest->GetNome());
+      $insert->bindValue(':pedido_telefone',$ClassRequest->GetTelefone());
+      $insert->bindValue(':pedido_email',$ClassRequest->GetEmail());
+      $insert->bindValue(':pedido_cpf',$ClassRequest->GetCpf());
+      $insert->bindValue(':pedido_cep',$ClassRequest->GetCep());
+      $insert->bindValue(':pedido_data', date('Y-m-d h:i:s A'));
+      $insert->bindValue(':pedido_descricao',json_encode($ClassRequest->GetDescricao(),JSON_UNESCAPED_UNICODE));
       
+
+
       try {
         $insert->execute();
 
@@ -58,5 +61,6 @@ class PequenosReparos extends DAO{
 
     <?php
       }
+      
     }
 }

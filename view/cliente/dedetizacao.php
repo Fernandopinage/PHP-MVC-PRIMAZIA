@@ -1,10 +1,38 @@
 <?php
+
+include_once "../../layout/heard.php";
+include_once "../../dao/CategoriaDAO.php";
+include_once "../../class/ClassCategoria.php";
+
 session_start();
 if (empty($_SESSION['user'])) {
 
     header('location: ../../primazia_projeto/view/cliente/login.php');
 }
-include_once "../../layout/heard.php";
+
+if(isset($_POST['salvadedetiza'])){
+
+   $ClassRequest = new Categoria();
+   $ClassRequest->SetNome($_SESSION['user']['nome']);
+   $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
+   $ClassRequest->SetEmail($_SESSION['user']['email']);
+   $ClassRequest->SetCpf($_SESSION['user']['cpf']);
+   $ClassRequest->SetCep($_SESSION['user']['cep']);
+   
+   $dados = array(
+
+    'categoria' => $_POST['categoria'],
+    'descricao' => $_POST['descricao']
+
+    );
+    $ClassRequest->SetDescricao($dados);
+
+    $Dedetizacao = new CategoriaDAO();
+    $Dedetizacao->insertReparos($ClassRequest);
+   
+}
+
+
 ?>
 <link href="../../layout/css/cliente_dedetizacao.css" rel="stylesheet">
 <div class="container-fluid">
@@ -31,19 +59,19 @@ include_once "../../layout/heard.php";
                         <label class="fs-3">Que Tipo de Serviço Você Precisa?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="desintetizacao" name="servico[]" id="desintetizacao" title="">
+                            <input class="form-check-input" type="checkbox" value="Desintetização" name="categoria[]" id="desintetizacao" title="">
                             <label class="form-check-label" for="desintetizacao" title="">
                                 Desintetização
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="controleRoedores" name="servico[]" id="controleRoedores" title="">
+                            <input class="form-check-input" type="checkbox" value="Controle de Roedores" name="categoria[]" id="controleRoedores" title="">
                             <label class="form-check-label" for="controleRoedores" title="">
-                                Controle de roedores
+                                Controle de Roedores
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="sanitizacao" name="servico[]" id="sanitizacao" title="">
+                            <input class="form-check-input" type="checkbox" value="Sanitização" name="categoria[]" id="sanitizacao" title="">
                             <label class="form-check-label" for="sanitizacao" title="">
                                 Sanitização
                             </label>
@@ -64,20 +92,20 @@ include_once "../../layout/heard.php";
                     <div class="row g-5">
                         <div class="col">
                             <label class="fs-3">Qual a Área Do Imóvel?</label>
-                            <select class="form-select" name="select[]" aria-label="Default select example">
+                            <select class="form-select" name="descricao" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="1">53,02m²</option>
-                                <option value="2">56,70m²</option>
-                                <option value="3">78,15m²</option>
-                                <option value="4">89,24m²</option>
-                                <option value="5">92,47m²</option>
-                                <option value="6">92,74m²</option>
-                                <option value="7">101,12m²</option>
-                                <option value="8">106,04m²</option>
-                                <option value="9">111,22m²</option>
-                                <option value="10">113,40m²</option>
-                                <option value="11">170,62m²</option>
-                                <option value="12">175,27m²</option>
+                                <option value="53,02m²">53,02m²</option>
+                                <option value="56,70m²">56,70m²</option>
+                                <option value="78,15m²">78,15m²</option>
+                                <option value="89,24m²">89,24m²</option>
+                                <option value="92,47m²">92,47m²</option>
+                                <option value="92,74m²">92,74m²</option>
+                                <option value="101,12m²">101,12m²</option>
+                                <option value=">106,04m²">106,04m²</option>
+                                <option value="111,22m²">111,22m²</option>
+                                <option value="113,40m²">113,40m²</option>
+                                <option value="170,62m²">170,62m²</option>
+                                <option value="175,27m²">175,27m²</option>
                             </select><br>
                         </div>
                     </div>
@@ -88,7 +116,7 @@ include_once "../../layout/heard.php";
                             <button id='botaoEnviar' type="button" id="volta01" onclick="voltando02()" class="btn azulprima btn-lg">VOLTAR</button>
                         </div>
                         <div class="col text-center">
-                            <input id='botaoEnviar' type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                            <input id='botaoEnviar' type="submit" name="salvadedetiza" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
                     </div>
                 </div>
@@ -118,8 +146,25 @@ include_once "../../layout/heard.php";
     }
 
     function avançando01() {
-        document.getElementById('pergunta01').style.display = 'none';
-        document.getElementById('pergunta02').style.display = 'block';
+        
+        var check01 = document.getElementById('desintetizacao');
+        var check02 = document.getElementById('controleRoedores');
+        var check03 = document.getElementById('sanitizacao');
+        
+        if(check01.checked || check02.checked  || check03.checked){
+            
+            document.getElementById('pergunta01').style.display = 'none';
+            document.getElementById('pergunta02').style.display = 'block';
+        }else{
+            Swal.fire({
+                    position: 'top-center',
+                    icon: 'info',
+                    text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+        }
+
     }
 
     function voltando02() {

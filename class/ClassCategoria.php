@@ -1,7 +1,7 @@
 <?php 
 
 
-class PequenoReparo{
+class Categoria{
 
     private $nome;
     private $telefone;
