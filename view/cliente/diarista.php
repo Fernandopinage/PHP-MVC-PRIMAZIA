@@ -4,6 +4,21 @@ if (empty($_SESSION['user'])) {
 
     header('location: ../../primazia_projeto/view/cliente/login.php');
 }
+
+
+if (isset($_POST['diaristafinal'])) {
+
+    $dados = array(
+
+        'categoria' => $_POST['categoria'],
+        'area' => $_POST['area'],
+        'local' => $_POST['local'],
+        'dependente' => $_POST['dependente'],
+
+
+    );
+}
+
 include_once "../../layout/heard.php";
 ?>
 <link href="../../layout/css/cliente_diarista.css" rel="stylesheet">
@@ -61,13 +76,13 @@ include_once "../../layout/heard.php";
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="outros" name="outros" id="outros" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="outros" name="categoria[]" id="outros" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
                             </label>
                             <div id="div_outros">
                                 <div class="mb-3">
                                     <label for="outros" class="form-label"></label>
-                                    <textarea class="form-control" id="outros" rows="3"></textarea>
+                                    <textarea name="categoria[]" class="form-control" id="outros" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -86,20 +101,20 @@ include_once "../../layout/heard.php";
                     <div class="row g-5">
                         <div class="col">
                             <label class="fs-3">Qual a Área Do Imóvel?</label>
-                            <select class="form-select" name="select[]" aria-label="Default select example">
+                            <select class="form-select" name="area[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="1">53,02m²</option>
-                                <option value="2">56,70m²</option>
-                                <option value="3">78,15m²</option>
-                                <option value="4">89,24m²</option>
-                                <option value="5">92,47m²</option>
-                                <option value="6">92,74m²</option>
-                                <option value="7">101,12m²</option>
-                                <option value="8">106,04m²</option>
-                                <option value="9">111,22m²</option>
-                                <option value="10">113,40m²</option>
-                                <option value="11">170,62m²</option>
-                                <option value="12">175,27m²</option>
+                                <option value="53,02m²">53,02m²</option>
+                                <option value="56,70m²">56,70m²</option>
+                                <option value="78,15m²">78,15m²</option>
+                                <option value="89,24m²">89,24m²</option>
+                                <option value="92,47m²">92,47m²</option>
+                                <option value="92,74m²">92,74m²</option>
+                                <option value="101,12m²">101,12m²</option>
+                                <option value="106,04m²">106,04m²</option>
+                                <option value="111,22m²">111,22m²</option>
+                                <option value="113,40m²">113,40m²</option>
+                                <option value="170,62m²">170,62m²</option>
+                                <option value="175,27m²">175,27m²</option>
                             </select><br>
                         </div>
                     </div>
@@ -119,12 +134,12 @@ include_once "../../layout/heard.php";
                 <div id="pergunta03">
                     <div class="row g-6">
                         <div class="col">
-                            <label class="fs-3">Qual o Local do Serviço?</label>  
-                            <select class="form-select" name="select[]" aria-label="Default select example">
+                            <label class="fs-3">Qual o Local do Serviço?</label>
+                            <select class="form-select" name="local[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="1">Apartamento/Casa</option>
-                                <option value="2">Comercial</option>
-                                <option value="3">Lojas</option>
+                                <option value="Apartamento/Casa">Apartamento/Casa</option>
+                                <option value="Comercial">Comercial</option>
+                                <option value="Lojas">Lojas</option>
                             </select><br>
                         </div>
                     </div>
@@ -145,18 +160,18 @@ include_once "../../layout/heard.php";
                         <label class="fs-3">Há Criança ou Animal de Estimação no Local?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
-                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <input class="form-check-input" type="checkbox" value="Crianças" name="dependente[]" id="criancas" title="Há crianças no local.">
+                            <label class="form-check-label" for="criancas" title="Há crianças no local.">
                                 Crianças
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
-                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <input class="form-check-input" type="checkbox" value="animais" name="dependente[]" id="animais" title="Há animais de estimação no local.">
+                            <label class="form-check-label" for="animais" title="Há animais de estimação no local.">
                                 Animais de estimação
                             </label>
                         </div>
-                        
+
                     </div>
                     <div class="row" style="margin-top: 20px;">
                         <div class="col text-center">
@@ -175,49 +190,55 @@ include_once "../../layout/heard.php";
                         <label class="fs-3">Precisa de Serviços Adicionais?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
-                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <input class="form-check-input" type="checkbox" value="Limpeza interna de armários" name="serviço[]" id="limpezaArmarios" title="Limpeza interna de armários.">
+                            <label class="form-check-label" for="limpezaArmarios" title="Limpeza interna de armários">
                                 Limpeza interna de armários
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
-                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <input class="form-check-input" type="checkbox" value="Cozinhar" name="serviço[]" id="cozinhar" title="Cozinhar">
+                            <label class="form-check-label" for="cozinhar" title="Cozinhar">
                                 Cozinhar
                             </label>
                         </div>
-                        
+
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
-                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
-                            Limpeza de geladeira
+                            <input class="form-check-input" type="checkbox" value="Limpeza de geladeira" name="serviço[]" id="limpezaGeladeira" title="Limpeza de geladeira.">
+                            <label class="form-check-label" for="limpezaGeladeira" title="Limpeza de geladeira.">
+                                Limpeza de geladeira
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
-                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <input class="form-check-input" type="checkbox" value="Lavar roupa" name="serviço[]" id="lavarRoupa" title="Lavar roupa.">
+                            <label class="form-check-label" for="lavarRoupa" title="Lavar roupa.">
                                 Lavar roupa
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaComercial" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
-                            <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
-                            Passar roupa
+                            <input class="form-check-input" type="checkbox" value="Passar roupa" name="serviço[]" id="passarRoupa" title="Passar roupa.">
+                            <label class="form-check-label" for="passarRoupa" title="Passar roupa.">
+                                Passar roupa
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
-                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
-                              Não preciso
+                            <input class="form-check-input" type="checkbox" value="Não preciso" name="serviço[]" id="naoPreciso" title="Não preciso.">
+                            <label class="form-check-label" for="naoPreciso" title="Não preciso.">
+                                Não preciso
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="limpezaPadrao" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
-                            <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
-                             Outros
+                            <input class="form-check-input" type="checkbox" value="Outros" name="serviço[]" id="divOutros" title="Outros.">
+                            <label class="form-check-label" for="divOutros" title="Outros.">
+                                Outros
                             </label>
+                        </div>
+                        <div id="outros_div">
+                            <div class="mb-3">
+                                <label for="outros" class="form-label"></label>
+                                <textarea name="serviço[]" class="form-control" id="divoutros" rows="3"></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 20px;">
@@ -225,7 +246,7 @@ include_once "../../layout/heard.php";
                             <button id='botaoEnviar' type="button" id="volta01" onclick="voltando05()" class="btn azulprima btn-lg">VOLTAR</button>
                         </div>
                         <div class="col text-center">
-                            <input id='botaoEnviar' type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                            <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
                     </div>
                 </div>
@@ -242,10 +263,8 @@ include_once "../../layout/heard.php";
 </div>
 
 <script>
-
-    var outros = document.getElementById('outros');
-
     $("#div_outros").hide();
+    $("#outros_div").hide();
     $('#outros').click(function() {
 
         var outros = document.getElementById('outros');
@@ -263,6 +282,22 @@ include_once "../../layout/heard.php";
 
     });
 
+    $('#divOutros').click(function() {
+
+        var outrosdiv = document.getElementById('divOutros');
+
+        if (outrosdiv.checked) {
+
+            $("#outros_div").show();
+
+        } else {
+
+
+            $("#outros_div").hide();
+
+        }
+
+    });
 </script>
 
 <script>
@@ -314,7 +349,7 @@ include_once "../../layout/heard.php";
         document.getElementById('pergunta05').style.display = 'block';
 
     }
-   
+
     function voltando05() {
         document.getElementById('pergunta04').style.display = 'block';
         document.getElementById('pergunta05').style.display = 'none';
