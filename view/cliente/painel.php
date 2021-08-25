@@ -1,10 +1,11 @@
 <?php
 include_once "../../layout/heard.php";
+
 session_start();
 
-if(empty($_SESSION['user'])){
+if (empty($_SESSION['user'])) {
 
-    //header('location: ../../primazia_projeto/view/cliente/login.php'); 
+    header('location: ../../view/cliente/login.php'); 
 }
 
 ?>
@@ -27,14 +28,13 @@ if(empty($_SESSION['user'])){
                             <button id="lupa" class="btn btn-success" type="submit"><img src="../../images/loupe.png" width="25px"></button>
                         </form>
                     </li>
-                        <li class="nav-item">
-                            <a id="botaoarea" class="btn btn-success" type="submit">Área <br>do Condômino</a>
-                        </li>
-                        
-                        <li class="nav-item" id="profissional">
-                            <a id="botaoarea" class="btn btn-success" type="submit">Área <br>do Profissional</a>
-                        </li>
-                
+                    <li class="nav-item">
+                        <a id="botaoarea" class="btn btn-success" type="submit">Área do Condômino</a>
+                    </li>
+
+                    <li class="nav-item" id="profissional">
+                        <a id="botaoarea" class="btn btn-success" type="submit">Área do Profissional</a>
+                    </li>
                 </ul>
 
             </div>
@@ -46,49 +46,56 @@ if(empty($_SESSION['user'])){
 <div class="container">
 
     <div class="text-center">
-        <img id="usuario" src="../../images/mulher.png" class="img"><br><br>
-        <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'];?></h5><br>
+        <img id="usuario" src="../../images/perfil.jpg" class="img"><br><br>
+        <h5 style="text-transform: capitalize;"><?php  echo $_SESSION['user']['nome']?></h5><br>
         <img src="../../images/estrela.png" class="img" width="20"> 4,67</img><br>
     </div>
 
     <hr>
 </div>
 
-<div class="container-sm text-center">
+<div class="container-fluid">
 
-    <nav class="navbar navbar-light bg-light">
-        <div class="row align-items-center" style="margin-left: 14%;">
-            <div class="col-3">
+    <nav class="navbar navbar">
+        <div class="row g-5">
+            <div class="col-md">
                 <a class="navbar-brand" href="../cliente/pedido.php">
-                    <img src="../../images/encontreumprofissional.png" alt="" width="70" height="70">
+                    <img src="../../images/encontreumprofissional.png" alt="" width="80" height="80">
                 </a>
-                <label> Encontre um Profissional</label>
+                <p class="fs-6"> Encontre um Profissional</p>
             </div>
-            <div class="col-2">
+            <div class="col-md">
                 <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/contato-home-resumida/">
-                    <img src="../../images/faleconosco.png" alt="" width="75" height="75">
+                    <img src="../../images/faleconosco.png" alt="" width="80" height="80">
                 </a>
-                <label> Fale Conosco </label>
+                <p class="fs-6"> Fale Conosco </p>
 
             </div>
 
-            <div class="col-3">
+            <div class="col-md">
                 <a class="navbar-brand" href="http://localhost/primazia/view/profissional/registroprofissional.php">
                     <img src="../../images/cadastresecomoprofissional.png" alt="" width="70" height="70">
                 </a>
-                <label> Cadastre-se como Profissional</label>
+                <p class="fs-6"> Cadastre-se como Profissional</p>
             </div>
 
-            <div class="col-2">
+            <div class="col-md">
                 <a class="navbar-brand" href="#">
                     <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
                 </a>
-                <label> Pedidos que Solicitei</label>
+                <p class="fs-6"> Pedidos que Solicitei</p>
+            </div>
+            <div class="col-md">
+                <a class="navbar-brand" href="../../view/cliente/logout.php">
+                    <img src="../../icons/photo1629906564.jpeg" alt="" width="70" height="70">
+                </a>
+                <p class="fs-6">Sair</p>
             </div>
         </div>
     </nav>
 
 </div>
+
 
 
 

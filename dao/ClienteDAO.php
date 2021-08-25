@@ -6,7 +6,8 @@ include_once "../../dao/DAO.php";
 class ClienteDAO extends DAO
 {
 
-    public function validarLogin($ClienteClass){
+    public function validarLogin($ClienteClass)
+    {
 
         $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL = :CLIENTE_EMAIL  and CLIENTE_SENHA = :CLIENTE_SENHA ";
         $select = $this->con->prepare($sql);
@@ -15,22 +16,22 @@ class ClienteDAO extends DAO
         $select->execute();
 
         $_SESSION['user'] = array();
-        if($row = $select->fetch(PDO::FETCH_ASSOC)){
-        session_start();
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            session_start();
 
-        $_SESSION['user'] = array(
+            $_SESSION['user'] = array(
 
-            'id' => $row['CLIENTE_ID'],
-            'nome' => $row['CLIENTE_NOME'],
-            'email' => $row['CLIENTE_EMAIL'],
-            'cpf' => $row['CLIENTE_CPF'],
-            'telefone' => $row['CLIENTE_TELEFONE'],
-            'cep' => $row['CLIENTE_CEP']
-            
-        );
+                'id' => $row['CLIENTE_ID'],
+                'nome' => $row['CLIENTE_NOME'],
+                'email' => $row['CLIENTE_EMAIL'],
+                'cpf' => $row['CLIENTE_CPF'],
+                'telefone' => $row['CLIENTE_TELEFONE'],
+                'cep' => $row['CLIENTE_CEP']
+
+            );
             header('location: ../../view/cliente/painel.php');
-        }else{
-            ?>
+        } else {
+?>
 
             <script>
                 Swal.fire({
@@ -64,7 +65,7 @@ class ClienteDAO extends DAO
 
         try {
             $insert->execute();
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
@@ -96,9 +97,17 @@ class ClienteDAO extends DAO
 
 
 
-        <?php
-            
+<?php
+
         }
+    }
+
+    public static function logout($dados)
+    {
+
+        session_destroy();
+
+        header('location: ../../view/cliente/login.php');
     }
 }
 

@@ -35,7 +35,7 @@ include_once "../../dao/ClienteDAO.php";
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
                 <input type="password" class="form-control" name="senha" id="exampleInputPassword1">
             </div>
-            <div class="d-grid gap-2 col-3 mx-auto">
+            <div class="d-grid text-center">
                 <button type="submit" name="loginenviar" class="btn btn-lg orangered">ENVIAR</button>
             </div>
         </form>

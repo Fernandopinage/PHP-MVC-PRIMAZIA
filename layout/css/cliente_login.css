@@ -35,3 +35,36 @@
     border-radius: 7px;
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.342);
 }
+
+#form button{
+
+    margin-left: 80px;
+    margin-right: 80px;
+    
+    
+}
+
+@media only screen and (max-width: 600px) {
+
+    #form{
+    
+        max-width: 600px;
+        padding: 35px 35px 45px;
+        margin:  auto;
+        margin-top: 10px;
+        /*margin-left: 25%;*/
+        background-color: #fff;
+        border: 0px solid rgba(0,0,0,0.1);  
+        border-radius: 7px;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.342);
+    }
+
+    #form button{
+
+        margin-left: 0px;
+        margin-right: 0px;
+        
+        
+    }
+
+}
