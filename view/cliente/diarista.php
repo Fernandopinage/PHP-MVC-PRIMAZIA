@@ -33,10 +33,9 @@ if (isset($_POST['diaristafinal'])) {
         );
         $ClassRequest->SetDescricao($dados);
 
-        
+
         $Reparos = new CategoriaDAO();
         $Reparos->insertReparos($ClassRequest);
-        
     }
 }
 
@@ -46,7 +45,7 @@ if (isset($_POST['diaristafinal'])) {
     <a href="../../view/cliente/pedido.php" class="btn btn-success" style="position: relative; top:50px;"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
-        <img id="logo" src="../../images/primazia.png" class="img"><br>
+            <img id="logo" src="../../images/primazia.png" class="img"><br>
         </div>
 
         <div class="title text-center">
@@ -179,25 +178,14 @@ if (isset($_POST['diaristafinal'])) {
                 <div id="pergunta04">
                     <div class="row g-12 ms-2 p-2">
                         <label class="fs-3">Há criança ouanimal de estimação no local?</label>
-                        <br><br>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Crianças" name="dependente[]" id="criancas" title="Há crianças no local.">
-                            <label class="form-check-label" for="criancas" title="Há crianças no local.">
-                                Crianças
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Animais de estimação" name="dependente[]" id="animais" title="Há animais de estimação no local.">
-                            <label class="form-check-label" for="animais" title="Há animais de estimação no local.">
-                                Animais de estimação
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Não há crianças ou animais de estimação" name="dependente[]" id="naoanimais" title="Há animais de estimação no local.">
-                            <label class="form-check-label" for="naoanimais" title="Não há crianças ou animais de estimação.">
-                               Não há crianças ou animais de estimação
-                            </label>
-                        </div>
+                        <select class="form-select" name="dependente[]" aria-label="Default select example">
+                            <option selected>Selecione</option>
+                            <option value="Crianças<">Crianças</option>
+                            <option value="Animais de estimação">Animais de estimação</option>
+                            <option value="Há crianças e animais de estimação">Há crianças e animais de estimação</option>
+                            <option value="Não há crianças e animais de estimação">Não há crianças e animais de estimação</option>
+
+                        </select>
 
                     </div>
                     <div class="row" style="margin-top: 20px;">
@@ -286,7 +274,7 @@ if (isset($_POST['diaristafinal'])) {
         <img id='photo' src="../../images/diarista.gif" class="img">
     </div>
 
-    
+
 </div>
 
 <script>

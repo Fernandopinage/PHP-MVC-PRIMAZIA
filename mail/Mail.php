@@ -21,23 +21,18 @@ class Mail
         $mail = new PHPMailer(true);
 
 
+
         if (isset($pedido['categoria'])) {
 
             $categoria = $pedido['categoria'];
             $categoria = implode(',', $categoria);
-        } else {
-            $categoria = "-";
         }
-
-
 
         if (gettype($pedido['descricao']) != 'string') {
             if (isset($pedido['descricao'])) {
 
                 $descricao = $pedido['descricao'];
                 $descricao = implode(',', $descricao);
-            } else {
-                $descricao = "-";
             }
         } else {
             $descricao = $pedido['descricao'];
@@ -48,31 +43,42 @@ class Mail
 
             $local = $pedido['local'];
             $local = implode(',', $local);
-        } else {
-            $local = "-";
         }
 
         if (isset($pedido['dependente'])) {
 
             $dependente = $pedido['dependente'];
             $dependente = implode(',', $dependente);
-        } else {
-            $dependente = "-";
         }
         if (isset($pedido['serviço'])) {
 
             $serviço = $pedido['serviço'];
             $serviço = implode(',', $serviço);
-        } else {
-            $serviço = "-";
         }
 
         if (isset($pedido['opcao'])) {
 
             $opcao = $pedido['opcao'];
             $opcao = implode(',', $opcao);
-        } else {
-            $opcao = "-";
+        }
+
+        if (!empty($categoria)) {
+            $text = "<b><h3>Tipo de Serviço: </h3> </b>" . $categoria;
+        }
+        if (!empty($descricao)) {
+            $text = $text . "<b><h3>Descrição: </h3> </b>" . $descricao;
+        }
+        if (!empty($local)) {
+            $text = $text .  "<b><h3>Local: </h3> </b>" . $local;
+        }
+        if (!empty($dependente)) {
+            $text = $text .  "<b><h3>Dependente: </h3> </b>" . $dependente;
+        }
+        if (!empty($serviço)) {
+            $text = $text .  "<b><h3>Serviço:</h3> </b>" . $serviço;
+        }
+        if (!empty($opcao)) {
+            $text = $text .  "<b><h3>Opcao:</h3> </b>" . $opcao;
         }
 
 
@@ -103,23 +109,12 @@ class Mail
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
             $mail->Subject = 'NOVO PEDIDO';
+
             $mail->Body    = '
                                 <b><h3>Nome do Cliente:</h3> </b>' . $nome . '<br>
                                 <b><h3>Telefone:</h3> </b>' . $telefone . '<br>
-                                <b><h3>Data do pedido:</h3> </b>' . $data . '<br>
-            
-                                <b><h3>Tipo Serviço:</h3> </b>'
-                . $categoria . '<br>
-                              <b><h3>Descrição:</h3> </b>'
-                . $descricao . '<br>
-                              <b><h3>Local:</h3> </b>'
-                . $local . '   <br>
-                              <b><h3>Dependente:</h3> </b>'
-                . $dependente . '<br>
-                              <b><h3>Serviço:</h3> </b>'
-                . $serviço . '<br>
-                              <b><h3>Opcao:</h3> </b>'
-                . $opcao;
+                                <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text;
+
 
 
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
