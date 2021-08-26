@@ -58,7 +58,7 @@ if (empty($_SESSION['user'])) {
 
                 <!--***************************************************************************** --->
                 <div id="pergunta01">
-                    <label class="fs-3">Quantos Btus Possui a Sua Máquina?</label>
+                    <label class="fs-3">Quantos btus possui a sua máquina?</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="7000btus à 12000btus" name="categoria[]" id="7000_12000_btu" title="">
                         <label class="form-check-label" for="7000_12000_btu" title="">
@@ -91,11 +91,11 @@ if (empty($_SESSION['user'])) {
                 <div id="pergunta02">
                     <div class="row g-5">
                         <div class="col">
-                            <label class="fs-3">Possui Acesso à Condensadora?</label>
+                            <label class="fs-3">Possui acesso à condensadora?</label>
                             <select class="form-select" name="descricao[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="Condensadora Sim">Sim</option>
-                                <option value="Condensadora Não">Não</option>
+                                <option value="Possui acesso à condensadora? Sim">Sim</option>
+                                <option value="Possui acesso à condensadora? Não">Não</option>
 
                             </select><br>
                         </div>
@@ -117,11 +117,11 @@ if (empty($_SESSION['user'])) {
                 <div id="pergunta03">
                     <div class="row g-6">
                         <div class="col">
-                            <label class="fs-3">É Possível Remover a Evaporadora?</label>
+                            <label class="fs-3">É possível remover a evaporadora?</label>
                             <select class="form-select" name="opcao[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="Remover a Evaporadora Sim">Sim</option>
-                                <option value="Remover a Evaporadora Não">Não</option>
+                                <option value="É possível remover a evaporadora? Sim">Sim</option>
+                                <option value="É possível remover a evaporadora? Não">Não</option>
                             </select><br>
                         </div>
                     </div>

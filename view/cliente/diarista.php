@@ -64,7 +64,7 @@ if (isset($_POST['diaristafinal'])) {
                 <div id="pergunta01">
 
                     <div class="row g-12 ms-3 p-2">
-                        <label class="fs-3">Que Tipo de Serviço Você Precisa?</label>
+                        <label class="fs-3">Que tipo de serviço você precisa?</label>
                         <br><br>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Limpeza comercial" name="categoria[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
@@ -121,21 +121,21 @@ if (isset($_POST['diaristafinal'])) {
                 <div id="pergunta02">
                     <div class="row g-5">
                         <div class="col">
-                            <label class="fs-3">Qual a Área Do Imóvel?</label>
+                            <label class="fs-3">Qual a área do imóvel?</label>
                             <select class="form-select" name="area[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="53,02m²">53,02m²</option>
-                                <option value="56,70m²">56,70m²</option>
-                                <option value="78,15m²">78,15m²</option>
-                                <option value="89,24m²">89,24m²</option>
-                                <option value="92,47m²">92,47m²</option>
-                                <option value="92,74m²">92,74m²</option>
-                                <option value="101,12m²">101,12m²</option>
-                                <option value="106,04m²">106,04m²</option>
-                                <option value="111,22m²">111,22m²</option>
-                                <option value="113,40m²">113,40m²</option>
-                                <option value="170,62m²">170,62m²</option>
-                                <option value="175,27m²">175,27m²</option>
+                                <option value="Qual a área do imóvel? 53,02m²">53,02m²</option>
+                                <option value="Qual a área do imóvel? 56,70m²">56,70m²</option>
+                                <option value="Qual a área do imóvel? 78,15m²">78,15m²</option>
+                                <option value="Qual a área do imóvel? 89,24m²">89,24m²</option>
+                                <option value="Qual a área do imóvel? 92,47m²">92,47m²</option>
+                                <option value="Qual a área do imóvel? 92,74m²">92,74m²</option>
+                                <option value="Qual a área do imóvel? 101,12m²">101,12m²</option>
+                                <option value="Qual a área do imóvel? 106,04m²">106,04m²</option>
+                                <option value="Qual a área do imóvel? 111,22m²">111,22m²</option>
+                                <option value="Qual a área do imóvel? 113,40m²">113,40m²</option>
+                                <option value="Qual a área do imóvel? 170,62m²">170,62m²</option>
+                                <option value="Qual a área do imóvel? 175,27m²">175,27m²</option>
                             </select><br>
                         </div>
                     </div>
@@ -155,12 +155,12 @@ if (isset($_POST['diaristafinal'])) {
                 <div id="pergunta03">
                     <div class="row g-6">
                         <div class="col">
-                            <label class="fs-3">Qual o Local do Serviço?</label>
+                            <label class="fs-3">Qual o local do serviço?</label>
                             <select class="form-select" name="local[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="Apartamento/Casa">Apartamento/Casa</option>
-                                <option value="Comercial">Comercial</option>
-                                <option value="Lojas">Lojas</option>
+                                <option value="Qual o local do serviço? Apartamento/Casa">Apartamento/Casa</option>
+                                <option value="Qual o local do serviço? Comercial">Comercial</option>
+                                <option value="Qual o local do serviço? Lojas">Lojas</option>
                             </select><br>
                         </div>
                     </div>
@@ -178,7 +178,7 @@ if (isset($_POST['diaristafinal'])) {
                 <!--***************************************************************************** --->
                 <div id="pergunta04">
                     <div class="row g-12 ms-2 p-2">
-                        <label class="fs-3">Há Criança ou Animal de Estimação no Local?</label>
+                        <label class="fs-3">Há criança ouanimal de estimação no local?</label>
                         <br><br>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Crianças" name="dependente[]" id="criancas" title="Há crianças no local.">
@@ -190,6 +190,12 @@ if (isset($_POST['diaristafinal'])) {
                             <input class="form-check-input" type="checkbox" value="Animais de estimação" name="dependente[]" id="animais" title="Há animais de estimação no local.">
                             <label class="form-check-label" for="animais" title="Há animais de estimação no local.">
                                 Animais de estimação
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Não há crianças ou animais de estimação" name="dependente[]" id="naoanimais" title="Há animais de estimação no local.">
+                            <label class="form-check-label" for="naoanimais" title="Não há crianças ou animais de estimação.">
+                               Não há crianças ou animais de estimação
                             </label>
                         </div>
 
@@ -208,49 +214,49 @@ if (isset($_POST['diaristafinal'])) {
                 <!--***************************************************************************** --->
                 <div id="pergunta05">
                     <div class="row g-12 ms-2 p-2">
-                        <label class="fs-3">Precisa de Serviços Adicionais?</label>
+                        <label class="fs-3">Precisa de serviços adicionais?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Limpeza interna de armários" name="serviço[]" id="limpezaArmarios" title="Limpeza interna de armários.">
+                            <input class="form-check-input" type="checkbox" value="Precisa de serviços adicionais? Limpeza interna de armários" name="serviço[]" id="limpezaArmarios" title="Limpeza interna de armários.">
                             <label class="form-check-label" for="limpezaArmarios" title="Limpeza interna de armários">
                                 Limpeza interna de armários
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Cozinhar" name="serviço[]" id="cozinhar" title="Cozinhar">
+                            <input class="form-check-input" type="checkbox" value="Precisa de serviços adicionais? Cozinhar" name="serviço[]" id="cozinhar" title="Cozinhar">
                             <label class="form-check-label" for="cozinhar" title="Cozinhar">
                                 Cozinhar
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Limpeza de geladeira" name="serviço[]" id="limpezaGeladeira" title="Limpeza de geladeira.">
+                            <input class="form-check-input" type="checkbox" value="Precisa de serviços adicionais? Limpeza de geladeira" name="serviço[]" id="limpezaGeladeira" title="Limpeza de geladeira.">
                             <label class="form-check-label" for="limpezaGeladeira" title="Limpeza de geladeira.">
                                 Limpeza de geladeira
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Lavar roupa" name="serviço[]" id="lavarRoupa" title="Lavar roupa.">
+                            <input class="form-check-input" type="checkbox" value="Precisa de serviços adicionais? Lavar roupa" name="serviço[]" id="lavarRoupa" title="Lavar roupa.">
                             <label class="form-check-label" for="lavarRoupa" title="Lavar roupa.">
                                 Lavar roupa
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Passar roupa" name="serviço[]" id="passarRoupa" title="Passar roupa.">
+                            <input class="form-check-input" type="checkbox" value="Precisa de serviços adicionais? Passar roupa" name="serviço[]" id="passarRoupa" title="Passar roupa.">
                             <label class="form-check-label" for="passarRoupa" title="Passar roupa.">
                                 Passar roupa
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Não preciso" name="serviço[]" id="naoPreciso" title="Não preciso.">
+                            <input class="form-check-input" type="checkbox" value="Precisa de serviços adicionais? Não preciso" name="serviço[]" id="naoPreciso" title="Não preciso.">
                             <label class="form-check-label" for="naoPreciso" title="Não preciso.">
                                 Não preciso
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Outros" name="serviço[]" id="divOutros" title="Outros.">
+                            <input class="form-check-input" type="checkbox" value="Precisa de serviços adicionais? Outros" name="serviço[]" id="divOutros" title="Outros.">
                             <label class="form-check-label" for="divOutros" title="Outros.">
                                 Outros
                             </label>

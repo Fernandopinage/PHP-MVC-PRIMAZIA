@@ -54,7 +54,7 @@ if (isset($_POST['finalizando'])) {
                 <div id="pergunta01">
 
                     <div class="row g-12 ms-3 p-2">
-                        <label>Que Tipo de Serviço Você Precisa?</label>
+                        <label>Que tipo de serviço você precisa?</label>
                         <br><br>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Lavagem à água" name="categoria[]" id="lavagemAgua" title="Processo de limpeza dos tecidos através de ação mecânica, temperatura adequada e tempo preciso, em conjunto com o tratamento requerido.">
@@ -94,7 +94,7 @@ if (isset($_POST['finalizando'])) {
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Sapatos" name="categoria[]" id="sapados" title="sapatos">
-                            <label class="form-check-label" for="sapatos" title="sapatos.">
+                            <label class="form-check-label" for="sapados" title="sapatos.">
                                 Sapatos
                             </label>
                         </div>
@@ -125,94 +125,94 @@ if (isset($_POST['finalizando'])) {
 
                 <div id="pergunta02">
                     <div class="row g-12 ms-2 p-2">
-                        <label>Qual/Quais as Peças?</label>
+                        <label>Qual/Quais as peças?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Calça jeans" name="descricao[]" id="calcaJeans" title="calça jeans">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça jeans" name="descricao[]" id="calcaJeans" title="calça jeans">
                             <label class="form-check-label" for="calcaJeans" title="calça jeans">
                                 Calça jeans
                             </label>
                         </div>
                         <div class=" form-check">
-                            <input class="form-check-input" type="checkbox" value="Calça alfaiataria" name="descricao[]" id="calcaAlfaitaria" title="Calça Alfaitaria.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça alfaiataria" name="descricao[]" id="calcaAlfaitaria" title="Calça Alfaitaria.">
                             <label class="form-check-label" for="calcaAlfaitaria" title="Calça Alfaitaria">
                                 Calça alfaiataria
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Calça legging" name="descricao[]" id="calcaLegging" title="Calça Legging">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça legging" name="descricao[]" id="calcaLegging" title="Calça Legging">
                             <label class="form-check-label" for="calcaLegging" title="Calça Legging">
                                 Calça legging
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Camisa" name="descricao[]" id="camisa" title="camisa">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: camisa" name="descricao[]" id="camisa" title="camisa">
                             <label class="form-check-label" for="camisa" title="camisa.">
                                 Camisa
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Camiseta" id="camiseta" name="descricao[]" title="camiseta.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: camiseta" id="camiseta" name="descricao[]" title="camiseta.">
                             <label class="form-check-label" for="camiseta" title="camiseta.">
                                 Camiseta
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Regata" name="descricao[]" id="regata" title="regata.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: regata" name="descricao[]" id="regata" title="regata.">
                             <label class="form-check-label" for="regata" title="regata.">
                                 Regata
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Bermudas" id="bermudas" name="descricao[]" title="bermudas">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: bermudas" id="bermudas" name="descricao[]" title="bermudas">
                             <label class="form-check-label" for="bermudas" title="bermudas.">
                                 Bermudas
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Shorts" name="descricao[]" id="shorts" title="Shorts">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: shorts" name="descricao[]" id="shorts" title="Shorts">
                             <label class="form-check-label" for="shorts" title="Shorts">
                                 Shorts
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Vestidos" name="descricao[]" id="vestido" title="vestido">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: vestidos" name="descricao[]" id="vestido" title="vestido">
                             <label class="form-check-label" for="vestido" title="vestido.">
                                 Vestidos
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Saias" id="saias" name="descricao[]" title="saias.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: saias" id="saias" name="descricao[]" title="saias.">
                             <label class="form-check-label" for="saias" title="saias.">
                                 Saias
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Jogo lençol de cama" name="descricao[]" id="lencolCama" title="Jogo lençol de cama.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: jogo lençol de cama" name="descricao[]" id="lencolCama" title="Jogo lençol de cama.">
                             <label class="form-check-label" for="lencolCama" title="Jogo lençol de cama.">
                                 Jogo lençol de cama
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Edredom" id="edredom" name="descricao[]" title="edredom">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: edredom" id="edredom" name="descricao[]" title="edredom">
                             <label class="form-check-label" for="edredom" title="edredom.">
                                 Edredom
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Toalhas de corpo" name="descricao[]" id="toalhaCorpo" title="Toalha de Corpo">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: toalhas de corpo" name="descricao[]" id="toalhaCorpo" title="Toalha de Corpo">
                             <label class="form-check-label" for="toalhaCorpo" title="Toalha de Corpo.">
                                 Toalhas de corpo
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Toalhas de rosto" id="toalhaRosto" name="descricao[]" title="Toalha de rosto.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: toalhas de rosto" id="toalhaRosto" name="descricao[]" title="Toalha de rosto.">
                             <label class="form-check-label" for="toalhaRosto" title="Toalha de rosto.">
                                 Toalhas de rosto
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Outros" name="descricao[]" id="divoutros" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: outros" name="descricao[]" id="divoutros" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
                             </label>
                             <div id="lista2">

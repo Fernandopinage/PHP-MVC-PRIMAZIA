@@ -62,7 +62,7 @@ if(isset($_POST['motoboy'])){
                 <div id="pergunta01">
 
                     <div class="row g-12 ms-3 p-2">
-                        <label class="fs-3">Que Tipo de Serviço Você Precisa?</label>
+                        <label class="fs-3">Que tipo de serviço você precisa?</label>
                         <br><br>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Enviar um documento" name="categoria[]" id="documento" title="Envio ou captação de documentos em diferentes locais da cidade com data e hora agendados.">

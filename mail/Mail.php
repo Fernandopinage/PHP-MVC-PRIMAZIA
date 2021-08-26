@@ -69,7 +69,7 @@ class Mail
             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('primaziateste2021@gmail.com', 'G2S');
+            $mail->setFrom('primaziateste2021@gmail.com', 'G2S - GoToService');
             $mail->addAddress('luiz.c@progride.com.br', 'G2S - GoToService');     //Add a recipient
             //$mail->addAddress('ellen@example.com');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
@@ -84,7 +84,7 @@ class Mail
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
             $mail->Subject = 'NOVO PEDIDO';
-            $mail->Body    = '<b>Produtos:</b><br>'.$categoria.'';
+            $mail->Body    = '<b>Tipo Serviço:</b><br>'.$categoria.'';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();

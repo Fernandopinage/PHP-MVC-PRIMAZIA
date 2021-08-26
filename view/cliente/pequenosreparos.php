@@ -64,7 +64,7 @@ if (isset($_POST['pequenosreparos'])) {
                 <div id="pergunta01">
 
                     <div class="row g-12 ms-3 p-2">
-                        <label>Que tipo de Serviço Você Precisa?</label>
+                        <label>Que tipo de serviço você precisa?</label>
                         <br><br>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="hidraulica" name="categoria[]" id="hidraulica" title="Serviços de instalação e limpeza de torneiras, chuveiros, duchas, bebedouros; desentupimento de ralos e sifões; reparos em vazamentos.">
@@ -108,7 +108,7 @@ if (isset($_POST['pequenosreparos'])) {
 
                 <!--***************************************************************************** --->
                 <div id="pergunta02">
-                    <label>Me Faça Uma Breve Descrição do Serviço a Ser Realizado</label>
+                    <label>Me faça uma breve descrição do serviço a ser realizado</label>
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" name="descricao" id="descricao" style="height: 100px"></textarea>
                         <label for="floatingTextarea2">Digite aqui...</label>
