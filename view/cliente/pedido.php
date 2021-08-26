@@ -180,6 +180,7 @@ if (isset($_POST['filtro'])) {
 <link href="../../layout/css/cliente_pedido.css" rel="stylesheet">
 
 <div class="container-fluid">
+<a href="../../view/cliente/painel.php" class="btn btn-success" style="position: relative; top:50px;"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
             <img id="logo" src="../../images/primazia.png" class="img"><br>
@@ -194,7 +195,7 @@ if (isset($_POST['filtro'])) {
             <div class="row g-12 ms-3 p-2">
                 <div class="col-11 ">
                     <select class="form-select" name="opcao" aria-label="Default select example">
-                        <option selected>Selecione sua Profissão</option>
+                        <option selected>Selecione um Serviço</option>
                         <option value="1">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                         <option value="2">Babá</option>
                         <option value="3">Cabelereiro</option>
