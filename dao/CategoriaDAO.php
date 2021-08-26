@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__."../../mail/Mail.php";
 include_once "../../class/ClassCategoria.php";
 include_once "../../dao/DAO.php";
 
@@ -20,7 +21,9 @@ class CategoriaDAO extends DAO{
       $insert->bindValue(':pedido_data', date('Y-m-d h:i:s A'));
       $insert->bindValue(':pedido_descricao',json_encode($ClassRequest->GetDescricao(),JSON_UNESCAPED_UNICODE));
       
-
+      
+      $email = new Mail();
+      $email->Envio();
 
       try {
         $insert->execute();
@@ -41,7 +44,7 @@ class CategoriaDAO extends DAO{
 
     <?php
 
-      header('Refresh: 1.5; url=painel.php');
+     // header('Refresh: 1.5; url=painel.php');
 
       } catch (PDOException $e) {
         ?>
