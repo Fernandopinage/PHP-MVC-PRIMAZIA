@@ -26,7 +26,7 @@ if (isset($_POST['diaristafinal'])) {
         $dados = array(
 
             'categoria' => $_POST['categoria'],
-            'area' => $_POST['area'],
+            'descricao' => $_POST['descricao'],
             'local' => $_POST['local'],
             'dependente' => $_POST['dependente'],
             'serviço' => $_POST['serviço']
@@ -122,7 +122,7 @@ if (isset($_POST['diaristafinal'])) {
                     <div class="row g-5">
                         <div class="col">
                             <label class="fs-3">Qual a área do imóvel?</label>
-                            <select class="form-select" name="area[]" aria-label="Default select example">
+                            <select class="form-select" name="descricao[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
                                 <option value="Qual a área do imóvel? 53,02m²">53,02m²</option>
                                 <option value="Qual a área do imóvel? 56,70m²">56,70m²</option>
