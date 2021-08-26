@@ -17,6 +17,7 @@ class Mail
     public function Envio($nome,$email,$pedido,$telefone,$data)
     {
 
+        /*
         $mail = new PHPMailer(true);
 
        echo "<pre>";
@@ -53,7 +54,7 @@ class Mail
         $categoria[] = $pedido['categoria'][$i];
        
     }
-*/
+
 
 
         
@@ -94,6 +95,6 @@ class Mail
         }
 
         
-
+        */
     }
 }

@@ -39,7 +39,7 @@ class CategoriaDAO extends DAO{
 
 
       try {
-       // $insert->execute();
+        $insert->execute();
 
         ?>
 

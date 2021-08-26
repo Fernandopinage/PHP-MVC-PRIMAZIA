@@ -105,7 +105,7 @@ if (isset($_POST['finalizando'])) {
                             <div id="lista">
 
                                 <div class="mb-3">
-                                    <label for="outros" class="form-label"></label>
+                                    <label  class="form-label"></label>
                                     <textarea name="categoria[]" class="form-control" id="outros2" rows="3"></textarea>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@ if (isset($_POST['finalizando'])) {
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Tipo de roupa: outros" name="descricao[]" id="divoutros" title="Especificações Extras">
-                            <label class="form-check-label" for="outros" title="Outros."> Outros
+                            <label class="form-check-label" for="divoutros" title="Outros."> Outros
                             </label>
                             <div id="lista2">
 
