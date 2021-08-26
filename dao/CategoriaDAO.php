@@ -21,12 +21,25 @@ class CategoriaDAO extends DAO{
       $insert->bindValue(':pedido_data', date('Y-m-d h:i:s A'));
       $insert->bindValue(':pedido_descricao',json_encode($ClassRequest->GetDescricao(),JSON_UNESCAPED_UNICODE));
       
+
+      $nome = $ClassRequest->GetNome();
+      $email = $ClassRequest->GetEmail();
+      $pedido = $ClassRequest->GetDescricao();
+      $telefone = $ClassRequest->GetTelefone();
+      $data = date('Y-m-d h:i:s A');
+
+    
+      
       
       $email = new Mail();
-      $email->Envio();
+      $email->Envio($nome,$email,$pedido,$telefone,$data);
+
+
+
+
 
       try {
-        $insert->execute();
+       // $insert->execute();
 
         ?>
 
@@ -64,6 +77,7 @@ class CategoriaDAO extends DAO{
 
     <?php
       }
+      
       
     }
 }

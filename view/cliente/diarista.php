@@ -44,8 +44,9 @@ if (isset($_POST['diaristafinal'])) {
 <link href="../../layout/css/cliente_diarista.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="container" id="registro">
+        <a href="../../view/cliente/painel.php" class="btn btn-success" style="position: relative; top:50px;"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
         <div class="text-center">
-            <img id="logo" src="../../images/primazia.png" class="img"><br>
+        <img id="logo" src="../../images/primazia.png" class="img"><br>
         </div>
 
         <div class="title text-center">
@@ -66,37 +67,37 @@ if (isset($_POST['diaristafinal'])) {
                         <label class="fs-3">Que Tipo de Serviço Você Precisa?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaComercial" name="categoria[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
+                            <input class="form-check-input" type="checkbox" value="Limpeza comercial" name="categoria[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                             <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                                 Limpeza comercial
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPadrao" name="categoria[]" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
+                            <input class="form-check-input" type="checkbox" value="Limpeza padrão" name="categoria[]" id="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
                             <label class="form-check-label" for="limpezaPadrao" title="Limpeza padrão do dia-a-dia, limpeza mais superficial, voltada para residências com áreas entre 53m² e 170m². Residências do tipo loft, 01, 02 ou 03 quartos, varanda, 01,02 ou 03 banheiros.">
                                 Limpeza padrão
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPesada" name="categoria[]" id="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
+                            <input class="form-check-input" type="checkbox" value="Limpeza pesada" name="categoria[]" id="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
                             <label class="form-check-label" for="limpezaPesada" title="Limpeza mais pesada, inclui limpeza embaixo dos móveis, limpeza de móveis, lavagem de louças expostas, limpeza de eletrodomésticos">
                                 Limpeza pesada
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPosobra" name="categoria[]" id="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
+                            <input class="form-check-input" type="checkbox" value="Limpeza pós obra" name="categoria[]" id="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
                             <label class="form-check-label" for="limpezaPosobra" title="Limpeza realizada para limpeza pós pintura; Limpeza de resíduos de rejunte; retirada de entulhos pós demolição.">
                                 Limpeza pós obra
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="limpezaPremudanca" name="categoria[]" id="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
+                            <input class="form-check-input" type="checkbox" value="Limpeza pré mudança" name="categoria[]" id="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
                             <label class="form-check-label" for="limpezaPremudanca" title="Limpeza geral pós instalação de móveis e decoração, deixando o ambiente limpo a mudança do cliente.">
                                 Limpeza pré mudança
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="outros" name="categoria[]" id="outros" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="outros" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
                             </label>
                             <div id="div_outros">
@@ -157,7 +158,7 @@ if (isset($_POST['diaristafinal'])) {
                             <label class="fs-3">Qual o Local do Serviço?</label>
                             <select class="form-select" name="local[]" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="Apartamento_Casa">Apartamento/Casa</option>
+                                <option value="Apartamento/Casa">Apartamento/Casa</option>
                                 <option value="Comercial">Comercial</option>
                                 <option value="Lojas">Lojas</option>
                             </select><br>
@@ -186,7 +187,7 @@ if (isset($_POST['diaristafinal'])) {
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="animais" name="dependente[]" id="animais" title="Há animais de estimação no local.">
+                            <input class="form-check-input" type="checkbox" value="Animais de estimação" name="dependente[]" id="animais" title="Há animais de estimação no local.">
                             <label class="form-check-label" for="animais" title="Há animais de estimação no local.">
                                 Animais de estimação
                             </label>

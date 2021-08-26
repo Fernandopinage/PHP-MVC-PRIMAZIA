@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
-
-@media screen and (max-width: 1520px) {
-    .form-check-input:checked {
-        background-color: orangered;
-        border-color: orangered;
-    }
-
+@media screen and (min-width: 700px) {
     #logo {
         align-content: center;
         width: 300px;
@@ -78,11 +72,6 @@ label {
 }
 
 @media screen and (min-width: 360px) and (max-width: 900px) {
-    .form-check-input:checked {
-        background-color: orangered;
-        border-color: orangered;
-    }
-
     #form-row {
         margin-left: 0px;
     }

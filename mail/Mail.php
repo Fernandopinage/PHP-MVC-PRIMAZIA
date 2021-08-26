@@ -14,12 +14,49 @@ require "../../vendor/autoload.php";
 class Mail
 {
 
-    public function Envio()
+    public function Envio($nome,$email,$pedido,$telefone,$data)
     {
 
         $mail = new PHPMailer(true);
 
+       echo "<pre>";
+       var_dump($pedido);
+       echo "</pre>";
 
+         
+         $categoria = $pedido['categoria'];
+         $categoria = implode('<br>',$categoria);
+
+         $area = $pedido['area'];
+         $area = implode('<br>',$area);
+
+         $local = $pedido['local'];
+         $local = implode('<br>',$local);
+
+         $dependente = $pedido['dependente'];
+         $dependente = implode('<br>',$dependente);
+         
+         $serviço = $pedido['serviço'];
+         $serviço = implode('<br>',$serviço);
+         
+        echo $serviço;
+
+/*
+       $tamanho = count($pedido);
+     
+        $categoria = array();
+        
+
+        
+       for($i=0; $i<$tamanho; $i++){
+
+        $categoria[] = $pedido['categoria'][$i];
+       
+    }
+*/
+
+
+        
         try {
             //Server settings
             //$mail->SMTPDebug = 1;                      //Enable verbose debug output
@@ -33,7 +70,7 @@ class Mail
 
             //Recipients
             $mail->setFrom('primaziateste2021@gmail.com', 'G2S');
-            $mail->addAddress('primaziateste2021@gmail.com', 'TESTE PRIMAZIA');     //Add a recipient
+            $mail->addAddress('luiz.c@progride.com.br', 'G2S - GoToService');     //Add a recipient
             //$mail->addAddress('ellen@example.com');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
@@ -47,7 +84,7 @@ class Mail
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
             $mail->Subject = 'NOVO PEDIDO';
-            $mail->Body    = 'Produtos:';
+            $mail->Body    = '<b>Produtos:</b><br>'.$categoria.'';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
@@ -55,5 +92,8 @@ class Mail
         } catch (Exception $e) {
             echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
         }
+
+        
+
     }
 }
