@@ -38,8 +38,8 @@ if (isset($_POST['filtro'])) {
             <script>
                 Swal.fire({
                     position: 'top-center',
-                    icon: 'warning',
-                    title: 'Em Manutenção',
+                    icon: 'info',
+                    title: 'Serviço não disponível no momento',
                     showConfirmButton: false,
                     timer: 4500
                 })
@@ -54,8 +54,8 @@ if (isset($_POST['filtro'])) {
             <script>
                 Swal.fire({
                     position: 'top-center',
-                    icon: 'warning',
-                    title: 'Em Manutenção',
+                    icon: 'info',
+                    title: 'Serviço não disponível no momento',
                     showConfirmButton: false,
                     timer: 4500
                 })
@@ -72,8 +72,8 @@ if (isset($_POST['filtro'])) {
             <script>
                 Swal.fire({
                     position: 'top-center',
-                    icon: 'warning',
-                    title: 'Em Manutenção',
+                    icon: 'info',
+                    title: 'Serviço não disponível no momento',
                     showConfirmButton: false,
                     timer: 4500
                 })
