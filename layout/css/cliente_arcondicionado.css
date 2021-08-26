@@ -6,7 +6,7 @@
     }
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 600px) {
     #logo {
         align-content: center;
         width: 200px;
@@ -71,7 +71,7 @@ label {
     line-height: 1.5;
 }
 
-@media screen and (min-width: 360px) and (max-width: 900px) {
+@media screen and (min-width: 360px) and (max-width: 600px) {
     #form-row {
         margin-left: 0px;
     }
@@ -86,5 +86,8 @@ label {
     p {
         font-size: 35px;
         font-family: 'Montserrat', sans-serif;
+    }
+    #retorne{
+        display: none;
     }
 }

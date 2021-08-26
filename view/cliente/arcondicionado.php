@@ -39,7 +39,7 @@ if (empty($_SESSION['user'])) {
 ?>
 <link href="../../layout/css/cliente_arcondicionado.css" rel="stylesheet">
 <div class="container-fluid">
-<a href="../../view/cliente/pedido.php" class="btn btn-success" style="position: relative; top:50px;"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
+<a id="retorne" href="../../view/cliente/pedido.php" class="btn btn-success" style="position: relative; top:50px;"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
             <img id="logo" src="../../images/primazia.png" class="img"><br>

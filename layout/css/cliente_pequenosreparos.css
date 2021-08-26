@@ -87,4 +87,8 @@ label {
         font-size: 35px;
         font-family: 'Montserrat', sans-serif;
     }
+
+    #retorne{
+        display: none;
+    }
 }
