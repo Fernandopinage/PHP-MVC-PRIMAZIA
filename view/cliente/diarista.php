@@ -183,7 +183,7 @@ if (isset($_POST['diaristafinal'])) {
                             <option value="Crianças<">Crianças</option>
                             <option value="Animais de estimação">Animais de estimação</option>
                             <option value="Há crianças e animais de estimação">Há crianças e animais de estimação</option>
-                            <option value="Não há crianças e animais de estimação">Não há crianças e animais de estimação</option>
+                            <option value="Não Existe">Não Existe</option>
 
                         </select>
 
