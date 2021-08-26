@@ -25,7 +25,7 @@ if (isset($_POST['pequenosreparos'])) {
         $dados = array(
 
             'categoria' => $_POST['categoria'],
-            'descricao' => $_POST['descricao']
+            'descricao' => $_POST['descricao'],
 
         );
         $ClassRequest->SetDescricao($dados);
@@ -111,7 +111,7 @@ if (isset($_POST['pequenosreparos'])) {
                     <label>Me faça uma breve descrição do serviço a ser realizado</label>
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" name="descricao" id="descricao" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Digite aqui...</label>
+                        <label for="descricao">Digite aqui...</label>
                     </div>
                     <div class="row" style="margin-top: 20px;">
                         <div class="col text-center">
