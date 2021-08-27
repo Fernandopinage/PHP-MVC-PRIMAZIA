@@ -43,7 +43,7 @@ if (isset($_POST['pequenosreparos'])) {
 ?>
 <link href="../../layout/css/cliente_pequenosreparos.css" rel="stylesheet">
 <div class="container-fluid">
-<a id="" href="../../view/cliente/pedido.php" class="btn btn-success" style="position: relative; top:50px;"><img  src="../../images/left-arrow.png" width="28px" alt=""></a>
+<a id="" href="../../view/cliente/pedido.php" class="btn " style="position: relative; top:50px;background-color:orangered"><img  src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
             <img id="logo" src="../../images/primazia.png" class="img"><br>
