@@ -90,7 +90,8 @@ if(isset($_POST['salvarCliente'])){
                         <input type="text" name="nome" id="nome"  class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF">
+                        <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF"  onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);"
+                        onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
@@ -106,7 +107,7 @@ if(isset($_POST['salvarCliente'])){
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="cep" id="cep" class="form-control cpf-mask" placeholder="CEP">
+                        <input type="text" maxlength="8" name="cep" id="cep" class="form-control"  placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone">
@@ -135,6 +136,37 @@ if(isset($_POST['salvarCliente'])){
 
 </div>
 
+<script>
+
+function formatarCampo(campoTexto) {
+    if (campoTexto.value.length <= 11) {
+        campoTexto.value = mascaraCpf(campoTexto.value);
+    } else {
+        campoTexto.value = mascaraCnpj(campoTexto.value);
+    }
+}
+function retirarFormatacao(campoTexto) {
+    campoTexto.value = campoTexto.value.replace(/(\.|\/|\-)/g, "");
+}
+function mascaraCpf(valor) {
+    return valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4");
+}
+
+function somenteNumeros(e) {
+    var charCode = e.charCode ? e.charCode : e.keyCode;
+    // charCode 8 = backspace   
+    // charCode 9 = tab
+    if (charCode != 8 && charCode != 9) {
+        // charCode 48 equivale a 0   
+        // charCode 57 equivale a 9
+        if (charCode < 48 || charCode > 57) {
+            return false;
+        }
+    }
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <?php
 include_once "../../layout/footer.php";
 ?>
