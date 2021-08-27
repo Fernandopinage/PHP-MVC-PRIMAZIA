@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
-
-#logo{
+@media screen and (min-width: 700px) {
+    #retorne{
+        display: none;
+    }
+}
+#logo {
     align-content: center;
     width: 300px;
 }
@@ -51,7 +55,7 @@ span{
 }
 
 
-@media screen and (min-width: 360px) and (max-width: 900px) {
+@media screen and (min-width: 360px) and (max-width: 600px) {
 
     #form-row{
         margin-left: 0px;

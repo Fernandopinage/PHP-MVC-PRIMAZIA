@@ -110,7 +110,7 @@ if(isset($_POST['salvarCliente'])){
                         <input type="text" maxlength="8" name="cep" id="cep" class="form-control"  placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone">
+                        <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
@@ -122,7 +122,7 @@ if(isset($_POST['salvarCliente'])){
                 <div class="row">
 
                     <div class="d-grid gap-2 col-3 mx-auto mt-5">
-                        <button type="submit" name="salvarCliente" class="btn btn-lg orangered">ENVIAR</button>
+                        <button type="submit" name="salvarCliente" class="btn btn-lg orangered">CADASTRAR</button>
                     </div>
                 </div>
             </div>
