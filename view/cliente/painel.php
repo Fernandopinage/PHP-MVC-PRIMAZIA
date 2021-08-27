@@ -5,7 +5,7 @@ session_start();
 
 if (empty($_SESSION['user'])) {
 
-    header('location: ../../view/cliente/login.php');
+    header('Refresh: 0.1; url=login.php');
 }
 
 ?>

@@ -3,6 +3,10 @@ include_once "../../layout/heard.php";
 include_once "../../dao/CategoriaDAO.php";
 include_once "../../class/ClassCategoria.php";
 session_start();
+if (empty($_SESSION['user'])) {
+
+    header('Refresh: 0.1; url=login.php');
+}
 
 if (isset($_POST['finalizando'])) {
 

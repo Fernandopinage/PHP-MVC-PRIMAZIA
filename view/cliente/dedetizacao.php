@@ -7,7 +7,7 @@ include_once "../../class/ClassCategoria.php";
 session_start();
 if (empty($_SESSION['user'])) {
 
-    header('location: ../../primazia_projeto/view/cliente/login.php');
+    header('Refresh: 0.1; url=login.php');
 }
 
 if(isset($_POST['salvadedetiza'])){
