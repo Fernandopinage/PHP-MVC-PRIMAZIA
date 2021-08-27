@@ -1,6 +1,6 @@
 <?php
 include_once "../../layout/heard.php";
-
+include_once "../../dao/CategoriaDAO.php";
 session_start();
 
 if (empty($_SESSION['user'])) {
@@ -8,23 +8,62 @@ if (empty($_SESSION['user'])) {
     header('Refresh: 0.1; url=login.php');
 }
 
+$ClassPedido = new CategoriaDAO();
+$dados = $ClassPedido->pedidos();
+
+
+
+
 ?>
 <link href="../../layout/css/cliente_painel.css" rel="stylesheet">
 <div id="logo">
     <img src="../../images/primazia.png" alt="" width="250" height="190">
 </div>
 
-
 <div class="container">
 
-    <div class="text-center">
-        <img id="usuario" src="../../images/perfil.jpg" class="img"><br><br>
-        <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'] ?></h5><br>
-        <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
-    </div>
+    <h3 style="color:orangered">Meus pedidos</h3>
 
-   
+
+
+    <?php
+
+    echo "<pre>";
+    echo print_r($dados);
+    //echo print_r($dados[1]['pedido']);
+    echo "</pre>";
+
+
+
+    foreach ($dados as $dados => $obj) {
+    ?>
+        <div class=" d-inline-block text-center" style="padding: 8px;">
+            <div>
+                <?php echo $obj['data']; ?>
+
+            </div>
+            <div>
+              <!--  <?php echo "<pre>"; var_dump($obj['pedido']); echo "/<pre>";?> -->
+                <?php 
+                
+                $dados = $obj['pedido'];
+                
+                echo var_dump($dados);
+                ?>
+
+            </div>
+            
+
+        </div>
+
+    <?php
+    }
+
+    ?>
+
 </div>
+
+
 
 <div class="container-fluid">
 
@@ -67,8 +106,6 @@ if (empty($_SESSION['user'])) {
     </nav>
 
 </div>
-
-
 
 
 <?php

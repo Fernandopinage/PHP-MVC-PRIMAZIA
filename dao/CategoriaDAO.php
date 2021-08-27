@@ -79,5 +79,26 @@ class CategoriaDAO extends DAO{
 
     public function pedidos(){
         
+        $sql = "SELECT * FROM `pedido`";
+        $select = $this->con->prepare($sql);
+        $select->execute();
+      
+        $array = array();
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+          
+            $array[] = array(
+
+                'data' => $row['pedido_data'],
+                'pedido' => json_decode($row['pedido_descricao'])
+            );
+           
+           
+
+        }
+
+        return $array;
+
     }
 }
