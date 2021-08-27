@@ -79,7 +79,7 @@ class ClienteDAO extends DAO
 
 
         <?php
-
+        header('location: ../../view/cliente/login.php');
 
         } catch (PDOException $e) {
 
@@ -94,8 +94,6 @@ class ClienteDAO extends DAO
                     timer: 3500
                 })
             </script>
-
-
 
 <?php
 

@@ -34,10 +34,6 @@ class CategoriaDAO extends DAO{
       $email = new Mail();
       $email->Envio($nome,$email,$pedido,$telefone,$data);
 
-
-
-
-
       try {
         $insert->execute();
 
@@ -57,7 +53,7 @@ class CategoriaDAO extends DAO{
 
     <?php
 
-     // header('Refresh: 1.5; url=painel.php');
+        header('Refresh: 1.5; url=painel.php');
 
       } catch (PDOException $e) {
         ?>
