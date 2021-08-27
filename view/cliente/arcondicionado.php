@@ -24,6 +24,7 @@ if (empty($_SESSION['user'])) {
             
             $dados = array(
                 
+                'tpservico' => 'Manutenção de Ar Condicionado',
                 'categoria' => $_POST['categoria'],
                 'descricao' => $_POST['descricao'],
                 'opcao' => $_POST['opcao'],

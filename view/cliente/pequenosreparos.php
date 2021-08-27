@@ -16,6 +16,7 @@ if (isset($_POST['pequenosreparos'])) {
        
         
         $ClassRequest = new Categoria();
+      
         $ClassRequest->SetNome($_SESSION['user']['nome']);
         $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
         $ClassRequest->SetEmail($_SESSION['user']['email']);
@@ -23,7 +24,7 @@ if (isset($_POST['pequenosreparos'])) {
         $ClassRequest->SetCep($_SESSION['user']['cep']);
 
         $dados = array(
-
+            'tpservico' => 'Artífice (Pedreiro,Pintor e Hidráulico)',
             'categoria' => $_POST['categoria'],
             'descricao' => $_POST['descricao'],
 

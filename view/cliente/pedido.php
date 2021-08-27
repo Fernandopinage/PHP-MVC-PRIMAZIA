@@ -195,7 +195,7 @@ if (isset($_POST['filtro'])) {
             <div class="row g-12 ms-3 p-2">
                 <div class="col-11 ">
                     <select class="form-select" name="opcao" aria-label="Default select example">
-                        <option selected>Selecione um Serviço</option>
+                        <option selected>Selecione um profissional</option>
                         <option value="1">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                         <option value="2">Babá</option>
                         <option value="3">Cabelereiro</option>

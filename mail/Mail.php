@@ -18,21 +18,27 @@ class Mail
     {
 
 
-        $mail = new PHPMailer(true);
+        $mail = new PHPMailer(true); // STOP
 
+       
 
+        if (isset($pedido['tpservico'])) {
+
+            $tpservico = $pedido['tpservico'];
+            //$tpservico = implode(',', $tpservico);
+        }
 
         if (isset($pedido['categoria'])) {
 
             $categoria = $pedido['categoria'];
-            $categoria = implode(',', $categoria);
+            $categoria = implode(', ', $categoria);
         }
 
         if (gettype($pedido['descricao']) != 'string') {
             if (isset($pedido['descricao'])) {
 
                 $descricao = $pedido['descricao'];
-                $descricao = implode(',', $descricao);
+                $descricao = implode(', ', $descricao);
             }
         } else {
             $descricao = $pedido['descricao'];
@@ -42,28 +48,32 @@ class Mail
         if (isset($pedido['local'])) {
 
             $local = $pedido['local'];
-            $local = implode(',', $local);
+            $local = implode(', ', $local);
         }
 
         if (isset($pedido['dependente'])) {
 
             $dependente = $pedido['dependente'];
-            $dependente = implode(',', $dependente);
+            $dependente = implode(', ', $dependente);
         }
         if (isset($pedido['serviço'])) {
 
             $serviço = $pedido['serviço'];
-            $serviço = implode(',', $serviço);
+            $serviço = implode(', ', $serviço);
         }
 
         if (isset($pedido['opcao'])) {
 
             $opcao = $pedido['opcao'];
-            $opcao = implode(',', $opcao);
+            $opcao = implode(', ', $opcao);
+        }
+
+        if (!empty($tpservico)) {
+            $text = "<b><h3>Profissional solicitado: </h3> </b>" . $tpservico;
         }
 
         if (!empty($categoria)) {
-            $text = "<b><h3>Tipo de Serviço: </h3> </b>" . $categoria;
+            $text = $text . "<b><h3>Tipo de Serviço: </h3> </b>" . $categoria;
         }
         if (!empty($descricao)) {
             $text = $text . "<b><h3>Descrição: </h3> </b>" . $descricao;
@@ -95,7 +105,7 @@ class Mail
 
             //Recipients
             $mail->setFrom('primaziateste2021@gmail.com', 'G2S - GoToService');
-            $mail->addAddress('alessandra.b@konec.com.br', 'G2S - GoToService');     //Add a recipient
+            $mail->addAddress($email, 'G2S - GoToService');     //Add a recipient
             //$mail->addAddress('ellen@example.com');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
@@ -124,5 +134,6 @@ class Mail
         } catch (Exception $e) {
             echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
         }
+       
     }
 }

@@ -25,6 +25,7 @@ if (isset($_POST['diaristafinal'])) {
 
         $dados = array(
 
+            'tpservico' => 'Diarista',
             'categoria' => $_POST['categoria'],
             'descricao' => $_POST['descricao'],
             'local' => $_POST['local'],

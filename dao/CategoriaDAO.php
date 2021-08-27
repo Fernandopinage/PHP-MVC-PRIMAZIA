@@ -31,8 +31,8 @@ class CategoriaDAO extends DAO{
     
       
       
-      $email = new Mail();
-      $email->Envio($nome,$email,$pedido,$telefone,$data);
+      $MAIL = new Mail();
+      $MAIL->Envio($nome,$email,$pedido,$telefone,$data);
 
       try {
         $insert->execute();
@@ -75,5 +75,9 @@ class CategoriaDAO extends DAO{
       }
       
       
+    }
+
+    public function pedidos(){
+        
     }
 }

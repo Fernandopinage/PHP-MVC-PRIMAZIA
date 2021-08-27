@@ -23,7 +23,7 @@ if(isset($_POST['motoboy'])){
         $ClassRequest->SetCep($_SESSION['user']['cep']);
         
         $dados = array(
-            
+            'tpservico' => 'Motoboy',
             'categoria' => $_POST['categoria'],
             
             

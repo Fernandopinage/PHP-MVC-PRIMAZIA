@@ -20,7 +20,7 @@ if (isset($_POST['finalizando'])) {
         $ClassRequest->SetCep($_SESSION['user']['cep']);
 
         $dados = array(
-
+            'tpservico' => 'Lavanderia',
             'categoria' => $_POST['categoria'],
             'descricao' => $_POST['descricao']
 
