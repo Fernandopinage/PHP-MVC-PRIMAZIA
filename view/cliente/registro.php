@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (empty($_SESSION['user'])) {
 
-    header('location: ../../primazia_projeto/view/cliente/login.php');
-}
 
 include_once "../../layout/heard.php";
 include_once  "../../class/ClassCliente.php";
