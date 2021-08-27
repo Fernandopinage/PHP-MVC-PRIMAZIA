@@ -5,41 +5,13 @@ session_start();
 
 if (empty($_SESSION['user'])) {
 
-    header('location: ../../view/cliente/login.php'); 
+    header('location: ../../view/cliente/login.php');
 }
 
 ?>
 <link href="../../layout/css/cliente_painel.css" rel="stylesheet">
-<div id="conteudo-top" class>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-            <a id="logo" class="navbar-brand" href="#">
-                <img src="../../images/primazia.png" alt="" width="250" height="190">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <input id="caixalupa" class="form-control" type="search" placeholder="Digite o que você precisa" aria-label="Digite o que você precisa">
-                            <button id="lupa" class="btn btn-success" type="submit"><img src="../../images/loupe.png" width="25px"></button>
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <a id="botaoarea" class="btn btn-success" type="submit">Área do Condômino</a>
-                    </li>
-
-                    <li class="nav-item" id="profissional">
-                        <a id="botaoarea" class="btn btn-success" type="submit">Área do Profissional</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
+<div id="logo">
+    <img src="../../images/primazia.png" alt="" width="250" height="190">
 </div>
 
 
@@ -47,11 +19,11 @@ if (empty($_SESSION['user'])) {
 
     <div class="text-center">
         <img id="usuario" src="../../images/perfil.jpg" class="img"><br><br>
-        <h5 style="text-transform: capitalize;"><?php  echo $_SESSION['user']['nome']?></h5><br>
+        <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'] ?></h5><br>
         <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
     </div>
 
-    <hr>
+   
 </div>
 
 <div class="container-fluid">
@@ -73,7 +45,7 @@ if (empty($_SESSION['user'])) {
             </div>
 
             <div class="col-md">
-                <a class="navbar-brand" href="http://localhost/primazia/view/profissional/registroprofissional.php">
+                <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/login-registro-profissional/">
                     <img src="../../images/cadastresecomoprofissional.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-6"> Cadastre-se como Profissional</p>
@@ -83,7 +55,7 @@ if (empty($_SESSION['user'])) {
                 <a class="navbar-brand" href="#">
                     <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
                 </a>
-                <p class="fs-6"> Pedidos que Solicitei</p>
+                <p class="fs-6"> Meus Pedidos</p>
             </div>
             <div class="col-md">
                 <a class="navbar-brand" href="../../view/cliente/logout.php">

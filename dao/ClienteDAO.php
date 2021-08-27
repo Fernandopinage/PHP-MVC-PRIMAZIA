@@ -107,7 +107,7 @@ class ClienteDAO extends DAO
 
         session_destroy();
 
-        header('location: ../../view/cliente/login.php');
+        header('location: http://primazia.agenciaprogride.com.br/home-resumida-cdaivpysmvvotjwotzxbvm/');
     }
 }
 

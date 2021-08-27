@@ -7,6 +7,26 @@
         margin-bottom: 10px;
     }
 
+    .container{
+        margin-top: 20px;
+    }
+    .container-fluid{
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1.5px solid rgba(134, 133, 133, 0.582);
+    }
+
+    #logo{
+
+        border-bottom: 1.5px solid rgba(134, 133, 133, 0.582);
+    
+    }
+    #logo img{
+
+        margin-left: 50px;
+      
+    }
+
     #conteudo-left {
         margin-top: -20px;
         margin-left: 100px;
@@ -25,6 +45,8 @@
         background-color: white;
         font-family: 'Montserrat', sans-serif;
     }
+
+    /*
     #conteudo-top {
         width: 100%;
         background-color: white;
@@ -53,6 +75,7 @@
         margin-right: 20px;
         margin-left: 5px;
     }
+    */
     #usuario {
         border-radius: 50%;
         width: 200px;
@@ -115,11 +138,10 @@
             margin-bottom: 50px;
         }
 
-        nav .navbar{
+        #logo img{
 
-            align-items: center;
+            margin-left:6rem;
         }
-
 
       div.col-md{
           position: relative;
