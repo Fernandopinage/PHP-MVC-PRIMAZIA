@@ -95,7 +95,7 @@ class Mail
 
             //Recipients
             $mail->setFrom('primaziateste2021@gmail.com', 'G2S - GoToService');
-            $mail->addAddress('luiz.c@progride.com.br', 'G2S - GoToService');     //Add a recipient
+            $mail->addAddress('alessandra.b@konec.com.br', 'G2S - GoToService');     //Add a recipient
             //$mail->addAddress('ellen@example.com');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
