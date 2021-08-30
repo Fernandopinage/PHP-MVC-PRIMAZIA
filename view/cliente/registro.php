@@ -15,13 +15,21 @@ if (isset($_POST['salvarCliente'])) {
 
 
             $ClassCliente = new Cliente();
+            $ClassCliente->SetOpcao($_POST['opt']);
+            $ClassCliente->SetRazao($_POST['razao']);
             $ClassCliente->SetNome($_POST['nome']);
             $ClassCliente->SetSenha($_POST['senha']);
             $ClassCliente->SetCpf($_POST['cpf']);
             $ClassCliente->SetCep($_POST['cep']);
+            $ClassCliente->SetUf($_POST['uf']);
+            $ClassCliente->SetCidade($_POST['cidade']);
+            $ClassCliente->SetLogradouro($_POST['logradouro']);
+            $ClassCliente->SetBairro($_POST['bairro']);
+            $ClassCliente->SetComplemento($_POST['complemento']);
             $ClassCliente->SetTelefone($_POST['telefone']);
             $ClassCliente->SetEmail($_POST['email']);
 
+      
             $Cliente = new ClienteDAO();
             $Cliente->insertCliente($ClassCliente);
         } else {
@@ -132,13 +140,13 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="text" maxlength="8" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text"name="endereco" id="endereco" class="form-control" placeholder="Endereço ">
+                        <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text"  name="numerp" id="numero" class="form-control" placeholder="Nº ">
+                        <input type="text" name="numerp" id="numero" class="form-control" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text"  name="uf" id="uf" class="form-control" placeholder="UF">
+                        <input type="text" name="uf" id="uf" class="form-control" placeholder="UF">
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="cidade" id="cidade" class="form-control " placeholder="Cidade">
@@ -180,19 +188,17 @@ if (isset($_POST['salvarCliente'])) {
 </div>
 
 <script>
-
-    function juridica(){
+    function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";
 
     }
 
-    function fisica(){
+    function fisica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "none";
-      
-    }
 
+    }
 </script>
 
 

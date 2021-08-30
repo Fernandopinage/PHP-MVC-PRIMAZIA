@@ -5,6 +5,8 @@ class Cliente{
 
 private $id;
 private $nome;
+private $opcao;
+private $razao;
 private $email;
 private $cpf;
 private $telefone;
@@ -34,6 +36,22 @@ private $senha;
     }
     public function GetNome(){
         return $this->nome;
+    }
+
+    public function SetOpcao($opcao){
+        $this->opcao = $opcao;
+
+    }
+    public function GetOpcao(){
+        return $this->opcao;
+    }
+
+    public function SetRazao($razao){
+        $this->razao = $razao;
+
+    }
+    public function GetRazao(){
+        return $this->razao;
     }
 
     public function SetEmail($email){
