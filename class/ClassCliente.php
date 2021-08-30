@@ -9,8 +9,14 @@ private $email;
 private $cpf;
 private $telefone;
 private $cep;
+private $uf;
+private $logradouro;
+private $cidade;
+private $bairro;
+private $complemento;
 private $foto;
 private $senha;
+
 
     public function SetId($id){
 
@@ -62,6 +68,46 @@ private $senha;
     }
     public function GetCep(){
         return $this->cep;
+    }
+
+    public function SetBairro($bairro){
+        $this->bairro = $bairro;
+
+    }
+    public function GetBairro(){
+        return $this->bairro;
+    }
+
+    public function SetLogradouro($logradouro){
+        $this->logradouro = $logradouro;
+
+    }
+    public function GetLogradouro(){
+        return $this->logradouro;
+    }
+
+    public function SetCidade($cidade){
+        $this->cidade = $cidade;
+
+    }
+    public function GetCidade(){
+        return $this->cidade;
+    }
+
+    public function SetComplemento($complemento){
+        $this->complemento = $complemento;
+
+    }
+    public function GetComplemento(){
+        return $this->complemento;
+    }
+
+    public function SetUf($uf){
+        $this->uf = $uf;
+
+    }
+    public function GetUf(){
+        return $this->uf;
     }
 
     public function SetFoto($foto){

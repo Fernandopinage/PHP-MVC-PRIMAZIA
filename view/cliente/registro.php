@@ -141,10 +141,16 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="text"  name="uf" id="uf" class="form-control" placeholder="UF">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cidade" id="cidade" class="form-control phone-ddd-mask" placeholder="Cidade">
+                        <input type="text" name="cidade" id="cidade" class="form-control " placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="bairro" id="bairro" class="form-control phone-ddd-mask" placeholder="Bairro">
+                        <input type="text" name="bairro" id="bairro" class="form-control " placeholder="Bairro">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="logradouro" id="logradouro" class="form-control " placeholder="Logradouro">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="complemento" id="complemento" class="form-control " placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
