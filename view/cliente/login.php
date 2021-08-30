@@ -24,9 +24,14 @@ include_once "../../dao/ClienteDAO.php";
 
     <div class="title text-center">
         <p>LOGIN CLIENTE</p>
+        <h5 id="registro">Já possui um cadastro?</h5>
+       
     </div>
     <div class="container">
-        <form class="row g-4" id="form" method="POST">
+        <form class="row g-2" id="form" method="POST">
+
+        <div class="col">
+        </div>
             <div class="col-12">
                 <label for="exampleInputEmail1" class="form-label">E-mail</label>
                 <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
