@@ -55,7 +55,6 @@ class CategoriaDAO extends DAO{
             })
         </script>
 
-
     <?php
 
         header('Refresh: 4.0; url=painel.php');
