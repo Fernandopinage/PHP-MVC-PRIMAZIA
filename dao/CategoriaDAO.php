@@ -44,16 +44,21 @@ class CategoriaDAO extends DAO{
                 position: 'center',
                 icon: 'success',
                 title: 'Parabéns',
-                text:'Pedido Realizado Com Sucesso',
+                text:'Pedido Realizado Com Sucesso'+' Em breve estaremos entrando em contato'+' Horário da central de atendimento das 08:00 ás 18:00 hs',
                 showConfirmButton: false,
-                timer: 3500
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
             })
         </script>
 
 
     <?php
 
-        header('Refresh: 1.5; url=painel.php');
+        header('Refresh: 4.0; url=painel.php');
 
       } catch (PDOException $e) {
         ?>
