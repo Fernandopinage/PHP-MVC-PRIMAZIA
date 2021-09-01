@@ -86,7 +86,11 @@ if (isset($_POST['salvarCliente'])) {
             <div id="form-row">
                 <div class="row" style="padding: 40px;">
                     <div class="text-center">
-                        <img id="editarusuario" src="../../images/usuario.png" class="img" width="100">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
+                            <input class="form-control" type="file" id="formFile" style="display:none">
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -230,6 +234,24 @@ if (isset($_POST['salvarCliente'])) {
             }
         }
     }
+</script>
+
+<script>
+
+$('#editarusuario').click(function(){
+    formFile.executar();
+});
+
+$('#formFile').change(function(){
+
+   const file = $(this)[0].files[0];
+   const fileReader = new FileReader()
+   fileReader.onloadend = function(){
+    $('#editarusuario').attr('src',fileReader.result)
+   }
+   fileReader.readAsDataURL(file)
+});
+
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
