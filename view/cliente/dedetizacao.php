@@ -67,9 +67,9 @@ if(isset($_POST['salvadedetiza'])){
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Controle de Roedores" name="categoria[]" id="controleRoedores" title="">
+                            <input class="form-check-input" type="checkbox" value="Controle de Pragas" name="categoria[]" id="controleRoedores" title="">
                             <label class="form-check-label" for="controleRoedores" title="">
-                                Controle de Roedores
+                                Controle de Pragas
                             </label>
                         </div>
                         <div class="form-check">
@@ -96,18 +96,12 @@ if(isset($_POST['salvadedetiza'])){
                             <label class="fs-3">Qual a área do imóvel?</label>
                             <select class="form-select" name="descricao" aria-label="Default select example">
                                 <option selected>Selecione</option>
-                                <option value="Qual a área do imóvel? 53,02m²">53,02m²</option>
-                                <option value="Qual a área do imóvel? 56,70m²">56,70m²</option>
-                                <option value="Qual a área do imóvel? 78,15m²">78,15m²</option>
-                                <option value="Qual a área do imóvel? 89,24m²">89,24m²</option>
-                                <option value="Qual a área do imóvel? 92,47m²">92,47m²</option>
-                                <option value="Qual a área do imóvel? 92,74m²">92,74m²</option>
-                                <option value="Qual a área do imóvel? 101,12m²">101,12m²</option>
-                                <option value="Qual a área do imóvel? 106,04m²">106,04m²</option>
-                                <option value="Qual a área do imóvel? 111,22m²">111,22m²</option>
-                                <option value="Qual a área do imóvel? 113,40m²">113,40m²</option>
-                                <option value="Qual a área do imóvel? 170,62m²">170,62m²</option>
-                                <option value="Qual a área do imóvel? 175,27m²">175,27m²</option>
+                                <option value="Até 50m²">Até 50m²</option>
+                                <option value="50 até 100m²">50 até 100m²</option>
+                                <option value="100 até 150m²">100 até 150m²</option>
+                                <option value="150 até 200m²">150 até 200m²</option>
+                                <option value="Acima de 200M²">Acima de 200M²</option>
+
                             </select><br>
                         </div>
                     </div>

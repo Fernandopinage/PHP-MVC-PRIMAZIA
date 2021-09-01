@@ -10,37 +10,36 @@ if (empty($_SESSION['user'])) {
     header('Refresh: 0.1; url=login.php');
 }
 
-    if(isset($_POST['arcodicionado'])){
+if (isset($_POST['arcodicionado'])) {
 
-        if(!empty($_POST['categoria'])){
+    if (!empty($_POST['categoria'])) {
 
-        
-            $ClassRequest = new Categoria();
-            $ClassRequest->SetNome($_SESSION['user']['nome']);
-            $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
-            $ClassRequest->SetEmail($_SESSION['user']['email']);
-            $ClassRequest->SetCpf($_SESSION['user']['cpf']);
-            $ClassRequest->SetCep($_SESSION['user']['cep']);
-            
-            $dados = array(
-                
-                'tpservico' => 'Manutenção de Ar Condicionado',
-                'categoria' => $_POST['categoria'],
-                'descricao' => $_POST['descricao'],
-                'opcao' => $_POST['opcao'],
 
-            );
-            $ClassRequest->SetDescricao($dados);
-            $Dedetizacao = new CategoriaDAO();
-            $Dedetizacao->insertReparos($ClassRequest);
-        }
+        $ClassRequest = new Categoria();
+        $ClassRequest->SetNome($_SESSION['user']['nome']);
+        $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
+        $ClassRequest->SetEmail($_SESSION['user']['email']);
+        $ClassRequest->SetCpf($_SESSION['user']['cpf']);
+        $ClassRequest->SetCep($_SESSION['user']['cep']);
 
+        $dados = array(
+
+            'tpservico' => 'Manutenção de Ar Condicionado',
+            'categoria' => $_POST['categoria'],
+            'descricao' => $_POST['descricao'],
+            'opcao' => $_POST['opcao'],
+
+        );
+        $ClassRequest->SetDescricao($dados);
+        $Dedetizacao = new CategoriaDAO();
+        $Dedetizacao->insertReparos($ClassRequest);
     }
+}
 
 ?>
 <link href="../../layout/css/cliente_arcondicionado.css" rel="stylesheet">
 <div class="container-fluid">
-<a id="retorne" href="../../view/cliente/pedido.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
+    <a id="retorne" href="../../view/cliente/pedido.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
             <img id="logo" src="../../images/primazia.png" class="img"><br>
@@ -79,17 +78,17 @@ if (empty($_SESSION['user'])) {
                         </label>
                     </div>
                     <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="outros" title="Especificações Extras">
-                            <label class="form-check-label" for="outros" title="Outros."> Outros
-                            </label>
-                            <div id="lista">
+                        <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="outros" title="Especificações Extras">
+                        <label class="form-check-label" for="outros" title="Outros."> Outros
+                        </label>
+                        <div id="lista">
 
-                                <div class="mb-3">
-                                    <label  class="form-label"></label>
-                                    <textarea name="categoria[]" class="form-control" id="outros2" rows="3"></textarea>
-                                </div>
+                            <div class="mb-3">
+                                <label class="form-label"></label>
+                                <textarea name="categoria[]" class="form-control" id="outros2" rows="3"></textarea>
                             </div>
                         </div>
+                    </div>
 
                     <div class="row">
 
@@ -177,21 +176,20 @@ if (empty($_SESSION['user'])) {
         var check02 = document.getElementById('9000_12000_btu_janela');
         var check03 = document.getElementById('18000_24000_btu');
         var check04 = document.getElementById('outros');
-        
 
-        if(check01.checked || check02.checked  || check03.checked || check04.checked){
-            
+
+        if (check01.checked || check02.checked || check03.checked || check04.checked) {
+
             document.getElementById('pergunta01').style.display = 'none';
             document.getElementById('pergunta02').style.display = 'block';
-        }
-        else{
+        } else {
             Swal.fire({
-                    position: 'top-center',
-                    icon: 'info',
-                    text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
-                    showConfirmButton: false,
-                    timer: 4500
-                })
+                position: 'top-center',
+                icon: 'info',
+                text: 'PREENCHA COM PELO MENOS UMA OPÇÃO',
+                showConfirmButton: false,
+                timer: 4500
+            })
         }
 
 

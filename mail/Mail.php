@@ -41,9 +41,18 @@ class Mail
                 $descricao = implode(', ', $descricao);
             }
         } else {
-            $descricao = $pedido['descricao'];
+            $descricao = $pedido['descricao']; 
         }
 
+        if (gettype($pedido['quantidade']) != 'string') {
+            if (isset($pedido['quantidade'])) {
+
+                $quantidade = $pedido['quantidade'];
+                $quantidade = implode(', ', $quantidade);
+            }
+        } else {
+            $descricao = $pedido['quantidade']; 
+        }
 
         if (isset($pedido['local'])) {
 
@@ -78,6 +87,11 @@ class Mail
         if (!empty($descricao)) {
             $text = $text . "<b><h3>Descrição: </h3> </b>" . $descricao;
         }
+
+        if (!empty($quantidade)) {
+            $text = $text . "<b><h3>Quantidade: </h3> </b>" . $quantidade;
+        }
+
         if (!empty($local)) {
             $text = $text .  "<b><h3>Local: </h3> </b>" . $local;
         }

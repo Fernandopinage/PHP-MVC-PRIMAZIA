@@ -18,15 +18,15 @@ if (isset($_POST['finalizando'])) {
         $ClassRequest->SetEmail($_SESSION['user']['email']);
         $ClassRequest->SetCpf($_SESSION['user']['cpf']);
         $ClassRequest->SetCep($_SESSION['user']['cep']);
-
+      
+        
         $dados = array(
             'tpservico' => 'Lavanderia',
-            'categoria' => $_POST['categoria'],
-            'descricao' => $_POST['descricao']
-
+            'categoria' => array_filter($_POST['categoria']),
+            'descricao' => $_POST['descricao'],
+            'quantidade' =>  array_filter($_POST['quantidade'])
         );
         $ClassRequest->SetDescricao($dados);
-
 
         $Dedetizacao = new CategoriaDAO();
         $Dedetizacao->insertReparos($ClassRequest);
@@ -37,7 +37,7 @@ if (isset($_POST['finalizando'])) {
 ?>
 <link href="../../layout/css/cliente_lavanderia.css" rel="stylesheet">
 <div class="container-fluid">
-<a id="retorne" href="../../view/cliente/pedido.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
+    <a id="retorne" href="../../view/cliente/pedido.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
             <img id="logo" src="../../images/primazia.png" class="img"><br>
@@ -109,7 +109,7 @@ if (isset($_POST['finalizando'])) {
                             <div id="lista">
 
                                 <div class="mb-3">
-                                    <label  class="form-label"></label>
+                                    <label class="form-label"></label>
                                     <textarea name="categoria[]" class="form-control" id="outros2" rows="3"></textarea>
                                 </div>
                             </div>
@@ -129,94 +129,166 @@ if (isset($_POST['finalizando'])) {
 
                 <div id="pergunta02">
                     <div class="row g-12 ms-2 p-2">
-                        <label>Qual/Quais as peças?</label>
+                        <label>Qual/Quais as peças e quantidade?</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça jeans" name="descricao[]" id="calcaJeans" title="calça jeans">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça jeans" name="descricao[]" id="calcaJeans" title="calça jeans" onclick="ocultar('calcaJeans','01')">
                             <label class="form-check-label" for="calcaJeans" title="calça jeans">
                                 Calça jeans
                             </label>
                         </div>
+
+                        <div id="01" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
+
                         <div class=" form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça alfaiataria" name="descricao[]" id="calcaAlfaitaria" title="Calça Alfaitaria.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça alfaiataria" name="descricao[]" id="calcaAlfaitaria" title="Calça Alfaitaria." onclick="ocultar('calcaAlfaitaria','02')">
                             <label class="form-check-label" for="calcaAlfaitaria" title="Calça Alfaitaria">
                                 Calça alfaiataria
                             </label>
                         </div>
+                        <div id="02" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça legging" name="descricao[]" id="calcaLegging" title="Calça Legging">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: calça legging" name="descricao[]" id="calcaLegging" title="Calça Legging" onclick="ocultar('calcaLegging','03')">
                             <label class="form-check-label" for="calcaLegging" title="Calça Legging">
                                 Calça legging
                             </label>
                         </div>
+                        <div id="03" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: camisa" name="descricao[]" id="camisa" title="camisa">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: camisa" name="descricao[]" id="camisa" title="camisa" onclick="ocultar('camisa','04')">
                             <label class="form-check-label" for="camisa" title="camisa.">
                                 Camisa
                             </label>
                         </div>
+                        <div id="04" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: camiseta" id="camiseta" name="descricao[]" title="camiseta.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: camiseta" id="camiseta" name="descricao[]" title="camiseta." onclick="ocultar('camiseta','05')">
                             <label class="form-check-label" for="camiseta" title="camiseta.">
                                 Camiseta
                             </label>
                         </div>
+                        <div id="05" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: regata" name="descricao[]" id="regata" title="regata.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: regata" name="descricao[]" id="regata" title="regata." onclick="ocultar('regata','06')">
                             <label class="form-check-label" for="regata" title="regata.">
                                 Regata
                             </label>
                         </div>
+                        <div id="06" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: bermudas" id="bermudas" name="descricao[]" title="bermudas">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: bermudas" id="bermudas" name="descricao[]" title="bermudas" onclick="ocultar('bermudas','07')">
                             <label class="form-check-label" for="bermudas" title="bermudas.">
                                 Bermudas
                             </label>
                         </div>
+                        <div id="07" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: shorts" name="descricao[]" id="shorts" title="Shorts">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: shorts" name="descricao[]" id="shorts" title="Shorts" onclick="ocultar('shorts','08')">
                             <label class="form-check-label" for="shorts" title="Shorts">
                                 Shorts
                             </label>
                         </div>
+                        <div id="08" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: vestidos" name="descricao[]" id="vestido" title="vestido">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: vestidos" name="descricao[]" id="vestido" title="vestido" onclick="ocultar('vestido','09')">
                             <label class="form-check-label" for="vestido" title="vestido.">
                                 Vestidos
                             </label>
                         </div>
+                        <div id="09" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: saias" id="saias" name="descricao[]" title="saias.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: saias" id="saias" name="descricao[]" title="saias." onclick="ocultar('saias','10')">
                             <label class="form-check-label" for="saias" title="saias.">
                                 Saias
                             </label>
                         </div>
+                        <div id="10" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: jogo lençol de cama" name="descricao[]" id="lencolCama" title="Jogo lençol de cama.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: jogo lençol de cama" name="descricao[]" id="lencolCama" title="Jogo lençol de cama." onclick="ocultar('lencolCama','11')">
                             <label class="form-check-label" for="lencolCama" title="Jogo lençol de cama.">
                                 Jogo lençol de cama
                             </label>
                         </div>
+                        <div id="11" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: edredom" id="edredom" name="descricao[]" title="edredom">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: edredom" id="edredom" name="descricao[]" title="edredom" onclick="ocultar('edredom','12')">
                             <label class="form-check-label" for="edredom" title="edredom.">
                                 Edredom
                             </label>
                         </div>
+                        <div id="12" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: toalhas de corpo" name="descricao[]" id="toalhaCorpo" title="Toalha de Corpo">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: toalhas de corpo" name="descricao[]" id="toalhaCorpo" title="Toalha de Corpo" onclick="ocultar('toalhaCorpo','13')">
                             <label class="form-check-label" for="toalhaCorpo" title="Toalha de Corpo.">
                                 Toalhas de corpo
                             </label>
                         </div>
+                        <div id="13" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: toalhas de rosto" id="toalhaRosto" name="descricao[]" title="Toalha de rosto.">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: toalhas de rosto" id="toalhaRosto" name="descricao[]" title="Toalha de rosto." onclick="ocultar('toalhaRosto','14')">
                             <label class="form-check-label" for="toalhaRosto" title="Toalha de rosto.">
                                 Toalhas de rosto
                             </label>
                         </div>
+                        <div id="14" style="margin-left: 20px; margin-top:10px;margin-bottom:10px">
+                            <div class="col-sm-2">
+                                <input type="number" min="1" name="quantidade[]" class="form-control form-control-sm" id="quantidade" placeholder="quantidade">
+                            </div>
+                        </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: outros" name="descricao[]" id="divoutros" title="Especificações Extras">
+                            <input class="form-check-input" type="checkbox" value="Tipo de roupa: outros" name="descricao[]" id="divoutros" title="Especificações Extras" onclick="ocultar('divoutros','14')">
                             <label class="form-check-label" for="divoutros" title="Outros."> Outros
                             </label>
                             <div id="lista2">
@@ -338,6 +410,34 @@ if (isset($_POST['finalizando'])) {
         }
 
     });
+</script>
+
+<script>
+    document.getElementById('01').style.display = 'none';
+    document.getElementById('02').style.display = 'none';
+    document.getElementById('03').style.display = 'none';
+    document.getElementById('04').style.display = 'none';
+    document.getElementById('05').style.display = 'none';
+    document.getElementById('06').style.display = 'none';
+    document.getElementById('07').style.display = 'none';
+    document.getElementById('08').style.display = 'none';
+    document.getElementById('09').style.display = 'none';
+    document.getElementById('10').style.display = 'none';
+    document.getElementById('11').style.display = 'none';
+    document.getElementById('12').style.display = 'none';
+    document.getElementById('13').style.display = 'none';
+    document.getElementById('14').style.display = 'none';
+  
+
+    function ocultar(id, div) {
+        let checkbox = document.getElementById(id);
+        if (checkbox.checked) {
+            document.getElementById(div).style.display = 'block';
+        } else {
+            document.getElementById(div).style.display = 'none';
+        }
+        
+    }
 </script>
 
 <?php

@@ -71,9 +71,9 @@ if(isset($_POST['motoboy'])){
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Realizar um serviço" name="categoria[]" id="servico" title="Envio e captação de pacotes em diferentes locais da cidade com data e hora agendados.">
+                            <input class="form-check-input" type="checkbox" value="Enviar um pacote" name="categoria[]" id="servico" title="Envio e captação de pacotes em diferentes locais da cidade com data e hora agendados.">
                             <label class="form-check-label" for="servico" title="Envio e captação de pacotes em diferentes locais da cidade com data e hora agendados.">
-                                Realizar um serviço
+                                Enviar um pacote
                             </label>
                         </div>
                         <div class="form-check">
@@ -83,11 +83,17 @@ if(isset($_POST['motoboy'])){
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Serviço para zona norte e leste" name="categoria[]" id="zona" title="Serviço para zona norte e leste">
-                            <label class="form-check-label" for="zona" title="Serviço para zona norte e leste">
-                                Serviço para zona norte e leste
-                            </label>
+                        <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="outros" title="Especificações Extras">
+                        <label class="form-check-label" for="outros" title="Outros."> Outros
+                        </label>
+                        <div id="lista">
+
+                            <div class="mb-3">
+                                <label class="form-label"></label>
+                                <textarea name="categoria[]" class="form-control" id="outros2" rows="3"></textarea>
+                            </div>
                         </div>
+                    </div>
                         
                         
                     </div>
