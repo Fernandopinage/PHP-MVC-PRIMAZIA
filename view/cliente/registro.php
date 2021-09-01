@@ -28,8 +28,6 @@ if (isset($_POST['salvarCliente'])) {
             $ClassCliente->SetComplemento($_POST['complemento']);
             $ClassCliente->SetTelefone($_POST['telefone']);
             $ClassCliente->SetEmail($_POST['email']);
-
-      
             $Cliente = new ClienteDAO();
             $Cliente->insertCliente($ClassCliente);
         } else {

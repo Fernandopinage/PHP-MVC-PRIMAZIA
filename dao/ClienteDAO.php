@@ -53,25 +53,26 @@ class ClienteDAO extends DAO
 
 
 
-        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`) 
-        VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO)";
+        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`)
+         VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO)";
         $insert = $this->con->prepare($sql);
-        $insert->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
-        $insert->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
         $insert->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
         $insert->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
         $insert->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
         $insert->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
         $insert->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
+        $insert->bindValue(':CLIENTE_FOTO', '');
+        $insert->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
         $insert->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
+        $insert->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
+        $insert->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
+        $insert->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
         $insert->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
         $insert->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
         $insert->bindValue(':CLIENTE_BAIRRO', $ClassCliente->GetBairro());
-        $insert->bindValue(':CLIENTE_Complemento', $ClassCliente->GetComplemento());
-        $insert->bindValue(':CLIENTE_FOTO', '');
-        $insert->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
-
-    
+        $insert->bindValue(':CLIENTE_COMPLEMENTO', $ClassCliente->GetComplemento());
+        $insert->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
+        $insert->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
         
         try {
             $insert->execute();
