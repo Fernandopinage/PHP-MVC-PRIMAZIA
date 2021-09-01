@@ -8,6 +8,11 @@ class Categoria{
     private $email;
     private $cpf;
     private $cep;
+    private $uf;
+    private $logradouro;
+    private $cidade;
+    private $bairro;
+    private $complemento;
     private $descricao;
 
 
@@ -63,6 +68,51 @@ class Categoria{
 
     public function GetDescricao(){
         return $this->descricao;
+    }
+    public function SetUf($uf){
+
+        $this->uf = $uf;
+    }
+
+    public function GetUF(){
+        return $this->uf;
+    }
+
+    public function SetLogradouro($logradouro){
+
+        $this->logradouro = $logradouro;
+    }
+
+    public function GetLogradouro(){
+        return $this->logradouro;
+    }
+
+    public function SetCidade($cidade){
+
+        $this->cidade = $cidade;
+    }
+
+    public function GetCidade(){
+        return $this->cidade;
+    }
+    
+    
+    public function SetBairro($bairro){
+
+        $this->bairro = $bairro;
+    }
+
+    public function GetBairro(){
+        return $this->bairro;
+    }
+
+    public function SetComplemento($complemento){
+
+        $this->complemento = $complemento;
+    }
+
+    public function GetComplemento(){
+        return $this->complemento;
     }
 
 }

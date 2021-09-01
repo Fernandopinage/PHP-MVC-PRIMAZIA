@@ -21,6 +21,11 @@ if(isset($_POST['motoboy'])){
         $ClassRequest->SetEmail($_SESSION['user']['email']);
         $ClassRequest->SetCpf($_SESSION['user']['cpf']);
         $ClassRequest->SetCep($_SESSION['user']['cep']);
+        $ClassRequest->SetCidade($_SESSION['user']['cidade']);
+        $ClassRequest->SetLogradouro($_SESSION['user']['rua']);
+        $ClassRequest->SetUf($_SESSION['user']['uf']);
+        $ClassRequest->SetBairro($_SESSION['user']['bairro']);
+        $ClassRequest->SetComplemento($_SESSION['user']['complemento']);
         
         $dados = array(
             'tpservico' => 'Motoboy',

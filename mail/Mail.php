@@ -14,13 +14,13 @@ require "../../vendor/autoload.php";
 class Mail
 {
 
-    public function Envio($nome, $email, $pedido, $telefone, $data)
+    public function Envio($nome, $email, $pedido, $telefone, $data, $cidade, $rua, $bairro, $complemento)
     {
 
 
         $mail = new PHPMailer(true); // STOP
 
-       
+
 
         if (isset($pedido['tpservico'])) {
 
@@ -34,24 +34,30 @@ class Mail
             $categoria = implode(', ', $categoria);
         }
 
-        if (gettype($pedido['descricao']) != 'string') {
-            if (isset($pedido['descricao'])) {
+        if (!empty($pedido['descricao'])) {
 
+            if (gettype($pedido['descricao']) != 'string') {
+                if (isset($pedido['descricao'])) {
+
+                    $descricao = $pedido['descricao'];
+                    $descricao = implode(', ', $descricao);
+                }
+            } else {
                 $descricao = $pedido['descricao'];
-                $descricao = implode(', ', $descricao);
             }
-        } else {
-            $descricao = $pedido['descricao']; 
         }
 
-        if (gettype($pedido['quantidade']) != 'string') {
-            if (isset($pedido['quantidade'])) {
+        if (!empty($pedido['quantidade'])) {
 
-                $quantidade = $pedido['quantidade'];
-                $quantidade = implode(', ', $quantidade);
+            if (gettype($pedido['quantidade']) != 'string') {
+                if (isset($pedido['quantidade'])) {
+
+                    $quantidade = $pedido['quantidade'];
+                    $quantidade = implode(', ', $quantidade);
+                }
+            } else {
+                $descricao = $pedido['quantidade'];
             }
-        } else {
-            $descricao = $pedido['quantidade']; 
         }
 
         if (isset($pedido['local'])) {
@@ -136,6 +142,7 @@ class Mail
 
             $mail->Body    = '
                                 <b><h3>Nome do Cliente:</h3> </b>' . $nome . '<br>
+                                <b><h3>Endereço:</h3> </b>' . $bairro . ',' . $rua . ',' . $complemento . '<br>
                                 <b><h3>Telefone:</h3> </b>' . $telefone . '<br>
                                 <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text;
 
@@ -148,6 +155,5 @@ class Mail
         } catch (Exception $e) {
             echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
         }
-       
     }
 }

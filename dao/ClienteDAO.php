@@ -27,12 +27,13 @@ class ClienteDAO extends DAO
                 'cpf' => $row['CLIENTE_CPF'],
                 'telefone' => $row['CLIENTE_TELEFONE'],
                 'cep' => $row['CLIENTE_CEP'],
+                'uf' => $row['CLIENTE_UF'],
                 'rua' => $row['CLIENTE_LOGRADOURO'],
+                'cidade' => $row['CLIENTE_CIDADE'],
                 'bairro' => $row['CLIENTE_BAIRRO'],
                 'complemento' => $row['CLIENTE_COMPLEMENTO']
-
-
             );
+
             header('location: ../../view/cliente/painel.php');
         } else {
 ?>

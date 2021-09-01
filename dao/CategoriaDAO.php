@@ -11,7 +11,8 @@ class CategoriaDAO extends DAO{
     public function insertReparos($ClassRequest){
       
      
-      $sql = "INSERT INTO `pedido`(`pedido_id`, `pedido_nome`, `pedido_telefone`, `pedido_email`, `pedido_cpf`, `pedido_cep`, `pedido_data`, `pedido_descricao`) VALUES (null, :pedido_nome, :pedido_telefone, :pedido_email, :pedido_cpf, :pedido_cep, :pedido_data, :pedido_descricao)";
+      $sql = "INSERT INTO `pedido`(`pedido_id`, `pedido_nome`, `pedido_telefone`, `pedido_email`, `pedido_cpf`, `pedido_cep`, `pedido_data`, `pedido_descricao`, `pedido_uf`, `pedido_cidade`, `pedido_logradouro`, `pedido_bairro`, `pedido_complemento`) 
+      VALUES (null, :pedido_nome, :pedido_telefone, :pedido_email, :pedido_cpf, :pedido_cep, :pedido_data, :pedido_descricao, :pedido_uf, :pedido_cidade, :pedido_logradouro, :pedido_bairro, :pedido_complemento)";
       $insert = $this->con->prepare($sql);
       $insert->bindValue(':pedido_nome',$ClassRequest->GetNome());
       $insert->bindValue(':pedido_telefone',$ClassRequest->GetTelefone());
@@ -20,8 +21,17 @@ class CategoriaDAO extends DAO{
       $insert->bindValue(':pedido_cep',$ClassRequest->GetCep());
       $insert->bindValue(':pedido_data', date('Y-m-d h:i:s A'));
       $insert->bindValue(':pedido_descricao',json_encode($ClassRequest->GetDescricao(),JSON_UNESCAPED_UNICODE));
-      
+      $insert->bindValue(':pedido_uf',$ClassRequest->GetUf());
+      $insert->bindValue(':pedido_cidade',$ClassRequest->GetCidade());
+      $insert->bindValue(':pedido_logradouro',$ClassRequest->GetLogradouro());
+      $insert->bindValue(':pedido_bairro',$ClassRequest->GetBairro());
+      $insert->bindValue(':pedido_complemento',$ClassRequest->GetComplemento());
 
+
+      $cidade = $ClassRequest->GetCidade();
+      $rua = $ClassRequest->GetCidade();
+      $bairro = $ClassRequest->GetBairro();
+      $complemento = $ClassRequest->GetComplemento();
       $nome = $ClassRequest->GetNome();
       $email = $ClassRequest->GetEmail();
       $pedido = $ClassRequest->GetDescricao();
@@ -32,7 +42,7 @@ class CategoriaDAO extends DAO{
       
       
       $MAIL = new Mail();
-      $MAIL->Envio($nome,$email,$pedido,$telefone,$data);
+      $MAIL->Envio($nome,$email,$pedido,$telefone,$data,$cidade,$rua,$bairro,$complemento);
 
       try {
         $insert->execute();
@@ -46,7 +56,7 @@ class CategoriaDAO extends DAO{
                 title: 'Parabéns',
                 text:'Pedido Realizado Com Sucesso'+' Em breve estaremos entrando em contato'+' Horário da central de atendimento das 08:00 ás 18:00 hs',
                 showConfirmButton: false,
-                timer: 4000,
+                timer: 7000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -57,10 +67,12 @@ class CategoriaDAO extends DAO{
 
     <?php
 
-        header('Refresh: 4.0; url=painel.php');
+        header('Refresh: 5.0; url=painel.php');
 
       } catch (PDOException $e) {
+          echo $e->getMessage();
         ?>
+        
 
         <script>
             Swal.fire({

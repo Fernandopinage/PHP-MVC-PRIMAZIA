@@ -17,11 +17,17 @@ if (isset($_POST['pequenosreparos'])) {
         
         $ClassRequest = new Categoria();
       
+        $ClassRequest = new Categoria();
         $ClassRequest->SetNome($_SESSION['user']['nome']);
         $ClassRequest->SetTelefone($_SESSION['user']['telefone']);
         $ClassRequest->SetEmail($_SESSION['user']['email']);
         $ClassRequest->SetCpf($_SESSION['user']['cpf']);
         $ClassRequest->SetCep($_SESSION['user']['cep']);
+        $ClassRequest->SetCidade($_SESSION['user']['cidade']);
+        $ClassRequest->SetLogradouro($_SESSION['user']['rua']);
+        $ClassRequest->SetUf($_SESSION['user']['uf']);
+        $ClassRequest->SetBairro($_SESSION['user']['bairro']);
+        $ClassRequest->SetComplemento($_SESSION['user']['complemento']);
 
         $dados = array(
             'tpservico' => 'Artífice (Pedreiro,Pintor e Hidráulico)',
