@@ -105,7 +105,7 @@ class Mail
             $text = $text .  "<b><h3>Dependente: </h3> </b>" . $dependente;
         }
         if (!empty($serviço)) {
-            $text = $text .  "<b><h3>Serviço:</h3> </b>" . $serviço;
+            $text = $text .  "<b><h3>Serviço:</h3> </b>" .strtoupper($serviço);
         }
         if (!empty($opcao)) {
             $text = $text .  "<b><h3>Opcao:</h3> </b>" . $opcao;

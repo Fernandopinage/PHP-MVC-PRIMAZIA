@@ -36,7 +36,7 @@ class CategoriaDAO extends DAO{
       $email = $ClassRequest->GetEmail();
       $pedido = $ClassRequest->GetDescricao();
       $telefone = $ClassRequest->GetTelefone();
-      $data = date('Y-m-d h:i:s A');
+      $data = date('Y-m-d');
 
     
       
