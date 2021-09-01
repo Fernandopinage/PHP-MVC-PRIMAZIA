@@ -78,6 +78,18 @@ if (empty($_SESSION['user'])) {
                             18000btus à 24000btus
                         </label>
                     </div>
+                    <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="outros" title="Especificações Extras">
+                            <label class="form-check-label" for="outros" title="Outros."> Outros
+                            </label>
+                            <div id="lista">
+
+                                <div class="mb-3">
+                                    <label  class="form-label"></label>
+                                    <textarea name="categoria[]" class="form-control" id="outros2" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
 
                     <div class="row">
 
@@ -164,14 +176,15 @@ if (empty($_SESSION['user'])) {
         var check01 = document.getElementById('7000_12000_btu');
         var check02 = document.getElementById('9000_12000_btu_janela');
         var check03 = document.getElementById('18000_24000_btu');
-       
+        var check04 = document.getElementById('outros');
+        
 
-
-        if(check01.checked || check02.checked  || check03.checked ){
+        if(check01.checked || check02.checked  || check03.checked || check04.checked){
             
             document.getElementById('pergunta01').style.display = 'none';
             document.getElementById('pergunta02').style.display = 'block';
-        }else{
+        }
+        else{
             Swal.fire({
                     position: 'top-center',
                     icon: 'info',
