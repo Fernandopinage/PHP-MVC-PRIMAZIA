@@ -153,7 +153,7 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" maxlength="8" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Endereço ">
