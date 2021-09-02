@@ -14,7 +14,7 @@ require "../../vendor/autoload.php";
 class Mail
 {
 
-    public function Envio($nome, $email, $pedido, $telefone, $data, $cidade, $rua, $bairro, $complemento)
+    public function Envio($nome,$email,$pedido,$telefone,$protodolo,$data,$cidade,$rua,$bairro,$complemento)
     {
 
 
@@ -110,6 +110,7 @@ class Mail
         if (!empty($opcao)) {
             $text = $text .  "<b><h3>Opcao:</h3> </b>" . $opcao;
         }
+ 
 
 
         try {
@@ -144,7 +145,11 @@ class Mail
                                 <b><h3>Nome do Cliente:</h3> </b>' . $nome . '<br>
                                 <b><h3>Endereço:</h3> </b>' . $bairro . ',' . $rua . ',' . $complemento . '<br>
                                 <b><h3>Telefone:</h3> </b>' . $telefone . '<br>
-                                <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text;
+                                <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text.'<br>
+                                <b><h3>Seu Protocolo:</h3> </b> <span style="color:red;">' . $protodolo . '</span><br>'
+                                
+                                ;
+                                
 
 
 

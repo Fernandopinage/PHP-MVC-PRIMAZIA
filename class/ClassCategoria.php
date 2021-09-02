@@ -14,6 +14,7 @@ class Categoria{
     private $bairro;
     private $complemento;
     private $descricao;
+    private $protocolo;
 
 
     public function SetNome($nome){
@@ -115,6 +116,15 @@ class Categoria{
         return $this->complemento;
     }
 
+
+    public function SetProtocolo($protocolo){
+
+        $this->protocolo = $protocolo;
+    }
+
+    public function GetProtocolo(){
+        return $this->protocolo;
+    }
 }
 
 

@@ -8,14 +8,14 @@ if (empty($_SESSION['user'])) {
 include_once "../../layout/heard.php";
 include_once "../../dao/CategoriaDAO.php";
 include_once "../../class/ClassCategoria.php";
-
+include_once "../../dao/gerarProtocolo.php";
 
 if (isset($_POST['pequenosreparos'])) {
 
     if(!empty($_POST['categoria'])){
        
         
-        $ClassRequest = new Categoria();
+       
       
         $ClassRequest = new Categoria();
         $ClassRequest->SetNome($_SESSION['user']['nome']);
@@ -28,7 +28,7 @@ if (isset($_POST['pequenosreparos'])) {
         $ClassRequest->SetUf($_SESSION['user']['uf']);
         $ClassRequest->SetBairro($_SESSION['user']['bairro']);
         $ClassRequest->SetComplemento($_SESSION['user']['complemento']);
-
+        $ClassRequest->SetProtocolo(Protocolo::gerarProtocolo());
         $dados = array(
             'tpservico' => 'Artífice (Pedreiro,Pintor e Hidráulico)',
             'categoria' => $_POST['categoria'],
