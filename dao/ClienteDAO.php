@@ -66,7 +66,7 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
         $insert->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
         $insert->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
-        $insert->bindValue(':CLIENTE_FOTO', '');
+        $insert->bindValue(':CLIENTE_FOTO', $ClassCliente->GetFoto());
         $insert->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
         $insert->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
         $insert->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());

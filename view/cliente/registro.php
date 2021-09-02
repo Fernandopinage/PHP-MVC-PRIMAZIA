@@ -14,7 +14,15 @@ if (isset($_POST['salvarCliente'])) {
         if ($_POST['senha'] === $_POST['confirmar']) {
 
 
+            if(isset($_FILES['imagem']['name'])){
+                $imagem = $_FILES['imagem']['name'];
+                $diretorio = '../../images/';
+                //$diretorioPDF = '../pdf/';
+                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
+            }
+            
             $ClassCliente = new Cliente();
+            $ClassCliente->SetFoto($imagem);
             $ClassCliente->SetOpcao($_POST['opt']);
             $ClassCliente->SetRazao($_POST['razao']);
             $ClassCliente->SetNome($_POST['nome']);
@@ -28,6 +36,12 @@ if (isset($_POST['salvarCliente'])) {
             $ClassCliente->SetComplemento($_POST['complemento']);
             $ClassCliente->SetTelefone($_POST['telefone']);
             $ClassCliente->SetEmail($_POST['email']);
+
+            echo "<pre>";
+            var_dump($imagem);
+            echo "</pre>";
+
+
             $Cliente = new ClienteDAO();
             $Cliente->insertCliente($ClassCliente);
         } else {
@@ -73,7 +87,7 @@ if (isset($_POST['salvarCliente'])) {
 <link href="../../layout/css/cliente_registro.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="container" id="registro">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="text-center">
                 <img id="logo" src="../../images/primazia.png" class="img"><br>
             </div>
@@ -88,7 +102,7 @@ if (isset($_POST['salvarCliente'])) {
                     <div class="text-center">
                         <div class="mb-3">
                             <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
-                            <input class="form-control" type="file" id="formFile" style="display:none">
+                            <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
                         </div>
                         
                     </div>
