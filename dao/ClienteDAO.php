@@ -31,7 +31,8 @@ class ClienteDAO extends DAO
                 'rua' => $row['CLIENTE_LOGRADOURO'],
                 'cidade' => $row['CLIENTE_CIDADE'],
                 'bairro' => $row['CLIENTE_BAIRRO'],
-                'complemento' => $row['CLIENTE_COMPLEMENTO']
+                'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                'foto' => $row['CLIENTE_FOTO']
             );
 
             header('location: ../../view/cliente/painel.php');
