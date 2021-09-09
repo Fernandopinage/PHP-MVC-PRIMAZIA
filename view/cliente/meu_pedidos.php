@@ -43,12 +43,12 @@ $dados = $ClassPedido->pedidos();
 
             </div>
             <div>
-              <!--  <?php echo "<pre>"; var_dump($obj['pedido']); echo "/<pre>";?> -->
+              <!--  <?php //echo "<pre>"; var_dump($obj['pedido']); echo "/<pre>";?> -->
                 <?php 
                 
                 $dados = $obj['pedido'];
                 
-                echo var_dump($dados);
+                //echo var_dump($dados);
                 ?>
 
             </div>

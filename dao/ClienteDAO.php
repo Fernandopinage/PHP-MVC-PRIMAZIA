@@ -74,7 +74,7 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
         $insert->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
         $insert->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
-        $insert->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
+        $insert->bindValue(':CLIENTE_LOGRADOURO', '');
         $insert->bindValue(':CLIENTE_BAIRRO', $ClassCliente->GetBairro());
         $insert->bindValue(':CLIENTE_COMPLEMENTO', $ClassCliente->GetComplemento());
         $insert->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
@@ -100,7 +100,7 @@ class ClienteDAO extends DAO
 
         } catch (PDOException $e) {
 
-            echo $e->getMessage();
+            
         ?>
 
             <script>

@@ -31,15 +31,13 @@ if (isset($_POST['salvarCliente'])) {
             $ClassCliente->SetCep($_POST['cep']);
             $ClassCliente->SetUf($_POST['uf']);
             $ClassCliente->SetCidade($_POST['cidade']);
-            $ClassCliente->SetLogradouro($_POST['logradouro']);
+           // $ClassCliente->SetLogradouro($_POST['logradouro']);
             $ClassCliente->SetBairro($_POST['bairro']);
             $ClassCliente->SetComplemento($_POST['complemento']);
             $ClassCliente->SetTelefone($_POST['telefone']);
             $ClassCliente->SetEmail($_POST['email']);
 
-            echo "<pre>";
-            var_dump($imagem);
-            echo "</pre>";
+            
 
 
             $Cliente = new ClienteDAO();
@@ -137,7 +135,7 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
@@ -156,7 +154,7 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="text" maxlength="9" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Endereço ">
+                        <input type="text" name="endereco" id="rua" class="form-control" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
                         <input type="text" name="numerp" id="numero" class="form-control" placeholder="Nº ">
@@ -170,21 +168,18 @@ if (isset($_POST['salvarCliente'])) {
                     <div class="col-md-6">
                         <input type="text" name="bairro" id="bairro" class="form-control " placeholder="Bairro">
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" name="logradouro" id="logradouro" class="form-control " placeholder="Logradouro">
-                    </div>
+                    
                     <div class="col-md-6">
                         <input type="text" name="complemento" id="complemento" class="form-control " placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
-                </div>
-                <div class="row g-3 mt-1">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                     </div>
                 </div>
+                
 
                 <div class="row">
 
@@ -204,15 +199,19 @@ if (isset($_POST['salvarCliente'])) {
 </div>
 
 <script>
+    
+
     function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";
+        
 
     }
 
     function fisica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "none";
+       
 
     }
 </script>

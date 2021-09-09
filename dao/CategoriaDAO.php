@@ -40,9 +40,7 @@ class CategoriaDAO extends DAO{
       $data = date('Y-m-d');
 
 
-      echo "<pre>";
-      var_dump($ClassRequest);
-      echo "<pre>";
+    
     
       
       
@@ -59,7 +57,7 @@ class CategoriaDAO extends DAO{
                 position: 'center',
                 icon: 'success',
                 title: 'Parabéns',
-                text:'Pedido Realizado Com Sucesso'+' Em breve estaremos entrando em contato'+' Horário da central de atendimento das 08:00 ás 18:00 hs',
+                html:'O seu Pedido G2S Foi Realizado Com Sucesso'+'<br>'+' Em breve estaremos entrando em contato'+'<br>'+' Horário da central de atendimento das 08:00 ás 18:00 hs',
                 showConfirmButton: false,
                 timer: 7000,
                 timerProgressBar: true,
