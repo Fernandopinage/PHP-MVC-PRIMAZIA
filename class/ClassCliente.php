@@ -13,6 +13,7 @@ private $telefone;
 private $cep;
 private $uf;
 private $logradouro;
+private $numero;
 private $cidade;
 private $bairro;
 private $complemento;
@@ -102,6 +103,14 @@ private $senha;
     }
     public function GetLogradouro(){
         return $this->logradouro;
+    }
+
+    public function SetNumero($numero){
+        $this->numero = $numero;
+
+    }
+    public function GetNumero(){
+        return $this->numero;
     }
 
     public function SetCidade($cidade){

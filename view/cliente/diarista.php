@@ -24,6 +24,7 @@ if (isset($_POST['diaristafinal'])) {
         $ClassRequest->SetCep($_SESSION['user']['cep']);
         $ClassRequest->SetCidade($_SESSION['user']['cidade']);
         $ClassRequest->SetLogradouro($_SESSION['user']['rua']);
+        $ClassRequest->SetNumero($_SESSION['user']['numero']);
         $ClassRequest->SetUf($_SESSION['user']['uf']);
         $ClassRequest->SetBairro($_SESSION['user']['bairro']);
         $ClassRequest->SetComplemento($_SESSION['user']['complemento']);

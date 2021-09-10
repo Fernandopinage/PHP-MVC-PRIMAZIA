@@ -28,10 +28,7 @@ $dados = $ClassPedido->pedidos();
 
     <?php
 
-    echo "<pre>";
-    echo print_r($dados);
-    //echo print_r($dados[1]['pedido']);
-    echo "</pre>";
+
 
 
 
@@ -41,17 +38,7 @@ $dados = $ClassPedido->pedidos();
             <div>
                 <?php echo $obj['data']; ?>
 
-            </div>
-            <div>
-              <!--  <?php //echo "<pre>"; var_dump($obj['pedido']); echo "/<pre>";?> -->
-                <?php 
-                
-                $dados = $obj['pedido'];
-                
-                //echo var_dump($dados);
-                ?>
 
-            </div>
             
 
         </div>

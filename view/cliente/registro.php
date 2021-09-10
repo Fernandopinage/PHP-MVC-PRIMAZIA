@@ -31,7 +31,8 @@ if (isset($_POST['salvarCliente'])) {
             $ClassCliente->SetCep($_POST['cep']);
             $ClassCliente->SetUf($_POST['uf']);
             $ClassCliente->SetCidade($_POST['cidade']);
-           // $ClassCliente->SetLogradouro($_POST['logradouro']);
+            $ClassCliente->SetLogradouro($_POST['logradouro']);
+            $ClassCliente->SetNumero($_POST['numerp']);
             $ClassCliente->SetBairro($_POST['bairro']);
             $ClassCliente->SetComplemento($_POST['complemento']);
             $ClassCliente->SetTelefone($_POST['telefone']);
@@ -154,7 +155,7 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="text" maxlength="9" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="endereco" id="rua" class="form-control" placeholder="Endereço ">
+                        <input type="text" name="logradouro" id="rua" class="form-control" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
                         <input type="text" name="numerp" id="numero" class="form-control" placeholder="Nº ">

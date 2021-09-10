@@ -11,8 +11,8 @@ class CategoriaDAO extends DAO{
     public function insertReparos($ClassRequest){
       
      
-      $sql = "INSERT INTO `pedido`(`pedido_id`, `pedido_nome`, `pedido_telefone`, `pedido_email`, `pedido_cpf`, `pedido_cep`, `pedido_data`, `pedido_descricao`, `pedido_uf`, `pedido_cidade`, `pedido_logradouro`, `pedido_bairro`, `pedido_complemento`, `pedido_protocolo`) 
-      VALUES (null, :pedido_nome, :pedido_telefone, :pedido_email, :pedido_cpf, :pedido_cep, :pedido_data, :pedido_descricao, :pedido_uf, :pedido_cidade, :pedido_logradouro, :pedido_bairro, :pedido_complemento, :pedido_protocolo)";
+      $sql = "INSERT INTO `pedido`(`pedido_id`, `pedido_nome`, `pedido_telefone`, `pedido_email`, `pedido_cpf`, `pedido_cep`, `pedido_data`, `pedido_descricao`, `pedido_uf`, `pedido_cidade`, `pedido_logradouro`, `pedido_bairro`, `pedido_complemento`, `pedido_protocolo`, `pedido_numero`) 
+      VALUES (null, :pedido_nome, :pedido_telefone, :pedido_email, :pedido_cpf, :pedido_cep, :pedido_data, :pedido_descricao, :pedido_uf, :pedido_cidade, :pedido_logradouro, :pedido_bairro, :pedido_complemento, :pedido_protocolo, :pedido_numero)";
       $insert = $this->con->prepare($sql);
       $insert->bindValue(':pedido_nome',$ClassRequest->GetNome());
       $insert->bindValue(':pedido_telefone',$ClassRequest->GetTelefone());
@@ -27,10 +27,12 @@ class CategoriaDAO extends DAO{
       $insert->bindValue(':pedido_bairro',$ClassRequest->GetBairro());
       $insert->bindValue(':pedido_complemento',$ClassRequest->GetComplemento());
       $insert->bindValue(':pedido_protocolo',$ClassRequest->GetProtocolo());
+      $insert->bindValue(':pedido_numero',$ClassRequest->GetNumero());
 
       $cidade = $ClassRequest->GetCidade();
       $rua = $ClassRequest->GetCidade();
       $bairro = $ClassRequest->GetBairro();
+      $numero = $ClassRequest->GetNumero();
       $complemento = $ClassRequest->GetComplemento();
       $nome = $ClassRequest->GetNome();
       $email = $ClassRequest->GetEmail();
@@ -39,13 +41,9 @@ class CategoriaDAO extends DAO{
       $protodolo = $ClassRequest->GetProtocolo();
       $data = date('Y-m-d');
 
-
-    
-    
-      
       
       $MAIL = new Mail();
-      $MAIL->Envio($nome,$email,$pedido,$telefone,$protodolo,$data,$cidade,$rua,$bairro,$complemento);
+      $MAIL->Envio($nome,$email,$pedido,$telefone,$protodolo,$data,$cidade,$rua,$bairro,$complemento,$numero);
 
       try {
         $insert->execute();
