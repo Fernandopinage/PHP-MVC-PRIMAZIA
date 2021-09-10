@@ -2,6 +2,9 @@
 include_once "../../layout/heard.php";
 include_once "../../dao/CategoriaDAO.php";
 include_once "../../class/ClassCategoria.php";
+include_once "../../dao/gerarProtocolo.php";
+
+
 session_start();
 if (empty($_SESSION['user'])) {
 
