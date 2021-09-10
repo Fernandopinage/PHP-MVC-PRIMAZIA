@@ -80,8 +80,6 @@ if (isset($_POST['salvarCliente'])) {
     }
 }
 
-
-
 ?>
 <link href="../../layout/css/cliente_registro.css" rel="stylesheet">
 <div class="container-fluid">

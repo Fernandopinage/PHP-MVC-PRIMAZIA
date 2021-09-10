@@ -24,6 +24,7 @@ if(isset($_POST['salvadedetiza'])){
     $ClassRequest->SetUf($_SESSION['user']['uf']);
     $ClassRequest->SetBairro($_SESSION['user']['bairro']);
     $ClassRequest->SetComplemento($_SESSION['user']['complemento']);
+    $ClassRequest->SetProtocolo(Protocolo::gerarProtocolo());
    
    $dados = array(
 
