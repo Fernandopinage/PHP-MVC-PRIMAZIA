@@ -30,7 +30,7 @@ class CategoriaDAO extends DAO{
       $insert->bindValue(':pedido_numero',$ClassRequest->GetNumero());
 
       $cidade = $ClassRequest->GetCidade();
-      $rua = $ClassRequest->GetCidade();
+      $rua = $ClassRequest->GetLogradouro();
       $bairro = $ClassRequest->GetBairro();
       $numero = $ClassRequest->GetNumero();
       $complemento = $ClassRequest->GetComplemento();
