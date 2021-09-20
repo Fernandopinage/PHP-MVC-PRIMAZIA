@@ -56,6 +56,35 @@ class ProfissionalDAO extends DAO
         }
     }
 
+
+    public function updateSenha($novaSenha,$id,$email,$senha){
+
+
+        $sql = "SELECT * FROM `profissional` WHERE profissional_id = :profissional_id and profissional_email = :profissional_email and profissional_senha = :profissional_senha";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':profissional_id', $id);
+        $select->bindValue(':profissional_email', $email);
+        $select->bindValue(':profissional_senha', $id);
+        $select->bindValue(':profissional_senha', $senha);
+        $select->execute();
+
+        if ($select->fetch(PDO::FETCH_ASSOC)) {
+
+            echo "sim ";
+
+            $sql2 = "UPDATE `profissional` SET profissional_senha = :profissional_senha where profissional_email = :profissional_email";
+            $update = $this->con->prepare($sql2);
+            $update->bindValue(':profissional_senha', md5($novaSenha));
+            $update->bindValue(':profissional_email', $email);
+            $select->execute();
+        }else{
+
+            echo "nao ";
+        }
+
+
+    }
+
     public function insertProfissional($ClassProfissional)
     {
 
@@ -145,11 +174,12 @@ class ProfissionalDAO extends DAO
 
             $email = $ClassProfissional->GetEmail();
             $senha = ProfissionalDAO::RandonSenha();
+            $senha = base64_encode($senha);
 
             $sql = "UPDATE `profissional` SET `profissional_senha`= :profissional_senha where `profissional_email` =:profissional_email";
             $update = $this->con->prepare($sql);
             $update->bindValue(':profissional_email', $ClassProfissional->GetEmail());
-            $update->bindValue(':profissional_senha', md5($senha));
+            $update->bindValue(':profissional_senha', $senha);
             try {
 
                 $update->execute();
@@ -171,6 +201,9 @@ class ProfissionalDAO extends DAO
 <?php
 
                   Redefinir::Senha($email, $senha,$id,$nome);
+                    echo $email."<br>". $senha."<br>".$id."<br>".$nome;
+
+
             } catch (\Throwable $th) {
             }
         }

@@ -55,7 +55,7 @@ class Redefinir
 
                                 <p><h2>Olá, '.$nome.'</h2><p><br><br>
                                 <p>Vamos redefinir sua senha para que você consiga acessar sua conta.</p><br><br>
-                                <a href="">Click aqui</a><br><br><br>
+                                <a href="localhost/primazia_projeto/view/profissional/novasenha.php?key='.base64_encode($id).'&mail='.base64_encode($email).'&pass='.$senha.'">Click aqui</a><br><br><br>
                             
                                     <b>Central de Ajuda, G2S GoToService.</b>
                             ';
@@ -69,7 +69,7 @@ class Redefinir
             // echo 'Message has been sent';
 
        } catch (\Throwable $th) {
-           echo $th;
+          // echo $th;
        }
        
     }
