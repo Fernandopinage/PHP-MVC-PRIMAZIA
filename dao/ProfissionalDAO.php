@@ -2,6 +2,7 @@
 
 include_once "../../class/ClassProfissional.php";
 include_once "../../dao/DAO.php";
+require_once __DIR__ . "../../mail/profissional_redefinir.php";
 
 class ProfissionalDAO extends DAO
 {
@@ -92,13 +93,13 @@ class ProfissionalDAO extends DAO
             </script>
 
 
-        <?php
-       header('location: ../../view/profissional/login.php');
 
+        <?php
+            header('location: ../../view/profissional/login.php');
         } catch (PDOException $e) {
 
-            
-            
+
+
         ?>
 
             <script>
@@ -111,11 +112,10 @@ class ProfissionalDAO extends DAO
                 })
             </script>
 
-<?php
+            <?php
 
-                
+
         }
-        
     }
 
     public static function logout($dados)
@@ -127,55 +127,68 @@ class ProfissionalDAO extends DAO
     }
 
 
-    public function redefinirSenha($ClassProfissional){
+    public function redefinirSenha($ClassProfissional)
+    {
+
+        $verificar = "SELECT * FROM `profissional` WHERE profissional_email = :profissional_email";
+        $select = $this->con->prepare($verificar);
+        $select->bindValue(':profissional_email', $ClassProfissional->GetEmail());
+        $select->execute();
+
+
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
+            $id = $row['profissional_id'];
+            $nome = $row['profissional_nome'];
 
 
 
+            $email = $ClassProfissional->GetEmail();
+            $senha = ProfissionalDAO::RandonSenha();
 
+            $sql = "UPDATE `profissional` SET `profissional_senha`= :profissional_senha where `profissional_email` =:profissional_email";
+            $update = $this->con->prepare($sql);
+            $update->bindValue(':profissional_email', $ClassProfissional->GetEmail());
+            $update->bindValue(':profissional_senha', md5($senha));
+            try {
 
-        $sql = "UPDATE `profissional` SET `profissional_senha`= :profissional_senha where `profissional_email` =:profissional_email";
-        $update = $this->con->prepare($sql);
-        $update->bindValue(':profissional_email',$ClassProfissional->GetEmail());
-        $update->bindValue(':profissional_senha',md5(ProfissionalDAO::RandonSenha()));
-        try {
-            
-            $update->execute();
+                $update->execute();
 
             ?>
-            
-            
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Sua senh foi redefinidar',
-                    text: 'Por favor verifique seu e-mail',
-                    showConfirmButton: false,
-                    timer: 3500
-                })
-            </script>
-            
-            <?php
-  
-        } catch (\Throwable $th) {
-           
-        }
-  
-  
-      }
 
-      public static function RandonSenha($length = 7){
+
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Sua senh foi redefinidar',
+                        text: 'Por favor verifique seu e-mail',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+
+<?php
+
+                  Redefinir::Senha($email, $senha,$id,$nome);
+            } catch (\Throwable $th) {
+            }
+        }
+    }
+
+    public static function RandonSenha($length = 7)
+    {
 
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-        $codeAlphabet.= "0123456789";
+        $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet .= "0123456789";
         $max = strlen($codeAlphabet);
-    
-        for ($i=0; $i < $length; $i++) {
-            $token .= $codeAlphabet[random_int(0, $max-1)];
+
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max - 1)];
         }
-    
+
         return $token;
     }
 }
