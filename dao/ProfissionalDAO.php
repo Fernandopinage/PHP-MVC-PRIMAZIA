@@ -58,29 +58,25 @@ class ProfissionalDAO extends DAO
     public function insertProfissional($ClassProfissional)
     {
 
-
-
-        $sql = "INSERT INTO `profissional`(`PROFISSIONAL_ID`, `PROFISSIONAL_NOME`, `PROFISSIONAL_CPF`, `PROFISSIONAL_EMAIL`, `PROFISSIONAL_TELEFONE`, `PROFISSIONAL_CEP`, `PROFISSIONAL_FOTO`, `PROFISSIONAL_SENHA`, `PROFISSIONAL_UF`, `PROFISSIONAL_CIDADE`, `PROFISSIONAL_LOGRADOURO`, `PROFISSIONAL_BAIRRO`, `PROFISSIONAL_COMPLEMENTO`, `PROFISSIONAL_OPCAO`, `PROFISSIONAL_RAZAO`, `PROFISSIONAL_NUM`)
-         VALUES (null, :PROFISSIONAL_NOME, :PROFISSIONAL_CPF, :PROFISSIONAL_EMAIL, :PROFISSIONAL_TELEFONE, :PROFISSIONAL_CEP, :PROFISSIONAL_FOTO, :PROFISSIONAL_SENHA, :PROFISSIONAL_UF, :PROFISSIONAL_CIDADE, :PROFISSIONAL_LOGRADOURO, :PROFISSIONAL_BAIRRO, :PROFISSIONAL_COMPLEMENTO, :PROFISSIONAL_OPCAO, :PROFISSIONAL_RAZAO, :PROFISSIONAL_NUM)";
+        $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`) 
+        VALUES (null, :profissional_nome, :profissional_option, :profissional_razao, :profissional_email, :profissional_cpf, :profissional_telefone, :profissional_cep, :profissional_uf, :profissional_logradouro, :profissional_num, :profissional_cidade, :profissional_bairro, :profissional_complemento, :profissional_foto, :profissional_senha, :profissional_servico)";
         $insert = $this->con->prepare($sql);
-        $insert->bindValue(':PROFISSIONAL_NOME', $ClassProfissional->GetNome());
-        $insert->bindValue(':PROFISSIONAL_CPF', $ClassProfissional->GetCpf());
-        $insert->bindValue(':PROFISSIONAL_EMAIL', $ClassProfissional->GetEmail());
-        $insert->bindValue(':PROFISSIONAL_TELEFONE', $ClassProfissional->GetTelefone());
-        $insert->bindValue(':PROFISSIONAL_CEP', $ClassProfissional->GetCep());
-        $insert->bindValue(':PROFISSIONAL_FOTO', $ClassProfissional->GetFoto());
-        $insert->bindValue(':PROFISSIONAL_SENHA', md5($ClassProfissional->GetSenha()));
-        $insert->bindValue(':PROFISSIONAL_UF', $ClassProfissional->GetUf());
-        $insert->bindValue(':PROFISSIONAL_CIDADE', $ClassProfissional->GetCidade());
-        $insert->bindValue(':PROFISSIONAL_OPCAO', $ClassProfissional->GetOpcao());
-        $insert->bindValue(':PROFISSIONAL_RAZAO', $ClassProfissional->GetRazao());
-        $insert->bindValue(':PROFISSIONAL_CIDADE', $ClassProfissional->GetCidade());
-        $insert->bindValue(':PROFISSIONAL_LOGRADOURO', $ClassProfissional->GetLogradouro());
-        $insert->bindValue(':PROFISSIONAL_BAIRRO', $ClassProfissional->GetBairro());
-        $insert->bindValue(':PROFISSIONAL_COMPLEMENTO', $ClassProfissional->GetComplemento());
-        $insert->bindValue(':PROFISSIONAL_OPCAO', $ClassProfissional->GetOpcao());
-        $insert->bindValue(':PROFISSIONAL_RAZAO', $ClassProfissional->GetRazao());
-        $insert->bindValue(':PROFISSIONAL_NUM', $ClassProfissional->GetNumero());
+        $insert->bindValue(':profissional_nome', $ClassProfissional->GetNome());
+        $insert->bindValue(':profissional_option', $ClassProfissional->GetOpcao());
+        $insert->bindValue(':profissional_razao', $ClassProfissional->GetRazao());
+        $insert->bindValue(':profissional_email', $ClassProfissional->GetEmail());
+        $insert->bindValue(':profissional_cpf', $ClassProfissional->GetCpf());
+        $insert->bindValue(':profissional_telefone', $ClassProfissional->GetTelefone());
+        $insert->bindValue(':profissional_cep', $ClassProfissional->GetCep());
+        $insert->bindValue(':profissional_logradouro', $ClassProfissional->GetLogradouro());
+        $insert->bindValue(':profissional_num', $ClassProfissional->GetNumero());
+        $insert->bindValue(':profissional_cidade', $ClassProfissional->GetCidade());
+        $insert->bindValue(':profissional_bairro', $ClassProfissional->GetBairro());
+        $insert->bindValue(':profissional_complemento', $ClassProfissional->GetComplemento());
+        $insert->bindValue(':profissional_foto', $ClassProfissional->GetFoto());
+        $insert->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
+        $insert->bindValue(':profissional_servico', $ClassProfissional->GetServico());
+        $insert->bindValue(':profissional_uf', $ClassProfissional->GetUf());
         try {
             $insert->execute();
         ?>
@@ -97,10 +93,11 @@ class ProfissionalDAO extends DAO
 
 
         <?php
-        header('location: ../../view/profissional/login.php');
+       header('location: ../../view/profissional/login.php');
 
         } catch (PDOException $e) {
 
+            
             
         ?>
 
@@ -127,6 +124,59 @@ class ProfissionalDAO extends DAO
         session_destroy();
 
         header('location: http://primazia.agenciaprogride.com.br/home-resumida-cdaivpysmvvotjwotzxbvm/');
+    }
+
+
+    public function redefinirSenha($ClassProfissional){
+
+
+
+
+
+        $sql = "UPDATE `profissional` SET `profissional_senha`= :profissional_senha where `profissional_email` =:profissional_email";
+        $update = $this->con->prepare($sql);
+        $update->bindValue(':profissional_email',$ClassProfissional->GetEmail());
+        $update->bindValue(':profissional_senha',md5(ProfissionalDAO::RandonSenha()));
+        try {
+            
+            $update->execute();
+
+            ?>
+            
+            
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sua senh foi redefinidar',
+                    text: 'Por favor verifique seu e-mail',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+            
+            <?php
+  
+        } catch (\Throwable $th) {
+           
+        }
+  
+  
+      }
+
+      public static function RandonSenha($length = 7){
+
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        $max = strlen($codeAlphabet);
+    
+        for ($i=0; $i < $length; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max-1)];
+        }
+    
+        return $token;
     }
 }
 

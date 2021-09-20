@@ -19,6 +19,8 @@ private $bairro;
 private $complemento;
 private $foto;
 private $senha;
+private $servico;
+
 
 
     public function SetId($id){
@@ -153,4 +155,11 @@ private $senha;
         return $this->senha;
     }
 
+    public function SetServico($servico){
+        $this->servico = $servico;
+
+    }
+    public function GetServico(){
+        return $this->servico;
+    }
 }

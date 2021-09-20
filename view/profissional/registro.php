@@ -38,12 +38,13 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetComplemento($_POST['complemento']);
             $ClassProfissional->SetTelefone($_POST['telefone']);
             $ClassProfissional->SetEmail($_POST['email']);
+            $ClassProfissional->SetServico($_POST['servico']);
 
-            
-
-
+           
             $Profissional = new ProfissionalDAO();
             $Profissional->insertProfissional($ClassProfissional);
+          
+
         } else {
 
 ?>
@@ -179,17 +180,17 @@ if (isset($_POST['salvarProfissional'])) {
                         <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                     </div>
                     <div class="col-md-12"> 
-                        <select class="form-select">
+                        <select class="form-select" name="servico">
                             <option selected>Tipo de Serviço</option>
-                            <option value="1">Artífice (Pedreiro,Pintor e Hidráulico)</option>
-                            <option value="2">Babá</option>
-                            <option value="3">Cabelereiro</option>
-                            <option value="4">Cuidador(a) de Idoso</option>
-                            <option value="5">Dedetização</option>
-                            <option value="6">Diarista</option>
-                            <option value="7">Lavanderia</option>
-                            <option value="8">Manutenção de Ar Condicionado</option>
-                            <option value="9">Motoboy</option>
+                            <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
+                            <option value="Babá">Babá</option>
+                            <option value="Cabelereiro">Cabelereiro</option>
+                            <option value="Cuidador(a) de Idoso">Cuidador(a) de Idoso</option>
+                            <option value="Dedetização">Dedetização</option>
+                            <option value="Diarista">Diarista</option>
+                            <option value="Lavanderia">Lavanderia</option>
+                            <option value="Manutenção de Ar Condicionado">Manutenção de Ar Condicionado</option>
+                            <option value="Motoboy">Motoboy</option>
                         </select>
                     </div>
                 </div>
@@ -198,7 +199,7 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row">
 
                     <div class="d-grid gap-2 col-3 mx-auto mt-5">
-                        <button type="submit" name="salvarCliente" class="btn btn-lg orangered">CADASTRAR</button>
+                        <button type="submit" name="salvarProfissional" class="btn btn-lg orangered">CADASTRAR</button>
                     </div>
                 </div>
             </div>
