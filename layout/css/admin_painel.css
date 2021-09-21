@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+.nav-item {
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.container-fluid {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1.5px solid rgba(134, 133, 133, 0.582);
+}
+
+#logo {
+    border-bottom: 1.5px solid rgba(134, 133, 133, 0.582);
+}
+
+#logo img {
+    margin-left: 50px;
+}
+
+#conteudo-left {
+    margin-top: -20px;
+    margin-left: 100px;
+    width: 50%;
+    height: 106.5%;
+    float: left;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.conteudo-right {
+    width: 50%;
+    height: contain;
+    float: right;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/*
+    #conteudo-top {
+        width: 100%;
+        background-color: white;
+    }
+    #caixalupa {
+        width: 550px;
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+    }
+    #botaoarea {
+        background-color: #353b47;
+        border-color: #353b47;
+        padding-left: 15x;
+        margin-right: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        
+    }
+    #ola {
+        color: #001457;
+        background-color: transparent;
+        border-color: transparent;
+        margin-right: 20px;
+        margin-left: 5px;
+    }
+    */
+
+#usuario {
+    border-radius: 50%;
+    width: 200px;
+}
+
+#paineladminbotoes {
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#paineladminright {
+    margin-top: -280%;
+    margin-left: 150%;
+}
+
+#paineladmintexto {
+    font-size: 28px;
+    color: black;
+    margin-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#conteudo-right {
+    width: 50%;
+    height: contain;
+    float: right;
+    background-color: white;
+    padding-left: 150px;
+    margin-top: -50%;
+}
+
+#lupa {
+    background-color: orangered;
+    border-color: orangered;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orangered;
+}
+
+#editarusuario {
+    margin-top: 30px;
+    margin-bottom: -30px;
+}
+
+hr {
+    border: 1px solid #ccc;
+}
+
+p {
+    font-size: 15px;
+}
+
+.row {
+    margin-left: 20%;
+}
+
+@media screen and (max-width: 700px) {
+    .container-fluid {
+        margin-bottom: 50px;
+    }
+    #logo img {
+        margin-left: 6rem;
+    }
+    div.col-md {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .nav_bar {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .row {
+        /* padding-right: 0.8em;*/
+        margin-left: 0px;
+        text-align: center;
+    }
+    .g-5 {
+        position: relative;
+        width: 290px;
+    }
+    .row div {
+        text-align: center;
+        margin-left: 18%;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.637);
+        width: 290px;
+    }
+    .row div a {
+        position: relative;
+        margin-left: 0px;
+        display: block;
+        color: #FFF;
+        margin: 10px;
+        padding: 10px;
+    }
+    .d-flex #caixalupa {
+        width: 300px;
+    }
+    #profissional {
+        position: relative;
+        width: 250px;
+        top: -66px;
+        left: 45%;
+    }
+}
