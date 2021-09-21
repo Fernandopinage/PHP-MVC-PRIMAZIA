@@ -64,24 +64,26 @@ class ProfissionalDAO extends DAO
         $select = $this->con->prepare($sql);
         $select->bindValue(':profissional_id', $id);
         $select->bindValue(':profissional_email', $email);
-        $select->bindValue(':profissional_senha', $id);
+        $select->bindValue(':profissional_id', $id);
         $select->bindValue(':profissional_senha', $senha);
         $select->execute();
 
+        
         if ($select->fetch(PDO::FETCH_ASSOC)) {
-
+            
+            echo $new =  md5($novaSenha);
             echo "sim ";
-
-            $sql2 = "UPDATE `profissional` SET profissional_senha = :profissional_senha where profissional_email = :profissional_email";
+           
+            $sql2 = "UPDATE `profissional` SET `profissional_senha`= :profissional_senha WHERE `profissional_id`= :profissional_id";
             $update = $this->con->prepare($sql2);
-            $update->bindValue(':profissional_senha', md5($novaSenha));
-            $update->bindValue(':profissional_email', $email);
-            $select->execute();
+            $update->bindValue(':profissional_id', $id);
+            $update->bindValue(':profissional_senha', $new);
+            $update->execute();
         }else{
 
             echo "nao ";
         }
-
+        
 
     }
 
@@ -191,17 +193,17 @@ class ProfissionalDAO extends DAO
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Sua senh foi redefinidar',
+                        title: 'Sua senha foi redefinidar',
                         text: 'Por favor verifique seu e-mail',
                         showConfirmButton: false,
                         timer: 3500
                     })
                 </script>
 
-<?php
+            <?php
 
                   Redefinir::Senha($email, $senha,$id,$nome);
-                    echo $email."<br>". $senha."<br>".$id."<br>".$nome;
+                //echo $email."<br>". $senha."<br>".$id."<br>".$nome;
 
 
             } catch (\Throwable $th) {

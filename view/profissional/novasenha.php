@@ -8,9 +8,9 @@ include_once "../../dao/ProfissionalDAO.php";
 if(isset($_GET['key']) and isset($_GET['mail']) and isset($_GET['pass'])){
 
     
-    echo $id = base64_decode($_GET['key']);
-    echo $email = base64_decode($_GET['mail']);
-    echo $senha = $_GET['pass'];
+    $id = base64_decode($_GET['key']);
+    $email = base64_decode($_GET['mail']);
+    $senha = $_GET['pass'];
 }
 
 if (isset($_POST['novasenha'])) {
@@ -23,6 +23,40 @@ if (isset($_POST['novasenha'])) {
         $Profissional = new ProfissionalDAO();
         $Profissional->updateSenha($novaSenha,$id,$email,$senha);
 
+
+        ?>
+
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Senha',
+                text: 'Alterada com sucesso!',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+
+    <?php
+
+    }else{
+
+        ?>
+
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Senha',
+                text: 'Incorretas',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+
+    <?php
 
     }
 }
