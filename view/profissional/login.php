@@ -1,17 +1,17 @@
 <?php
 
 include_once "../../layout/heard.php";
-include_once  "../../class/ClassCliente.php";
-include_once "../../dao/ClienteDAO.php";
+include_once  "../../class/ClassProfissional.php";
+include_once "../../dao/ProfissionalDAO.php";
 
 if (isset($_POST['loginenviar'])) {
 
-    $ClienteClass = new Cliente();
-    $ClienteClass->SetEmail($_POST['email']);
-    $ClienteClass->SetSenha($_POST['senha']);
+    $ProfissionalClass = new Profissional();
+    $ProfissionalClass->SetEmail($_POST['email']);
+    $ProfissionalClass->SetSenha($_POST['senha']);
 
-    $Cliemte = new ClienteDAO();
-    $Cliemte->validarLogin($ClienteClass);
+    $Profissional = new ProfissionalDAO();
+    $Profissional->validarLogin($ProfissionalClass);
 }
 
 ?>

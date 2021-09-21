@@ -18,6 +18,8 @@ class ProfissionalDAO extends DAO
 
         $_SESSION['user'] = array();
         if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
+           
             session_start();
 
             $_SESSION['user'] = array(
@@ -38,7 +40,10 @@ class ProfissionalDAO extends DAO
             );
 
             header('location: ../../view/profissional/painel.php');
+            
         } else {
+
+           
 ?>
 
             <script>
@@ -53,6 +58,7 @@ class ProfissionalDAO extends DAO
 
 
         <?php
+    
         }
     }
 
