@@ -74,6 +74,7 @@ if (isset($_POST['diaristafinal'])) {
                     <div class="row g-12 ms-3 p-2">
                         <label class="fs-3">Que tipo de serviço você precisa?</label>
                         <br><br>
+                        <samp style="color: red;">Campo obrigatório</samp>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Limpeza comercial" name="categoria[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                             <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
@@ -278,6 +279,8 @@ if (isset($_POST['diaristafinal'])) {
                     <div class="row g-12 ms-2 p-2">
                         <label class="fs-3">Tipo da Contratação</label>
                         <br><br>
+                        <samp style="color: red;">Campo obrigatório</samp>
+                        
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="tipocontratacao" id="Avulso" value="avulso">
                             <label class="form-check-label" for="avulso">
