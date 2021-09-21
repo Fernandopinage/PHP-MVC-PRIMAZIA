@@ -37,7 +37,8 @@ if (isset($_POST['diaristafinal'])) {
             'descricao' => $_POST['descricao'],
             'local' => $_POST['local'],
             'dependente' => $_POST['dependente'],
-            'serviço' => $_POST['serviço']
+            'serviço' => $_POST['serviço'],
+            'termo' => $_POST['tipocontratacao']
         );
         $ClassRequest->SetDescricao($dados);
 
@@ -269,13 +270,62 @@ if (isset($_POST['diaristafinal'])) {
                             <button id='botaoEnviar' type="button" id="volta01" onclick="voltando05()" class="btn azulprima btn-lg">VOLTAR</button>
                         </div>
                         <div class="col text-center">
+                            <button id='botaoEnviar' type="button" id="avanca01" onclick="avançando06()" class="btn orangered btn-lg">AVANÇAR</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="pergunta06">
+                    <div class="row g-12 ms-2 p-2">
+                        <label class="fs-3">Tipo da Contratação</label>
+                        <br><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" id="avulso" value="avulso">
+                            <label class="form-check-label" for="avulso">
+                                Serviço Avulso
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" id="mensal"  value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <label class="form-check-label" for="mensal">
+                                Serviço Mensal
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col text-center">
+                            <button id='botaoEnviar' type="button" id="volta01" onclick="voltando06()" class="btn azulprima btn-lg">VOLTAR</button>
+                        </div>
+                        <div class="col text-center">
                             <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
                     </div>
                 </div>
 
             </div>
+
+            <!-- termo de validação Mensal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continuar</button>
+                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </form>
+
+
     </div>
 
     <div class="container" id="registro_logo">
@@ -328,7 +378,7 @@ if (isset($_POST['diaristafinal'])) {
     document.getElementById('pergunta03').style.display = 'none';
     document.getElementById('pergunta04').style.display = 'none';
     document.getElementById('pergunta05').style.display = 'none';
-
+    document.getElementById('pergunta06').style.display = 'none';
 
     function voltando01() {
         document.getElementById('pergunta01').style.display = 'block';
@@ -404,6 +454,19 @@ if (isset($_POST['diaristafinal'])) {
     function avançando05() {
         document.getElementById('pergunta04').style.display = 'none';
         document.getElementById('pergunta05').style.display = 'block';
+
+    }
+
+    function voltando06() {
+
+        document.getElementById('pergunta06').style.display = 'none';
+        document.getElementById('pergunta05').style.display = 'block';
+
+    }
+
+    function avançando06() {
+        document.getElementById('pergunta05').style.display = 'none';
+        document.getElementById('pergunta06').style.display = 'block';
 
     }
 </script>

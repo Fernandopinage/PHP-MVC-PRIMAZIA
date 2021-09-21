@@ -21,6 +21,10 @@ class Mail
         $mail = new PHPMailer(true); // STOP
 
 
+        if(isset($pedido['termo'])){
+
+            $termo = $pedido['termo'];
+        }
 
         if (isset($pedido['tpservico'])) {
 
@@ -110,7 +114,11 @@ class Mail
         if (!empty($opcao)) {
             $text = $text .  "<b><h3>Opcao:</h3> </b>" . $opcao;
         }
- 
+        
+        if(!empty($termo)){
+
+            $text = $text .  "<b><h3>Tipo de Contratação:</h3> </b>" . $termo;
+        }
 
 
         try {
