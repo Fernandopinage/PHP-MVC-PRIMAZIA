@@ -3,46 +3,36 @@ session_start();
 
 
 include_once "../../layout/heard.php";
-include_once  "../../class/ClassCliente.php";
-include_once "../../dao/ClienteDAO.php";
+include_once  "../../class/ClassAdmin.php";
+include_once "../../dao/AdminDAO.php";
 
-if (isset($_POST['salvarCliente'])) {
-
-
-    if (!empty($_POST['nome']) and !empty($_POST['senha']) and !empty($_POST['cpf']) and !empty($_POST['cep']) and !empty($_POST['telefone']) and !empty($_POST['email'])) {
-
-        if ($_POST['senha'] === $_POST['confirmar']) {
+if (isset($_POST['salvarAdmin'])) {
 
 
-            if(isset($_FILES['imagem']['name'])){
+    if (!empty($_POST['admnome']) and !empty($_POST['admcpf']) and !empty($_POST['admsenha']) and !empty($_POST['admconfirmar']) and !empty($_POST['admemail'])) {
+
+        if ($_POST['admsenha'] === $_POST['admconfirmar']) {
+
+
+            if (isset($_FILES['imagem']['name'])) {
                 $imagem = $_FILES['imagem']['name'];
                 $diretorio = '../../images/';
                 //$diretorioPDF = '../pdf/';
                 move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
             }
-            
-            $ClassCliente = new Cliente();
-            $ClassCliente->SetFoto($imagem);
-            $ClassCliente->SetOpcao($_POST['opt']);
-            $ClassCliente->SetRazao($_POST['razao']);
-            $ClassCliente->SetNome($_POST['nome']);
-            $ClassCliente->SetSenha($_POST['senha']);
-            $ClassCliente->SetCpf($_POST['cpf']);
-            $ClassCliente->SetCep($_POST['cep']);
-            $ClassCliente->SetUf($_POST['uf']);
-            $ClassCliente->SetCidade($_POST['cidade']);
-            $ClassCliente->SetLogradouro($_POST['logradouro']);
-            $ClassCliente->SetNumero($_POST['numerp']);
-            $ClassCliente->SetBairro($_POST['bairro']);
-            $ClassCliente->SetComplemento($_POST['complemento']);
-            $ClassCliente->SetTelefone($_POST['telefone']);
-            $ClassCliente->SetEmail($_POST['email']);
 
-            
+            $ClassAdmin = new Admin();
+            $ClassAdmin->SetNome($_POST['admnome']);
+            $ClassAdmin->SetFoto($imagem);
+            $ClassAdmin->SetCpf($_POST['admcpf']);
+            $ClassAdmin->SetSenha($_POST['admsenha']);
+            $ClassAdmin->SetEmail($_POST['admemail']);
 
+            $Admin = new AdminDAO();
+            $Admin->insertAdmin($ClassAdmin);
 
-            $Cliente = new ClienteDAO();
-            $Cliente->insertCliente($ClassCliente);
+         
+
         } else {
 
 ?>
@@ -90,7 +80,7 @@ if (isset($_POST['salvarCliente'])) {
             </div>
 
             <div class="title text-center">
-                <p>REGISTRO CLIENTE</p>
+                <p>REGISTRO ADMIN</p>
             </div>
 
 
@@ -101,89 +91,37 @@ if (isset($_POST['salvarCliente'])) {
                             <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
                             <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
                         </div>
-                        
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
-                        <label class="form-check-label" for="pessoa" id="j">
-                            Pessoa Juridica
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
-                        <label class="form-check-label" for="pessoa" id="f">
-                            Pessoa Fisica
-                        </label>
+
                     </div>
                 </div>
                 <div id="Pfisica">
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
-                            <input type="text" name="razao" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
+                            <input type="text" name="admnome" id="admnome" class="form-control" placeholder="Nome" aria-label="Nome do administrador">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                            <input type="text" name="admcpf" id="admcpf" class="form-control cpf-mask" placeholder="CPF" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                        <input type="password" name="admsenha" id="admsenha" class="form-control" placeholder="Senha" aria-label="">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <input type="password" name="admconfirmar" id="admconfirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
-
                 <div class="row g-3 mt-1">
-                    <div class="col-md-6">
-                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
+                    <div class="col-md-12">
+                        <input type="email" name="admemail" id="admemail" class="form-control" placeholder="E-mail" aria-label="">
                     </div>
                 </div>
-
-
-                <div class="row g-3 mt-1">
-                    <div class="col-md-6">
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="logradouro" id="rua" class="form-control" placeholder="Endereço ">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" name="numerp" id="numero" class="form-control" placeholder="Nº ">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" name="uf" id="uf" class="form-control" placeholder="UF">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="cidade" id="cidade" class="form-control " placeholder="Cidade">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="bairro" id="bairro" class="form-control " placeholder="Bairro">
-                    </div>
-                    
-                    <div class="col-md-6">
-                        <input type="text" name="complemento" id="complemento" class="form-control " placeholder="Complemento">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
-                    </div>
-                </div>
-                
-
                 <div class="row">
 
                     <div class="d-grid gap-2 col-3 mx-auto mt-5">
-                        <button type="submit" name="salvarCliente" class="btn btn-lg orangered">CADASTRAR</button>
+                        <button type="submit" name="salvarAdmin" class="btn btn-lg orangered">CADASTRAR</button>
                     </div>
                 </div>
             </div>
@@ -196,25 +134,6 @@ if (isset($_POST['salvarCliente'])) {
 
 
 </div>
-
-<script>
-    
-
-    function juridica() {
-
-        var Pfisica = document.getElementById('Pfisica').style.display = "block";
-        
-
-    }
-
-    function fisica() {
-
-        var Pfisica = document.getElementById('Pfisica').style.display = "none";
-       
-
-    }
-</script>
-
 
 
 <script>
@@ -249,21 +168,19 @@ if (isset($_POST['salvarCliente'])) {
 </script>
 
 <script>
+    $('#editarusuario').click(function() {
+        formFile.executar();
+    });
 
-$('#editarusuario').click(function(){
-    formFile.executar();
-});
+    $('#formFile').change(function() {
 
-$('#formFile').change(function(){
-
-   const file = $(this)[0].files[0];
-   const fileReader = new FileReader()
-   fileReader.onloadend = function(){
-    $('#editarusuario').attr('src',fileReader.result)
-   }
-   fileReader.readAsDataURL(file)
-});
-
+        const file = $(this)[0].files[0];
+        const fileReader = new FileReader()
+        fileReader.onloadend = function() {
+            $('#editarusuario').attr('src', fileReader.result)
+        }
+        fileReader.readAsDataURL(file)
+    });
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
