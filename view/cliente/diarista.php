@@ -279,13 +279,13 @@ if (isset($_POST['diaristafinal'])) {
                         <label class="fs-3">Tipo da Contratação</label>
                         <br><br>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipocontratacao" id="avulso" value="avulso">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" id="Avulso" value="avulso">
                             <label class="form-check-label" for="avulso">
                                 Serviço Avulso
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipocontratacao" id="mensal"  value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" id="Mensal"  value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <label class="form-check-label" for="mensal">
                                 Serviço Mensal
                             </label>
