@@ -23,23 +23,6 @@ if (isset($_POST['novasenha'])) {
         $Profissional = new ProfissionalDAO();
         $Profissional->updateSenha($novaSenha,$id,$email,$senha);
 
-
-        ?>
-
-
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Senha',
-                text: 'Alterada com sucesso!',
-                showConfirmButton: false,
-                timer: 3500
-            })
-        </script>
-
-    <?php
-
     }else{
 
         ?>
@@ -70,7 +53,7 @@ if (isset($_POST['novasenha'])) {
     </div>
 
     <div class="title text-center">
-        <p>REDEFINIR SENHAL</p>
+        <p>REDEFINIR SENHA</p>
    
 
     </div>

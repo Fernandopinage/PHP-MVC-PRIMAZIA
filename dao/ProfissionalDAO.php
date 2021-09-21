@@ -71,17 +71,51 @@ class ProfissionalDAO extends DAO
         
         if ($select->fetch(PDO::FETCH_ASSOC)) {
             
-            echo $new =  md5($novaSenha);
-            echo "sim ";
+            $new =  md5($novaSenha);
+            
            
             $sql2 = "UPDATE `profissional` SET `profissional_senha`= :profissional_senha WHERE `profissional_id`= :profissional_id";
             $update = $this->con->prepare($sql2);
             $update->bindValue(':profissional_id', $id);
             $update->bindValue(':profissional_senha', $new);
             $update->execute();
+
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Senha alterada com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+
+            header('Refresh: 5.0; url=../profissional/login.php');
+
         }else{
 
-            echo "nao ";
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text:'ao tentar alterar senha por favor entre em contato com os administradores',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+
         }
         
 
