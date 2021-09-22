@@ -1,12 +1,12 @@
 <?php
 include_once "../../layout/heard.php";
 
-//session_start();
+session_start();
 
-//if (empty($_SESSION['user'])) {
+if (empty($_SESSION['admin'])) {
 
-    //header('Refresh: 0.1; url=login.php');
-//}
+    header('Refresh: 0.1; url=login.php');
+}
 
 ?>
 <link href="../../layout/css/admin_painel.css" rel="stylesheet">
@@ -14,14 +14,13 @@ include_once "../../layout/heard.php";
     <img src="../../images/primazia.png" alt="" width="250" height="190">
 </div>
 
-
 <div class="container">
 
     <div class="text-center">
         <?php
-        if (!empty($_SESSION['user']['foto'])) {
+        if (!empty($_SESSION['admin']['foto'])) {
         ?>
-            <img id="usuario" src="../../images/<?php echo $_SESSION['user']['foto'] ?>" class="img"><br><br>
+            <img id="usuario" src="../../images/<?php echo $_SESSION['admin']['foto'] ?>" class="img"><br><br>
         <?php
 
         } else {
@@ -31,7 +30,7 @@ include_once "../../layout/heard.php";
         }
         ?>
 
-        <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'] ?></h5><br>
+        <h5 style="text-transform: capitalize;"><?php echo $_SESSION['admin']['nome'] ?></h5><br>
         <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
     </div>
 

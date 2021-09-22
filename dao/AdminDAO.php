@@ -55,6 +55,54 @@ class AdminDAO extends DAO
 
     }
 
+
+    public function validarLogin($AdiminClass){
+
+
+        $sql = "SELECT * FROM `admin` WHERE `admin_email` =:admin_email and `admin_senha` =:admin_senha";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':admin_email', $AdiminClass->GetEmail());
+        $select->bindValue(':admin_senha', md5($AdiminClass->GetSenha()));
+        $select->execute();
+
+        $_SESSION['user'] = array();
+
+        
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+            session_start();
+
+            $_SESSION['admin'] = array(
+
+                'id' => $row['admin_id'],
+                'nome' => $row['admin_nome'],
+                'email' => $row['admin_email'],
+                'foto' => $row['admin_foto'],
+                'administrador' => $row['administrador']
+                
+
+            );
+            header('location: ../../view/admin/painel.php');
+        }else{
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Dados inválidos',
+                    text:'E-mail ou senha invalidos',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+            
+        }
+    }
+
     public function updateSenha($novaSenha,$id,$email,$senha){
 
         $sql = "SELECT * FROM `admin` WHERE admin_id = :admin_id and admin_email = :admin_email and admin_senha = :admin_senha";

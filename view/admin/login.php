@@ -1,17 +1,18 @@
 <?php
 
 include_once "../../layout/heard.php";
-include_once  "../../class/ClassCliente.php";
-include_once "../../dao/ClienteDAO.php";
+include_once  "../../class/ClassAdmin.php";
+include_once "../../dao/AdminDAO.php";
 
 if (isset($_POST['loginenviar'])) {
 
-    $ClienteClass = new Cliente();
-    $ClienteClass->SetEmail($_POST['email']);
-    $ClienteClass->SetSenha($_POST['senha']);
+    $AdiminClass = new Admin();
+    $AdiminClass->SetEmail($_POST['email']);
+    $AdiminClass->SetSenha($_POST['senha']);
 
-    $Cliemte = new ClienteDAO();
-    $Cliemte->validarLogin($ClienteClass);
+    $Admin = new AdminDAO();
+    $Admin->validarLogin($AdiminClass);
+
 }
 
 ?>
@@ -23,7 +24,7 @@ if (isset($_POST['loginenviar'])) {
     </div>
 
     <div class="title text-center">
-        <p>LOGIN PROFISSIONAL</p>
+        <p>LOGIN ADMINISTRADOR</p>
         <h5 id="registro">Já possui um cadastro?</h5>
 
     </div>
