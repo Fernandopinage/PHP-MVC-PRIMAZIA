@@ -2,7 +2,7 @@
 
 include_once "../../class/ClassCliente.php";
 include_once "../../dao/DAO.php";
-
+require_once __DIR__ . "../../mail/cliente_redefinir.php";
 class ClienteDAO extends DAO
 {
 
@@ -55,6 +55,59 @@ class ClienteDAO extends DAO
         }
     }
 
+    public function updateSenha($novaSenha,$id,$email,$senha){
+
+
+        $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL=:CLIENTE_EMAIL and CLIENTE_ID =:CLIENTE_ID";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':CLIENTE_EMAIL', $email);
+        $select->bindValue(':CLIENTE_ID', $id);
+        $select->execute();
+
+        if($select->fetch(PDO::FETCH_ASSOC)){
+            $new =  md5($novaSenha);
+            $sql2 = "UPDATE `cliente` SET CLIENTE_SENHA=:CLIENTE_SENHA where CLIENTE_ID=:CLIENTE_ID";
+            $update = $this->con->prepare($sql2);
+            $update->bindValue(':CLIENTE_ID', $id);
+            $update->bindValue(':CLIENTE_SENHA', $new);
+            $update->execute();
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Senha alterada com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+                header('Refresh: 3.5; url=../cliente/login.php');
+        }else{
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text:'ao tentar alterar senha por favor entre em contato com os administradores',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+
+        }
+
+    }
 
     public function redefinirSenha($ClassCliente){
 
@@ -80,6 +133,8 @@ class ClienteDAO extends DAO
                
                try {
                    $update->execute();
+
+
                    ?>
 
 
@@ -95,6 +150,10 @@ class ClienteDAO extends DAO
                    </script>
    
                <?php
+              
+                RedefinirCliente::Senha($email, $senha,$id,$nome);
+                
+
                } catch (\Throwable $th) {
                 ?>
 
