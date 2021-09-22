@@ -153,11 +153,41 @@ class AdminDAO extends DAO
 
 
             } catch (\Throwable $th) {
+
+                ?>
+
+
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Erro',
+                        text: 'Por favor entre em contato com administração!',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+
+            <?php
             }
 
 
         }else{
-            echo "nao";
+            ?>
+
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro, E-mail invalidor',
+                    text: 'Por favor informe um e-mail valido',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+        <?php
         }
 
     }

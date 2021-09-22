@@ -40,11 +40,14 @@ include_once "../../dao/ClienteDAO.php";
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
                 <input type="password" class="form-control" name="senha" id="exampleInputPassword1">
             </div>
-            <div>
+            <div class="col-6">
                 <a id="registro" href="../cliente/registro.php">Criar uma conta</a>
                 
             </div>
-            <div class="d-grid text-center">
+            <div class="col-6 text-end">
+                <a id="registro" href="../cliente/redefinir.php">Esqueceu Senha?</a>
+            </div>
+            <div class="d-grid text-center" style="margin-top: 40px;">
                 <button type="submit" name="loginenviar" class="btn btn-lg orangered">ENVIAR</button>
             </div>
         </form>

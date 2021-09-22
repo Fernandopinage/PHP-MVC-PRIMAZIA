@@ -55,6 +55,84 @@ class ClienteDAO extends DAO
         }
     }
 
+
+    public function redefinirSenha($ClassCliente){
+
+        $sql = "SELECT * FROM `cliente` WHERE `CLIENTE_EMAIL` = :CLIENTE_EMAIL";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
+        $select->execute();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+               $id =  $row['CLIENTE_ID'];
+               $nome = $row['CLIENTE_NOME'];
+               $email = $ClassCliente->GetEmail();
+               $senha = ClienteDAO::RandonSenha();
+               $senha = base64_encode($senha);
+
+
+               $sql2 = "UPDATE `cliente` SET  CLIENTE_SENHA = :CLIENTE_SENHA where CLIENTE_ID = :CLIENTE_ID and CLIENTE_EMAIL = :CLIENTE_EMAIL";
+               $update = $this->con->prepare($sql2);
+               $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
+               $update->bindValue(':CLIENTE_ID', $id);
+               $update->bindValue(':CLIENTE_SENHA', $senha);
+               
+               try {
+                   $update->execute();
+                   ?>
+
+
+                   <script>
+                       Swal.fire({
+                           position: 'center',
+                           icon: 'success',
+                           title: 'Sua senha foi redefinidar',
+                           text: 'Por favor verifique seu e-mail',
+                           showConfirmButton: false,
+                           timer: 3500
+                       })
+                   </script>
+   
+               <?php
+               } catch (\Throwable $th) {
+                ?>
+
+
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Erro',
+                        text: 'Por favor entre em contato com administração!',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+
+            <?php
+               }
+               
+        }else{
+
+            ?>
+
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro, E-mail invalidor',
+                    text: 'Por favor informe um e-mail valido',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+        <?php
+        }
+    }
+
     public function insertCliente($ClassCliente)
     {
 
@@ -97,11 +175,10 @@ class ClienteDAO extends DAO
 
 
         <?php
-        header('location: ../../view/cliente/login.php');
-
+            header('location: ../../view/cliente/login.php');
         } catch (PDOException $e) {
 
-            
+
         ?>
 
             <script>
@@ -116,9 +193,8 @@ class ClienteDAO extends DAO
 
 <?php
 
-                
+
         }
-        
     }
 
     public static function logout($dados)
@@ -127,6 +203,22 @@ class ClienteDAO extends DAO
         session_destroy();
 
         header('location: http://primazia.agenciaprogride.com.br/home-resumida-cdaivpysmvvotjwotzxbvm/');
+    }
+
+    public static function RandonSenha($length = 7)
+    {
+
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet .= "0123456789";
+        $max = strlen($codeAlphabet);
+
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max - 1)];
+        }
+
+        return $token;
     }
 }
 
