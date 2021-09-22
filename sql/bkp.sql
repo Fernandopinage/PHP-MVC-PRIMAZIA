@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Set-2021 às 22:51
+-- Tempo de geração: 22-Set-2021 às 22:17
 -- Versão do servidor: 10.4.18-MariaDB
 -- versão do PHP: 8.0.3
 
@@ -40,8 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_nome`, `admin_senha`, `admin_email`, `admin_foto`) VALUES
-(1, 'nome', '63a9f0ea7bb98050796b649e85481845', 'luiz.c@progride.com.br', 'pp.jpg'),
-(2, 'nome', 'root', 'email@email.com.br', '');
+(4, 'luiz fernando pinage coutinho', '63a9f0ea7bb98050796b649e85481845', 'luiz.c@progride.com.br', 'pp.jpg');
 
 -- --------------------------------------------------------
 
@@ -74,7 +73,7 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`) VALUES
 (14, 'Rhuan', '053.893.142-63', 'rhuan.v@progride.com.br', '(92) 99999-9999', 69, '', '202cb962ac59075b964b07152d234b70', 'AM', 'Manaus', 'Rua Hannibal Porto', 'Santa Luzia', 'casa 01', 'F', '', '285'),
-(15, 'luiz fernando pinage', '004.963.342-20', 'luiz.c@progride.com.br', '(92) 99999-9999', 69093, '', '202cb962ac59075b964b07152d234b70', 'AM', 'Manaus', 'Rua Pio IX', 'Monte das Oliveiras', 'proximo ao manoa', 'F', '', '034'),
+(15, 'luiz fernando pinage', '004.963.342-20', 'luiz.c@progride.com.br', '(92) 99999-9999', 69093, '', '63a9f0ea7bb98050796b649e85481845', 'AM', 'Manaus', 'Rua Pio IX', 'Monte das Oliveiras', 'proximo ao manoa', 'F', '', '034'),
 (16, 'aaa', '0045999559595', 'luizfernandoluck@hotmail.com', '(92) 99999-9999', 69006262, '', '63a9f0ea7bb98050796b649e85481845', 'AM', 'Manaus', 'Rua 11 de Agosto', 'Gilberto Mestrinho', 'complemt', 'F', '', '034'),
 (17, 'luiz', '011155245225', 'luiz@homail.com', '(92) 99999-9999', 69006262, '', '202cb962ac59075b964b07152d234b70', 'AM', 'Manaus', 'Rua 11 de Agosto', 'Gilberto Mestrinho', 'complemento', 'F', '', '');
 
@@ -189,7 +188,7 @@ ALTER TABLE `profissional`
 -- AUTO_INCREMENT de tabela `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `cliente`

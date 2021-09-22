@@ -31,7 +31,7 @@ if (empty($_SESSION['admin'])) {
         ?>
 
         <h5 style="text-transform: capitalize;"><?php echo $_SESSION['admin']['nome'] ?></h5><br>
-        <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
+        
     </div>
 
 
@@ -42,7 +42,7 @@ if (empty($_SESSION['admin'])) {
     <nav class="nav_bar">
         <div class="row g-4">
             <div class="col-md">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="../admin/cadastro.php">
                     <img src="../../images/novousuario.png" alt="" width="80" height="80">
                 </a>
                 <p class="fs-6"> Cadastrar Usuário</p>
