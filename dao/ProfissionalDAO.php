@@ -127,6 +127,68 @@ class ProfissionalDAO extends DAO
 
     }
 
+    public function AdminInserirProfissional($ClassProfissional){
+
+        $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`) 
+        VALUES (null, :profissional_nome, :profissional_option, :profissional_razao, :profissional_email, :profissional_cpf, :profissional_telefone, :profissional_cep, :profissional_uf, :profissional_logradouro, :profissional_num, :profissional_cidade, :profissional_bairro, :profissional_complemento, :profissional_foto, :profissional_senha, :profissional_servico)";
+        $insert = $this->con->prepare($sql);
+        $insert->bindValue(':profissional_nome', $ClassProfissional->GetNome());
+        $insert->bindValue(':profissional_option', $ClassProfissional->GetOpcao());
+        $insert->bindValue(':profissional_razao', $ClassProfissional->GetRazao());
+        $insert->bindValue(':profissional_email', $ClassProfissional->GetEmail());
+        $insert->bindValue(':profissional_cpf', $ClassProfissional->GetCpf());
+        $insert->bindValue(':profissional_telefone', $ClassProfissional->GetTelefone());
+        $insert->bindValue(':profissional_cep', $ClassProfissional->GetCep());
+        $insert->bindValue(':profissional_logradouro', $ClassProfissional->GetLogradouro());
+        $insert->bindValue(':profissional_num', $ClassProfissional->GetNumero());
+        $insert->bindValue(':profissional_cidade', $ClassProfissional->GetCidade());
+        $insert->bindValue(':profissional_bairro', $ClassProfissional->GetBairro());
+        $insert->bindValue(':profissional_complemento', $ClassProfissional->GetComplemento());
+        $insert->bindValue(':profissional_foto', '');
+        $insert->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
+        $insert->bindValue(':profissional_servico', $ClassProfissional->GetServico());
+        $insert->bindValue(':profissional_uf', $ClassProfissional->GetUf());
+        try {
+            $insert->execute();
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Cadastro Realizado com Sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+
+        <?php
+            
+        } catch (PDOException $e) {
+
+
+
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Registro Inválido',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+            <?php
+
+
+        }
+
+    }
+
     public function insertProfissional($ClassProfissional)
     {
 
@@ -242,7 +304,7 @@ class ProfissionalDAO extends DAO
 
             <?php
 
-                  Redefinir::Senha($email, $senha,$id,$nome);
+            RedefinirProfissional::Senha($email, $senha,$id,$nome);
                 //echo $email."<br>". $senha."<br>".$id."<br>".$nome;
 
 

@@ -11,7 +11,7 @@ require "../../vendor/autoload.php";
 
 //Create an instance; passing `true` enables exceptions
 
-class Redefinir
+class RedefinirProfissional
 {
 
     public static function Senha($email,$senha,$id,$nome){
