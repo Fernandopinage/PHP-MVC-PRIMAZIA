@@ -80,7 +80,7 @@ if (isset($_POST['salvarAdmin'])) {
             </div>
 
             <div class="title text-center">
-                <p>REGISTRO ADMIN</p>
+                <p>REGISTRO ADMINISTRADOR</p>
             </div>
 
 
