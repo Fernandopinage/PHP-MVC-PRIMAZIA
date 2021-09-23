@@ -118,4 +118,20 @@ class CategoriaDAO extends DAO{
         return $array;
 
     }
+
+    public  function PedidosProfissionais($categoria,$bairro){
+
+        $sql = "SELECT * FROM `profissional` WHERE profissional_servico = :profissional_servico";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':profissional_servico',$categoria);
+        $select->execute();
+
+        if($select->fetch(PDO::FETCH_ASSOC)){
+            echo "sim"; 
+        }else{
+            echo "nao";
+        }
+
+
+    }
 }
