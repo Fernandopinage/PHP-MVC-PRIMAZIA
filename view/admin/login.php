@@ -25,7 +25,7 @@ if (isset($_POST['loginenviar'])) {
 
     <div class="title text-center">
         <p>LOGIN ADMINISTRADOR</p>
-        <h5 id="registro">Já possui um cadastro?</h5>
+        
 
     </div>
     <div class="container">
