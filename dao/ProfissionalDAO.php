@@ -2,6 +2,7 @@
 
 include_once "../../class/ClassProfissional.php";
 include_once "../../dao/DAO.php";
+include_once "../../dao/Subcategoria.php";
 require_once __DIR__ . "../../mail/profissional_redefinir.php";
 
 class ProfissionalDAO extends DAO
@@ -189,7 +190,7 @@ class ProfissionalDAO extends DAO
 
     }
 
-    public function insertProfissional($ClassProfissional)
+    public function insertProfissional($ClassProfissional,$subcategoria)
     {
 
         $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`) 
@@ -213,25 +214,11 @@ class ProfissionalDAO extends DAO
         $insert->bindValue(':profissional_uf', $ClassProfissional->GetUf());
         try {
             $insert->execute();
-        ?>
+            $subcat = new SubcategoriaDAO();
+            $subcat->insertSubcategoria($ClassProfissional,$subcategoria);
 
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Cadastro Realizado com Sucesso',
-                    showConfirmButton: false,
-                    timer: 3500
-                })
-            </script>
-
-
-
-        <?php
-            header('location: ../../view/profissional/login.php');
+           
         } catch (PDOException $e) {
-
-
 
         ?>
 

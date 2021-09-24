@@ -40,9 +40,12 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetEmail($_POST['email']);
             $ClassProfissional->SetServico($_POST['servico']);
 
+       
+            $subcategoria = $_POST['categoria'];
+           
 
             $Profissional = new ProfissionalDAO();
-            $Profissional->insertProfissional($ClassProfissional);
+            $Profissional->insertProfissional($ClassProfissional,$subcategoria);
         } else {
 
 ?>
