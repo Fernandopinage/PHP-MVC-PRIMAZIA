@@ -100,6 +100,7 @@ if (isset($_POST['finalizando'])) {
                                 Alvejar
                             </label>
                         </div>
+                        <!--
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Bolsas" name="categoria[]" id="bolsas" title="bolsas.">
                             <label class="form-check-label" for="bolsas" title="bolsas.">
@@ -112,6 +113,7 @@ if (isset($_POST['finalizando'])) {
                                 Sapatos
                             </label>
                         </div>
+                        -->
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="outros" title="Especificações Extras">
                             <label class="form-check-label" for="outros" title="Outros."> Outros
