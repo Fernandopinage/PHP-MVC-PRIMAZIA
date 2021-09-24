@@ -29,6 +29,8 @@ class CategoriaDAO extends DAO{
       $insert->bindValue(':pedido_protocolo',$ClassRequest->GetProtocolo());
       $insert->bindValue(':pedido_numero',$ClassRequest->GetNumero());
 
+
+      
       $cidade = $ClassRequest->GetCidade();
       $rua = $ClassRequest->GetLogradouro();
       $bairro = $ClassRequest->GetBairro();
@@ -68,7 +70,7 @@ class CategoriaDAO extends DAO{
 
     <?php
 
-        header('Refresh: 5.0; url=painel.php');
+        //header('Refresh: 5.0; url=painel.php');
 
       } catch (PDOException $e) {
           echo $e->getMessage();

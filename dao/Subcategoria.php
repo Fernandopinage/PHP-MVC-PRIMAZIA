@@ -1,6 +1,6 @@
 <?php
 include_once "../../class/ClassSubcategoria.php";
-
+include_once "../../dao/DAO.php";
 
 class SubcategoriaDAO extends DAO
 {
@@ -37,8 +37,45 @@ class SubcategoriaDAO extends DAO
         </script>
 
 
-<?php
+            <?php
         header('location: ../../view/profissional/login.php');
         
     }
+
+    public function selectProfissionalSub($categoria){
+
+        $categoria = explode(",",$categoria);
+
+        $tamanho = count($categoria);
+      
+        $lista = array();
+        $array = array();
+        for($i=0;$i<$tamanho;$i++){
+
+            $sql = "SELECT * FROM `profissional` inner join subcategoria on subcategoria_cnpj = profissional_cpf WHERE subcategoria_descricao=:subcategoria_descricao";
+            $select = $this->con->prepare($sql);
+            $select->bindValue(':subcategoria_descricao', $categoria[$i]);
+            $select->execute();
+
+            while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+                $array[] = array(
+                'cnpj' => $row['profissional_cpf'],
+                'email' => $row['profissional_email'],
+                'nome' => $row['profissional_nome'],
+                'telefone' => $row['profissional_telefone']
+                
+                );
+            }
+            
+            $lista = $array;
+        }
+        
+
+
+        return $lista;
+    }
+
+
+
 }

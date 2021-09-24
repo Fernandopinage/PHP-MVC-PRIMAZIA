@@ -33,7 +33,7 @@ if (isset($_POST['finalizando'])) {
         $dados = array(
             'tpservico' => 'Lavanderia',
             'categoria' => array_filter($_POST['categoria']),
-            'descricao' => $_POST['descricao'],
+            'descricao' => isset($_POST['descricao']),
             'quantidade' =>  array_filter($_POST['quantidade'])
         );
         $ClassRequest->SetDescricao($dados);
