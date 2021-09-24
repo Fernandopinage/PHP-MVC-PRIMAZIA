@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require "../../vendor/autoload.php";
-include_once "../dao/CategoriaDAO.php";
+//include_once "../dao/CategoriaDAO.php";
 
 //Create an instance; passing `true` enables exceptions
 
