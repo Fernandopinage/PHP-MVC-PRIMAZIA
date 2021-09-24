@@ -55,7 +55,7 @@ if (empty($_SESSION['admin'])) {
     </div>
 
             <div class="col-md">
-                <a class="navbar-brand" href="../cliente/meu_pedidos.php">
+                <a class="navbar-brand" href="../admin/pedidos.php">
                     <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-6">Pedidos G2S</p>

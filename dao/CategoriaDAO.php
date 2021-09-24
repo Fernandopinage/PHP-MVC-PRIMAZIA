@@ -109,8 +109,21 @@ class CategoriaDAO extends DAO{
           
             $array[] = array(
 
+                'id' => $row['pedido_id'],
+                'nome' => $row['pedido_nome'],
+                'telefone' => $row['pedido_telefone'],
+                'email' => $row['pedido_email'],
+                'cpf' => $row['pedido_cpf'],
+                'cep' => $row['pedido_cep'],
                 'data' => $row['pedido_data'],
-                'pedido' => json_decode($row['pedido_descricao'])
+                'descricao' => json_decode($row['pedido_descricao']),
+                'uf' => $row['pedido_uf'],
+                'cidade' => $row['pedido_cidade'],
+                'logradouro' => $row['pedido_logradouro'],
+                'bairro' => $row['pedido_bairro'],
+                'complemento' => $row['pedido_complemento'],
+                'protocolo' => $row['pedido_protocolo'],
+                'numero' => $row['pedido_numero']
             );
            
            
