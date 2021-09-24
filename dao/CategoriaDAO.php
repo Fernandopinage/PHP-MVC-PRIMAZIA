@@ -11,8 +11,8 @@ class CategoriaDAO extends DAO{
     public function insertReparos($ClassRequest){
       
      
-      $sql = "INSERT INTO `pedido`(`pedido_id`, `pedido_nome`, `pedido_telefone`, `pedido_email`, `pedido_cpf`, `pedido_cep`, `pedido_data`, `pedido_descricao`, `pedido_uf`, `pedido_cidade`, `pedido_logradouro`, `pedido_bairro`, `pedido_complemento`, `pedido_protocolo`, `pedido_numero`) 
-      VALUES (null, :pedido_nome, :pedido_telefone, :pedido_email, :pedido_cpf, :pedido_cep, :pedido_data, :pedido_descricao, :pedido_uf, :pedido_cidade, :pedido_logradouro, :pedido_bairro, :pedido_complemento, :pedido_protocolo, :pedido_numero)";
+      $sql = "INSERT INTO `pedido`(`pedido_id`, `pedido_nome`, `pedido_telefone`, `pedido_email`, `pedido_cpf`, `pedido_cep`, `pedido_data`, `pedido_descricao`, `pedido_uf`, `pedido_cidade`, `pedido_logradouro`, `pedido_bairro`, `pedido_complemento`, `pedido_protocolo`, `pedido_numero`, `pedido_status`) 
+      VALUES (null, :pedido_nome, :pedido_telefone, :pedido_email, :pedido_cpf, :pedido_cep, :pedido_data, :pedido_descricao, :pedido_uf, :pedido_cidade, :pedido_logradouro, :pedido_bairro, :pedido_complemento, :pedido_protocolo, :pedido_numero, :pedido_status)";
       $insert = $this->con->prepare($sql);
       $insert->bindValue(':pedido_nome',$ClassRequest->GetNome());
       $insert->bindValue(':pedido_telefone',$ClassRequest->GetTelefone());
@@ -28,7 +28,7 @@ class CategoriaDAO extends DAO{
       $insert->bindValue(':pedido_complemento',$ClassRequest->GetComplemento());
       $insert->bindValue(':pedido_protocolo',$ClassRequest->GetProtocolo());
       $insert->bindValue(':pedido_numero',$ClassRequest->GetNumero());
-
+      $insert->bindValue(':pedido_status', 'A');
 
       
       $cidade = $ClassRequest->GetCidade();
@@ -123,7 +123,8 @@ class CategoriaDAO extends DAO{
                 'bairro' => $row['pedido_bairro'],
                 'complemento' => $row['pedido_complemento'],
                 'protocolo' => $row['pedido_protocolo'],
-                'numero' => $row['pedido_numero']
+                'numero' => $row['pedido_numero'],
+                'status' =>$row['pedido_status']
             );
            
            
@@ -133,6 +134,7 @@ class CategoriaDAO extends DAO{
         return $array;
 
     }
+
 
     public  function PedidosProfissionais($categoria,$bairro){
 
@@ -147,6 +149,31 @@ class CategoriaDAO extends DAO{
             echo "nao";
         }
 
+
+    }
+
+    public function cliente($id){
+
+        $sql = "SELECT * FROM `cliente` WHERE CLIENTE_CPF =:CLIENTE_CPF";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':CLIENTE_CPF',$id);
+        $select->execute();
+        $array = array();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array = array(
+
+                'nome' => $row['CLIENTE_NOME'],
+                'foto' => $row['CLIENTE_FOTO'],
+            );
+
+        }else{
+            echo "não";
+
+        }
+
+        return $array;
 
     }
 }

@@ -31,7 +31,7 @@ class Mail
         if (isset($pedido['tpservico'])) {
 
             $tpservico = $pedido['tpservico'];
-            $tpservico = implode(',', $tpservico);
+           // $tpservico = implode(',', $tpservico);
         }
 
         if (isset($pedido['categoria'])) {

@@ -20,7 +20,7 @@ $dados = $ClassPedido->pedidos();
     <table class="table table-hover">
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
             <tr>
-                <th scope="col">Status</th>
+                <th class="text-center" scope="col">Status</th>
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Telefone</th>
@@ -36,7 +36,17 @@ $dados = $ClassPedido->pedidos();
 
             ?>
                 <tr data-bs-toggle="modal" data-bs-target="#view<?php echo $dados['id'];?>">
-                    <td></td>
+                    <td class="text-center"><?php
+                    
+                    if($dados['status'] === 'A'){
+                       ?> <img src="../../icons/1.png" width="30"> <?php
+                    }elseif($dados['status'] === 'E'){
+                        ?> <img src="../../icons/2.png" width="30"> <?php
+                    }elseif($dados['status'] === 'F'){
+                        ?> <img src="../../icons/3.png" width="30"> <?php
+                    }
+                    ?>
+                    </td>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo $dados['protocolo']; ?></th>
                     <td><?php echo $dados['nome']; ?></td>
                     <td><?php echo $dados['telefone']; ?></td>
@@ -67,14 +77,33 @@ $dados = $ClassPedido->pedidos();
 
                     <!-- Modal -->
                     <div class="modal fade" id="view<?php echo $dados['id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="staticBackdropLabel">Pedido <?php echo $dados['protocolo']; 
+                                    
+                                    ?></h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+                                    <?php 
+                                    
+                                        $id = $dados['cpf'];
+                                        $perfil = $ClassPedido->cliente($id);
+
+                                        var_dump($perfil);
+
+                                      foreach($perfil as $perfil){
+                                        ?>
+
+                                        <img src="../../images/<?php echo $perfil['foto'] ?>" width="100px">
+
+                                        <?php
+                                      }
+
+                                    ?>
+                            
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
