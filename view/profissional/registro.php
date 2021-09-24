@@ -245,18 +245,18 @@ if (isset($_POST['salvarProfissional'])) {
                             <br>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Desintetização" name="categoria[]" id="desintetizacao" title="">
-                                <label style="font-size:18px;" class="form-check-label" for="desintetizacao" title="">
+                                <label style="font-size:18px;" class="form-check-label" for="desintetizacao" title="Combate e controle das diferentes infestações de pragas urbanas, tais como: Baratas, formiga, aranhas, moscas, gorgulhos de cereais, pulgas, carrapatos, insetos alados, pernilongos, traças e caramujos.">
                                     Desintetização
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Controle de Pragas" name="categoria[]" id="controleRoedores" title="">
+                                <input class="form-check-input" type="checkbox" value="Controle de Pragas" name="categoria[]" id="controleRoedores" title="Combate e controle de ratos.">
                                 <label style="font-size:18px;" class="form-check-label" for="controleRoedores" title="">
                                     Controle de Pragas
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Sanitização" name="categoria[]" id="sanitizacao" title="">
+                                <input class="form-check-input" type="checkbox" value="Sanitização" name="categoria[]" id="sanitizacao" title="Higienização e desinfecção de ambientes e superfícies para prevenção de proliferação de vírus.">
                                 <label style="font-size:18px;" class="form-check-label" for="sanitizacao" title="">
                                     Sanitização
                                 </label>
@@ -268,34 +268,24 @@ if (isset($_POST['salvarProfissional'])) {
                     <div id="pergunta03">
                         <samp style="color: red; font-size:20px;">Selecione uma ou mais opções:</samp>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="7000btus à 12000btus" name="categoria[]" id="7000_12000_btu" title="">
-                            <label style="font-size:18px;" class="form-check-label" for="7000_12000_btu" title="">
-                                7000btus à 12000btus (janela)
+                            <input class="form-check-input" type="checkbox" value="Instalação" name="categoria[]" id="Instalação" title="">
+                            <label style="font-size:18px;" class="form-check-label" for="Instalação" title="Instalação de aparelhos splits e multisplits de diferentes BTU´s com infraestrutura pronta.">
+                            Instalação
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="9000btus à 12000btus" name="categoria[]" id="9000_12000_btu_janela" title="">
-                            <label style="font-size:18px;" class="form-check-label" for="9000_12000_btu_janela" title="">
-                                9000btus à 12000btus
+                            <input class="form-check-input" type="checkbox" value="Limpeza" name="categoria[]" id="Limpeza" title="">
+                            <label style="font-size:18px;" class="form-check-label" for="Limpeza" title="Lavagem de evaporadora e condensadora de aparelhos splits e multisplits de diferentes BTU´s">
+                            Limpeza
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="18000btus à 24000btus" name="categoria[]" id="18000_24000_btu" title="">
-                            <label style="font-size:18px;" class="form-check-label" for="18000_24000_btu" title="">
-                                18000btus à 24000btus
+                            <input class="form-check-input" type="checkbox" value="Recarga de gás" name="categoria[]" id="Recarga de gás" title="">
+                            <label style="font-size:18px;" class="form-check-label" for="Recarga de gás" title="Recarga de gás refrigerante em aparelhos splits e multisplits de diferentes BTU´s.">
+                            Recarga de gás
                             </label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Outros" id="outros2" name="categoria[]" title="Especificações Extras">
-                            <label style="font-size:18px;" class="form-check-label" for="outros" title="Outros."> Outros
-                            </label>
-                            <div id="lista">
-                                <div class="mb-3">
-                                    <label class="form-label"></label>
-                                    <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </div>
+    
                     </div>
                     <div id="pergunta04">
                         <div class="row g-12 ms-3 p-2">
