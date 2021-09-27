@@ -12,9 +12,9 @@ $dados = $ClassPedido->pedidos();
 
 if (isset($_POST['chamado'])) {
 
-    echo $_POST['status'];
+     $_POST['status'];
     echo "<br>";
-    echo $_POST['pessoa'];
+     $_POST['pessoa'];
 }
 
 ?>
