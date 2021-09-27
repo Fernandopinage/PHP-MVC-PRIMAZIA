@@ -9,6 +9,12 @@ if (empty($_SESSION['admin'])) {
 $ClassPedido = new CategoriaDAO();
 $dados = $ClassPedido->pedidos();
 
+
+if (isset($_POST['chamado'])) {
+
+    echo "chamado";
+}
+
 ?>
 <link href="../../layout/css/cliente_painel.css" rel="stylesheet">
 <div id="logo">
@@ -128,7 +134,7 @@ $dados = $ClassPedido->pedidos();
 
                                     <hr>
                                     <p><b>Profissionais que atendem</b></p>
-                                    <form action="">
+                                    <form action="" method="POST">
 
                                         <?php
                                         $pedido = $obj->tpservico;
@@ -140,18 +146,25 @@ $dados = $ClassPedido->pedidos();
 
 
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>Selecione o profissional</option>
+
 
                                             <?php
 
                                             $tamanho = count($dados2);
 
-                                            if($tamanho>0){
+                                            if ($tamanho > 0) {
 
-                                                for ($i = 0; $i < $tamanho; $i++) {
-                                                    echo "<option>" . $dados2[$i]['nome'] . "</option>";
+                                                if ($dados['status'] != 'F') {
+
+
+                                                    echo "<option selected>Selecione o profissional</option>";
+                                                    for ($i = 0; $i < $tamanho; $i++) {
+                                                        echo "<option value='" . $dados2[$i]['nome'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                    }
+                                                } else {
+                                                    echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
                                                 }
-                                            }else{
+                                            } else {
                                                 echo "<option>Não possui profissional para essa demanda!</option>";
                                             }
 
@@ -161,14 +174,39 @@ $dados = $ClassPedido->pedidos();
                                         </select>
 
 
+                                        <div class="modal-footer">
+                                            <?php
+
+                                            if ($dados['status'] === 'A') {
+                                            ?>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <input type="submit" name="chamado" class="btn btn-success" value="Atender">
+                                            <?php
+                                            }
+
+                                            if ($dados['status'] === 'F') {
+                                            ?>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-danger">Finalizado</button>
+
+                                            <?php
+                                            }
+
+                                            if ($dados['status'] === 'E') {
+                                            ?>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <input type="submit" name="chamado" class="btn btn-warning" value="Finalizar" style="color: white;">
+                                            <?php
+                                            }
+
+                                            ?>
+
+
+                                        </div>
                                     </form>
 
 
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-success">Atender</button>
                                 </div>
                             </div>
                         </div>
