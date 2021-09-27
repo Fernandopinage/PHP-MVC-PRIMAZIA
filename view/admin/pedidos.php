@@ -12,7 +12,9 @@ $dados = $ClassPedido->pedidos();
 
 if (isset($_POST['chamado'])) {
 
-    echo "chamado";
+    echo $_POST['status'];
+    echo "<br>";
+    echo $_POST['pessoa'];
 }
 
 ?>
@@ -134,7 +136,15 @@ if (isset($_POST['chamado'])) {
 
                                     <hr>
                                     <p><b>Profissionais que atendem</b></p>
+
+
+
+                                    <!----------******************************************************************** --->
+
+
                                     <form action="" method="POST">
+
+                                        <input type="hidden" name="status" value="<?php echo $dados['status']; ?>">
 
                                         <?php
                                         $pedido = $obj->tpservico;
@@ -145,7 +155,7 @@ if (isset($_POST['chamado'])) {
                                         ?>
 
 
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" name="pessoa" aria-label="Default select example">
 
 
                                             <?php
@@ -156,8 +166,7 @@ if (isset($_POST['chamado'])) {
 
                                                 if ($dados['status'] != 'F') {
 
-
-                                                    echo "<option selected>Selecione o profissional</option>";
+                                                    echo " <option selected>Selecione o profissional</option>";
                                                     for ($i = 0; $i < $tamanho; $i++) {
                                                         echo "<option value='" . $dados2[$i]['nome'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
                                                     }
@@ -205,7 +214,7 @@ if (isset($_POST['chamado'])) {
                                         </div>
                                     </form>
 
-
+                                    <!----------******************************************************************** --->
 
                                 </div>
                             </div>
