@@ -73,13 +73,13 @@ $dados = $ClassPedido->pedidos();
 
                     </td>
 
-                            <?php 
+                    <?php
 
-                            $data = $dados['data'];
-                            
-                            $data = implode('-', array_reverse(explode('/', $data)));
-                            $data = implode('/', array_reverse(explode('-', $data)));
-                            ?>
+                    $data = $dados['data'];
+
+                    $data = implode('-', array_reverse(explode('/', $data)));
+                    $data = implode('/', array_reverse(explode('-', $data)));
+                    ?>
 
                     <!-- Modal -->
                     <div class="modal fade" id="view<?php echo $dados['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -101,7 +101,6 @@ $dados = $ClassPedido->pedidos();
                                         $id = $dados['cpf'];
                                         $perfil = $ClassPedido->cliente($id);
 
-                                        
                                         echo '<div id="principal">';
                                         echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
                                         echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
@@ -113,10 +112,10 @@ $dados = $ClassPedido->pedidos();
                                         echo '<b>Complemento: </b>' . $perfil["complemento"];
                                         echo '<hr>';
 
-                                        
-                                        echo '<span style="margin-left:10px;"><b>Profissional solicitado: </b>'.$obj->tpservico.'</span>';
+
+                                        echo '<span style=""><b>Profissional solicitado: </b>' . $obj->tpservico . '</span>';
                                         echo '<br>';
-                                        echo '<span style="margin-left:10px;"><b>Tipo de Serviço:  </b>';
+                                        echo '<span style=""><b>Tipo de Serviço:  </b>';
                                         $total = $obj->categoria;
                                         foreach ($total as $total) {
 
@@ -124,16 +123,52 @@ $dados = $ClassPedido->pedidos();
                                         }
                                         echo '</span>';
                                         ?>
-                                        
+
                                     </div>
 
-                                    
-                              
+                                    <hr>
+                                    <p><b>Profissionais que atendem</b></p>
+                                    <form action="">
+
+                                        <?php
+                                        $pedido = $obj->tpservico;
+                                        $dados2 = $ClassPedido->listarProfissionalCategoria($pedido);
+
+
+
+                                        ?>
+
+
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Selecione o profissional</option>
+
+                                            <?php
+
+                                            $tamanho = count($dados2);
+
+                                            if($tamanho>0){
+
+                                                for ($i = 0; $i < $tamanho; $i++) {
+                                                    echo "<option>" . $dados2[$i]['nome'] . "</option>";
+                                                }
+                                            }else{
+                                                echo "<option>Não possui profissional para essa demanda!</option>";
+                                            }
+
+
+                                            ?>
+
+                                        </select>
+
+
+                                    </form>
+
+
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-success">Atender</button>
                                 </div>
                             </div>
                         </div>
