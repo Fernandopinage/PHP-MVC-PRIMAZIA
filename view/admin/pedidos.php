@@ -1,6 +1,10 @@
 <?php
 include_once "../../layout/heard.php";
 include_once "../../dao/CategoriaDAO.php";
+include_once "../../class/ClassServico.php";
+include_once "../../dao/ServicoDAO.php";
+
+
 session_start();
 if (empty($_SESSION['admin'])) {
 
@@ -12,9 +16,15 @@ $dados = $ClassPedido->pedidos();
 
 if (isset($_POST['chamado'])) {
 
-     $_POST['status'];
-    echo "<br>";
-     $_POST['pessoa'];
+    $data =  date('Y/m/d');
+    $ClassServico = new Servico();
+    $ClassServico->SetNome($_POST['pessoa']);
+    $ClassServico->SetData($data);
+    $ClassServico->SetStatus($_POST['status']);
+    $ClassServico->SetProtocolo($_POST['numero_protocolo']);
+    $ClassServico->SetID($_POST['id']);
+    $Servico = new ServicoDao();
+    $Servico->inserServico($ClassServico);
 }
 
 ?>
@@ -144,7 +154,11 @@ if (isset($_POST['chamado'])) {
 
                                     <form action="" method="POST">
 
+                                        <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
                                         <input type="hidden" name="status" value="<?php echo $dados['status']; ?>">
+                                        <input type="hidden" name="numero_protocolo" value="<?php echo $dados['protocolo']; ?>">
+                                        <input type="hidden" name="data" value="<?php echo $data; ?>">
+
 
                                         <?php
                                         $pedido = $obj->tpservico;
