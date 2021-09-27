@@ -166,6 +166,13 @@ class CategoriaDAO extends DAO{
 
                 'nome' => $row['CLIENTE_NOME'],
                 'foto' => $row['CLIENTE_FOTO'],
+                'telefone' => $row['CLIENTE_TELEFONE'],
+                'cep' => $row['CLIENTE_CEP'],
+                'uf' => $row['CLIENTE_UF'],
+                'bairro' => $row['CLIENTE_BAIRRO'],
+                'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                'numero' => $row['CLIENTE_NUM'],
+                'logradouro' => $row['CLIENTE_LOGRADOURO']
             );
 
         }else{
@@ -173,6 +180,32 @@ class CategoriaDAO extends DAO{
 
         }
 
+        return $array;
+
+    }
+
+    public function clientePedido($id,$protocolo){
+
+        $sql = "SELECT * FROM `pedido` WHERE pedido_protocolo = :pedido_protocolo and 	pedido_cpf = :pedido_cpf";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':pedido_protocolo',$id);
+        $select->bindValue(':pedido_cpf',$protocolo);
+        $select->execute();
+        $array = array();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array = array(
+
+                'data' => $row['pedido_data'],
+                'descrição' => $row['pedido_descricao'],
+    
+            );
+
+        }else{
+
+            $array = 'Nenhum pedido';
+        }
         return $array;
 
     }

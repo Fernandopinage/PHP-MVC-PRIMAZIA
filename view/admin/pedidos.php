@@ -35,17 +35,17 @@ $dados = $ClassPedido->pedidos();
 
 
             ?>
-                <tr data-bs-toggle="modal" data-bs-target="#view<?php echo $dados['id'];?>">
+                <tr data-bs-toggle="modal" data-bs-target="#view<?php echo $dados['id']; ?>">
                     <td class="text-center"><?php
-                    
-                    if($dados['status'] === 'A'){
-                       ?> <img src="../../icons/1.png" width="30"> <?php
-                    }elseif($dados['status'] === 'E'){
-                        ?> <img src="../../icons/2.png" width="30"> <?php
-                    }elseif($dados['status'] === 'F'){
-                        ?> <img src="../../icons/3.png" width="30"> <?php
-                    }
-                    ?>
+
+                                            if ($dados['status'] === 'A') {
+                                            ?> <img src="../../icons/1.png" width="30"> <?php
+                                                                                    } elseif ($dados['status'] === 'E') {
+                                                                                        ?> <img src="../../icons/2.png" width="30"> <?php
+                                                                                                                                } elseif ($dados['status'] === 'F') {
+                                                                                                                                    ?> <img src="../../icons/3.png" width="30"> <?php
+                                                                                                                                                                            }
+                                                                                                                                                                                ?>
                     </td>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo $dados['protocolo']; ?></th>
                     <td><?php echo $dados['nome']; ?></td>
@@ -73,36 +73,62 @@ $dados = $ClassPedido->pedidos();
 
                     </td>
 
+                            <?php 
 
+                            $data = $dados['data'];
+                            
+                            $data = implode('-', array_reverse(explode('/', $data)));
+                            $data = implode('/', array_reverse(explode('-', $data)));
+                            ?>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="view<?php echo $dados['id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade" id="view<?php echo $dados['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Pedido <?php echo $dados['protocolo']; 
-                                    
-                                    ?></h5>
+                                    <h5 class="modal-title" id="staticBackdropLabel">Pedido: <?php echo $dados['protocolo']; ?></h5>
+                                    <h5 class="modal-title" id="staticBackdropLabel" style="margin-left: 200px;">Data: <?php echo $data; ?></h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <?php 
-                                    
+
+
+
+                                    <div>
+
+                                        <?php
+
                                         $id = $dados['cpf'];
                                         $perfil = $ClassPedido->cliente($id);
 
-                                        var_dump($perfil);
+                                        
+                                        echo '<div id="principal">';
+                                        echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
+                                        echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
+                                        echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
+                                        echo '</div>';
+                                        echo '<hr>';
 
-                                      foreach($perfil as $perfil){
+                                        echo '<p style=""><b>Endereço: </b>' . $perfil["logradouro"] . ', ' . $perfil["numero"] . ', ' . $perfil["bairro"] . '</p>';
+                                        echo '<b>Complemento: </b>' . $perfil["complemento"];
+                                        echo '<hr>';
+
+                                        
+                                        echo '<span style="margin-left:10px;"><b>Profissional solicitado: </b>'.$obj->tpservico.'</span>';
+                                        echo '<br>';
+                                        echo '<span style="margin-left:10px;"><b>Tipo de Serviço:  </b>';
+                                        $total = $obj->categoria;
+                                        foreach ($total as $total) {
+
+                                            echo $total . ": ";
+                                        }
+                                        echo '</span>';
                                         ?>
+                                        
+                                    </div>
 
-                                        <img src="../../images/<?php echo $perfil['foto'] ?>" width="100px">
-
-                                        <?php
-                                      }
-
-                                    ?>
-                            
+                                    
+                              
 
                                 </div>
                                 <div class="modal-footer">
