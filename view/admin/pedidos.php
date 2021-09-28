@@ -29,6 +29,10 @@ if (isset($_POST['chamado'])) {
     $Servico->inserServico($ClassServico);
 }
 
+if(isset($_POST['chamado_cancelado'])){
+    echo "cancelado";
+}
+
 if (isset($_POST['chamado_finalizado'])) {
 
     $ClassServico = new Servico();
@@ -225,14 +229,14 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             if ($dados['status'] === 'A') {
                                             ?>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
                                                 <input type="submit" name="chamado" class="btn btn-success" value="Atender">
                                             <?php
                                             }
 
                                             if ($dados['status'] === 'F') {
                                             ?>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
                                                 <button type="button" class="btn btn-danger">Finalizado</button>
 
                                             <?php
@@ -240,7 +244,8 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             if ($dados['status'] === 'E') {
                                             ?>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                                                <input type="submit" name="chamado_cancelado" class="btn btn-secondary" value="Cancelar" style="color: white;">
                                                 <input type="submit" name="chamado_finalizado" class="btn btn-warning" value="Finalizar" style="color: white;">
                                             <?php
                                             }

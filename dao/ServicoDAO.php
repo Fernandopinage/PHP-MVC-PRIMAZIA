@@ -10,12 +10,12 @@ class ServicoDao extends Dao{
 
 
         $email = explode("-",$ClassServico->GetNome());
-        $email = explode(" ",$email[3]);
+        @$email = explode(" ",$email[3]);
 
 
         $query = "SELECT * FROM `profissional` WHERE profissional_email = :profissional_email";
         $select = $this->con->prepare($query);
-        $select->bindValue(':profissional_email',$email[1]);
+        @$select->bindValue(':profissional_email',$email[1]);
         $select->execute();
 
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
@@ -30,7 +30,7 @@ class ServicoDao extends Dao{
         $insert->bindValue(':servico_protocolo',$ClassServico->GetProtocolo());
         $insert->bindValue(':servico_profissional',$ClassServico->GetNome());
         $insert->bindValue(':servico_data',$ClassServico->GetData());
-        $insert->bindValue(':servico_idprofissional',$id);
+        @$insert->bindValue(':servico_idprofissional',$id);
 
        
         
@@ -83,6 +83,21 @@ class ServicoDao extends Dao{
 
         } catch (\Throwable $th) {
            
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text:'Por favor verifique com os administradores!',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
 
         }
        
