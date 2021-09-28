@@ -204,6 +204,7 @@ class CategoriaDAO extends DAO
             header('Refresh: 3.4; url=../admin/pedidos.php');
         } catch (\Throwable $th) {
 
+           echo $th;
         ?>
 
             <script>
