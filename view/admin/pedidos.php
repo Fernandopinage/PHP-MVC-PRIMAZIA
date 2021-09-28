@@ -30,7 +30,14 @@ if (isset($_POST['chamado'])) {
 }
 
 if(isset($_POST['chamado_cancelado'])){
-    echo "cancelado";
+    
+    $ClassProtocolo = new Servico();
+    $ClassProtocolo = $_POST['numero_protocolo'];
+
+    $Protocolo = new CategoriaDAO();
+    $Protocolo->updateStatus($ClassProtocolo);
+
+
 }
 
 if (isset($_POST['chamado_finalizado'])) {
@@ -78,6 +85,9 @@ if (isset($_POST['chamado_finalizado'])) {
                                                                                         ?> <img src="../../icons/2.png" width="30"> <?php
                                                                                                                                 } elseif ($dados['status'] === 'F') {
                                                                                                                                     ?> <img src="../../icons/3.png" width="30"> <?php
+                                                                                                                                                                            }
+                                                                                                                                                                            elseif ($dados['status'] === 'C') {
+                                                                                                                                                                                ?> <!-- <img src="../../icons/3.png" width="30"> --> C <?php
                                                                                                                                                                             }
                                                                                                                                                                                 ?>
                     </td>
@@ -186,7 +196,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         <?php
 
-                                        if ($dados['status'] === 'A') {
+                                        if ($dados['status'] === 'A' or $dados['status'] === 'C') {
 
 
                                         ?>
@@ -230,6 +240,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             if ($dados['status'] === 'A') {
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                                                <input type="submit" name="chamado_cancelado" class="btn btn-secondary" value="Cancelar" style="color: white;">
                                                 <input type="submit" name="chamado" class="btn btn-success" value="Atender">
                                             <?php
                                             }
@@ -245,10 +256,11 @@ if (isset($_POST['chamado_finalizado'])) {
                                             if ($dados['status'] === 'E') {
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
-                                                <input type="submit" name="chamado_cancelado" class="btn btn-secondary" value="Cancelar" style="color: white;">
                                                 <input type="submit" name="chamado_finalizado" class="btn btn-warning" value="Finalizar" style="color: white;">
                                             <?php
                                             }
+
+                                            
 
                                             ?>
 
