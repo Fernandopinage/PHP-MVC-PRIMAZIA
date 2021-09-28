@@ -55,7 +55,7 @@ if (isset($_POST['chamado_finalizado'])) {
                 <th scope="col">Cliente</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Serviço</th>
-                <th scope="col">Subcategorias</th>
+                <th scope="col">Tipo de Serviço</th>
             </tr>
         </thead>
         <tbody style="color: #0D2238;font-family: 'Montserrat', sans-serif">
@@ -225,14 +225,14 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             if ($dados['status'] === 'A') {
                                             ?>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                 <input type="submit" name="chamado" class="btn btn-success" value="Atender">
                                             <?php
                                             }
 
                                             if ($dados['status'] === 'F') {
                                             ?>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                 <button type="button" class="btn btn-danger">Finalizado</button>
 
                                             <?php
@@ -240,7 +240,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             if ($dados['status'] === 'E') {
                                             ?>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                 <input type="submit" name="chamado_finalizado" class="btn btn-warning" value="Finalizar" style="color: white;">
                                             <?php
                                             }

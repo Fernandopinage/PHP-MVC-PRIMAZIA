@@ -25,72 +25,94 @@ $dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
 
     <?php
 
+    if (!empty($dados)) {
 
-    foreach ($dados as $dados) {
 
-        $obj = $dados['descricao'];
+        foreach ($dados as $dados) {
+
+            $obj = $dados['descricao'];
 
     ?>
 
-        <div class=" d-inline-block text-center" style="padding: 8px;">
-            <div class="card" style="width: 22rem;">
-                <div class="card-body" style="text-align: left;">
-                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"><b>Protocolo:</b> <span style="color: red;"> <?php echo $dados['protocolo']; ?></span></p>
-                    <hr>
-                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"><b>Serviço:</b> <?php print_r($obj->tpservico); ?></p>
-                    <?php
+            <div class=" d-inline-block text-center" style="padding: 8px;">
+                <div class="card" style="width: 22rem;">
+                    <div class="card-body" style="text-align: left;">
+                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"><b>Protocolo:</b> <span style="color: red;"> <?php echo $dados['protocolo']; ?></span></p>
+                        <hr>
+                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"><b>Serviço:</b> <?php print_r($obj->tpservico); ?></p>
+                        <?php
 
-                    $obj = $dados['descricao'];
-                    $total = $obj->categoria;
-                    ?>
-                    <span class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Tipo de serviço: </b></span>
-                    <?php
-                    foreach ($total as $total) {
+                        $obj = $dados['descricao'];
+                        $total = $obj->categoria;
+                        ?>
+                        <span class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Tipo de serviço: </b></span>
+                        <?php
+                        foreach ($total as $total) {
 
-                        echo $total . ", ";
-                    }
+                            echo $total . ", ";
+                        }
 
-                    ?>
-                    <hr>
-                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Cliente: </b><?php echo $dados['nome_cliente']; ?></p>
+                        ?>
+                        <hr>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Cliente: </b><?php echo $dados['nome_cliente']; ?></p>
 
-                    <?php
-                    if ($dados['status'] === 'A') {
+                        <?php
+                        if ($dados['status'] === 'A') {
 
-                    ?>
-                        <div class="text-center">
-                            <a href="#" class="btn btn-success">Status: Em Aberto</a>
-                        </div>
-                    <?php
-                    }
+                        ?>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-success" style="font-family: 'Montserrat', sans-serif;">Status: Em Aberto</a>
+                            </div>
+                        <?php
+                        }
 
-                    if ($dados['status'] === 'E') {
+                        if ($dados['status'] === 'E') {
 
-                    ?>
-                        <div class="text-center">
-                            <a href="#" class="btn btn-warning" style="color: white;">Em Atendimento</a>
-                        </div>
-                    <?php
+                        ?>
+                            <div class="text-center">
+                                <a href="#" class="btn btn" style="background-color: #ffc107; color: white; font-family: 'Montserrat', sans-serif;">Em Atendimento</a>
+                            </div>
+                        <?php
 
-                    }
+                        }
 
-                    if ($dados['status'] === 'F') {
+                        if ($dados['status'] === 'F') {
 
-                    ?>
-                        <div class="text-center">
-                            <a href="#" class="btn btn-danger">Finalizado</a>
-                        </div>
-                    <?php
-                    }
-                    ?>
+                        ?>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Finalizado</a>
+                            </div>
+                        <?php
+                        }
+                        ?>
 
 
 
+                    </div>
                 </div>
             </div>
-        </div>
 
     <?php
+        }
+    }else{
+        ?>
+        
+        <div class=" d-inline-block text-center" style="padding: 8px;">
+                <div class="card" style="width: 22rem;">
+                    <div class="card-body" style="text-align: left;">
+                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"></p>
+                        <hr>
+                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px">  </p>
+                        <div class="text-center">
+                        <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Não possui pedidos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        <?php
+        
     }
     ?>
 
