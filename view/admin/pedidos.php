@@ -29,15 +29,13 @@ if (isset($_POST['chamado'])) {
     $Servico->inserServico($ClassServico);
 }
 
-if(isset($_POST['chamado_cancelado'])){
-    
+if (isset($_POST['chamado_cancelado'])) {
+
     $ClassProtocolo = new Servico();
     $ClassProtocolo = $_POST['numero_protocolo'];
 
     $Protocolo = new CategoriaDAO();
     $Protocolo->updateStatus($ClassProtocolo);
-
-
 }
 
 if (isset($_POST['chamado_finalizado'])) {
@@ -85,11 +83,11 @@ if (isset($_POST['chamado_finalizado'])) {
                                                                                         ?> <img src="../../icons/2.png" width="30"> <?php
                                                                                                                                 } elseif ($dados['status'] === 'F') {
                                                                                                                                     ?> <img src="../../icons/3.png" width="30"> <?php
-                                                                                                                                                                            }
-                                                                                                                                                                            elseif ($dados['status'] === 'C') {
-                                                                                                                                                                                ?> <!-- <img src="../../icons/3.png" width="30"> --> C <?php
-                                                                                                                                                                            }
+                                                                                                                                                                            } elseif ($dados['status'] === 'C') {
                                                                                                                                                                                 ?>
+                            <!-- <img src="../../icons/3.png" width="30"> --> C <?php
+                                                                                                                                                                            }
+                                                                                ?>
                     </td>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo $dados['protocolo']; ?></th>
                     <td><?php echo $dados['nome']; ?></td>
@@ -210,15 +208,23 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                                 if ($tamanho > 0) {
 
-                                                    if ($dados['status'] != 'F') {
+                                                    if($dados['status'] != 'C'){
 
-                                                        echo " <option selected>Selecione o profissional</option>";
-                                                        for ($i = 0; $i < $tamanho; $i++) {
-                                                            echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                        if ($dados['status'] != 'F') {
+                                                            
+                                                            echo " <option selected>Selecione o profissional</option>";
+                                                            for ($i = 0; $i < $tamanho; $i++) {
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                            }
+                                                        }else {
+                                                            echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
                                                         }
-                                                    } else {
-                                                        echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
+
+                                                    }else{
+                                                        echo "<option>Não possui profissional para essa demanda!</option>";
                                                     }
+
+
                                                 } else {
                                                     echo "<option>Não possui profissional para essa demanda!</option>";
                                                 }
@@ -260,7 +266,16 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <?php
                                             }
 
-                                            
+                                            if ($dados['status'] === 'C') {
+
+                                            ?>
+                                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-danger">Cancelado</button>
+
+                                            <?php
+
+                                            }
+
 
                                             ?>
 
