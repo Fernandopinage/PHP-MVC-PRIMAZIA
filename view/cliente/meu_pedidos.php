@@ -24,28 +24,11 @@ $dados = $ClassPedido->pedidos();
 
     <h3 style="color:orangered">Meus pedidos</h3>
 
-
-
-    <?php
-
-
-
-
-
-    foreach ($dados as $dados => $obj) {
-    ?>
-        <div class=" d-inline-block text-center" style="padding: 8px;">
-            <div>
-                <?php echo $obj['data']; ?>
-
-
-            
-
-        </div>
-
-    <?php
-    }
-
+    <?php 
+    
+    echo "<pre>";
+    var_dump($dados);
+    echo "</pre>";
     ?>
 
 </div>

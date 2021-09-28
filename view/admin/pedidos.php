@@ -23,8 +23,21 @@ if (isset($_POST['chamado'])) {
     $ClassServico->SetStatus($_POST['status']);
     $ClassServico->SetProtocolo($_POST['numero_protocolo']);
     $ClassServico->SetID($_POST['id']);
+    
+
     $Servico = new ServicoDao();
     $Servico->inserServico($ClassServico);
+}
+
+if(isset($_POST['chamado_finalizado'])){
+
+    $ClassServico = new Servico();
+    $ClassServico->SetStatus($_POST['status']);
+    $ClassServico->SetProtocolo($_POST['numero_protocolo']);
+
+    $Servico = new ServicoDao();
+    $Servico->finalizarServico($ClassServico);
+
 }
 
 ?>
@@ -158,44 +171,57 @@ if (isset($_POST['chamado'])) {
                                         <input type="hidden" name="status" value="<?php echo $dados['status']; ?>">
                                         <input type="hidden" name="numero_protocolo" value="<?php echo $dados['protocolo']; ?>">
                                         <input type="hidden" name="data" value="<?php echo $data; ?>">
-
+  
 
                                         <?php
                                         $pedido = $obj->tpservico;
                                         $dados2 = $ClassPedido->listarProfissionalCategoria($pedido);
 
+                                        $dados3 = $ClassPedido->listaServico($dados['protocolo']);
+
+                                        ?>
+
+                                        <?php
+
+                                        if ($dados['status'] === 'A') {
 
 
                                         ?>
 
+                                            <select class="form-select" name="pessoa" aria-label="Default select example">
 
-                                        <select class="form-select" name="pessoa" aria-label="Default select example">
 
+                                                <?php
 
-                                            <?php
+                                                $tamanho = count($dados2);
 
-                                            $tamanho = count($dados2);
+                                                if ($tamanho > 0) {
 
-                                            if ($tamanho > 0) {
+                                                    if ($dados['status'] != 'F') {
 
-                                                if ($dados['status'] != 'F') {
-
-                                                    echo " <option selected>Selecione o profissional</option>";
-                                                    for ($i = 0; $i < $tamanho; $i++) {
-                                                        echo "<option value='" . $dados2[$i]['nome'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                        echo " <option selected>Selecione o profissional</option>";
+                                                        for ($i = 0; $i < $tamanho; $i++) {
+                                                            echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                        }
+                                                    } else {
+                                                        echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
                                                     }
                                                 } else {
-                                                    echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
+                                                    echo "<option>Não possui profissional para essa demanda!</option>";
                                                 }
-                                            } else {
-                                                echo "<option>Não possui profissional para essa demanda!</option>";
-                                            }
 
 
-                                            ?>
+                                                ?>
 
-                                        </select>
+                                            </select>
+                                        <?php
+                                        }else{
 
+                                            echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="'.$dados3[0]['nome'].'"disabled>';
+                                     
+
+                                        }
+                                        ?>
 
                                         <div class="modal-footer">
                                             <?php
@@ -218,7 +244,7 @@ if (isset($_POST['chamado'])) {
                                             if ($dados['status'] === 'E') {
                                             ?>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <input type="submit" name="chamado" class="btn btn-warning" value="Finalizar" style="color: white;">
+                                                <input type="submit" name="chamado_finalizado" class="btn btn-warning" value="Finalizar" style="color: white;">
                                             <?php
                                             }
 

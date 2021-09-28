@@ -230,4 +230,27 @@ class CategoriaDAO extends DAO{
         }
         return $array;
     }
+
+    public function listaServico($id){
+
+        $sql = "SELECT * FROM `servico` WHERE servico_protocolo = :servico_protocolo";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':servico_protocolo',$id);
+        $select->execute();
+        $array = array();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+
+                'nome' => $row['servico_profissional']
+            );
+
+        }
+         return $array;
+    }
+
+  
+
+
 }

@@ -72,6 +72,44 @@ class ServicoDao extends Dao{
         
 
     }
+
+    public function finalizarServico($ClassServico){
+
+        $sql = "UPDATE `pedido` SET pedido_status=:pedido_status WHERE pedido_protocolo=:pedido_protocolo";
+        $update = $this->con->prepare($sql);
+        $update->bindValue(':pedido_status','F');
+        $update->bindValue(':pedido_protocolo',$ClassServico->GetProtocolo());
+        
+        
+        try {
+            
+            $update->execute();
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Serviço',
+                    text:'Foi finalizado com sucesso!',
+                    showConfirmButton: false,         
+                    timer: 3500   
+                })
+            </script>
+
+
+        <?php
+        header('Refresh: 3.4; url=../admin/pedidos.php');
+
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+
+    }
+
 }
 
 ?>
