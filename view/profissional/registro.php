@@ -197,7 +197,7 @@ if (isset($_POST['salvarProfissional'])) {
                     <div id="pergunta01">
 
                         <div class="row g-12 ms-3 p-2">
-                            <samp style="color: red; font-size:20px;">Selecione uma ou mais opções:</samp>
+                            <samp style="color: red; font-size:20px; font-family: inherit;">Selecione uma ou mais opções:</samp>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Limpeza comercial" name="categoria[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                                 <label style="font-size:18px;" class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
