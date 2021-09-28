@@ -135,8 +135,10 @@ class CategoriaDAO extends DAO{
 
     }
 
-    public function pedidosProfissional(){
+    public function pedidosProfissional($id){
 
+        echo $id;
+    
     }
 
 

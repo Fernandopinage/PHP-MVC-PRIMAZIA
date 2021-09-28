@@ -3,12 +3,12 @@ include_once "../../layout/heard.php";
 
 session_start();
 
-/*
-if (empty($_SESSION['user'])) {
+
+if (empty($_SESSION['profissional'])) {
 
     header('Refresh: 0.1; url=login.php');
 }
-**/
+
 
 ?>
 <link href="../../layout/css/profissional_painel.css" rel="stylesheet">
@@ -21,9 +21,9 @@ if (empty($_SESSION['user'])) {
 
     <div class="text-center">
         <?php
-        if (!empty($_SESSION['user']['foto'])) {
+        if (!empty($_SESSION['profissional']['foto'])) {
         ?>
-            <img id="usuario" src="../../images/<?php echo $_SESSION['user']['foto'] ?>" class="img"><br><br>
+            <img id="usuario" src="../../images/<?php echo $_SESSION['profissional']['foto'] ?>" class="img"><br><br>
         <?php
 
         } else {
@@ -33,7 +33,7 @@ if (empty($_SESSION['user'])) {
         }
         ?>
 
-        <h5 style="text-transform: capitalize;"><?php echo isset($_SESSION['user']['nome']); ?></h5><br>
+        <h5 style="text-transform: capitalize;"><?php echo isset($_SESSION['profissional']['nome']); ?></h5><br>
         <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
     </div>
 

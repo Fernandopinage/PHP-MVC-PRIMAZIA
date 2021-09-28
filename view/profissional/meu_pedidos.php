@@ -3,13 +3,18 @@ include_once "../../layout/heard.php";
 include_once "../../dao/CategoriaDAO.php";
 session_start();
 
-if (empty($_SESSION['user'])) {
+if (empty($_SESSION['profissional'])) {
 
     header('Refresh: 0.1; url=login.php');
 }
 
+echo "<pre>";
+var_dump($_SESSION['profissional']);
+echo "</pre/>";
+
+
 $ClassPedido = new CategoriaDAO();
-$dados = $ClassPedido->pedidos();
+$dados = $ClassPedido->pedidosProfissional($id);
 
 
 

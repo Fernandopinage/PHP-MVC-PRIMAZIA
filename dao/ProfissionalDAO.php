@@ -23,7 +23,7 @@ class ProfissionalDAO extends DAO
            
             session_start();
 
-            $_SESSION['user'] = array(
+            $_SESSION['profissional'] = array(
 
                 'id' => $row['PROFISSIONAL_ID'],
                 'nome' => $row['PROFISSIONAL_NOME'],
