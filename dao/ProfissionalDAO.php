@@ -17,34 +17,33 @@ class ProfissionalDAO extends DAO
         $select->bindValue(':PROFISSIONAL_SENHA', md5($ProfissionalClass->GetSenha()));
         $select->execute();
 
-        $_SESSION['user'] = array();
-        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+        $_SESSION['profissional'] = array();
 
-           
+
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
             session_start();
 
             $_SESSION['profissional'] = array(
 
-                'id' => $row['PROFISSIONAL_ID'],
-                'nome' => $row['PROFISSIONAL_NOME'],
-                'email' => $row['PROFISSIONAL_EMAIL'],
-                'cpf' => $row['PROFISSIONAL_CPF'],
-                'telefone' => $row['PROFISSIONAL_TELEFONE'],
-                'cep' => $row['PROFISSIONAL_CEP'],
-                'uf' => $row['PROFISSIONAL_UF'],
-                'rua' => $row['PROFISSIONAL_LOGRADOURO'],
-                'numero' => $row['PROFISSIONAL_NUM'],
-                'cidade' => $row['PROFISSIONAL_CIDADE'],
-                'bairro' => $row['PROFISSIONAL_BAIRRO'],
-                'complemento' => $row['PROFISSIONAL_COMPLEMENTO'],
-                'foto' => $row['PROFISSIONAL_FOTO']
+                'id' => $row['profissional_id'],
+                'nome' => $row['profissional_nome'],
+                'email' => $row['profissional_email'],
+                'cpf' => $row['profissional_cpf'],
+                'telefone' => $row['profissional_telefone'],
+                'cep' => $row['profissional_cep'],
+                'uf' => $row['profissional_uf'],
+                'rua' => $row['profissional_logradouro'],
+                'numero' => $row['profissional_num'],
+                'cidade' => $row['profissional_cidade'],
+                'bairro' => $row['profissional_bairro'],
+                'complemento' => $row['profissional_complemento'],
+                'foto' => $row['profissional_foto']
             );
 
             header('location: ../../view/profissional/painel.php');
-            
         } else {
 
-           
+
 ?>
 
             <script>
@@ -59,12 +58,13 @@ class ProfissionalDAO extends DAO
 
 
         <?php
-    
+
         }
     }
 
 
-    public function updateSenha($novaSenha,$id,$email,$senha){
+    public function updateSenha($novaSenha, $id, $email, $senha)
+    {
 
 
         $sql = "SELECT * FROM `profissional` WHERE profissional_id = :profissional_id and profissional_email = :profissional_email and profissional_senha = :profissional_senha";
@@ -75,12 +75,12 @@ class ProfissionalDAO extends DAO
         $select->bindValue(':profissional_senha', $senha);
         $select->execute();
 
-        
+
         if ($select->fetch(PDO::FETCH_ASSOC)) {
-            
+
             $new =  md5($novaSenha);
-            
-           
+
+
             $sql2 = "UPDATE `profissional` SET `profissional_senha`= :profissional_senha WHERE `profissional_id`= :profissional_id";
             $update = $this->con->prepare($sql2);
             $update->bindValue(':profissional_id', $id);
@@ -88,7 +88,7 @@ class ProfissionalDAO extends DAO
             $update->execute();
 
 
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
@@ -104,17 +104,16 @@ class ProfissionalDAO extends DAO
         <?php
 
             header('Refresh: 5.0; url=../profissional/login.php');
+        } else {
 
-        }else{
-
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
                     title: 'Erro',
-                    text:'ao tentar alterar senha por favor entre em contato com os administradores',
+                    text: 'ao tentar alterar senha por favor entre em contato com os administradores',
                     showConfirmButton: false,
                     timer: 3500
                 })
@@ -124,11 +123,10 @@ class ProfissionalDAO extends DAO
         <?php
 
         }
-        
-
     }
 
-    public function AdminInserirProfissional($ClassProfissional){
+    public function AdminInserirProfissional($ClassProfissional)
+    {
 
         $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`) 
         VALUES (null, :profissional_nome, :profissional_option, :profissional_razao, :profissional_email, :profissional_cpf, :profissional_telefone, :profissional_cep, :profissional_uf, :profissional_logradouro, :profissional_num, :profissional_cidade, :profissional_bairro, :profissional_complemento, :profissional_foto, :profissional_senha, :profissional_servico)";
@@ -166,7 +164,7 @@ class ProfissionalDAO extends DAO
 
 
         <?php
-            
+
         } catch (PDOException $e) {
 
 
@@ -183,14 +181,13 @@ class ProfissionalDAO extends DAO
                 })
             </script>
 
-            <?php
+        <?php
 
 
         }
-
     }
 
-    public function insertProfissional($ClassProfissional,$subcategoria)
+    public function insertProfissional($ClassProfissional, $subcategoria)
     {
 
         $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`) 
@@ -215,9 +212,7 @@ class ProfissionalDAO extends DAO
         try {
             $insert->execute();
             $subcat = new SubcategoriaDAO();
-            $subcat->insertSubcategoria($ClassProfissional,$subcategoria);
-
-           
+            $subcat->insertSubcategoria($ClassProfissional, $subcategoria);
         } catch (PDOException $e) {
 
         ?>
@@ -291,13 +286,13 @@ class ProfissionalDAO extends DAO
 
             <?php
 
-            RedefinirProfissional::Senha($email, $senha,$id,$nome);
+                RedefinirProfissional::Senha($email, $senha, $id, $nome);
                 //echo $email."<br>". $senha."<br>".$id."<br>".$nome;
 
 
             } catch (\Throwable $th) {
 
-                ?>
+            ?>
 
 
                 <script>
@@ -313,7 +308,7 @@ class ProfissionalDAO extends DAO
 
             <?php
             }
-        }else{
+        } else {
             ?>
 
 
@@ -328,7 +323,7 @@ class ProfissionalDAO extends DAO
                 })
             </script>
 
-        <?php
+<?php
         }
     }
 

@@ -3,14 +3,18 @@ include_once "../../layout/heard.php";
 
 session_start();
 
-
 if (empty($_SESSION['profissional'])) {
 
     header('Refresh: 0.1; url=login.php');
 }
 
 
+
 ?>
+
+
+
+
 <link href="../../layout/css/profissional_painel.css" rel="stylesheet">
 <div id="logo">
     <img src="../../images/primazia.png" alt="" width="250" height="190">
@@ -33,7 +37,7 @@ if (empty($_SESSION['profissional'])) {
         }
         ?>
 
-        <h5 style="text-transform: capitalize;"><?php echo isset($_SESSION['profissional']['nome']); ?></h5><br>
+        <h5 style="text-transform: capitalize;"><?php echo $_SESSION['profissional']['nome']; ?></h5><br>
         <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
     </div>
 
@@ -44,13 +48,13 @@ if (empty($_SESSION['profissional'])) {
 
     <nav class="navbar navbar">
         <div class="row">
-        <div class="col-md">
+            <div class="col-md">
                 <a class="navbar-brand" href="../profissional/meu_pedidos.php">
                     <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-7"> Meus Pedidos</p>
             </div>
-           
+
             <div class="col-md">
                 <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/contato-home-resumida/">
                     <img src="../../images/faleconosco.png" alt="" width="80" height="80">
@@ -65,7 +69,7 @@ if (empty($_SESSION['profissional'])) {
                 </a>
                 <p class="fs-7"> Encontre um Profissional</p>
             </div>
-            
+
             <div class="col-md">
                 <a class="navbar-brand" href="../cliente/meu_pedidos.php">
                     <img src="../../images/pedidosquesoliciteip.png" alt="" width="70" height="70">
@@ -73,7 +77,7 @@ if (empty($_SESSION['profissional'])) {
                 <p class="fs-7"> Pedidos que solicitei</p>
             </div>
 
-            
+
             <div class="col-md">
                 <a class="navbar-brand" href="../../view/cliente/logout.php">
                     <img src="../../icons/photo1629906564.jpeg" alt="" width="70" height="70">
