@@ -132,6 +132,50 @@ class CategoriaDAO extends DAO
         return $array;
     }
 
+    public function ativaStatus($id)
+    {
+
+        $sql = "UPDATE `pedido` SET `pedido_status` = :pedido_status WHERE pedido_protocolo = :pedido_protocolo";
+        $update = $this->con->prepare($sql);
+        $update->bindValue(':pedido_status', 'A');
+        $update->bindValue(':pedido_protocolo', $id);
+
+        try {
+            $update->execute();
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Pedido',
+                    text: 'Ativado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+            header('Refresh: 3.4; url=../admin/pedidos.php');
+        } catch (\Throwable $th) {
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Por favor verifique com os administradores!',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+        <?php
+
+        }
+    }
+
     public function updateStatus($id)
     {
 

@@ -38,6 +38,15 @@ if (isset($_POST['chamado_cancelado'])) {
     $Protocolo->updateStatus($ClassProtocolo);
 }
 
+if (isset($_POST['chamado_ativar'])) {
+
+    $ClassProtocolo = new Servico();
+    $ClassProtocolo = $_POST['numero_protocolo'];
+
+    $Protocolo = new CategoriaDAO();
+    $Protocolo->ativaStatus($ClassProtocolo);
+}
+
 if (isset($_POST['chamado_finalizado'])) {
 
     $ClassServico = new Servico();
@@ -208,23 +217,20 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                                 if ($tamanho > 0) {
 
-                                                    if($dados['status'] != 'C'){
+                                                    if ($dados['status'] != 'C') {
 
                                                         if ($dados['status'] != 'F') {
-                                                            
+
                                                             echo " <option selected>Selecione o profissional</option>";
                                                             for ($i = 0; $i < $tamanho; $i++) {
                                                                 echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
                                                             }
-                                                        }else {
+                                                        } else {
                                                             echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
                                                         }
-
-                                                    }else{
-                                                        echo "<option>Não possui profissional para essa demanda!</option>";
+                                                    } else {
+                                                        echo "<option>Cliente cancelado!</option>";
                                                     }
-
-
                                                 } else {
                                                     echo "<option>Não possui profissional para essa demanda!</option>";
                                                 }
@@ -270,6 +276,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                                                <input type="submit" name="chamado_ativar" class="btn btn-success" value="Ativar">
                                                 <button type="button" class="btn btn-danger">Cancelado</button>
 
                                             <?php
