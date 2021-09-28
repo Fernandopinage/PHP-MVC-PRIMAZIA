@@ -5,7 +5,7 @@ session_start();
 
 if (empty($_SESSION['profissional'])) {
 
-    header('Refresh: 0.1; url=login.php');
+    header('Refresh: 0.0; url=login.php');
 }
 
 
