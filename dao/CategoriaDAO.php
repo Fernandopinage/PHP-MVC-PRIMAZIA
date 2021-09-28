@@ -168,6 +168,8 @@ class CategoriaDAO extends DAO{
                     'nome_cliente' => $row2['pedido_nome'],
                     'telefone_cliente' => $row2['pedido_telefone'],
                     'email_cliente' => $row2['pedido_email'],
+                    'status' => $row2['servico_status'],
+                    'protocolo' => $row2['pedido_protocolo']
                     );
 
                 }

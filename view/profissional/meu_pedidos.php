@@ -33,84 +33,68 @@ $dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
     ?>
 
         <div class=" d-inline-block text-center" style="padding: 8px;">
-            <div class="card" style="width: 28rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><?php print_r($obj->tpservico); ?></h5>
+            <div class="card" style="width: 22rem;">
+                <div class="card-body" style="text-align: left;">
+                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"><b>Protocolo:</b> <span style="color: red;"> <?php echo $dados['protocolo']; ?></span></p>
+                    <hr>
+                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"><b>Serviço:</b> <?php print_r($obj->tpservico); ?></p>
                     <?php
 
                     $obj = $dados['descricao'];
                     $total = $obj->categoria;
-
+                    ?>
+                    <span class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Tipo de serviço: </b></span>
+                    <?php
                     foreach ($total as $total) {
 
-                        echo $total . "<br>";
+                        echo $total . ", ";
+                    }
+
+                    ?>
+                    <hr>
+                    <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Cliente: </b><?php echo $dados['nome_cliente']; ?></p>
+
+                    <?php
+                    if ($dados['status'] === 'A') {
+
+                    ?>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-success">Status: Em Aberto</a>
+                        </div>
+                    <?php
+                    }
+
+                    if ($dados['status'] === 'E') {
+
+                    ?>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-warning" style="color: white;">Em Atendimento</a>
+                        </div>
+                    <?php
+
+                    }
+
+                    if ($dados['status'] === 'F') {
+
+                    ?>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-danger">Finalizado</a>
+                        </div>
+                    <?php
                     }
                     ?>
-                    <p class="card-text">Cliente <?php echo $dados['nome_cliente'] ?></p>
-                    <p class="card-text">Cliente <?php echo $dados['telefone_cliente'] ?></p>
-                    <p class="card-text">Cliente <?php echo $dados['email_cliente'] ?></p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+
+
                 </div>
             </div>
         </div>
 
     <?php
     }
-
-
-
-
     ?>
 
-
-
-
 </div>
-
-
-
-<div class="container-fluid">
-
-    <nav class="navbar navbar">
-        <div class="row g-5">
-            <div class="col-md">
-                <a class="navbar-brand" href="../cliente/pedido.php">
-                    <img src="../../images/encontreumprofissional.png" alt="" width="80" height="80">
-                </a>
-                <p class="fs-6"> Encontre um Profissional</p>
-            </div>
-            <div class="col-md">
-                <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/contato-home-resumida/">
-                    <img src="../../images/faleconosco.png" alt="" width="80" height="80">
-                </a>
-                <p class="fs-6"> Fale Conosco </p>
-
-            </div>
-
-            <div class="col-md">
-                <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/login-registro-profissional/">
-                    <img src="../../images/cadastresecomoprofissional.png" alt="" width="70" height="70">
-                </a>
-                <p class="fs-6"> Cadastre-se como Profissional</p>
-            </div>
-
-            <div class="col-md">
-                <a class="navbar-brand" href="../cliente/meu_pedidos.php">
-                    <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
-                </a>
-                <p class="fs-6"> Meus Pedidos</p>
-            </div>
-            <div class="col-md">
-                <a class="navbar-brand" href="../../view/cliente/logout.php">
-                    <img src="../../icons/photo1629906564.jpeg" alt="" width="70" height="70">
-                </a>
-                <p class="fs-6">Sair</p>
-            </div>
-        </div>
-    </nav>
-
-</div>
-
 
 <?php
 require "../../layout/footer.php";
