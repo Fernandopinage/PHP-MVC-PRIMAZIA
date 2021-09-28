@@ -135,6 +135,10 @@ class CategoriaDAO extends DAO{
 
     }
 
+    public function pedidosProfissional(){
+
+    }
+
 
     public  function PedidosProfissionais($categoria,$bairro){
 
@@ -212,7 +216,7 @@ class CategoriaDAO extends DAO{
 
     public function listarProfissionalCategoria($pedido){
 
-        $sql = 'SELECT  DISTINCT  profissional_nome,profissional_email,profissional_telefone FROM pedido inner JOIN profissional on profissional_servico = JSON_EXTRACT(pedido_descricao, "$.tpservico") WHERE JSON_EXTRACT(pedido_descricao, "$.tpservico") = :pedido_fun';
+        $sql = 'SELECT  DISTINCT  profissional_id,profissional_nome,profissional_email,profissional_telefone FROM pedido inner JOIN profissional on profissional_servico = JSON_EXTRACT(pedido_descricao, "$.tpservico") WHERE JSON_EXTRACT(pedido_descricao, "$.tpservico") = :pedido_fun';
         $select = $this->con->prepare($sql);
         $select->bindValue(':pedido_fun',$pedido);
         $select->execute();
@@ -221,7 +225,7 @@ class CategoriaDAO extends DAO{
         while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
             $array[] = array(
-
+                $id = 'id' => $row['profissional_id'],
                 $nome = 'nome' => $row['profissional_nome'],
                 $email = 'email' => $row['profissional_email'],
                 $telefone = 'telefone' => $row['profissional_telefone'],

@@ -45,7 +45,7 @@ if (empty($_SESSION['user'])) {
     <nav class="navbar navbar">
         <div class="row">
         <div class="col-md">
-                <a class="navbar-brand" href="../cliente/meu_pedidos.php">
+                <a class="navbar-brand" href="../profissional/meu_pedidos.php">
                     <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-7"> Meus Pedidos</p>

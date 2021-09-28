@@ -23,13 +23,13 @@ if (isset($_POST['chamado'])) {
     $ClassServico->SetStatus($_POST['status']);
     $ClassServico->SetProtocolo($_POST['numero_protocolo']);
     $ClassServico->SetID($_POST['id']);
-    
+
 
     $Servico = new ServicoDao();
     $Servico->inserServico($ClassServico);
 }
 
-if(isset($_POST['chamado_finalizado'])){
+if (isset($_POST['chamado_finalizado'])) {
 
     $ClassServico = new Servico();
     $ClassServico->SetStatus($_POST['status']);
@@ -37,7 +37,6 @@ if(isset($_POST['chamado_finalizado'])){
 
     $Servico = new ServicoDao();
     $Servico->finalizarServico($ClassServico);
-
 }
 
 ?>
@@ -171,7 +170,7 @@ if(isset($_POST['chamado_finalizado'])){
                                         <input type="hidden" name="status" value="<?php echo $dados['status']; ?>">
                                         <input type="hidden" name="numero_protocolo" value="<?php echo $dados['protocolo']; ?>">
                                         <input type="hidden" name="data" value="<?php echo $data; ?>">
-  
+
 
                                         <?php
                                         $pedido = $obj->tpservico;
@@ -215,11 +214,9 @@ if(isset($_POST['chamado_finalizado'])){
 
                                             </select>
                                         <?php
-                                        }else{
+                                        } else {
 
-                                            echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="'.$dados3[0]['nome'].'"disabled>';
-                                     
-
+                                            echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="' . $dados3[0]['nome'] . '"disabled>';
                                         }
                                         ?>
 
