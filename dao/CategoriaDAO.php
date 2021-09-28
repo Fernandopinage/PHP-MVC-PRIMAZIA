@@ -137,8 +137,45 @@ class CategoriaDAO extends DAO{
 
     public function pedidosProfissional($id){
 
-        echo $id;
+        $sql = "SELECT * FROM `servico` WHERE servico_idprofissional = :servico_idprofissional";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':servico_idprofissional',$id);
+        $select->execute();
+        //$array[] = array();
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+          
+            $array[] = array(
+                'protocolo' =>  $row['servico_protocolo'],
+            );
     
+        }
+        
+          $tamanho = count($array);
+            $lista = array();
+          for ($i=0; $i <$tamanho ; $i++) { 
+            
+            $query = "SELECT * FROM `pedido` inner join `servico` on pedido_protocolo = servico_protocolo where servico_protocolo = :servico_protocolo";
+            $select = $this->con->prepare($query);
+            $select->bindValue(':servico_protocolo',$array[$i]['protocolo']);
+            $select->execute();
+
+                if($row2 = $select->fetch(PDO::FETCH_ASSOC)){
+
+                    $lista[] = array(
+                        
+                    'descricao' => json_decode($row2['pedido_descricao']),
+                    'nome_cliente' => $row2['pedido_nome'],
+                    'telefone_cliente' => $row2['pedido_telefone'],
+                    'email_cliente' => $row2['pedido_email'],
+                    );
+
+                }
+        
+          }
+
+          return $lista;
+   
     }
 
 

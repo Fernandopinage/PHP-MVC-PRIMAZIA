@@ -8,13 +8,8 @@ if (empty($_SESSION['profissional'])) {
     header('Refresh: 0.1; url=login.php');
 }
 
-echo "<pre>";
-var_dump($_SESSION['profissional']);
-echo "</pre/>";
-
-
 $ClassPedido = new CategoriaDAO();
-$dados = $ClassPedido->pedidosProfissional($id);
+$dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
 
 
 
@@ -28,12 +23,47 @@ $dados = $ClassPedido->pedidosProfissional($id);
 
     <h3 style="color:orangered">Meus pedidos</h3>
 
-    <?php 
-    
-    echo "<pre>";
-    var_dump($dados);
-    echo "</pre>";
+    <?php
+
+
+    foreach ($dados as $dados) {
+
+        $obj = $dados['descricao'];
+
     ?>
+
+        <div class=" d-inline-block text-center" style="padding: 8px;">
+            <div class="card" style="width: 28rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php print_r($obj->tpservico); ?></h5>
+                    <?php
+
+                    $obj = $dados['descricao'];
+                    $total = $obj->categoria;
+
+                    foreach ($total as $total) {
+
+                        echo $total . "<br>";
+                    }
+                    ?>
+                    <p class="card-text">Cliente <?php echo $dados['nome_cliente'] ?></p>
+                    <p class="card-text">Cliente <?php echo $dados['telefone_cliente'] ?></p>
+                    <p class="card-text">Cliente <?php echo $dados['email_cliente'] ?></p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+
+    <?php
+    }
+
+
+
+
+    ?>
+
+
+
 
 </div>
 
