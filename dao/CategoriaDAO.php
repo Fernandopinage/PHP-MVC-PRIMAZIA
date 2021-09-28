@@ -92,7 +92,7 @@ class CategoriaDAO extends DAO
 
 
 
-<?php
+        <?php
         }
     }
 
@@ -132,34 +132,48 @@ class CategoriaDAO extends DAO
         return $array;
     }
 
-    public function updateStatus($id){
+    public function updateStatus($id)
+    {
 
-      $sql = "UPDATE `pedido` SET `pedido_status` = :pedido_status WHERE pedido_protocolo = :pedido_protocolo";
-      $update = $this->con->prepare($sql);
-      $update->bindValue(':pedido_status', 'C');
-      $update->bindValue(':pedido_protocolo', $id);
-      $update->execute();
+        $sql = "UPDATE `pedido` SET `pedido_status` = :pedido_status WHERE pedido_protocolo = :pedido_protocolo";
+        $update = $this->con->prepare($sql);
+        $update->bindValue(':pedido_status', 'C');
+        $update->bindValue(':pedido_protocolo', $id);
 
-      try {
+        try {
+            $update->execute();
         ?>
 
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Pedido',
-                text:'cancelado com sucesso',
-                showConfirmButton: false,
-                timer: 3500
-            })
-        </script>
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Pedido',
+                    text: 'cancelado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
 
 
-    <?php
-      } catch (\Throwable $th) {
-          //throw $th;
-      }
+        <?php
+            header('Refresh: 3.4; url=../admin/pedidos.php');
+        } catch (\Throwable $th) {
 
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Por favor verifique com os administradores!',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+<?php
+        }
     }
 
     public function pedidosProfissional($id)
@@ -204,7 +218,7 @@ class CategoriaDAO extends DAO
                     $lista[] = "Não Possui registro!";
                 }
             }
-            
+
             return $lista;
         }
     }

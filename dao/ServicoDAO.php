@@ -116,6 +116,11 @@ class ServicoDao extends Dao{
             
             $update->execute();
 
+            $query = "UPDATE `servico` SET `servico_status`=:servico_status where servico_protocolo =:servico_protocolo " ;
+            $update = $this->con->prepare($query);
+            $update->bindValue(':servico_protocolo',$ClassServico->GetProtocolo());
+            $update->bindValue(':servico_status','F');
+            $update->execute();
             ?>
 
             <script>
