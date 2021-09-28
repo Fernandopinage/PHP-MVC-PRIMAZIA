@@ -36,7 +36,7 @@ class ServicoDao extends Dao{
                     title: 'O Pedido',
                     text:'Foi atentido com sucesso!',
                     showConfirmButton: false,         
-                    timer: 3500
+                    timer: 3500   
                 })
             </script>
 
