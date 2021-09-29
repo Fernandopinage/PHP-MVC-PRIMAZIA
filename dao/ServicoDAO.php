@@ -83,6 +83,8 @@ class ServicoDao extends Dao{
 
         } catch (\Throwable $th) {
            
+            echo $th;
+
             ?>
 
             <script>

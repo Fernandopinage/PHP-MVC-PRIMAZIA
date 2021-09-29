@@ -57,6 +57,12 @@ class SubcategoriaDAO extends DAO
             $select->bindValue(':subcategoria_descricao', $categoria[$i]);
             $select->execute();
 
+            if($row = !$select->fetch(PDO::FETCH_ASSOC)){
+
+                $array = 'Não já profissional cadastrado nesse seguimento';
+            }
+
+
             while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
                 $array[] = array(
