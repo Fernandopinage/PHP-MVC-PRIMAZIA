@@ -143,6 +143,12 @@ class CategoriaDAO extends DAO
 
         $array = array();
 
+if($row = !$select->fetch(PDO::FETCH_ASSOC)){
+
+    $array[] = "Não possui nenhum registro!";
+}
+
+        
         while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 
 
