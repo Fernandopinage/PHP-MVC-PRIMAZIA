@@ -64,16 +64,16 @@ class ServicoDao extends Dao{
            } catch (\Throwable $th) {
             ?>
 
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Erro',
-                    text:'Por favor verifique com os administradores!',
-                    showConfirmButton: false,
-                    timer: 3500
-                })
-            </script>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi selecionado nenhum profissional!',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
 
 
         <?php
@@ -83,7 +83,7 @@ class ServicoDao extends Dao{
 
         } catch (\Throwable $th) {
            
-            echo $th;
+            
 
             ?>
 
@@ -92,7 +92,7 @@ class ServicoDao extends Dao{
                     position: 'center',
                     icon: 'error',
                     title: 'Erro',
-                    text:'Por favor verifique com os administradores!',
+                    text:'Não foi selecionado nenhum profissional!',
                     showConfirmButton: false,
                     timer: 3500
                 })

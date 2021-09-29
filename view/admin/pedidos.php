@@ -16,17 +16,24 @@ $dados = $ClassPedido->pedidos();
 
 if (isset($_POST['chamado'])) {
 
-    $data =  date('Y/m/d');
-    $ClassServico = new Servico();
-    $ClassServico->SetNome($_POST['pessoa']);
-    $ClassServico->SetData($data);
-    $ClassServico->SetStatus($_POST['status']);
-    $ClassServico->SetProtocolo($_POST['numero_protocolo']);
-    $ClassServico->SetID($_POST['id']);
+    if ($_POST['pessoa'] != 'Selecione o profissional') {
+
+        
+
+        $data =  date('Y/m/d');
+        $ClassServico = new Servico();
+        $ClassServico->SetNome($_POST['pessoa']);
+        $ClassServico->SetData($data);
+        $ClassServico->SetStatus($_POST['status']);
+        $ClassServico->SetProtocolo($_POST['numero_protocolo']);
+        $ClassServico->SetID($_POST['id']);
 
 
-    $Servico = new ServicoDao();
-    $Servico->inserServico($ClassServico);
+        $Servico = new ServicoDao();
+        $Servico->inserServico($ClassServico);
+    } else {
+        echo "vish";
+    }
 }
 
 if (isset($_POST['chamado_cancelado'])) {
@@ -221,7 +228,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                                         if ($dados['status'] != 'F') {
 
-                                                            echo " <option selected>Selecione o profissional</option>";
+                                                            echo " <option value=''>Selecione o profissional</option>";
                                                             for ($i = 0; $i < $tamanho; $i++) {
                                                                 echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
                                                             }
@@ -253,7 +260,23 @@ if (isset($_POST['chamado_finalizado'])) {
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
                                                 <input type="submit" name="chamado_cancelado" class="btn btn-secondary" value="Cancelar" style="color: white;">
-                                                <input type="submit" name="chamado" class="btn btn-success" value="Atender">
+                                                <?php
+                                                if ($tamanho > 0) {
+                                                ?>
+
+                                                    <input type="submit" name="chamado" class="btn btn-success" value="Atender">
+
+                                                <?php
+                                                } else {
+                                                ?>
+
+                                                    <a onclick="profissional()" class="btn btn-success">Atender </a>
+
+                                                <?php
+
+                                                }
+
+                                                ?>
                                             <?php
                                             }
 
@@ -310,7 +333,18 @@ if (isset($_POST['chamado_finalizado'])) {
 
 </div>
 
-
+<script>
+    function profissional() {
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Erro',
+            text: 'Não foi selecionado nenhum profissional!',
+            showConfirmButton: false,
+            timer: 3500
+        })
+    }
+</script>
 
 
 <?php
