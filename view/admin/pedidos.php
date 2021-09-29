@@ -151,7 +151,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                                                                                                                     ?> <img src="../../icons/3.png" width="30"> <?php
                                                                                                                                                                             } elseif ($dados['status'] === 'C') {
                                                                                                                                                                                 ?>
-                            <!-- <img src="../../icons/3.png" width="30"> --> C <?php
+                            <img src="../../icons/4.png" width="30"><?php
                                                                                                                                                                             }
                                                                                 ?>
                     </td>
