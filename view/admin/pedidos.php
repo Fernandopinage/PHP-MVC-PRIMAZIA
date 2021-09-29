@@ -10,15 +10,39 @@ if (empty($_SESSION['admin'])) {
 
     header('Refresh: 0.1; url=login.php');
 }
-$ClassPedido = new CategoriaDAO();
-$dados = $ClassPedido->pedidos();
+
+if(isset($_POST['filtror'])){
+
+    if(isset($_POST['status_filtro']) or isset($_POST['num_filtro'])){
+        
+        $status =  $_POST['status_filtro'];
+        $num =  $_POST['num_filtro'];
+
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedidosFiltro($status,$num);
+    }if(empty($_POST['status_filtro']) and empty($_POST['num_filtro'])){
+
+            
+    $ClassPedido = new CategoriaDAO();
+    $dados = $ClassPedido->pedidos();
+    }
+
+
+}else{
+    
+    $ClassPedido = new CategoriaDAO();
+    $dados = $ClassPedido->pedidos();
+
+}
+
+
 
 
 if (isset($_POST['chamado'])) {
 
     if ($_POST['pessoa'] != 'Selecione o profissional') {
 
-        
+
 
         $data =  date('Y/m/d');
         $ClassServico = new Servico();
@@ -31,9 +55,7 @@ if (isset($_POST['chamado'])) {
 
         $Servico = new ServicoDao();
         $Servico->inserServico($ClassServico);
-    } else {
-        echo "vish";
-    }
+    } 
 }
 
 if (isset($_POST['chamado_cancelado'])) {
@@ -65,12 +87,40 @@ if (isset($_POST['chamado_finalizado'])) {
 }
 
 ?>
-<link href="../../layout/css/cliente_painel.css" rel="stylesheet">
+<link href="../../layout/css/admin_painel2.css" rel="stylesheet">
 <div id="logo">
     <img src="../../images/primazia.png" alt="" width="250" height="190">
 </div>
+<br>
+<form method="POST" class="row g-3 m-t-3">
 
+
+    <div class="col-md-3">
+        <label for="validationServer01" class="form-label">Status</label>
+        <select class="form-select" name="status_filtro"  aria-label="select example">
+            <option value=""></option>
+            <option value="A">Em Aberto</option>
+            <option value="E">Em Atentimento</option>
+            <option value="F">Finalizado</option>
+            <option value="C">Cancelado</option>
+        </select>
+
+    </div>
+    <div class="col-md-4">
+        <label for="validationDefault01" class="form-label">Número do Pedido</label>
+        <input type="text" name="num_filtro" class="form-control" id="validationDefault01">
+
+    </div>
+    <div class="col-md-4" style="margin-top: 48px;">
+    <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
+
+    </div>
+
+
+
+</form>
 <div class="container">
+
 
     <table class="table table-hover">
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
