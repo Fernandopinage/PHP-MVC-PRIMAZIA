@@ -51,7 +51,7 @@ if(isset($_POST['motoboy'])){
 <a id="retorne" href="../../view/cliente/pedido.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
-            <img id="logo" src="../../images/primazia.png" class="img"><br>
+        <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
         </div>
 
         <div class="title text-center">

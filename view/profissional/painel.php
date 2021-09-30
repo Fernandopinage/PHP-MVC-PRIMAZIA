@@ -17,7 +17,7 @@ if (empty($_SESSION['profissional'])) {
 
 <link href="../../layout/css/profissional_painel.css" rel="stylesheet">
 <div id="logo">
-    <img src="../../images/primazia.png" alt="" width="250" height="190">
+<a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 
 

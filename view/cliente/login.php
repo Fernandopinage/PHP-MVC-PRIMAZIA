@@ -19,7 +19,7 @@ include_once "../../dao/ClienteDAO.php";
 <link href="../../layout/css/cliente_login.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="text-center">
-        <img id="logo" src="../../images/primazia.png" class="img"><br>
+    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
     </div>
 
     <div class="title text-center">

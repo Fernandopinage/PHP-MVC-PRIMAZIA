@@ -22,7 +22,7 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 ?>
 <link href="../../layout/css/cliente_painel.css" rel="stylesheet">
 <div id="logo">
-    <img src="../../images/primazia.png" alt="" width="250" height="190">
+<a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 
 

@@ -89,7 +89,7 @@ if (isset($_POST['chamado_finalizado'])) {
 ?>
 <link href="../../layout/css/admin_painel2.css" rel="stylesheet">
 <div id="logo">
-    <img src="../../images/primazia.png" alt="" width="250" height="190">
+<a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 <br>
 <form method="POST" class="row g-3 m-t-3">

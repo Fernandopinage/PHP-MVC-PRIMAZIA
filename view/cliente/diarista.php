@@ -54,7 +54,7 @@ if (isset($_POST['diaristafinal'])) {
     <a id="retorne" href="../../view/cliente/pedido.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
-            <img id="logo" src="../../images/primazia.png" class="img"><br>
+        <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
         </div>
 
         <div class="title text-center">
@@ -71,10 +71,10 @@ if (isset($_POST['diaristafinal'])) {
                 <!--***************************************************************************** --->
                 <div id="pergunta01">
 
-                    <div class="row g-12 ms-3 p-2">
+                    <div class="row">
                         <label class="fs-3">Que tipo de serviço você precisa?</label>
                         <br><br>
-                        <samp style="color: red;">Campo obrigatório</samp>
+                        <samp style="color: red; font-family: 'Montserrat';">Campo obrigatório</samp>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Limpeza comercial" name="categoria[]" id="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
                             <label class="form-check-label" for="limpezaComercial" title="Limpeza padrão do dia-a-dia voltada para salas comerciais.">
@@ -276,10 +276,10 @@ if (isset($_POST['diaristafinal'])) {
                     </div>
                 </div>
                 <div id="pergunta06">
-                    <div class="row g-12 ms-2 p-2">
+                    <div class="row">
                         <label class="fs-3">Tipo da Contratação</label>
                         <br><br>
-                        <samp style="color: red;">Campo obrigatório</samp>
+                        <samp style="color: red;font-family: 'Montserrat';">Campo obrigatório</samp>
                         
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="tipocontratacao" id="Avulso" value="avulso">
@@ -294,14 +294,7 @@ if (isset($_POST['diaristafinal'])) {
                             </label>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col text-center">
-                            <button id='botaoEnviar' type="button" id="volta01" onclick="voltando06()" class="btn azulprima btn-lg">VOLTAR</button>
-                        </div>
-                        <div class="col text-center">
-                            <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
-                        </div>
-                    </div>
+                    <div><p>Leia os <a class = "termo" href="http://primazia.agenciaprogride.com.br/wp-content/uploads/2021/09/CONTRATO-DE-LIMPEZA.pdf" style="text-decoration: block; color:tomato;"><b>Termos e Condições</b></a> do Serviço Mensal</p></div>
                 </div>
 
             </div>

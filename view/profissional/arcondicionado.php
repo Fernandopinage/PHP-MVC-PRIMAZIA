@@ -7,7 +7,7 @@ require "../../layout/head.php";
 <div id="desktop">
     <div id="conteudo-left">
 
-        <img id="logo" src="../../images/primazia.png" class="img"><br>
+    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
         <div id='titlespecial'>
             <title>MANUNTENÇÃO DE AR-CONDICIONADO</title>
             <h1>
