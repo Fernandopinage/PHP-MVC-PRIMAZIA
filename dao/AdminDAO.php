@@ -423,7 +423,8 @@ class AdminDAO extends DAO
                 'cidade' => $row['profissional_cidade'],
                 'bairro' => $row['profissional_bairro'],
                 'complemento' => $row['profissional_complemento'],
-                'foto' => $row['profissional_foto']
+                'foto' => $row['profissional_foto'],
+                'opt' => $row['profissional_option']
 
             );
         }
