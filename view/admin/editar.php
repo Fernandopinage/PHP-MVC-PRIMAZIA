@@ -38,6 +38,49 @@ if (empty($_SESSION['admin'])) {
         $dadosAdmin = $Admin->ListarAdmins();
 
 
+    if(isset($_POST['editar_admin'])){
+
+        if ($_POST['admsenha'] === $_POST['admconfirmar']) {
+
+
+            $ClassAdmin = new Admin();
+            $ClassAdmin->SetId($_POST['admid']);
+            $ClassAdmin->SetNome($_POST['admnome']);
+            $ClassAdmin->SetCpf($_POST['admcpf']);
+            if(!empty($_POST['admsenha'])){
+
+                $ClassAdmin->SetSenha($_POST['admsenha']);
+            }
+            $ClassAdmin->SetEmail($_POST['admemail']);
+            $ClassAdmin->SetTelefone($_POST['admtel']);
+
+            $Admin = new AdminDAO();
+            $Admin->updateAdmin($ClassAdmin);
+
+
+        }else{
+
+            ?>
+
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Senha divergente',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+        <?php
+        }
+
+    }
+
+
+
         ?>
 
 
@@ -53,14 +96,62 @@ if (empty($_SESSION['admin'])) {
                 <?php
 
                 foreach ($dadosAdmin as $dadosAdmin) {
+
+
                 ?>
 
-                    <tr>
+                    <tr data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>">
                         <td class="text-center" scope="col"><?php echo $dadosAdmin['nome']; ?></td>
                         <td scope="col"><?php echo $dadosAdmin['email']; ?></td>
                         <td scope="col"><?php echo $dadosAdmin['telefone']; ?></td>
                     </tr>
+
+                    <div class="modal fade" id="admin<?php echo $dadosAdmin['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel"><?php echo $dadosAdmin['nome']; ?></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST"> 
+                                    <div class="mb-3">
+                                            <input type="hidden" name="admid" value="<?php echo $dadosAdmin['id'];?>">
+                                            <input type="text" name="admnome" id="admnome" class="form-control" placeholder="Nome" aria-label="Nome do administrador" value="<?php echo $dadosAdmin['nome'];?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            
+                                            <input type="text" name="admcpf" id="admcpf" class="form-control cpf-mask" value="<?php echo $dadosAdmin['cpf'];?>"  placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                                        </div>
+                                        <div class="mb-3">
+                                            
+                                            <input type="password" name="admsenha" id="admsenha" class="form-control"   placeholder="Senha" aria-label="">
+                                        </div>
+                                        <div class="mb-3">
+                                            
+                                            <input type="password" name="admconfirmar" id="admconfirmar"   class="form-control cpf-mask" placeholder="Confirmar senha">
+                                        </div>
+                                        <div class="mb-3">
+                                            
+                                            <input type="text" name="admtel" id="tel" class="form-control" value="<?php echo $dadosAdmin['telefone'];?>" placeholder="Telefone" aria-label="">
+                                        </div>
+                                        <div class="mb-3">
+                                            
+                                            <input type="email" name="admemail" id="admemail" class="form-control" value="<?php echo $dadosAdmin['email'];?>" placeholder="E-mail" aria-label="">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <input type="submit" name="editar_admin" class="btn btn-primary" value="Editar">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 <?php
+
                 }
 
                 ?>
@@ -108,8 +199,8 @@ if (empty($_SESSION['admin'])) {
 
         <?php
 
-                $Cliente = new AdminDAO();
-                $dadosCliente = $Cliente->ListarCliente();
+        $Cliente = new AdminDAO();
+        $dadosCliente = $Cliente->ListarCliente();
 
         ?>
 
@@ -130,8 +221,8 @@ if (empty($_SESSION['admin'])) {
 
                     <tr>
                         <td class="text-center" scope="col"><?php echo $dadosCliente['nome']; ?></td>
-                        <td scope="col"><?php echo $dadosCliente['email'];?></td>
-                        <td scope="col"><?php echo $dadosCliente['telefone'];?></td>
+                        <td scope="col"><?php echo $dadosCliente['email']; ?></td>
+                        <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
                     </tr>
                 <?php
                 }
@@ -181,3 +272,7 @@ if (empty($_SESSION['admin'])) {
 
     }
 </script>
+
+<?php
+require "../../layout/footer.php";
+?>

@@ -211,6 +211,66 @@ class AdminDAO extends DAO
     
     }
 
+    public function updateAdmin($ClassAdmin){
+
+        $senha = $ClassAdmin->GetSenha();
+
+        if(!empty($ClassAdmin->GetSenha())){
+
+            $sql = "UPDATE `admin` SET `admin_nome`=:admin_nome, `admin_senha`=:admin_senha, `admin_telefone`=:admin_telefone,`admin_cfp`=:admin_cfp  WHERE admin_id = :admin_id";
+        }else{
+            $sql = "UPDATE `admin` SET `admin_nome`=:admin_nome, `admin_telefone`=:admin_telefone,`admin_cfp`=:admin_cfp  WHERE admin_id = :admin_id";
+        }
+        $update = $this->con->prepare($sql);
+        $update->bindValue(':admin_id', $ClassAdmin->GetId());
+        $update->bindValue(':admin_nome', $ClassAdmin->GetNome());
+        if(!empty($senha)){
+
+            $update->bindValue(':admin_senha', md5($ClassAdmin->GetSenha()));
+        }
+        $update->bindValue(':admin_telefone', $ClassAdmin->GetTelefone());
+        $update->bindValue(':admin_cfp', $ClassAdmin->GetCpf());
+
+        try {
+            
+            $update->execute();
+            ?>
+
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro',
+                    text: 'Alterado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+        <?php
+        header('Refresh: 3.4; url=../admin/editar.php');
+
+        } catch (\Throwable $th) {
+            ?>
+
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Por favor entre em contato com administração!',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+        <?php
+        }
+
+    }
+
     public function redefinirSenha($ClassAdmin){
 
         $sql = "SELECT * FROM `admin` WHERE `admin_email` = :admin_email";
@@ -331,7 +391,7 @@ class AdminDAO extends DAO
                 'foto' => $row['admin_foto'],
                 'telefone' => $row['admin_telefone'],
                 'cpf' => $row['admin_cfp'],
-
+                'senha' => $row['admin_senha']
 
             );
 
