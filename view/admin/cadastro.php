@@ -1,12 +1,9 @@
 <?php
-session_start();
+
 include_once "../../layout/heard.php";
-include_once  "../../class/ClassAdmin.php";
+include_once "../../class/ClassAdmin.php";
 include_once "../../dao/AdminDAO.php";
-include_once  "../../class/ClassProfissional.php";
-include_once "../../dao/ProfissionalDAO.php";
-include_once  "../../class/ClassCliente.php";
-include_once "../../dao/ClienteDAO.php";
+
 
 if (isset($_POST['salvarAdmin'])) {
 
@@ -15,13 +12,12 @@ if (isset($_POST['salvarAdmin'])) {
 
         if ($_POST['admsenha'] === $_POST['admconfirmar']) {
 
-
+            
             $ClassAdmin = new Admin();
             $ClassAdmin->SetNome($_POST['admnome']);
             $ClassAdmin->SetCpf($_POST['admcpf']);
             $ClassAdmin->SetSenha($_POST['admsenha']);
             $ClassAdmin->SetEmail($_POST['admemail']);
-
 
             $Admin = new AdminDAO();
             $Admin->AdminInsert($ClassAdmin);
@@ -196,7 +192,7 @@ if (isset($_POST['salvarCliente'])) {
             <label for="basic-url" class="form-label">Selecione uma opção para cadastrar</label>
             <select class="form-select form-select-sm" id="opcao" aria-label="Default select example" onchange="addNew()">
                 <option selected value="0"></option>
-                <option value="1">administrador</option>
+                <option value="1">Administrador</option>
                 <option value="2">Profissional</option>
                 <option value="3">Cliente</option>
             </select><br>
@@ -242,13 +238,13 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="col-md-6">
                     <div class="form-check">
                         <input class="pessoa form-check-input" type="radio" name="Popt" id="j" onclick="juridica()" value="J" CHECKED>
-                        <label class="form-check-label" for="pessoa" id="j">
+                        <label class="form-check-label" for="j" id="j">
                             Pessoa Juridica
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="pessoa form-check-input" type="radio" name="Popt" id="f" onclick="fisica()" value="F">
-                        <label class="form-check-label" for="pessoa" id="f">
+                        <label class="form-check-label" for="f" id="f">
                             Pessoa Fisica
                         </label>
                     </div>
@@ -339,14 +335,14 @@ if (isset($_POST['salvarCliente'])) {
             <div id="cliente">
                 <div class="col-md-6">
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
-                        <label class="form-check-label" for="pessoa" id="j">
+                        <input class="pessoa form-check-input" type="radio" name="opt" id="jc" onclick="juridica()" value="J" CHECKED>
+                        <label class="form-check-label" for="jc" id="jc">
                             Pessoa juridica
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
-                        <label class="form-check-label" for="pessoa" id="f">
+                        <input class="pessoa form-check-input" type="radio" name="opt" id="fc" onclick="fisica()" value="F">
+                        <label class="form-check-label" for="fc" id="fc">
                             Pessoa Fisica
                         </label>
                     </div>
