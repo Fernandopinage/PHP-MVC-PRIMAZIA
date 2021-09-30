@@ -21,7 +21,19 @@ $dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
 
 <div class="container">
 
-    <h3 style="color:orangered">Meus pedidos</h3>
+    
+
+    <div class="col-md-3">
+        <label for="validationServer01" class="form-label">Pedidos</label>
+        <select class="form-select" name="status_filtro"  aria-label="select example">
+            <option value=""></option>
+            <option value="p">PROFISSIONAL</option>
+            <option value="c">CLIENTE</option>
+        </select>
+    </div>
+   
+
+    <h3  style="color:orangered;margin-top:50px;">Meus pedidos</h3>
 
     <?php
 

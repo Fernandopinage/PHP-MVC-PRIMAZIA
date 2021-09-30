@@ -71,14 +71,6 @@ if (empty($_SESSION['profissional'])) {
             </div>
 
             <div class="col-md">
-                <a class="navbar-brand" href="../cliente/meu_pedidos.php">
-                    <img src="../../images/pedidosquesoliciteip.png" alt="" width="70" height="70">
-                </a>
-                <p class="fs-7"> Pedidos que solicitei</p>
-            </div>
-
-
-            <div class="col-md">
                 <a class="navbar-brand" href="../../view/cliente/logout.php">
                     <img src="../../icons/photo1629906564.jpeg" alt="" width="70" height="70">
                 </a>
