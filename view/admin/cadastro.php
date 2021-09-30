@@ -211,7 +211,7 @@ if (isset($_POST['salvarCliente'])) {
                             <input type="text" name="admnome" id="admnome" class="form-control" placeholder="Nome" aria-label="Nome do administrador">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="admcpf" id="admcpf" class="form-control cpf-mask" placeholder="CPF" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                            <input type="text" name="admcpf" id="admcpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                         </div>
                     </div>
                 </div>
@@ -458,6 +458,7 @@ if (isset($_POST['salvarCliente'])) {
 
     }
 </script>
+
 
 
 
