@@ -24,14 +24,14 @@ if(isset($_POST['filtror'])){
 
             
     $ClassPedido = new CategoriaDAO();
-    $dados = $ClassPedido->pedidos();
+    $dados = $ClassPedido->pedido();
     }
 
 
 }else{
     
     $ClassPedido = new CategoriaDAO();
-    $dados = $ClassPedido->pedidos();
+    $dados = $ClassPedido->pedido();
 
 }
 
