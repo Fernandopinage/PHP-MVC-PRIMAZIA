@@ -54,7 +54,7 @@ if (isset($_POST['diaristafinal'])) {
     <a id="retorne" href="../../view/cliente/pedido.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
-        <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+            <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
         </div>
 
         <div class="title text-center">
@@ -280,7 +280,7 @@ if (isset($_POST['diaristafinal'])) {
                         <label class="fs-3">Tipo da Contratação</label>
                         <br><br>
                         <samp style="color: red;font-family: 'Montserrat';">Campo obrigatório</samp>
-                        
+
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="tipocontratacao" id="Avulso" value="avulso">
                             <label class="form-check-label" for="avulso">
@@ -288,13 +288,24 @@ if (isset($_POST['diaristafinal'])) {
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipocontratacao" id="Mensal"  value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" id="Mensal" value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <label class="form-check-label" for="mensal">
                                 Serviço Mensal
                             </label>
                         </div>
                     </div>
-                    <div><p>Leia os <a class = "termo" href="http://primazia.agenciaprogride.com.br/wp-content/uploads/2021/09/CONTRATO-DE-LIMPEZA.pdf" style="text-decoration: block; color:tomato;"><b>Termos e Condições</b></a> do Serviço Mensal</p></div>
+                    <div>
+                        <p>Leia os <a class="termo" href="http://primazia.agenciaprogride.com.br/wp-content/uploads/2021/09/CONTRATO-DE-LIMPEZA.pdf" target="_blank" style="text-decoration: block; color:tomato;"><b>Termos e Condições</b></a> do Serviço Mensal</p>
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col text-center">
+                            <button id='botaoEnviar' type="button" id="volta01" onclick="voltando06()" class="btn azulprima btn-lg">VOLTAR</button>
+                        </div>
+                        <div class="col text-center">
+                            <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -308,7 +319,7 @@ if (isset($_POST['diaristafinal'])) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continuar</button>
