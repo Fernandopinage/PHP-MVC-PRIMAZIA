@@ -180,6 +180,7 @@ if (empty($_SESSION['admin'])) {
                 foreach ($dadosProfissional as $dadosProfissional) {
 
 
+
                 ?>
 
                     <tr data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>">
@@ -195,18 +196,57 @@ if (empty($_SESSION['admin'])) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST">
+                                    <form method="POST" id="editaProfissionalModal">
 
                                         <div class="mb-3">
                                             <input type="hidden" name="admid" value="<?php echo $dadosProfissional['id']; ?>">
                                             <input type="text" name="admnome" id="admnome" class="form-control" placeholder="Nome" aria-label="Nome do administrador" value="<?php echo $dadosAdmin['nome']; ?>">
                                         </div>
 
+                                        <?php
+
+                                        if ($dadosProfissional['opt'] === 'J') {
+
+                                        ?>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                                                    <label class="form-check-label" for="pessoa" id="j">
+                                                        Pessoa Juridica
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                                                    <label class="form-check-label" for="pessoa" id="f">
+                                                        Pessoa Fisica
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div id="Pfisica">
+
+                                                
+                                                    <div class="mb-3">
+                                                        <input type="text" name="razao" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                                                    </div>
+                                                
+                                            </div>
+                                            
+
+
+                                        <?php
+                                        }
+
+                                        ?>
+
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <input type="submit" name="editar_admin_profissional" class="btn btn-primary" value="Editar">
                                         </div>
-                                        
+
                                     </form>
                                 </div>
                             </div>
@@ -297,7 +337,12 @@ if (empty($_SESSION['admin'])) {
     }
 </script>
 
+<script>
+    $(document).ready(function() {
 
+
+    });
+</script>
 
 <script>
     function formatarCampo(campoTexto) {
