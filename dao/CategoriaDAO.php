@@ -73,7 +73,6 @@ class CategoriaDAO extends DAO
         <?php
 
             header('Refresh: 4.4; url=painel.php');
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         ?>
@@ -98,18 +97,18 @@ class CategoriaDAO extends DAO
 
     public function pedido()
     {
- 
+
         $sql = "SELECT * FROM `pedido`";
         $select = $this->con->prepare($sql);
         $select->execute();
- 
+
         $array = array();
- 
+
         while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
- 
- 
+
+
             $array[] = array(
- 
+
                 'id' => $row['pedido_id'],
                 'nome' => $row['pedido_nome'],
                 'telefone' => $row['pedido_telefone'],
@@ -128,7 +127,7 @@ class CategoriaDAO extends DAO
                 'status' => $row['pedido_status']
             );
         }
- 
+
         return $array;
     }
 
@@ -171,53 +170,49 @@ class CategoriaDAO extends DAO
         return $array;
     }
 
-    public function pedidosProfissionalFiltro($id){
+    public function pedidosProfissionalFiltro($id)
+    {
 
-       $sql = "SELECT * FROM `servico` WHERE servico_protocolo = :servico_protocolo";
-       $select = $this->con->prepare($sql);
-       $select->bindValue(':servico_protocolo',$id);
-       $select->execute();
-       if($row = $select->fetch(PDO::FETCH_ASSOC)){
+        $sql = "SELECT * FROM `servico` WHERE servico_protocolo = :servico_protocolo";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':servico_protocolo', $id);
+        $select->execute();
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 
             $idProfissional = $row['servico_idprofissional'];
-       }
-       
-       
-       $query = "SELECT * FROM `profissional` where profissional_id = :profissional_id ";
-       $select = $this->con->prepare($query);
-       @$select->bindValue(':profissional_id',$idProfissional);
-       $select->execute();
-       $array = array();
-       while($row2 = $select->fetch(PDO::FETCH_ASSOC)){
-        
-        $array = array( 
-            
-            'nome_profissional' => $row2['profissional_nome']
-    
-        );
+        }
 
-       }
-           
-       return $array;
+
+        $query = "SELECT * FROM `profissional` where profissional_id = :profissional_id ";
+        $select = $this->con->prepare($query);
+        @$select->bindValue(':profissional_id', $idProfissional);
+        $select->execute();
+        $array = array();
+        while ($row2 = $select->fetch(PDO::FETCH_ASSOC)) {
+
+            $array = array(
+
+                'nome_profissional' => $row2['profissional_nome']
+
+            );
+        }
+
+        return $array;
     }
 
-    public function pedidosFiltro($status,$num)
+    public function pedidosFiltro($status, $num)
     {
 
         $sql = "SELECT * FROM `pedido` where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
         $select = $this->con->prepare($sql);
-        $select->bindValue(':pedido_protocolo',$num);
-        $select->bindValue(':pedido_status',$status);
+        $select->bindValue(':pedido_protocolo', $num);
+        $select->bindValue(':pedido_status', $status);
         $select->execute();
 
         $array = array();
 
-if($row = !$select->fetch(PDO::FETCH_ASSOC)){
 
-    $array[] = "Não possui nenhum registro!";
-}
 
-        
         while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 
 
@@ -241,7 +236,9 @@ if($row = !$select->fetch(PDO::FETCH_ASSOC)){
                 'status' => $row['pedido_status']
             );
         }
-       
+        
+  
+
 
         return $array;
     }
@@ -322,7 +319,7 @@ if($row = !$select->fetch(PDO::FETCH_ASSOC)){
             header('Refresh: 3.4; url=../admin/pedidos.php');
         } catch (\Throwable $th) {
 
-           echo $th;
+            echo $th;
         ?>
 
             <script>

@@ -115,12 +115,13 @@ if (isset($_POST['chamado_finalizado'])) {
 
     </div>
 
-    <div class="">
+    <div>
 
         <img src="../../icons/1.png" width="30"> Em Aberto
         <img src="../../icons/2.png" width="30"> Em Atendimento
         <img src="../../icons/3.png" width="30"> Finalizado
-        <img src="../../icons/4.png" width="30"> Inativado
+        <img src="../../icons/4.png" width="30"> Cancelado
+
 
     </div>
 

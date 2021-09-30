@@ -24,7 +24,7 @@ $dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
     
 
     <div class="col-md-3">
-        <label for="validationServer01" class="form-label">Pedidos</label>
+        <label for="validationServer01" class="form-label">Meus pedidos:</label>
         <select class="form-select" name="status_filtro"  aria-label="select example">
             <option value=""></option>
             <option value="p">PROFISSIONAL</option>
