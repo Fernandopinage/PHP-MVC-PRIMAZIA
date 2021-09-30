@@ -210,7 +210,12 @@ if (isset($_POST['chamado_finalizado'])) {
                                         $perfil = $ClassPedido->cliente($id);
 
                                         echo '<div id="principal">';
-                                        echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
+                                        if(isset($perfil["foto"])){
+
+                                            echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
+                                        }else{
+                                            echo '<img id="usuario" src="../../images/perfil.png" class="img">';
+                                        }
                                         echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
                                         echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
                                         echo '</div>';
