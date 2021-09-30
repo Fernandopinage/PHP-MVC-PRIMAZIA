@@ -57,7 +57,7 @@ if (empty($_SESSION['user'])) {
             </div>
 
             <div class="col-md">
-                <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/login-registro-profissional/">
+                <a class="navbar-brand" href="https://primaziasistema.agenciaprogride.com.br/view/profissional/registro.php">
                     <img src="../../images/cadastresecomoprofissional.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-6"> Cadastre-se como Profissional</p>

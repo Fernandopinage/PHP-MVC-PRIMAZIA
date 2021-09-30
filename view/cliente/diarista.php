@@ -187,7 +187,7 @@ if (isset($_POST['diaristafinal'])) {
                 <!--***************************************************************************** --->
                 <div id="pergunta04">
                     <div class="row g-12 ms-2 p-2">
-                        <label class="fs-3">Há criança ouanimal de estimação no local?</label>
+                        <label class="fs-3">Há criança ou animal de estimação no local?</label>
                         <select class="form-select" name="dependente[]" aria-label="Default select example">
                             <option selected>Selecione</option>
                             <option value="Crianças<">Crianças</option>

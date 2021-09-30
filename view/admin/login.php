@@ -43,10 +43,6 @@ if (isset($_POST['loginenviar'])) {
                 <input type="password" class="form-control" name="senha" id="exampleInputPassword1">
             </div>
             <div class="col-6">
-                <a id="registro" href="../admin/registro.php">Criar login do Adm</a>
-
-            </div>
-            <div class="col-6 text-end">
                 <a id="registro" href="../admin/redefinir.php">Esqueceu Senha?</a>
             </div>
             <div class="d-grid text-center" style="margin-top: 40px;">

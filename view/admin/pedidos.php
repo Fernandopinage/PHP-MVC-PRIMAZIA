@@ -100,7 +100,7 @@ if (isset($_POST['chamado_finalizado'])) {
         <select class="form-select" name="status_filtro"  aria-label="select example">
             <option value=""></option>
             <option value="A">Em Aberto</option>
-            <option value="E">Em Atentimento</option>
+            <option value="E">Em Atendimento</option>
             <option value="F">Finalizado</option>
             <option value="C">Cancelado</option>
         </select>

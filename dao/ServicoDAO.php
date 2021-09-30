@@ -50,7 +50,7 @@ class ServicoDao extends Dao{
                     position: 'center',
                     icon: 'success',
                     title: 'O Pedido',
-                    text:'Foi atentido com sucesso!',
+                    text:'Foi atendido  com sucesso!',
                     showConfirmButton: false,         
                     timer: 3500   
                 })
