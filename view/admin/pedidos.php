@@ -106,6 +106,7 @@ if (isset($_POST['chamado_finalizado'])) {
         </select>
 
     </div>
+    
     <div class="col-md-4">
         <label for="validationDefault01" class="form-label">Número do Pedido</label>
         <input type="text" name="num_filtro" class="form-control" id="validationDefault01">
@@ -116,6 +117,14 @@ if (isset($_POST['chamado_finalizado'])) {
 
     </div>
 
+    <div class="">
+ 
+        <img src="../../icons/1.png" width="30"> Em Aberto
+        <img src="../../icons/2.png" width="30"> Em Atendimento
+        <img src="../../icons/3.png" width="30"> Finalizado
+        <img src="../../icons/4.png" width="30"> Inativado
+ 
+    </div>
 
 
 </form>
