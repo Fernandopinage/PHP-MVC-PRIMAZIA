@@ -346,6 +346,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             if ($dados['status'] === 'E') {
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                                                <input type="submit" name="chamado_cancelado" class="btn btn-secondary" value="Cancelar" style="color: white;">
                                                 <input type="submit" name="chamado_finalizado" class="btn btn-warning" value="Finalizar" style="color: white;">
                                             <?php
                                             }
