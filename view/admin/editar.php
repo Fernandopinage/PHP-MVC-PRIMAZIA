@@ -4,6 +4,7 @@ include_once "../../class/ClassAdmin.php";
 include_once "../../dao/AdminDAO.php";
 
 
+
 session_start();
 
 if (empty($_SESSION['admin'])) {
@@ -74,6 +75,37 @@ if (empty($_SESSION['admin'])) {
 
         <?php
             }
+        }
+
+
+
+        if(isset($_POST['editar_admin_profissional'])){
+
+            if ($_POST['senha'] === $_POST['confirmar']) {
+
+
+               echo $id = $_POST['admid'];
+               echo $opt = $_POST['opt'];
+               echo $nome = $_POST['nome'];
+               echo $cpf = $_POST['cpf'];
+               echo $senha = $_POST['senha'];
+               echo $confimar = $_POST['confirmar'];
+               echo $cep = $_POST['cep'];
+               echo $logradouro = $_POST['logradouro'];
+               echo $numero = $_POST['numerp'];
+               echo $uf = $_POST['uf'];
+               echo $cidade = $_POST['cidade'];
+               echo $bairro = $_POST['bairro'];
+               echo $complemento = $_POST['complemento'];
+               echo $telefone = $_POST['telefone'];
+               echo $email = $_POST['email'];
+               echo $servico = $_POST['servico'];
+
+
+
+            }
+            
+
         }
 
 
@@ -196,6 +228,8 @@ if (empty($_SESSION['admin'])) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
+
+
                                     <form method="POST" id="editaProfissionalModal">
 
                                         <div class="mb-3">
@@ -277,9 +311,6 @@ if (empty($_SESSION['admin'])) {
                                         <div class="mb-3">
                                             <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                                         </div>
-
-
-
 
                                         <div class="mb-3">
                                             <input type="text" maxlength="9" name="cep" id="cep" value="<?php echo $dadosProfissional['cep'] ?>" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">

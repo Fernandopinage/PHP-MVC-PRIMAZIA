@@ -125,6 +125,11 @@ class ProfissionalDAO extends DAO
         }
     }
 
+    public function updateProfissionalModal(){
+       
+        
+    }
+
     public function AdminInserirProfissional($ClassProfissional)
     {
 
