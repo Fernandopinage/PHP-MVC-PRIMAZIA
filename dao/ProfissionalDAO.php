@@ -342,6 +342,8 @@ class ProfissionalDAO extends DAO
 
         return $token;
     }
+
+
 }
 
 

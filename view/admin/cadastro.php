@@ -12,12 +12,13 @@ if (isset($_POST['salvarAdmin'])) {
 
         if ($_POST['admsenha'] === $_POST['admconfirmar']) {
 
-            
+
             $ClassAdmin = new Admin();
             $ClassAdmin->SetNome($_POST['admnome']);
             $ClassAdmin->SetCpf($_POST['admcpf']);
             $ClassAdmin->SetSenha($_POST['admsenha']);
             $ClassAdmin->SetEmail($_POST['admemail']);
+            $ClassAdmin->SetTelefone($_POST['admtel']);
 
             $Admin = new AdminDAO();
             $Admin->AdminInsert($ClassAdmin);
@@ -179,7 +180,7 @@ if (isset($_POST['salvarCliente'])) {
 <link href="../../layout/css/cliente_registro.css" rel="stylesheet">
 
 <div class="text-center">
-<a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 
 <div class="title text-center">
@@ -222,8 +223,12 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="password" name="admconfirmar" id="admconfirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
+
                 <div class="row g-3 mt-1">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
+                        <input type="text" name="admtel" id="tel" class="form-control" placeholder="Telefone" aria-label="">
+                    </div>
+                    <div class="col-md-6">
                         <input type="email" name="admemail" id="admemail" class="form-control" placeholder="E-mail" aria-label="">
                     </div>
                 </div>

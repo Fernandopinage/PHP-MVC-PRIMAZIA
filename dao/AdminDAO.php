@@ -9,13 +9,15 @@ class AdminDAO extends DAO
 
     public function AdminInsert($ClassAdmin){
 
-        $sql = "INSERT INTO `admin`(`admin_id`, `admin_nome`, `admin_senha`, `admin_email`, `admin_foto`) 
-        VALUES (null, :admin_nome, :admin_senha, :admin_email, :admin_foto)";
+        $sql = "INSERT INTO `admin`(`admin_id`, `admin_nome`, `admin_senha`, `admin_email`, `admin_foto` , `admin_telefone`, `admin_cfp`) 
+        VALUES (null, :admin_nome, :admin_senha, :admin_email, :admin_foto, :admin_telefone,:admin_cfp)";
    
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':admin_nome', $ClassAdmin->GetNome());
         $insert->bindValue(':admin_senha', md5($ClassAdmin->GetSenha()));
         $insert->bindValue(':admin_email', $ClassAdmin->GetEmail());
+        $insert->bindValue(':admin_telefone', $ClassAdmin->GetTelefone());
+        $insert->bindValue(':admin_cfp', $ClassAdmin->GetCpf());
         $insert->bindValue(':admin_foto', '');
         
         
@@ -60,13 +62,15 @@ class AdminDAO extends DAO
 
     public function insertAdmin($ClassAdmin){
 
-     $sql = "INSERT INTO `admin`(`admin_id`, `admin_nome`, `admin_senha`, `admin_email`, `admin_foto`) 
-     VALUES (null, :admin_nome, :admin_senha, :admin_email, :admin_foto)";
+     $sql = "INSERT INTO `admin`(`admin_id`, `admin_nome`, `admin_senha`, `admin_email`, `admin_foto` , `admin_telefone`, `admin_cfp`) 
+     VALUES (null, :admin_nome, :admin_senha, :admin_email, :admin_foto, :admin_telefone,:admin_cfp)";
 
      $insert = $this->con->prepare($sql);
      $insert->bindValue(':admin_nome', $ClassAdmin->GetNome());
      $insert->bindValue(':admin_senha', md5($ClassAdmin->GetSenha()));
      $insert->bindValue(':admin_email', $ClassAdmin->GetEmail());
+     $insert->bindValue(':admin_telefone', $ClassAdmin->GetTelefone());
+     $insert->bindValue(':admin_cfp', $ClassAdmin->GetCpf());
      $insert->bindValue(':admin_foto', $ClassAdmin->GetFoto());
      
      
@@ -306,6 +310,98 @@ class AdminDAO extends DAO
         }
 
         return $token;
+    }
+
+
+    public function ListarAdmins(){
+
+        $sql = "SELECT * FROM `admin`";
+        $select = $this->con->prepare($sql);
+        $select->execute();
+        $array = array();
+
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+
+                'id' => $row['admin_id'],
+                'nome' => $row['admin_nome'],
+                'email' => $row['admin_email'],
+                'foto' => $row['admin_foto'],
+                'telefone' => $row['admin_telefone'],
+                'cpf' => $row['admin_cfp'],
+
+
+            );
+
+        }
+
+        return $array;
+
+    }
+    public function ListarProfissional(){
+
+        $sql = "SELECT * FROM `profissional`";
+        $select = $this->con->prepare($sql);
+        $select->execute();
+        $array = array();
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+                
+                'id' => $row['profissional_id'],
+                'nome' => $row['profissional_nome'],
+                'email' => $row['profissional_email'],
+                'cpf' => $row['profissional_cpf'],
+                'telefone' => $row['profissional_telefone'],
+                'cep' => $row['profissional_cep'],
+                'uf' => $row['profissional_uf'],
+                'rua' => $row['profissional_logradouro'],
+                'numero' => $row['profissional_num'],
+                'cidade' => $row['profissional_cidade'],
+                'bairro' => $row['profissional_bairro'],
+                'complemento' => $row['profissional_complemento'],
+                'foto' => $row['profissional_foto']
+
+            );
+        }
+
+         return $array;
+    }
+    public function ListarCliente(){
+
+        $sql = "SELECT * FROM `cliente`";
+        $select = $this->con->prepare($sql);
+        $select->execute();
+        $array = array();
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+                
+                'id' => $row['CLIENTE_ID'],
+                'nome' => $row['CLIENTE_NOME'],
+                'cpf' => $row['CLIENTE_CPF'],
+                'email' => $row['CLIENTE_EMAIL'],
+                'telefone' => $row['CLIENTE_TELEFONE'],
+                'cep' => $row['CLIENTE_CEP'],
+                'foto' => $row['CLIENTE_FOTO'],
+                'senha' => $row['CLIENTE_SENHA'],
+                'uf' => $row['CLIENTE_UF'],
+                'cidade' => $row['CLIENTE_CIDADE'],
+                'logradouro' => $row['CLIENTE_LOGRADOURO'],
+                'bairro' => $row['CLIENTE_BAIRRO'],
+                'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                'opcao' => $row['CLIENTE_OPCAO'],
+                'razao' => $row['CLIENTE_RAZAO'],
+                'numero' => $row['CLIENTE_NUM'],
+
+            );
+        }
+
+         return $array;
     }
 
 

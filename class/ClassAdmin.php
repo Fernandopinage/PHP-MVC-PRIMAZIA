@@ -10,6 +10,8 @@ class Admin{
     private $senha;
     private $foto;
 
+    private $telefone;
+  
 
 
     public function SetId($id){
@@ -20,6 +22,14 @@ class Admin{
     public function GetId(){
 
       return $this->id;
+    }
+
+    public function SetTelefone($telefone){
+        $this->telefone = $telefone;
+
+    }
+    public function GetTelefone(){
+        return $this->telefone;
     }
 
     public function SetNome($nome){

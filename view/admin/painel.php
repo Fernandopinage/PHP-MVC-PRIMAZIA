@@ -48,7 +48,7 @@ if (empty($_SESSION['admin'])) {
                 <p class="fs-6"> Cadastrar Usuário</p>
             </div>
             <div class="col-md">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="../admin/editar.php">
                     <img src="../../images/editarusuario.png" alt="" width="80" height="80">
                 </a>
                 <p class="fs-6"> Editar Usuário </p>
