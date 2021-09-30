@@ -208,7 +208,7 @@ if (empty($_SESSION['admin'])) {
                                         if ($dadosProfissional['opt'] === 'J') {
 
                                         ?>
-                                            <div class="col-md-6">
+                                            <div class="mb-3">
                                                 <div class="form-check">
                                                     <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
                                                     <label class="form-check-label" for="pessoa" id="j">
@@ -225,22 +225,83 @@ if (empty($_SESSION['admin'])) {
 
                                             <div id="Pfisica">
 
-                                                
-                                                    <div class="mb-3">
-                                                        <input type="text" name="razao" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
-                                                    </div>
-                                                
-                                            </div>
-                                            
 
+                                                <div class="mb-3">
+                                                    <input type="text" name="razao" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                                                </div>
+
+                                            </div>
 
                                         <?php
                                         }
 
                                         ?>
+
+
+                                        <div class="mb-3">
+                                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                                        </div>
+
+
+
+                                        <div class="mb-3">
+                                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
+                                        </div>
+
+
+
+
+                                        <div class="mb-3">
+                                            <input type="text" maxlength="9" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="logradouro" id="rua" class="form-control" placeholder="Endereço ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="numerp" id="numero" class="form-control" placeholder="Nº ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="uf" id="uf" class="form-control" placeholder="UF">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="cidade" id="cidade" class="form-control " placeholder="Cidade">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="bairro" id="bairro" class="form-control " placeholder="Bairro">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <input type="text" name="complemento" id="complemento" class="form-control " placeholder="Complemento">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                                        </div>
+                                        <div class="mb-3">
+                                            <select class="form-select" name="servico" id="servico" onchange="change()">
+                                                <option selected>Tipo de Serviço</option>
+                                                <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
+                                                <option value="Babá">Babá</option>
+                                                <option value="Cabelereiro">Cabelereiro</option>
+                                                <option value="Cuidador(a) de Idoso">Cuidador(a) de Idoso</option>
+                                                <option value="Dedetização">Dedetização</option>
+                                                <option value="Diarista">Diarista</option>
+                                                <option value="Lavanderia">Lavanderia</option>
+                                                <option value="Manutenção de Ar Condicionado">Manutenção de Ar Condicionado</option>
+                                                <option value="Motoboy">Motoboy</option>
+                                            </select>
+                                        </div>
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -340,8 +401,35 @@ if (empty($_SESSION['admin'])) {
 <script>
     $(document).ready(function() {
 
+     
+       $cheched =  document.querySelector('input[name=opt]:checked').value;
+
+       if($cheched === 'J'){
+        var Pfisica = document.getElementById('Pfisica').style.display = "block";
+       }
+
+       if($cheched === 'F'){
+        var Pfisica = document.getElementById('Pfisica').style.display = "none";
+       }
+
 
     });
+</script>
+
+<script>
+    function juridica() {
+
+        var Pfisica = document.getElementById('Pfisica').style.display = "block";
+
+
+    }
+
+    function fisica() {
+
+        var Pfisica = document.getElementById('Pfisica').style.display = "none";
+
+
+    }
 </script>
 
 <script>
