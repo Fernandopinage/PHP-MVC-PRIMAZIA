@@ -96,11 +96,12 @@ class CategoriaDAO extends DAO
         }
     }
 
-    public function pedidos()
+    public function pedidos($email)
     {
 
-        $sql = "SELECT * FROM `pedido`";
+        $sql = "SELECT * FROM `pedido` where pedido_email = :pedido_email ORDER BY `pedido`.`pedido_id` DESC";
         $select = $this->con->prepare($sql);
+        $select->bindValue(':pedido_email', $email);
         $select->execute();
 
         $array = array();
@@ -129,7 +130,38 @@ class CategoriaDAO extends DAO
             );
         }
 
+
         return $array;
+    }
+
+    public function pedidosProfissionalFiltro($id){
+
+       $sql = "SELECT * FROM `servico` WHERE servico_protocolo = :servico_protocolo";
+       $select = $this->con->prepare($sql);
+       $select->bindValue(':servico_protocolo',$id);
+       $select->execute();
+       if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $idProfissional = $row['servico_idprofissional'];
+       }
+       
+       
+       $query = "SELECT * FROM `profissional` where profissional_id = :profissional_id ";
+       $select = $this->con->prepare($query);
+       @$select->bindValue(':profissional_id',$idProfissional);
+       $select->execute();
+       $array = array();
+       while($row2 = $select->fetch(PDO::FETCH_ASSOC)){
+        
+        $array = array( 
+            
+            'nome_profissional' => $row2['profissional_nome']
+    
+        );
+
+       }
+           
+       return $array;
     }
 
     public function pedidosFiltro($status,$num)
