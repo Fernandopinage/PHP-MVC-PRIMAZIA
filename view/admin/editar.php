@@ -2,7 +2,8 @@
 include_once "../../layout/heard.php";
 include_once "../../class/ClassAdmin.php";
 include_once "../../dao/AdminDAO.php";
-
+include_once "../../class/ClassCliente.php";
+include_once "../../dao/ClienteDAO.php";
 include "../../class/ClassProfissional.php";
 require_once "../../dao/ProfissionalDAO.php";
 
@@ -120,6 +121,35 @@ if (empty($_SESSION['admin'])) {
             }
         }
 
+
+        if(isset($_POST['editarCliente'])){
+
+            if(isset($_POST['clisenha']) === isset($_POST['cliconfirmar'])){
+
+                $ClassCliente = new Cliente();
+                $ClassCliente->SetID($_POST['cliID']);
+                $ClassCliente->SetOpcao($_POST['cliopt']);
+                $ClassCliente->SetRazao($_POST['clirazao']);
+                //$ClassCliente->SetID($_POST['cliInscrição']);
+                $ClassCliente->SetNome($_POST['clinome']);
+                $ClassCliente->SetCpf($_POST['clicpf']);
+                $ClassCliente->SetSenha($_POST['clisenha']);
+             
+                $ClassCliente->SetCep($_POST['clicep']);
+                $ClassCliente->SetLogradouro($_POST['clilogradouro']);
+                $ClassCliente->SetNumero($_POST['clinumer']);
+                $ClassCliente->SetUf($_POST['cliuf']);
+                $ClassCliente->SetCidade($_POST['clicidade']);
+                $ClassCliente->SetBairro($_POST['clibairro']);
+                $ClassCliente->SetComplemento($_POST['clicomplemento']);
+                $ClassCliente->SetTelefone($_POST['clitelefone']);
+                $ClassCliente->SetEmail($_POST['cliemail']);
+
+                $ClienteDao = new ClienteDAO();
+                $ClienteDao->updateCliente($ClassCliente);
+            
+            }
+        }
 
 
         ?>
@@ -426,7 +456,9 @@ if (empty($_SESSION['admin'])) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="POST">
+
+                                    <input type="hidden" name="cliID" value="<?php echo $dadosCliente['id']; ?>">
 
                                         <?php
 
@@ -481,7 +513,7 @@ if (empty($_SESSION['admin'])) {
                                                 <input type="text" name="clirazao" id="razao" value="<?php echo $dadosCliente['razao']; ?>" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" name="cliInscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                                                <input type="text" name="cliInscrição" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
                                             </div>
 
                                         </div>
@@ -535,8 +567,8 @@ if (empty($_SESSION['admin'])) {
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <input type="submit" name="editarCliente" class="btn btn-primary" value="Editar">
                                         </div>
                                     </form>
                                 </div>

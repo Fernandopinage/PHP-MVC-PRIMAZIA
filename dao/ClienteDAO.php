@@ -55,7 +55,8 @@ class ClienteDAO extends DAO
         }
     }
 
-    public function updateSenha($novaSenha,$id,$email,$senha){
+    public function updateSenha($novaSenha, $id, $email, $senha)
+    {
 
 
         $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL=:CLIENTE_EMAIL and CLIENTE_ID =:CLIENTE_ID";
@@ -64,7 +65,7 @@ class ClienteDAO extends DAO
         $select->bindValue(':CLIENTE_ID', $id);
         $select->execute();
 
-        if($select->fetch(PDO::FETCH_ASSOC)){
+        if ($select->fetch(PDO::FETCH_ASSOC)) {
             $new =  md5($novaSenha);
             $sql2 = "UPDATE `cliente` SET CLIENTE_SENHA=:CLIENTE_SENHA where CLIENTE_ID=:CLIENTE_ID";
             $update = $this->con->prepare($sql2);
@@ -72,7 +73,7 @@ class ClienteDAO extends DAO
             $update->bindValue(':CLIENTE_SENHA', $new);
             $update->execute();
 
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
@@ -86,17 +87,17 @@ class ClienteDAO extends DAO
 
 
         <?php
-                header('Refresh: 3.5; url=../cliente/login.php');
-        }else{
+            header('Refresh: 3.5; url=../cliente/login.php');
+        } else {
 
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
                     title: 'Erro',
-                    text:'ao tentar alterar senha por favor entre em contato com os administradores',
+                    text: 'ao tentar alterar senha por favor entre em contato com os administradores',
                     showConfirmButton: false,
                     timer: 3500
                 })
@@ -106,56 +107,127 @@ class ClienteDAO extends DAO
         <?php
 
         }
-
     }
 
-    public function redefinirSenha($ClassCliente){
+    public function updateCliente($ClassCliente)
+    {
+
+        if (!empty($ClassCliente->GetSenha())) {
+
+
+            $sql = "UPDATE `cliente` SET CLIENTE_NOME=:CLIENTE_NOME, CLIENTE_CPF=:CLIENTE_CPF, CLIENTE_EMAIL=:CLIENTE_EMAIL, CLIENTE_TELEFONE=:CLIENTE_TELEFONE, CLIENTE_CEP=:CLIENTE_CEP, CLIENTE_SENHA=:CLIENTE_SENHA, CLIENTE_UF=:CLIENTE_UF,CLIENTE_CIDADE=:CLIENTE_CIDADE,CLIENTE_LOGRADOURO=:CLIENTE_LOGRADOURO, CLIENTE_BAIRRO=:CLIENTE_BAIRRO, CLIENTE_COMPLEMENTO =:CLIENTE_COMPLEMENTO,CLIENTE_OPCAO=:CLIENTE_OPCAO, CLIENTE_RAZAO=:CLIENTE_RAZAO,CLIENTE_NUM=:CLIENTE_NUM WHERE CLIENTE_ID =:CLIENTE_ID";
+        } else {
+            $sql = "UPDATE `cliente` SET CLIENTE_NOME=:CLIENTE_NOME, CLIENTE_CPF=:CLIENTE_CPF, CLIENTE_EMAIL=:CLIENTE_EMAIL, CLIENTE_TELEFONE=:CLIENTE_TELEFONE, CLIENTE_CEP=:CLIENTE_CEP, CLIENTE_UF=:CLIENTE_UF,CLIENTE_CIDADE=:CLIENTE_CIDADE,CLIENTE_LOGRADOURO=:CLIENTE_LOGRADOURO, CLIENTE_BAIRRO=:CLIENTE_BAIRRO, CLIENTE_COMPLEMENTO =:CLIENTE_COMPLEMENTO,CLIENTE_OPCAO=:CLIENTE_OPCAO, CLIENTE_RAZAO=:CLIENTE_RAZAO,CLIENTE_NUM=:CLIENTE_NUM WHERE CLIENTE_ID =:CLIENTE_ID";
+        }
+
+        $update = $this->con->prepare($sql);
+        $update->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
+        $update->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
+        $update->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
+        $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
+        $update->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
+        $update->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
+
+        if (!empty($ClassCliente->GetSenha())) {
+
+            $update->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
+        }
+
+        $update->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
+        $update->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
+        $update->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
+        $update->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
+        $update->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
+        $update->bindValue(':CLIENTE_BAIRRO', $ClassCliente->GetBairro());
+        $update->bindValue(':CLIENTE_COMPLEMENTO', $ClassCliente->GetComplemento());
+        $update->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
+        $update->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
+        $update->bindValue(':CLIENTE_NUM', $ClassCliente->GetNumero());
+        /*
+        */
+        try {
+            $update->execute();
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro alterado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+        } catch (\Throwable $th) {
+
+            echo $th;
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Por favor entre em contato com administração!',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+            <?php
+        }
+    }
+
+    public function redefinirSenha($ClassCliente)
+    {
 
         $sql = "SELECT * FROM `cliente` WHERE `CLIENTE_EMAIL` = :CLIENTE_EMAIL";
         $select = $this->con->prepare($sql);
         $select->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
         $select->execute();
 
-        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 
-               $id =  $row['CLIENTE_ID'];
-               $nome = $row['CLIENTE_NOME'];
-               $email = $ClassCliente->GetEmail();
-               $senha = ClienteDAO::RandonSenha();
-               $senha = base64_encode($senha);
-
-
-               $sql2 = "UPDATE `cliente` SET  CLIENTE_SENHA = :CLIENTE_SENHA where CLIENTE_ID = :CLIENTE_ID and CLIENTE_EMAIL = :CLIENTE_EMAIL";
-               $update = $this->con->prepare($sql2);
-               $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
-               $update->bindValue(':CLIENTE_ID', $id);
-               $update->bindValue(':CLIENTE_SENHA', $senha);
-               
-               try {
-                   $update->execute();
+            $id =  $row['CLIENTE_ID'];
+            $nome = $row['CLIENTE_NOME'];
+            $email = $ClassCliente->GetEmail();
+            $senha = ClienteDAO::RandonSenha();
+            $senha = base64_encode($senha);
 
 
-                   ?>
+            $sql2 = "UPDATE `cliente` SET  CLIENTE_SENHA = :CLIENTE_SENHA where CLIENTE_ID = :CLIENTE_ID and CLIENTE_EMAIL = :CLIENTE_EMAIL";
+            $update = $this->con->prepare($sql2);
+            $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
+            $update->bindValue(':CLIENTE_ID', $id);
+            $update->bindValue(':CLIENTE_SENHA', $senha);
+
+            try {
+                $update->execute();
 
 
-                   <script>
-                       Swal.fire({
-                           position: 'center',
-                           icon: 'success',
-                           title: 'Sua senha foi redefinidar',
-                           text: 'Por favor verifique seu e-mail',
-                           showConfirmButton: false,
-                           timer: 3500
-                       })
-                   </script>
-   
-               <?php
-              
-                RedefinirCliente::Senha($email, $senha,$id,$nome);
-                
+            ?>
 
-               } catch (\Throwable $th) {
-                ?>
+
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Sua senha foi redefinidar',
+                        text: 'Por favor verifique seu e-mail',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+
+            <?php
+
+                RedefinirCliente::Senha($email, $senha, $id, $nome);
+            } catch (\Throwable $th) {
+            ?>
 
 
                 <script>
@@ -170,9 +242,8 @@ class ClienteDAO extends DAO
                 </script>
 
             <?php
-               }
-               
-        }else{
+            }
+        } else {
 
             ?>
 
@@ -192,9 +263,10 @@ class ClienteDAO extends DAO
         }
     }
 
-    public function AdminInsertCliente($ClassCliente){
+    public function AdminInsertCliente($ClassCliente)
+    {
 
-        
+
 
         $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`)
          VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO, :CLIENTE_NUM)";
@@ -233,7 +305,7 @@ class ClienteDAO extends DAO
 
 
         <?php
-       
+
         } catch (PDOException $e) {
 
 
@@ -249,7 +321,7 @@ class ClienteDAO extends DAO
                 })
             </script>
 
-<?php
+        <?php
 
 
         }
