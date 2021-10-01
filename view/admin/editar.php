@@ -404,8 +404,8 @@ if (empty($_SESSION['admin'])) {
                     <th scope="col">E-mail</th>
                     <th scope="col">Telefone</th>
                 </tr>
-      
-                
+
+
             </thead>
             <tbody>
                 <?php
@@ -413,28 +413,136 @@ if (empty($_SESSION['admin'])) {
                 foreach ($dadosCliente as $dadosCliente) {
                 ?>
 
-                    <tr  data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>">
+                    <tr data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>">
                         <td class="text-center" scope="col"><?php echo $dadosCliente['nome']; ?></td>
                         <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                         <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
                     </tr>
                     <div class="modal fade" id="cliente<?php echo $dadosCliente['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><?php echo $dadosCliente['nome']; ?></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                           
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"><?php echo $dadosCliente['nome']; ?></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+
+                                        <?php
+
+
+
+                                        if ($dadosCliente['opcao'] === 'J') {
+
+                                        ?>
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="pessoa form-check-input" type="radio" name="cliopt" id="j" onclick="juridica()" value="J" CHECKED>
+                                                    <label class="form-check-label" for="pessoa" id="j">
+                                                        Pessoa juridica
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="pessoa form-check-input" type="radio" name="cliopt" id="f" onclick="fisica()" value="F">
+                                                    <label class="form-check-label" for="pessoa" id="f">
+                                                        Pessoa Fisica
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        <?php
+
+                                        } else {
+                                        ?>
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="pessoa form-check-input" type="radio" name="cliopt" id="j" onclick="juridica()" value="J">
+                                                    <label class="form-check-label" for="pessoa" id="j">
+                                                        Pessoa juridica
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="pessoa form-check-input" type="radio" name="cliopt" id="f" onclick="fisica()" value="F" CHECKED>
+                                                    <label class="form-check-label" for="pessoa" id="f">
+                                                        Pessoa Fisica
+                                                    </label>
+                                                </div>
+                                            </div>
+
+
+                                        <?php
+
+                                        }
+                                        ?>
+                                        <div id="Pfisica">
+
+
+                                            <div class="mb-3">
+                                                <input type="text" name="clirazao" id="razao" value="<?php echo $dadosCliente['razao']; ?>" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" name="cliInscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <input type="text" name="clinome" id="nome" value="<?php echo $dadosCliente['nome']; ?>" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="clicpf" id="cpf" value="<?php echo $dadosCliente['cpf']; ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                                        </div>
+
+
+
+                                        <div class="mb-3">
+                                            <input type="password" name="clisenha" id="senha" class="form-control" placeholder="Senha" aria-label="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" name="cliconfirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
+                                        </div>
+
+
+
+
+                                        <div class="mb-3">
+                                            <input type="text" maxlength="9" name="clicep" value="<?php echo $dadosCliente['cep']; ?>" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="clilogradouro" value="<?php echo $dadosCliente['logradouro']; ?>" id="rua" class="form-control" placeholder="Endereço ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="clinumer" id="numero" value="<?php echo $dadosCliente['numero']; ?>" class="form-control" placeholder="Nº ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="cliuf" id="uf" value="<?php echo $dadosCliente['uf']; ?>" class="form-control" placeholder="UF">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="clicidade" value="<?php echo $dadosCliente['cidade']; ?>" id="cidade" class="form-control " placeholder="Cidade">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="clibairro" value="<?php echo $dadosCliente['bairro']; ?>" id="bairro" class="form-control " placeholder="Bairro">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <input type="text" name="clicomplemento" value="<?php echo $dadosCliente['complemento']; ?>" id="complemento" class="form-control " placeholder="Complemento">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" name="clitelefone" id="telefone" value="<?php echo $dadosCliente['telefone']; ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="email" name="cliemail" id="email" value="<?php echo $dadosCliente['email']; ?>" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 <?php
                 }
