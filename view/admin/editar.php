@@ -3,7 +3,8 @@ include_once "../../layout/heard.php";
 include_once "../../class/ClassAdmin.php";
 include_once "../../dao/AdminDAO.php";
 
-
+include "../../class/ClassProfissional.php";
+require_once "../../dao/ProfissionalDAO.php";
 
 session_start();
 
@@ -73,39 +74,50 @@ if (empty($_SESSION['admin'])) {
                     })
                 </script>
 
-        <?php
+            <?php
             }
         }
 
 
 
-        if(isset($_POST['editar_admin_profissional'])){
+        if (isset($_POST['editar_admin_profissional'])) {
 
             if ($_POST['senha'] === $_POST['confirmar']) {
 
+                $ClassProfissional = new Profissional();
+                $ClassProfissional->SetId($_POST['admid']);
+                $ClassProfissional->SetOpcao($_POST['opt']);
+                $ClassProfissional->SetNome($_POST['nome']);
+                $ClassProfissional->SetCpf($_POST['cpf']);
+                $ClassProfissional->SetSenha($_POST['senha']);
+                $ClassProfissional->SetCep($_POST['cep']);
+                $ClassProfissional->SetLogradouro($_POST['logradouro']);
+                $ClassProfissional->SetNumero($_POST['numerp']);
+                $ClassProfissional->SetUf($_POST['uf']);
+                $ClassProfissional->SetCidade($_POST['cidade']);
+                $ClassProfissional->SetBairro($_POST['bairro']);
+                $ClassProfissional->SetComplemento($_POST['complemento']);
+                $ClassProfissional->SetTelefone($_POST['telefone']);
+                $ClassProfissional->SetEmail($_POST['email']);
+                $ClassProfissional->SetServico($_POST['servico']);
+                $Profissional = new ProfissionalDAO();
+                $Profissional->updateProfissionalModal($ClassProfissional);
+            } else {
+            ?>
 
-               echo $id = $_POST['admid'];
-               echo $opt = $_POST['opt'];
-               echo $nome = $_POST['nome'];
-               echo $cpf = $_POST['cpf'];
-               echo $senha = $_POST['senha'];
-               echo $confimar = $_POST['confirmar'];
-               echo $cep = $_POST['cep'];
-               echo $logradouro = $_POST['logradouro'];
-               echo $numero = $_POST['numerp'];
-               echo $uf = $_POST['uf'];
-               echo $cidade = $_POST['cidade'];
-               echo $bairro = $_POST['bairro'];
-               echo $complemento = $_POST['complemento'];
-               echo $telefone = $_POST['telefone'];
-               echo $email = $_POST['email'];
-               echo $servico = $_POST['servico'];
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Erro',
+                        text: 'Senha divergente',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
 
-
-
+        <?php
             }
-            
-
         }
 
 
