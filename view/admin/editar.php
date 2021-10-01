@@ -122,9 +122,9 @@ if (empty($_SESSION['admin'])) {
         }
 
 
-        if(isset($_POST['editarCliente'])){
+        if (isset($_POST['editarCliente'])) {
 
-            if(isset($_POST['clisenha']) === isset($_POST['cliconfirmar'])){
+            if (isset($_POST['clisenha']) === isset($_POST['cliconfirmar'])) {
 
                 $ClassCliente = new Cliente();
                 $ClassCliente->SetID($_POST['cliID']);
@@ -134,7 +134,7 @@ if (empty($_SESSION['admin'])) {
                 $ClassCliente->SetNome($_POST['clinome']);
                 $ClassCliente->SetCpf($_POST['clicpf']);
                 $ClassCliente->SetSenha($_POST['clisenha']);
-             
+
                 $ClassCliente->SetCep($_POST['clicep']);
                 $ClassCliente->SetLogradouro($_POST['clilogradouro']);
                 $ClassCliente->SetNumero($_POST['clinumer']);
@@ -147,7 +147,6 @@ if (empty($_SESSION['admin'])) {
 
                 $ClienteDao = new ClienteDAO();
                 $ClienteDao->updateCliente($ClassCliente);
-            
             }
         }
 
@@ -188,27 +187,29 @@ if (empty($_SESSION['admin'])) {
                                     <form method="POST">
                                         <div class="mb-3">
                                             <input type="hidden" name="admid" value="<?php echo $dadosAdmin['id']; ?>">
-                                            <input type="text" name="admnome" id="admnome" class="form-control" placeholder="Nome" aria-label="Nome do administrador" value="<?php echo $dadosAdmin['nome']; ?>">
+                                            <label for="floatingInput">Nome de Usuário</label>
+                                            <input type="text" name="admnome" id="admnome" class="form-control form-control-sm" placeholder="Nome" aria-label="Nome do administrador" value="<?php echo $dadosAdmin['nome']; ?>">
+                                        </div>
+                              
+                                        <div class="mb-3">
+                                            <label for="floatingInput">CPF/CNPJ</label>
+                                            <input type="text" name="admcpf" id="admcpf" class="form-control form-control-sm cpf-mask" value="<?php echo $dadosAdmin['cpf']; ?>" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                                         </div>
                                         <div class="mb-3">
-
-                                            <input type="text" name="admcpf" id="admcpf" class="form-control cpf-mask" value="<?php echo $dadosAdmin['cpf']; ?>" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                                            <label for="floatingInput">Senha</label>
+                                            <input type="password" name="admsenha" id="admsenha" class="form-control form-control-sm" placeholder="Senha" aria-label="">
                                         </div>
                                         <div class="mb-3">
-
-                                            <input type="password" name="admsenha" id="admsenha" class="form-control" placeholder="Senha" aria-label="">
+                                            <label for="floatingInput">Confirmar senha</label>
+                                            <input type="password" name="admconfirmar" id="admconfirmar" class="form-control form-control-sm cpf-mask" placeholder="Confirmar senha">
                                         </div>
                                         <div class="mb-3">
-
-                                            <input type="password" name="admconfirmar" id="admconfirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
+                                            <label for="floatingInput">Telefone</label>
+                                            <input type="text" name="admtel" id="tel" class="form-control form-control-sm" value="<?php echo $dadosAdmin['telefone']; ?>" placeholder="Telefone" aria-label="">
                                         </div>
                                         <div class="mb-3">
-
-                                            <input type="text" name="admtel" id="tel" class="form-control" value="<?php echo $dadosAdmin['telefone']; ?>" placeholder="Telefone" aria-label="">
-                                        </div>
-                                        <div class="mb-3">
-
-                                            <input type="email" name="admemail" id="admemail" class="form-control" value="<?php echo $dadosAdmin['email']; ?>" placeholder="E-mail" aria-label="">
+                                            <label for="floatingInput">E-mail</label>
+                                            <input type="email" name="admemail" id="admemail" class="form-control form-control-sm" value="<?php echo $dadosAdmin['email']; ?>" placeholder="E-mail" aria-label="">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -302,10 +303,12 @@ if (empty($_SESSION['admin'])) {
 
 
                                                 <div class="mb-3">
-                                                    <input type="text" name="razao" id="razao" class="form-control" value="<?php echo $dadosProfissional['razao'] ?>" placeholder="Razão Social" aria-label="Nome de Usuário">
+                                                    <label for="floatingInput">Razão Social</label>
+                                                    <input type="text" name="razao" id="razao" class="form-control  form-control-sm" value="<?php echo $dadosProfissional['razao'] ?>" placeholder="Razão Social" aria-label="Nome de Usuário">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                                                    <label for="floatingInput">Inscrição Estadual</label>
+                                                    <input type="text" name="Inscrição Estadual" id="estadual" class="form-control  form-control-sm cpf-mask" placeholder="Inscrição Estadual">
                                                 </div>
 
                                             </div>
@@ -339,50 +342,65 @@ if (empty($_SESSION['admin'])) {
                                         ?>
 
                                         <div class="mb-3">
-                                            <input type="text" name="nome" id="nome" value="<?php echo $dadosProfissional['nome'] ?>" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+
+                                            <label for="floatingInput">Nome de Usuário</label>
+                                            <input type="text" name="nome" id="nome" value="<?php echo $dadosProfissional['nome'] ?>" class="form-control  form-control-sm" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" name="cpf" id="cpf" value="<?php echo $dadosProfissional['cpf'] ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                                            <label for="floatingInput">CPF/CNPJ</label>
+                                            <input type="text" name="cpf" id="cpf" value="<?php echo $dadosProfissional['cpf'] ?>" class="form-control  form-control-sm cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                                         </div>
 
 
 
                                         <div class="mb-3">
-                                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="">
+                                            <label for="floatingInput">Senha</label>
+                                            <input type="password" name="senha" id="senha" class="form-control  form-control-sm" placeholder="Senha" aria-label="">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <input type="text" maxlength="9" name="cep" id="cep" value="<?php echo $dadosProfissional['cep'] ?>" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="logradouro" id="rua" value="<?php echo $dadosProfissional['rua'] ?>" class="form-control" placeholder="Endereço ">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="numerp" id="numero" value="<?php echo $dadosProfissional['numero'] ?>" class="form-control" placeholder="Nº ">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="uf" id="uf" value="<?php echo $dadosProfissional['uf'] ?>" class="form-control" placeholder="UF">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="cidade" id="cidade" value="<?php echo $dadosProfissional['cidade'] ?>" class="form-control " placeholder="Cidade">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" name="bairro" id="bairro" value="<?php echo $dadosProfissional['bairro'] ?>" class="form-control " placeholder="Bairro">
+                                            <label for="floatingInput">Confirmar senha</label>
+                                            <input type="password" name="confirmar" id="confirmar" class="form-control  form-control-sm" placeholder="Confirmar senha">
                                         </div>
 
                                         <div class="mb-3">
-                                            <input type="text" name="complemento" id="complemento" value="<?php echo $dadosProfissional['complemento'] ?>" class="form-control " placeholder="Complemento">
+                                            <label for="floatingInput">Cep</label>
+                                            <input type="text" maxlength="9" name="cep" id="cep" value="<?php echo $dadosProfissional['cep'] ?>" class="form-control  form-control-sm" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" name="telefone" id="telefone" value="<?php echo $dadosProfissional['telefone'] ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                                            <label for="floatingInput">Endereço</label>
+                                            <input type="text" name="logradouro" id="rua" value="<?php echo $dadosProfissional['rua'] ?>" class="form-control  form-control-sm" placeholder="Endereço ">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" name="email" id="email" value="<?php echo $dadosProfissional['email'] ?>" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                                            <label for="floatingInput">Nº</label>
+                                            <input type="text" name="numerp" id="numero" value="<?php echo $dadosProfissional['numero'] ?>" class="form-control  form-control-sm" placeholder="Nº ">
                                         </div>
                                         <div class="mb-3">
+                                            <label for="floatingInput">UF</label>
+                                            <input type="text" name="uf" id="uf" value="<?php echo $dadosProfissional['uf'] ?>" class="form-control  form-control-sm" placeholder="UF">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="floatingInput">Cidade</label>
+                                            <input type="text" name="cidade" id="cidade" value="<?php echo $dadosProfissional['cidade'] ?>" class="form-control  form-control-sm " placeholder="Cidade">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="floatingInput">Bairro</label>
+                                            <input type="text" name="bairro" id="bairro" value="<?php echo $dadosProfissional['bairro'] ?>" class="form-control  form-control-sm" placeholder="Bairro">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="floatingInput">Complemento</label>
+                                            <input type="text" name="complemento" id="complemento" value="<?php echo $dadosProfissional['complemento'] ?>" class="form-control  form-control-sm" placeholder="Complemento">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="floatingInput">Telefone</label>
+                                            <input type="text" name="telefone" id="telefone" value="<?php echo $dadosProfissional['telefone'] ?>" class="form-control  form-control-sm phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="floatingInput">E-mail</label>
+                                            <input type="email" name="email" id="email" value="<?php echo $dadosProfissional['email'] ?>" class="form-control  form-control-sm" placeholder="E-mail" aria-label="E-mail">
+                                        </div>
+                                        <div class="mb-3">
+
                                             <input type="text" value="<?php echo $dadosProfissional['opt'] ?>" class="form-control" disabled>
                                         </div>
                                         <div class="mb-3">
@@ -458,7 +476,7 @@ if (empty($_SESSION['admin'])) {
                                 <div class="modal-body">
                                     <form method="POST">
 
-                                    <input type="hidden" name="cliID" value="<?php echo $dadosCliente['id']; ?>">
+                                        <input type="hidden" name="cliID" value="<?php echo $dadosCliente['id']; ?>">
 
                                         <?php
 
