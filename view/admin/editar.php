@@ -398,12 +398,14 @@ if (empty($_SESSION['admin'])) {
 
 
         <table class="table table-hover">
-            <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
+            <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif;">
                 <tr>
                     <th class="text-center" scope="col">Nome</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Telefone</th>
                 </tr>
+      
+                
             </thead>
             <tbody>
                 <?php
@@ -411,11 +413,29 @@ if (empty($_SESSION['admin'])) {
                 foreach ($dadosCliente as $dadosCliente) {
                 ?>
 
-                    <tr>
+                    <tr  data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>">
                         <td class="text-center" scope="col"><?php echo $dadosCliente['nome']; ?></td>
                         <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                         <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
                     </tr>
+                    <div class="modal fade" id="cliente<?php echo $dadosCliente['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><?php echo $dadosCliente['nome']; ?></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
                 <?php
                 }
 
