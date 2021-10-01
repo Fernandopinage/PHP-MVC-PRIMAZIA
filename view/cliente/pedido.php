@@ -198,7 +198,7 @@ if (isset($_POST['filtro'])) {
                         <option selected>Selecione um profissional</option>
                         <option value="1">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                         <option value="2">Babá</option>
-                        <option value="3">Cabelereiro</option>
+                        <option value="3">Cabeleireiro</option>
                         <option value="4">Cuidador(a) de Idoso</option>
                         <option value="5">Dedetização</option>
                         <option value="6">Diarista</option>

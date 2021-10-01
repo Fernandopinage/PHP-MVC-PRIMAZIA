@@ -348,7 +348,7 @@ if (empty($_SESSION['admin'])) {
 
                                                 <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                                                 <option value="Babá">Babá</option>
-                                                <option value="Cabelereiro">Cabelereiro</option>
+                                                <option value="Cabeleireiro">Cabeleireiro</option>
                                                 <option value="Cuidador(a) de Idoso">Cuidador(a) de Idoso</option>
                                                 <option value="Dedetização">Dedetização</option>
                                                 <option value="Diarista">Diarista</option>
