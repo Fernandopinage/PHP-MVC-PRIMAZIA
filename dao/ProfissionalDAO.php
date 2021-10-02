@@ -384,8 +384,8 @@ class ProfissionalDAO extends DAO
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
-                    title: 'Erro, E-mail invalidor',
-                    text: 'Por favor informe um e-mail valido',
+                    title: 'Por favor ',
+                    text: 'Informe um e-mail valido',
                     showConfirmButton: false,
                     timer: 3500
                 })
