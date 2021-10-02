@@ -5,7 +5,7 @@ session_start();
 
 if (empty($_SESSION['profissional'])) {
 
-    header('Refresh: 0.0; url=login.php');
+    header('location: ../../view/profissional/login.php');
 }
 
 
