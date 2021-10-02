@@ -1,6 +1,6 @@
 <?php
 include_once "../../layout/heard.php";
-include_once "../../dao/CategoriaDAO.php";
+include_once "../../dao/CategoriaDAO.php"; 
 session_start();
 
 if (empty($_SESSION['profissional'])) {
