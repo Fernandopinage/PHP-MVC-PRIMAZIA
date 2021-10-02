@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
 
+*{
+    font-family: 'Montserrat';
+}
+
+
 #registro{
     font-size: 17px;
     text-decoration: none;
