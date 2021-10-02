@@ -247,7 +247,7 @@ if (empty($_SESSION['admin'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="floatingInput">Telefone</label>
-                                        <input type="text" name="admtel" id="tel" class="form-control form-control-sm" value="<?php echo $dadosAdmin['telefone']; ?>" placeholder="Telefone" aria-label="">
+                                        <input type="text" name="admtel" id="tel" class="form-control form-control-sm" value="<?php echo $dadosAdmin['telefone']; ?>" placeholder="Telefone" aria-label="" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                                     </div>
                                     <div class="mb-3">
                                         <label for="floatingInput">E-mail</label>
@@ -716,29 +716,29 @@ if (empty($_SESSION['admin'])) {
 
 
                                     <div class="mb-3">
-                                        <input type="text" maxlength="9" name="clicep" value="<?php echo $dadosCliente['cep']; ?>" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                                        <input type="text" maxlength="9" name="clicep" value="<?php echo $dadosCliente['cep']; ?>" id="cep2" class="form-control" placeholder="CEP">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="clilogradouro" value="<?php echo $dadosCliente['logradouro']; ?>" id="rua" class="form-control" placeholder="Endereço ">
+                                        <input type="text" name="clilogradouro" value="<?php echo $dadosCliente['logradouro']; ?>" id="rua2" class="form-control" placeholder="Endereço ">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="clinumer" id="numero" value="<?php echo $dadosCliente['numero']; ?>" class="form-control" placeholder="Nº ">
+                                        <input type="text" name="clinumer" id="numero2" value="<?php echo $dadosCliente['numero']; ?>" class="form-control" placeholder="Nº ">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="cliuf" id="uf" value="<?php echo $dadosCliente['uf']; ?>" class="form-control" placeholder="UF">
+                                        <input type="text" name="cliuf" id="uf2" value="<?php echo $dadosCliente['uf']; ?>" class="form-control" placeholder="UF">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="clicidade" value="<?php echo $dadosCliente['cidade']; ?>" id="cidade" class="form-control " placeholder="Cidade">
+                                        <input type="text" name="clicidade" value="<?php echo $dadosCliente['cidade']; ?>" id="cidade2" class="form-control " placeholder="Cidade">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="clibairro" value="<?php echo $dadosCliente['bairro']; ?>" id="bairro" class="form-control " placeholder="Bairro">
+                                        <input type="text" name="clibairro" value="<?php echo $dadosCliente['bairro']; ?>" id="bairro2" class="form-control " placeholder="Bairro">
                                     </div>
 
                                     <div class="mb-3">
-                                        <input type="text" name="clicomplemento" value="<?php echo $dadosCliente['complemento']; ?>" id="complemento" class="form-control " placeholder="Complemento">
+                                        <input type="text" name="clicomplemento" value="<?php echo $dadosCliente['complemento']; ?>" id="complemento2" class="form-control " placeholder="Complemento">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="clitelefone" id="telefone" value="<?php echo $dadosCliente['telefone']; ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                                        <input type="text" name="clitelefone" id="telefone2" value="<?php echo $dadosCliente['telefone']; ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                                     </div>
                                     <div class="mb-3">
                                         <input type="email" name="cliemail" id="email" value="<?php echo $dadosCliente['email']; ?>" class="form-control" placeholder="E-mail" aria-label="E-mail">
@@ -907,5 +907,5 @@ if (empty($_SESSION['admin'])) {
 </script>
 
 <?php
-require "../../layout/footer.php";
+include_once "../../layout/footer.php";
 ?>
