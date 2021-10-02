@@ -345,7 +345,7 @@ class AdminDAO extends DAO
                     position: 'center',
                     icon: 'error',
                     title: 'Por favor',
-                    text: 'informe um e-mail valido',
+                    text: 'informe um e-mail válido',
                     showConfirmButton: false,
                     timer: 3500
                 })
