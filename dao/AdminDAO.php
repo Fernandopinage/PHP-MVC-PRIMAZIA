@@ -532,6 +532,43 @@ class AdminDAO extends DAO
          return $array;
     }
 
+    public function ListarClienteFiltro($nome,$email){
+
+        $sql = "SELECT * FROM `cliente` where CLIENTE_NOME =:CLIENTE_NOME or CLIENTE_EMAIL = :CLIENTE_EMAIL";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':CLIENTE_NOME', $nome);
+        $select->bindValue(':CLIENTE_EMAIL', $email);
+        $select->execute();
+        $array = array();
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+                
+                'id' => $row['CLIENTE_ID'],
+                'nome' => $row['CLIENTE_NOME'],
+                'cpf' => $row['CLIENTE_CPF'],
+                'email' => $row['CLIENTE_EMAIL'],
+                'telefone' => $row['CLIENTE_TELEFONE'],
+                'cep' => $row['CLIENTE_CEP'],
+                'foto' => $row['CLIENTE_FOTO'],
+                'senha' => $row['CLIENTE_SENHA'],
+                'uf' => $row['CLIENTE_UF'],
+                'cidade' => $row['CLIENTE_CIDADE'],
+                'logradouro' => $row['CLIENTE_LOGRADOURO'],
+                'bairro' => $row['CLIENTE_BAIRRO'],
+                'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                'opcao' => $row['CLIENTE_OPCAO'],
+                'razao' => $row['CLIENTE_RAZAO'],
+                'numero' => $row['CLIENTE_NUM'],
+
+            );
+        }
+
+         return $array;
+
+    }
+
 
 }
 

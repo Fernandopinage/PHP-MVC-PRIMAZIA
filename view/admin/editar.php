@@ -543,24 +543,66 @@ if (empty($_SESSION['admin'])) {
     $Cliente = new AdminDAO();
     $dadosCliente = $Cliente->ListarCliente();
 
+    if (isset($_POST['filtror_cliente'])) {
+
+        if (!empty($_POST['cliente_name']) or !empty($_POST['cliente_email'])) {
+
+            $nome = $_POST['cliente_name'];
+            $email = $_POST['cliente_email'];
+
+            $Cliente = new AdminDAO();
+            $dadosCliente = $Cliente->ListarClienteFiltro($nome, $email);
+
     ?>
-    <div id="cliente" class="row ms-3 p-2">
-        <div class="col-md-3">
-            <label for="validationServer01" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_name">
+            <script>
+                elt = document.getElementById('opcao');
+                var opt = elt.getElementsByTagName("option");
+                elt.value = 3;
+            </script>
+
+        <?php
+
+        } else {
+
+            $Cliente = new AdminDAO();
+            $dadosCliente = $Cliente->ListarCliente();
+        ?>
+            <script>
+                elt = document.getElementById('opcao');
+                var opt = elt.getElementsByTagName("option");
+                elt.value = 3;
+            </script>
+
+    <?php
+        }
+    } else {
+
+        $Cliente = new AdminDAO();
+        $dadosCliente = $Cliente->ListarCliente();
+    }
+
+    ?>
+
+    <form method="POST">
+
+        <div id="cliente" class="row ms-3 p-2">
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_name">
+
+            </div>
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_email">
+
+            </div>
+            <div class="col-md-4" style="margin-top: 31px;">
+                <input type="submit" name="filtror_cliente" class="btn btn-secondary" value="Filtrar">
+
+            </div>
 
         </div>
-        <div class="col-md-3">
-            <label for="validationServer01" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_nome">
-
-        </div>
-        <div class="col-md-4" style="margin-top: 31px;">
-            <input type="submit" name="filtror_cliente" class="btn btn-secondary" value="Filtrar">
-
-        </div>
-
-    </div>
+    </form>
     <br>
 
     <table class="table table-hover">
@@ -740,7 +782,7 @@ if (empty($_SESSION['admin'])) {
 
         });
     }
-    if (select === '') {
+    if (select === '3') {
         $(document).ready(function() {
             var administrador = document.getElementById('editarAdministrador').style.display = 'none';
             var profissional = document.getElementById('editarProfissional').style.display = 'none';
