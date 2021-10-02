@@ -188,24 +188,21 @@ if (empty($_SESSION['admin'])) {
 
             if (isset($_POST['filtror_adm'])) {
 
-                
-                if(!empty($_POST['adm_name'])  or !empty($_POST['adm_email'])){
-                    
+
+                if (!empty($_POST['adm_name'])  or !empty($_POST['adm_email'])) {
+
                     $nome = $_POST['adm_name'];
                     $email = $_POST['adm_email'];
 
                     $Admin = new AdminDAO();
-                    $dadosAdmin = $Admin->ListarAdminsFiltro($nome,$email);
+                    $dadosAdmin = $Admin->ListarAdminsFiltro($nome, $email);
+                } else {
 
-
-                }else{
-                    
-                $Admin = new AdminDAO();
-                $dadosAdmin = $Admin->ListarAdmins();
+                    $Admin = new AdminDAO();
+                    $dadosAdmin = $Admin->ListarAdmins();
                 }
+            } else {
 
-            }else{
-                
                 $Admin = new AdminDAO();
                 $dadosAdmin = $Admin->ListarAdmins();
             }
@@ -279,29 +276,63 @@ if (empty($_SESSION['admin'])) {
 
     <?php
 
-    $Profissional = new AdminDAO();
-    $dadosProfissional = $Profissional->ListarProfissional();
+
+
+    if (isset($_POST['filtror_profissional'])) {
+
+
+
+        if (!empty($_POST['profissinal_name'])  or !empty($_POST['profissinal_email'])) {
+
+
+            $nome = $_POST['profissinal_name'];
+            $email = $_POST['profissinal_email'];
+
+            $Profissional = new AdminDAO();
+            $dadosProfissional = $Profissional->ListarProfissionalFiltro($nome, $email);
+    ?>
+            <script>
+                    elt = document.getElementById('opcao');
+                    var opt = elt.getElementsByTagName("option");
+                    elt.value = 2;
+             
+            </script>
+
+    <?php
+        } else {
+
+            $Profissional = new AdminDAO();
+            $dadosProfissional = $Profissional->ListarProfissional();
+        }
+    } else {
+        $Profissional = new AdminDAO();
+        $dadosProfissional = $Profissional->ListarProfissional();
+    }
 
 
     ?>
 
-    <div id="profissional" class="row ms-3 p-2">
-        <div class="col-md-3">
-            <label for="validationServer01" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_name">
+    <form method="POST">
+
+        <div id="profissional" class="row ms-3 p-2">
+
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_name">
+
+            </div>
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_email">
+
+            </div>
+            <div class="col-md-4" style="margin-top: 31px;">
+                <input id="filtror_profissional" type="submit" name="filtror_profissional" class="btn btn-secondary" value="Filtrar" >
+
+            </div>
 
         </div>
-        <div class="col-md-3">
-            <label for="validationServer01" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_email">
-
-        </div>
-        <div class="col-md-4" style="margin-top: 31px;">
-            <input type="submit" name="filtror_profissional" class="btn btn-secondary" value="Filtrar">
-
-        </div>
-
-    </div>
+    </form>
     <br>
 
     <table class="table table-hover">
@@ -685,17 +716,40 @@ if (empty($_SESSION['admin'])) {
 </div>
 
 <script>
-    var administrador = document.getElementById('editarAdministrador').style.display = 'block';
-    var profissional = document.getElementById('editarProfissional').style.display = 'none';
-    var cliente = document.getElementById('editarCliente').style.display = 'none';
 
-
-    $(document).ready(function() {
+    var select = document.getElementById('opcao').value;
+    if(select === '1'){
+        $(document).ready(function() {
         var administrador = document.getElementById('editarAdministrador').style.display = 'block';
         var profissional = document.getElementById('editarProfissional').style.display = 'none';
         var cliente = document.getElementById('editarCliente').style.display = 'none';
 
     });
+    }
+    if(select === '2'){
+        $(document).ready(function() {
+        var administrador = document.getElementById('editarAdministrador').style.display = 'none';
+        var profissional = document.getElementById('editarProfissional').style.display = 'block';
+        var cliente = document.getElementById('editarCliente').style.display = 'none';
+
+    });
+    }
+    if(select === ''){
+        $(document).ready(function() {
+        var administrador = document.getElementById('editarAdministrador').style.display = 'none';
+        var profissional = document.getElementById('editarProfissional').style.display = 'none';
+        var cliente = document.getElementById('editarCliente').style.display = 'block';
+
+    });
+    }
+
+
+
+    function DivProfissional(){
+        var administrador = document.getElementById('editarAdministrador').style.display = 'none';
+        var profissional = document.getElementById('editarProfissional').style.display = 'block';
+        var cliente = document.getElementById('editarCliente').style.display = 'none';
+    }
 
     function edit() {
 

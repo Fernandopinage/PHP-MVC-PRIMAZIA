@@ -402,10 +402,10 @@ class AdminDAO extends DAO
     }
     public function ListarAdminsFiltro($nome,$email){
 
-        $sql = "SELECT * FROM `profissional` WHERE `profissional_nome` = :profissional_nome or `profissional_email` = :profissional_email";
+        $sql = "SELECT * FROM `admin` WHERE `admin_nome` = :admin_nome or `admin_email` = :admin_email";
         $select = $this->con->prepare($sql);
-        $select->bindValue(':profissional_nome', $nome);
-        $select->bindValue(':profissional_email', $email);
+        $select->bindValue(':admin_nome', $nome);
+        $select->bindValue(':admin_email', $email);
         $select->execute();
         $array = array();
 
@@ -413,27 +413,20 @@ class AdminDAO extends DAO
         while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
             $array[] = array(
-                
-                'id' => $row['profissional_id'],
-                'nome' => $row['profissional_nome'],
-                'razao' => $row['profissional_razao'],
-                'email' => $row['profissional_email'],
-                'cpf' => $row['profissional_cpf'],
-                'telefone' => $row['profissional_telefone'],
-                'cep' => $row['profissional_cep'],
-                'uf' => $row['profissional_uf'],
-                'rua' => $row['profissional_logradouro'],
-                'numero' => $row['profissional_num'],
-                'cidade' => $row['profissional_cidade'],
-                'bairro' => $row['profissional_bairro'],
-                'complemento' => $row['profissional_complemento'],
-                'foto' => $row['profissional_foto'],
-                'opt' => $row['profissional_servico']
+
+                'id' => $row['admin_id'],
+                'nome' => $row['admin_nome'],
+                'email' => $row['admin_email'],
+                'foto' => $row['admin_foto'],
+                'telefone' => $row['admin_telefone'],
+                'cpf' => $row['admin_cfp'],
+                'senha' => $row['admin_senha']
 
             );
+
         }
 
-         return $array;
+        return $array;
 
     }
 
@@ -469,6 +462,42 @@ class AdminDAO extends DAO
 
          return $array;
     }
+
+    public function ListarProfissionalFiltro($nome, $email){
+
+        $sql = "SELECT * FROM `profissional` where profissional_nome = :profissional_nome  or  profissional_email = :profissional_email ";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':profissional_nome', $nome);
+        $select->bindValue(':profissional_email', $email);
+        $select->execute();
+        $array = array();
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+                
+                'id' => $row['profissional_id'],
+                'nome' => $row['profissional_nome'],
+                'razao' => $row['profissional_razao'],
+                'email' => $row['profissional_email'],
+                'cpf' => $row['profissional_cpf'],
+                'telefone' => $row['profissional_telefone'],
+                'cep' => $row['profissional_cep'],
+                'uf' => $row['profissional_uf'],
+                'rua' => $row['profissional_logradouro'],
+                'numero' => $row['profissional_num'],
+                'cidade' => $row['profissional_cidade'],
+                'bairro' => $row['profissional_bairro'],
+                'complemento' => $row['profissional_complemento'],
+                'foto' => $row['profissional_foto'],
+                'opt' => $row['profissional_servico']
+
+            );
+        }
+
+         return $array;
+    }
+
     public function ListarCliente(){
 
         $sql = "SELECT * FROM `cliente`";
