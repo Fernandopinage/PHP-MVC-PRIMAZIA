@@ -2,7 +2,7 @@
 session_start();
 if (empty($_SESSION['user'])) {
 
-    header('Refresh: 0.1; url=login.php');
+    header('location: ../../view/cliente/login.php');
 }
 
 include_once "../../layout/heard.php";

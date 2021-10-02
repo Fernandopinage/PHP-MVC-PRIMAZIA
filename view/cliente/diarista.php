@@ -8,7 +8,7 @@ include_once "../../dao/gerarProtocolo.php";
 
 if (empty($_SESSION['user'])) {
 
-    header('Refresh: 0.1; url=login.php');
+    header('location: ../../view/cliente/login.php');
 }
 
 
