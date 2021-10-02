@@ -1,6 +1,6 @@
 <?php 
 
-class Servico{ //Admin
+class ServicoSub{  //Servico //Admin
 
     private $id;
     private $descricao;

@@ -6,6 +6,7 @@ include_once "../../dao/ServicoDAO.php";
 
 
 session_start();
+
 if (empty($_SESSION['admin'])) {
 
     header('Refresh: 0.1; url=login.php');
@@ -40,17 +41,15 @@ if (isset($_POST['chamado'])) {
 
     if ($_POST['pessoa'] != 'Selecione o profissional') {
 
-
-
         $data =  date('Y/m/d');
+
         $ClassServico = new Servico();
+       
         $ClassServico->SetNome($_POST['pessoa']);
         $ClassServico->SetData($data);
         $ClassServico->SetStatus($_POST['status']);
         $ClassServico->SetProtocolo($_POST['numero_protocolo']);
         $ClassServico->SetID($_POST['id']);
-
-
         $Servico = new ServicoDao();
         $Servico->inserServico($ClassServico);
     }
@@ -267,7 +266,10 @@ if (isset($_POST['chamado_finalizado'])) {
                                         $pedido = $obj->tpservico;
                                         $dados2 = $ClassPedido->listarProfissionalCategoria($pedido);
 
+                                        $ClassPedido = new CategoriaDAO();
                                         $dados3 = $ClassPedido->listaServico($dados['protocolo']);
+
+                                      
 
                                         ?>
 
