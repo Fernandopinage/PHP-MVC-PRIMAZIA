@@ -385,7 +385,7 @@ class ProfissionalDAO extends DAO
                     position: 'center',
                     icon: 'error',
                     title: 'Por favor ',
-                    text: 'Informe um e-mail valido',
+                    text: 'Informe um e-mail válido',
                     showConfirmButton: false,
                     timer: 3500
                 })
