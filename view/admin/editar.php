@@ -153,6 +153,24 @@ if (empty($_SESSION['admin'])) {
 
         ?>
 
+        <div id="admin" class="row ms-3 p-2">
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="adm_name">
+
+            </div>
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1">
+
+            </div>
+            <div class="col-md-4" style="margin-top: 31px;">
+                <input type="submit" name="filtror_adm" class="btn btn-secondary" value="Filtrar" name="adm_email">
+
+            </div>
+
+        </div>
+        <br>
 
         <table class="table table-hover">
             <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
@@ -190,7 +208,7 @@ if (empty($_SESSION['admin'])) {
                                             <label for="floatingInput">Nome de Usuário</label>
                                             <input type="text" name="admnome" id="admnome" class="form-control form-control-sm" placeholder="Nome" aria-label="Nome do administrador" value="<?php echo $dadosAdmin['nome']; ?>">
                                         </div>
-                              
+
                                         <div class="mb-3">
                                             <label for="floatingInput">CPF/CNPJ</label>
                                             <input type="text" name="admcpf" id="admcpf" class="form-control form-control-sm cpf-mask" value="<?php echo $dadosAdmin['cpf']; ?>" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
@@ -240,6 +258,24 @@ if (empty($_SESSION['admin'])) {
 
         ?>
 
+        <div id="profissional" class="row ms-3 p-2">
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_name">
+
+            </div>
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_email">
+
+            </div>
+            <div class="col-md-4" style="margin-top: 31px;">
+                <input type="submit" name="filtror_profissional" class="btn btn-secondary" value="Filtrar">
+
+            </div>
+
+        </div>
+        <br>
 
         <table class="table table-hover">
             <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
@@ -443,7 +479,24 @@ if (empty($_SESSION['admin'])) {
         $dadosCliente = $Cliente->ListarCliente();
 
         ?>
+        <div id="cliente" class="row ms-3 p-2">
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_name">
 
+            </div>
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_nome">
+
+            </div>
+            <div class="col-md-4" style="margin-top: 31px;">
+                <input type="submit" name="filtror_cliente" class="btn btn-secondary" value="Filtrar">
+
+            </div>
+
+        </div>
+        <br>
 
         <table class="table table-hover">
             <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif;">
