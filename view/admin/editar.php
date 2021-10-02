@@ -292,17 +292,24 @@ if (empty($_SESSION['admin'])) {
             $dadosProfissional = $Profissional->ListarProfissionalFiltro($nome, $email);
     ?>
             <script>
-                    elt = document.getElementById('opcao');
-                    var opt = elt.getElementsByTagName("option");
-                    elt.value = 2;
-             
+                elt = document.getElementById('opcao');
+                var opt = elt.getElementsByTagName("option");
+                elt.value = 2;
             </script>
 
-    <?php
+        <?php
         } else {
 
             $Profissional = new AdminDAO();
             $dadosProfissional = $Profissional->ListarProfissional();
+        ?>
+            <script>
+                elt = document.getElementById('opcao');
+                var opt = elt.getElementsByTagName("option");
+                elt.value = 2;
+            </script>
+
+    <?php
         }
     } else {
         $Profissional = new AdminDAO();
@@ -327,7 +334,7 @@ if (empty($_SESSION['admin'])) {
 
             </div>
             <div class="col-md-4" style="margin-top: 31px;">
-                <input id="filtror_profissional" type="submit" name="filtror_profissional" class="btn btn-secondary" value="Filtrar" >
+                <input id="filtror_profissional" type="submit" name="filtror_profissional" class="btn btn-secondary" value="Filtrar">
 
             </div>
 
@@ -716,36 +723,35 @@ if (empty($_SESSION['admin'])) {
 </div>
 
 <script>
-
     var select = document.getElementById('opcao').value;
-    if(select === '1'){
+    if (select === '1') {
         $(document).ready(function() {
-        var administrador = document.getElementById('editarAdministrador').style.display = 'block';
-        var profissional = document.getElementById('editarProfissional').style.display = 'none';
-        var cliente = document.getElementById('editarCliente').style.display = 'none';
+            var administrador = document.getElementById('editarAdministrador').style.display = 'block';
+            var profissional = document.getElementById('editarProfissional').style.display = 'none';
+            var cliente = document.getElementById('editarCliente').style.display = 'none';
 
-    });
+        });
     }
-    if(select === '2'){
+    if (select === '2') {
         $(document).ready(function() {
-        var administrador = document.getElementById('editarAdministrador').style.display = 'none';
-        var profissional = document.getElementById('editarProfissional').style.display = 'block';
-        var cliente = document.getElementById('editarCliente').style.display = 'none';
+            var administrador = document.getElementById('editarAdministrador').style.display = 'none';
+            var profissional = document.getElementById('editarProfissional').style.display = 'block';
+            var cliente = document.getElementById('editarCliente').style.display = 'none';
 
-    });
+        });
     }
-    if(select === ''){
+    if (select === '') {
         $(document).ready(function() {
-        var administrador = document.getElementById('editarAdministrador').style.display = 'none';
-        var profissional = document.getElementById('editarProfissional').style.display = 'none';
-        var cliente = document.getElementById('editarCliente').style.display = 'block';
+            var administrador = document.getElementById('editarAdministrador').style.display = 'none';
+            var profissional = document.getElementById('editarProfissional').style.display = 'none';
+            var cliente = document.getElementById('editarCliente').style.display = 'block';
 
-    });
+        });
     }
 
 
 
-    function DivProfissional(){
+    function DivProfissional() {
         var administrador = document.getElementById('editarAdministrador').style.display = 'none';
         var profissional = document.getElementById('editarProfissional').style.display = 'block';
         var cliente = document.getElementById('editarCliente').style.display = 'none';
