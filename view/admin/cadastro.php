@@ -5,6 +5,11 @@ include_once "../../class/ClassAdmin.php";
 include_once "../../dao/AdminDAO.php";
 
 
+if (empty($_SESSION['admin'])) {
+
+    header('location: ../../view/admin/login.php');
+}
+
 if (isset($_POST['salvarAdmin'])) {
 
 

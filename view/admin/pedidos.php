@@ -9,7 +9,7 @@ session_start();
 
 if (empty($_SESSION['admin'])) {
 
-    header('Refresh: 0.1; url=login.php');
+    header('location: ../../view/admin/login.php');
 }
 
 if (isset($_POST['filtror'])) {
