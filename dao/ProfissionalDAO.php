@@ -62,6 +62,38 @@ class ProfissionalDAO extends DAO
         }
     }
 
+    public function listarProfissional($ClassProfissional){
+        $sql = "SELECT * FROM `profissional` WHERE profissional_id = :profissional_id";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':profissional_id', $ClassProfissional->GetId());
+        $select->execute();
+
+        $array = array();
+
+
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            
+
+            $array = array(
+
+                'id' => $row['profissional_id'],
+                'nome' => $row['profissional_nome'],
+                'email' => $row['profissional_email'],
+                'cpf' => $row['profissional_cpf'],
+                'telefone' => $row['profissional_telefone'],
+                'cep' => $row['profissional_cep'],
+                'uf' => $row['profissional_uf'],
+                'rua' => $row['profissional_logradouro'],
+                'numero' => $row['profissional_num'],
+                'cidade' => $row['profissional_cidade'],
+                'bairro' => $row['profissional_bairro'],
+                'complemento' => $row['profissional_complemento'],
+                'foto' => $row['profissional_foto']
+            );
+        }
+
+        return $array;
+    }
 
     public function updateSenha($novaSenha, $id, $email, $senha)
     {
