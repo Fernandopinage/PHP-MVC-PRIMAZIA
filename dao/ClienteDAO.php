@@ -55,6 +55,39 @@ class ClienteDAO extends DAO
         }
     }
 
+
+    public function listarCliente($ClassCLiente){
+
+        $sql = "SELECT * FROM `cliente` WHERE CLIENTE_ID = :CLIENTE_ID";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':CLIENTE_ID', $ClassCLiente->GetId());
+        
+        $select->execute();
+
+        $array = array();
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+           
+
+            $array = array(
+
+                'id' => $row['CLIENTE_ID'],
+                'nome' => $row['CLIENTE_NOME'],
+                'email' => $row['CLIENTE_EMAIL'],
+                'cpf' => $row['CLIENTE_CPF'],
+                'telefone' => $row['CLIENTE_TELEFONE'],
+                'cep' => $row['CLIENTE_CEP'],
+                'uf' => $row['CLIENTE_UF'],
+                'rua' => $row['CLIENTE_LOGRADOURO'],
+                'numero' => $row['CLIENTE_NUM'],
+                'cidade' => $row['CLIENTE_CIDADE'],
+                'bairro' => $row['CLIENTE_BAIRRO'],
+                'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                'foto' => $row['CLIENTE_FOTO']
+            );
+        }
+        return $array;
+    }
+
     public function updateSenha($novaSenha, $id, $email, $senha)
     {
 
