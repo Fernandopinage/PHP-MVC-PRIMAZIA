@@ -282,13 +282,13 @@ if (isset($_POST['diaristafinal'])) {
                         <samp style="color: red;font-family: 'Montserrat';">Campo obrigatório</samp>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipocontratacao" id="Avulso" value="avulso">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" id="avulso" value="avulso" onclick="Mensal('avulso')">
                             <label class="form-check-label" for="avulso">
                                 Serviço Avulso
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipocontratacao" id="Mensal" value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" id="mensal" value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Mensal('mensal')">
                             <label class="form-check-label" for="mensal">
                                 Serviço Mensal
                             </label>
@@ -301,7 +301,7 @@ if (isset($_POST['diaristafinal'])) {
                         <div class="col text-center">
                             <button id='botaoEnviar' type="button" id="volta01" onclick="voltando06()" class="btn azulprima btn-lg">VOLTAR</button>
                         </div>
-                        <div class="col text-center">
+                        <div class="col text-center" id="divFinalizar">
                             <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
                     </div>
@@ -358,6 +358,29 @@ if (isset($_POST['diaristafinal'])) {
         }
 
     });
+</script>
+
+<script>
+
+    $(document).ready(function(){
+
+        document.getElementById('divFinalizar').style.display = 'none';
+    });
+
+    function Mensal($id){
+
+                
+        if($id === 'avulso'){
+            document.getElementById('divFinalizar').style.display = 'block';
+        }
+        if($id === 'mensal'){
+            document.getElementById('divFinalizar').style.display = 'block';
+        }
+    }
+
+    
+
+
 </script>
 
 <script>
