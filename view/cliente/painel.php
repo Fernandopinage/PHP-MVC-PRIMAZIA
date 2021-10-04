@@ -73,7 +73,7 @@ if (empty($_SESSION['user'])) {
             </div>
             <div class="col-md">
                 <a class="navbar-brand" href="../cliente/editar.php">
-                    <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
+                    <img src="../../images/pedidosdisponiveis.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-6"> Editar Perfil</p>
             </div>

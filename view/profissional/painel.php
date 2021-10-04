@@ -72,7 +72,7 @@ if (empty($_SESSION['profissional'])) {
 
             <div class="col-md">
                 <a class="navbar-brand" href="../profissional/editar.php">
-                    <img src="../../images/encontreumprofissionalp.png" alt="" width="70" height="70">
+                    <img src="../../images/pedidosdisponiveis.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-7"> Editar Perfil</p>
             </div>
