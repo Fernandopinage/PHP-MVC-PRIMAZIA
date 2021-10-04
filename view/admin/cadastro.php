@@ -3,7 +3,7 @@
 include_once "../../layout/heard.php";
 include_once "../../class/ClassAdmin.php";
 include_once "../../dao/AdminDAO.php";
-
+session_start();
 
 if (empty($_SESSION['admin'])) {
 

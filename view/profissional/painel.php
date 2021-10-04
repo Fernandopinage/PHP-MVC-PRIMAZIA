@@ -50,13 +50,19 @@ if (empty($_SESSION['profissional'])) {
         <div class="row">
             <div class="col-md">
                 <a class="navbar-brand" href="../profissional/meu_pedidos.php">
-                    <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
-                </a>
-                <p class="fs-7"> Meus Pedidos</p>
-            </div>
-
+                <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
+            </a>
+            <p class="fs-7"> Meus Pedidos</p>
+        </div>
+        
+        <div class="col-md">
+            <a class="navbar-brand" href="../profissional/editar.php">
+                <img src="../../images/pedidosdisponiveis.png" alt="" width="70" height="70">
+            </a>
+            <p class="fs-7"> Editar Perfil</p>
+        </div>
             <div class="col-md">
-                <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/contato-home-resumida/">
+                <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/contato-home/">
                     <img src="../../images/faleconosco.png" alt="" width="80" height="80">
                 </a>
                 <p class="fs-7"> Fale Conosco </p>
@@ -64,18 +70,12 @@ if (empty($_SESSION['profissional'])) {
             </div>
 
             <div class="col-md">
-                <a class="navbar-brand" href="../cliente/meu_pedidos.php">
+                <a class="navbar-brand" href="../cliente/login.php">
                     <img src="../../images/encontreumprofissionalp.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-7"> Encontre um Profissional</p>
             </div>
 
-            <div class="col-md">
-                <a class="navbar-brand" href="../profissional/editar.php">
-                    <img src="../../images/pedidosdisponiveis.png" alt="" width="70" height="70">
-                </a>
-                <p class="fs-7"> Editar Perfil</p>
-            </div>
 
             <div class="col-md">
                 <a class="navbar-brand" href="../../view/cliente/logout.php">

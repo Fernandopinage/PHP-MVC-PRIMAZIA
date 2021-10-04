@@ -27,14 +27,17 @@ if (isset($_POST['salvarProfissional'])) {
 
         if ($_POST['senha'] === $_POST['confirmar']) {
 
+       
 
-            if (isset($_FILES['imagem']['name'])) {
-                $imagem = $_FILES['imagem']['name'];
-                $diretorio = '../../images/';
-                //$diretorioPDF = '../pdf/';
-                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
-            }
-
+                
+                if (isset($_FILES['imagem']['name'])) {
+                    $imagem = $_FILES['imagem']['name'];
+                    $diretorio = '../../images/';
+                    //$diretorioPDF = '../pdf/';
+                    move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
+                }
+          
+                
             $ClassProfissional = new Profissional();
             $ClassProfissional->SetId($_POST['id']);
             $ClassProfissional->SetFoto($imagem);
@@ -115,13 +118,13 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row" style="padding: 40px;">
                     <div class="text-center">
                         <?php
-
+                        
                         if (!empty($dados['foto'])) {
                         ?>
 
                             <div class="mb-3">
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto'] ?>" class="img" width="150" style="border-radius: 50%;"></label>
-                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" value="<?php echo $dados['foto'] ?>">
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" value="">
                             </div>
 
 
@@ -131,7 +134,7 @@ if (isset($_POST['salvarProfissional'])) {
                         ?>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
-                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" value="<?php echo $dados['foto'] ?>">
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" value="usuario.png">
                             </div>
 
 
