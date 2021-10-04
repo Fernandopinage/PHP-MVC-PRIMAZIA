@@ -17,17 +17,13 @@ $ClassProfissional->SetId($_SESSION['profissional']['id']);
 $Profissional = new ProfissionalDAO();
 $dados = $Profissional->listarProfissional($ClassProfissional);
 
-echo "<pre>";
-var_dump($dados);
-echo "</pre>";
-
 
 
 
 if (isset($_POST['salvarProfissional'])) {
 
 
-    if (!empty($_POST['nome']) and !empty($_POST['senha']) and !empty($_POST['cpf']) and !empty($_POST['cep']) and !empty($_POST['telefone']) and !empty($_POST['email'])) {
+    if (!empty($_POST['nome']) and !empty($_POST['cpf']) and !empty($_POST['cep']) and !empty($_POST['telefone']) and !empty($_POST['email'])) {
 
         if ($_POST['senha'] === $_POST['confirmar']) {
 
@@ -40,6 +36,7 @@ if (isset($_POST['salvarProfissional'])) {
             }
 
             $ClassProfissional = new Profissional();
+            $ClassProfissional->SetId($_POST['id']);
             $ClassProfissional->SetFoto($imagem);
             $ClassProfissional->SetOpcao($_POST['opt']);
             $ClassProfissional->SetRazao($_POST['razao']);
@@ -62,7 +59,7 @@ if (isset($_POST['salvarProfissional'])) {
 
 
 
-            $Profissional->insertProfissional($ClassProfissional, $subcategoria);
+            $Profissional->alterarProfissinal($ClassProfissional, $subcategoria);
         } else {
 
 ?>
@@ -134,7 +131,7 @@ if (isset($_POST['salvarProfissional'])) {
                         ?>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
-                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" value="<?php echo $dados['foto'] ?>">
                             </div>
 
 
@@ -192,6 +189,7 @@ if (isset($_POST['salvarProfissional'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
+                            <input type="hidden" name="id" value="<?php echo $dados['id']?>">
                             <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
@@ -495,7 +493,7 @@ if (isset($_POST['salvarProfissional'])) {
 
                     <div class="row">
                         <div class="d-grid gap-2 col-3 mx-auto mt-5">
-                            <button type="submit" name="salvarProfissional" class="btn btn-lg orangered">CADASTRAR</button>
+                            <button type="submit" name="salvarProfissional" class="btn btn-lg orangered">SALVAR</button>
                         </div>
                     </div>
                 </div>
