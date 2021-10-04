@@ -29,7 +29,7 @@ class SubcategoriaDAO extends DAO
         <script>
             Swal.fire({
                 position: 'center',
-                icon: 'success',
+                icon: 'success', 
                 title: 'Cadastro Realizado com Sucesso',
                 showConfirmButton: false,
                 timer: 3500
