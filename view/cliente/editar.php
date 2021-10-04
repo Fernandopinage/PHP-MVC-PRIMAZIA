@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+if (empty($_SESSION['user'])) {
+
+   
+    header('location: ../../view/cliente/login.php');
+}
+
+
 
 include_once "../../layout/heard.php";
 include_once  "../../class/ClassCliente.php";
