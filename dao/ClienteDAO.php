@@ -362,6 +362,77 @@ class ClienteDAO extends DAO
         }
     }
 
+    public function editarCliente($ClassCliente){
+
+     if(!empty($ClassCliente->GetSenha())){
+
+         $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM WHERE `CLIENTE_ID`=:CLIENTE_ID";
+     }else{
+        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM WHERE `CLIENTE_ID`=:CLIENTE_ID";
+     
+     }   
+        
+     $update = $this->con->prepare($sql);
+     $update->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
+     $update->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
+     $update->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
+     $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
+     $update->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
+     $update->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
+     $update->bindValue(':CLIENTE_FOTO', $ClassCliente->GetFoto());
+     if(!empty($ClassCliente->GetSenha())){
+     $update->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
+     }
+     $update->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
+     $update->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
+     $update->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
+     $update->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
+     $update->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
+     $update->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
+     $update->bindValue(':CLIENTE_BAIRRO', $ClassCliente->GetBairro());
+     $update->bindValue(':CLIENTE_COMPLEMENTO', $ClassCliente->GetComplemento());
+     $update->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
+     $update->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
+     $update->bindValue(':CLIENTE_NUM', $ClassCliente->GetNumero());
+   
+     try {
+        $update->execute();
+    ?>
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Cadastro atualizado com Sucesso',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+
+
+    <?php
+        header('location: ../../view/cliente/editar.php');
+    } catch (PDOException $e) {
+
+
+    ?>
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Registro Inválido',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+
+<?php
+
+
+    }
+
+    }
 
     public function insertCliente($ClassCliente)
     {

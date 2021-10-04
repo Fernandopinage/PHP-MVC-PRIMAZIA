@@ -12,14 +12,11 @@ $ClassCLiente->SetId($_SESSION['user']['id']);
 $Cliente = new ClienteDAO();
 $dados = $Cliente->listarCliente($ClassCLiente);
 
-echo "<pre>";
-var_dump($dados);
-echo "</pre>";
 
 if (isset($_POST['salvarCliente'])) {
 
 
-    if (!empty($_POST['nome']) and !empty($_POST['senha']) and !empty($_POST['cpf']) and !empty($_POST['cep']) and !empty($_POST['telefone']) and !empty($_POST['email'])) {
+    if (!empty($_POST['nome'])  and !empty($_POST['cpf']) and !empty($_POST['cep']) and !empty($_POST['telefone']) and !empty($_POST['email'])) {
 
         if ($_POST['senha'] === $_POST['confirmar']) {
 
@@ -32,6 +29,7 @@ if (isset($_POST['salvarCliente'])) {
             }
             
             $ClassCliente = new Cliente();
+            $ClassCliente->SetId($_POST['id']);
             $ClassCliente->SetFoto($imagem);
             $ClassCliente->SetOpcao($_POST['opt']);
             $ClassCliente->SetRazao($_POST['razao']);
@@ -48,27 +46,10 @@ if (isset($_POST['salvarCliente'])) {
             $ClassCliente->SetTelefone($_POST['telefone']);
             $ClassCliente->SetEmail($_POST['email']);
 
-            
-
 
             $Cliente = new ClienteDAO();
-            $Cliente->insertCliente($ClassCliente);
-        } else {
+            $Cliente->editarCliente($ClassCliente);
 
-?>
-
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: 'warning',
-                    title: 'Senhas Não Coincidem',
-                    showConfirmButton: false,
-                    timer: 3500
-                })
-            </script>
-
-
-        <?php
 
         }
     } else {
@@ -100,7 +81,7 @@ if (isset($_POST['salvarCliente'])) {
             </div>
 
             <div class="title text-center">
-                <p>ALTERAR PERFIL</p>
+                <p>EDITAR PERFIL</p>
             </div>
 
 
@@ -108,8 +89,23 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row" style="padding: 40px;">
                     <div class="text-center">
                         <div class="mb-3">
+                            <?php 
+                            if(!empty($dados['foto'])){
+
+                                ?>
                             <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto']; ?>" class="img" width="150" style="border-radius: 50%;"></label>
-                            <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" >
+                            <input class="form-control" type="file" name="imagem" value="<?php echo $dados['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" >
+                            
+                            <?php 
+                            }else{
+                                ?>
+                                
+                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
+                                <input class="form-control" type="file" name="imagem"  id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" >
+                            
+                                <?php
+                            }
+                            ?>
                         </div>
                         
                     </div>
@@ -169,6 +165,7 @@ if (isset($_POST['salvarCliente'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
+                            <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
                             <input type="text" name="razao" value="<?php echo $dados['razao']; ?>" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
@@ -230,7 +227,7 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row">
 
                     <div class="d-grid gap-2 col-3 mx-auto mt-5">
-                        <button type="submit" name="salvarCliente" class="btn btn-lg orangered">CADASTRAR</button>
+                        <button type="submit" name="salvarCliente" class="btn btn-lg orangered">SALVAR</button>
                     </div>
                 </div>
             </div>
