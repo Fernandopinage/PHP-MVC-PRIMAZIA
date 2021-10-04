@@ -382,7 +382,7 @@ class CategoriaDAO extends DAO
             return $lista;
         }
     }
-
+ 
     public function pedidosCliente($email){
 
         $sql = "SELECT * FROM `pedido` where pedido_email = :pedido_email ORDER BY `pedido`.`pedido_id` DESC";
