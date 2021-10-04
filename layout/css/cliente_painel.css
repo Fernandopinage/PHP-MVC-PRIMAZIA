@@ -3,7 +3,9 @@
 *{
     font-family: 'Montserrat';
 }
-
+    h3{
+        font-family: 'Montserrat';
+    }
    
     .nav-item{
         margin-right: 20px;

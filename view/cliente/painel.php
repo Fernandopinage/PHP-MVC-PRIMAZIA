@@ -11,7 +11,7 @@ if (empty($_SESSION['user'])) {
 
 
 ?>
-<link href="../../layout/css/cliente_painel.css" rel="stylesheet">
+<link href="../../layout/css/profissional_painel.css" rel="stylesheet">
 <div id="logo">
 <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
@@ -36,14 +36,20 @@ if (empty($_SESSION['user'])) {
         <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'] ?></h5><br>
         <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
     </div>
-
-
+    
+    
 </div>
 
 <div class="container-fluid">
-
+    
     <nav class="navbar navbar">
         <div class="row g-5">
+            <div class="col-md">
+                <a class="navbar-brand" href="../cliente/editar.php">
+                    <img src="../../images/pedidosdisponiveis.png" alt="" width="70" height="70">
+                </a>
+                <p class="fs-6"> Editar Perfil</p>
+            </div>
             <div class="col-md">
                 <a class="navbar-brand" href="../cliente/pedido.php">
                     <img src="../../images/encontreumprofissional.png" alt="" width="80" height="80">
@@ -70,12 +76,6 @@ if (empty($_SESSION['user'])) {
                     <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-6"> Meus Pedidos</p>
-            </div>
-            <div class="col-md">
-                <a class="navbar-brand" href="../cliente/editar.php">
-                    <img src="../../images/pedidosdisponiveis.png" alt="" width="70" height="70">
-                </a>
-                <p class="fs-6"> Editar Perfil</p>
             </div>
             <div class="col-md">
                 <a class="navbar-brand" href="../../view/cliente/logout.php">

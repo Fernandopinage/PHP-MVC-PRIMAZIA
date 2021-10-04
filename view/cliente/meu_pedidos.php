@@ -28,7 +28,7 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
 <div class="container">
 
-    <h3 style="color:orangered">Meus pedidos</h3>
+    <h3 style="color:orangered; font-family: 'Montserrat';" >Meus pedidos</h3>
 
     <?php
 
