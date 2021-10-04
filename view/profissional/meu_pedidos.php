@@ -1,6 +1,6 @@
 <?php
 include_once "../../layout/heard.php";
-include_once "../../dao/CategoriaDAO.php"; 
+include_once "../../dao/CategoriaDAO.php";
 session_start();
 
 if (empty($_SESSION['profissional'])) {
@@ -8,32 +8,57 @@ if (empty($_SESSION['profissional'])) {
     header('location: ../../view/profissional/login.php');
 }
 
+
+
 $ClassPedido = new CategoriaDAO();
 $dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
+
+if(isset($_POST['filtror'])){
+
+    $input = $_POST['status_filtro'];
+
+    if($input === 'P'){
+      
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
+    }else{
+        
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedidosCliente($_SESSION['profissional']['email']);
+        
+    }
+
+}
+
 
 
 
 ?>
-<link href="../../layout/css/cliente_painel.css" rel="stylesheet">
+<link href="../../layout/css/admin_painel2.css" rel="stylesheet">
 <div id="logo">
-<a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 
 <div class="container">
 
+    <form method="POST" class="row g-3" style="margin-left:0px;">
+        <div class="col-md-3">
+            <label for="validationServer01" class="form-label">Meus pedidos:</label>
+            <select class="form-select" name="status_filtro" aria-label="select example">
+                <option value="P">PROFISSIONAL</option>
+                <option value="C">CLIENTE</option>
+            </select>
+        </div>
     
+        <div class="col-md-4" style="margin-top: 48px;">
+            <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
+    
+        </div>
+    </form>
 
-    <div class="col-md-3">
-        <label for="validationServer01" class="form-label">Meus pedidos:</label>
-        <select class="form-select" name="status_filtro"  aria-label="select example">
-            <option value=""></option>
-            <option value="p">PROFISSIONAL</option>
-            <option value="c">CLIENTE</option>
-        </select>
-    </div>
-   
 
-    <h3  style="color:orangered;margin-top:50px;">Meus pedidos</h3>
+
+    <h3 style="color:orangered;margin-top:50px;">Meus pedidos</h3>
 
     <?php
 
@@ -104,27 +129,27 @@ $dados = $ClassPedido->pedidosProfissional($_SESSION['profissional']['id']);
                 </div>
             </div>
 
-    <?php
+        <?php
         }
-    }else{
+    } else {
         ?>
-        
+
         <div class=" d-inline-block text-center" style="padding: 8px;">
-                <div class="card" style="width: 22rem;">
-                    <div class="card-body" style="text-align: left;">
-                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"></p>
-                        <hr>
-                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px">  </p>
-                        <div class="text-center">
+            <div class="card" style="width: 22rem;">
+                <div class="card-body" style="text-align: left;">
+                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"></p>
+                    <hr>
+                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"> </p>
+                    <div class="text-center">
                         <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Não possui pedidos</a>
-                        </div>
                     </div>
                 </div>
             </div>
-        
-        
-        <?php
-        
+        </div>
+
+
+    <?php
+
     }
     ?>
 
