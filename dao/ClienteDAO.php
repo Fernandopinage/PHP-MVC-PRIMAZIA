@@ -72,17 +72,19 @@ class ClienteDAO extends DAO
 
                 'id' => $row['CLIENTE_ID'],
                 'nome' => $row['CLIENTE_NOME'],
-                'email' => $row['CLIENTE_EMAIL'],
                 'cpf' => $row['CLIENTE_CPF'],
+                'email' => $row['CLIENTE_EMAIL'],
                 'telefone' => $row['CLIENTE_TELEFONE'],
                 'cep' => $row['CLIENTE_CEP'],
+                'foto' => $row['CLIENTE_FOTO'],
                 'uf' => $row['CLIENTE_UF'],
-                'rua' => $row['CLIENTE_LOGRADOURO'],
-                'numero' => $row['CLIENTE_NUM'],
                 'cidade' => $row['CLIENTE_CIDADE'],
+                'rua' => $row['CLIENTE_LOGRADOURO'],
                 'bairro' => $row['CLIENTE_BAIRRO'],
                 'complemento' => $row['CLIENTE_COMPLEMENTO'],
-                'foto' => $row['CLIENTE_FOTO']
+                'numero' => $row['CLIENTE_NUM'],
+                'opt' => $row['CLIENTE_OPCAO'],
+                'razao' => $row['CLIENTE_RAZAO']
             );
         }
         return $array;
