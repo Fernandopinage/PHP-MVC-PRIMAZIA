@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (empty($_SESSION['profissional'])) {
+
+    header('location: ../../view/profissional/login.php');
+}
+
 include_once "../../layout/heard.php";
 include_once  "../../class/ClassProfissional.php";
 include_once "../../dao/ProfissionalDAO.php";
@@ -52,12 +57,12 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetEmail($_POST['email']);
             $ClassProfissional->SetServico($_POST['servico']);
 
-       
-            $subcategoria = $_POST['categoria'];
-           
 
-            
-            $Profissional->insertProfissional($ClassProfissional,$subcategoria);
+            $subcategoria = $_POST['categoria'];
+
+
+
+            $Profissional->insertProfissional($ClassProfissional, $subcategoria);
         } else {
 
 ?>
@@ -101,7 +106,7 @@ if (isset($_POST['salvarProfissional'])) {
     <div class="container" id="registro">
         <form action="" method="post" enctype="multipart/form-data">
             <div class="text-center">
-            <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+                <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
             </div>
 
             <div class="title text-center">
@@ -112,32 +117,82 @@ if (isset($_POST['salvarProfissional'])) {
             <div id="form-row">
                 <div class="row" style="padding: 40px;">
                     <div class="text-center">
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
-                            <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
-                        </div>
+                        <?php
+
+                        if (!empty($dados['foto'])) {
+                        ?>
+
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto'] ?>" class="img" width="150" style="border-radius: 50%;"></label>
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" value="<?php echo $dados['foto'] ?>">
+                            </div>
+
+
+                        <?php
+                        } else {
+
+                        ?>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                            </div>
+
+
+                        <?php
+
+
+                        }
+                        ?>
 
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
-                        <label class="form-check-label" for="pessoa" id="j">
-                            Pessoa Juridica
-                        </label>
+
+                <?php
+
+                if ($dados['opt'] === 'J') {
+                ?>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                            <label class="form-check-label" for="pessoa" id="j">
+                                Pessoa Juridica
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                            <label class="form-check-label" for="pessoa" id="f">
+                                Pessoa Fisica
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
-                        <label class="form-check-label" for="pessoa" id="f">
-                            Pessoa Fisica
-                        </label>
+                <?php
+                } else {
+                ?>
+
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                            <label class="form-check-label" for="pessoa" id="j">
+                                Pessoa Juridica
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                            <label class="form-check-label" for="pessoa" id="f">
+                                Pessoa Fisica
+                            </label>
+                        </div>
                     </div>
-                </div>
+
+                <?php
+                }
+
+                ?>
                 <div id="Pfisica">
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
-                            <input type="text" name="razao" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
+                            <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
@@ -146,10 +201,10 @@ if (isset($_POST['salvarProfissional'])) {
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                        <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
@@ -165,36 +220,36 @@ if (isset($_POST['salvarProfissional'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                        <input type="text" maxlength="9" name="cep" id="cep" value="<?php echo $dados['cep'] ?>" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="logradouro" id="rua" class="form-control" placeholder="Endereço ">
+                        <input type="text" name="logradouro" id="rua" value="<?php echo $dados['rua'] ?>" class="form-control" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="numerp" id="numero" class="form-control" placeholder="Nº ">
+                        <input type="text" name="numerp" id="numero" value="<?php echo $dados['numero'] ?>" class="form-control" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="uf" id="uf" class="form-control" placeholder="UF">
+                        <input type="text" name="uf" id="uf" value="<?php echo $dados['uf'] ?>" class="form-control" placeholder="UF">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cidade" id="cidade" class="form-control " placeholder="Cidade">
+                        <input type="text" name="cidade" id="cidade" value="<?php echo $dados['cidade'] ?>" class="form-control " placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="bairro" id="bairro" class="form-control " placeholder="Bairro">
+                        <input type="text" name="bairro" id="bairro" value="<?php echo $dados['bairro'] ?>" class="form-control " placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
-                        <input type="text" name="complemento" id="complemento" class="form-control " placeholder="Complemento">
+                        <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento'] ?>" class="form-control " placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                        <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone'] ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                        <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control" placeholder="E-mail" aria-label="E-mail">
                     </div>
                     <div class="col-md-12">
-                        <select class="form-select" name="servico" id="servico" onchange="change()">
-                            <option selected>Tipo de Serviço</option>
+                        <select class="form-select" name="servico" id="servico" onchange="change()">">
+                            <option value="<?php echo $dados['servico']; ?>"><?php echo $dados['servico']; ?></option>
                             <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                             <option value="Babá">Babá</option>
                             <option value="Cabeleireiro">Cabeleireiro</option>
@@ -285,22 +340,22 @@ if (isset($_POST['salvarProfissional'])) {
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Instalação" name="categoria[]" id="Instalação" title="">
                             <label style="font-size:18px;" class="form-check-label" for="Instalação" title="Instalação de aparelhos splits e multisplits de diferentes BTU´s com infraestrutura pronta.">
-                            Instalação
+                                Instalação
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Limpeza" name="categoria[]" id="Limpeza" title="">
                             <label style="font-size:18px;" class="form-check-label" for="Limpeza" title="Lavagem de evaporadora e condensadora de aparelhos splits e multisplits de diferentes BTU´s">
-                            Limpeza
+                                Limpeza
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Recarga de gás" name="categoria[]" id="Recarga de gás" title="">
                             <label style="font-size:18px;" class="form-check-label" for="Recarga de gás" title="Recarga de gás refrigerante em aparelhos splits e multisplits de diferentes BTU´s.">
-                            Recarga de gás
+                                Recarga de gás
                             </label>
                         </div>
-    
+
                     </div>
                     <div id="pergunta04">
                         <div class="row g-12 ms-3 p-2">
@@ -582,6 +637,20 @@ if (isset($_POST['salvarProfissional'])) {
 </script>
 
 <script>
+    $(document).ready(function() {
+
+        if (document.getElementById("j").checked) {
+
+            var Pfisica = document.getElementById('Pfisica').style.display = "block";
+
+        } else {
+            var Pfisica = document.getElementById('Pfisica').style.display = "none";
+        }
+
+
+
+    });
+
     function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";

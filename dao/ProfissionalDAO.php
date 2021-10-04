@@ -78,6 +78,8 @@ class ProfissionalDAO extends DAO
 
                 'id' => $row['profissional_id'],
                 'nome' => $row['profissional_nome'],
+                'opt' => $row['profissional_option'],
+                'razao' => $row['profissional_razao'],
                 'email' => $row['profissional_email'],
                 'cpf' => $row['profissional_cpf'],
                 'telefone' => $row['profissional_telefone'],
@@ -88,7 +90,9 @@ class ProfissionalDAO extends DAO
                 'cidade' => $row['profissional_cidade'],
                 'bairro' => $row['profissional_bairro'],
                 'complemento' => $row['profissional_complemento'],
-                'foto' => $row['profissional_foto']
+                'foto' => $row['profissional_foto'],
+                'senha' => $row['profissional_senha'],
+                'servico' => $row['profissional_servico']
             );
         }
 
