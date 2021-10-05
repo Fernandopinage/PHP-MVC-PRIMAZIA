@@ -94,13 +94,11 @@ class SubcategoriaDAO extends DAO
         $select->execute();
         $array = array();
 
-        if (!$select->fetch(PDO::FETCH_ASSOC)) {
-
-            $array = 'Não há profissional cadastrado nesse segmento';
-        }
+    
 
 
-        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
 
             $array[] = array(
                 'cnpj' => $row['profissional_cpf'],

@@ -125,14 +125,12 @@ class Mail
 
         $parceiros = new SubcategoriaDAO();
         $lista = $parceiros->selectProfissionalSub($tpservico);
+        
         $emailP = '';
         
         $tamanho = count($lista);
 
- 
-
-
-        if ($lista != 'Não já profissional cadastrado nesse seguimento') {
+        if ($lista != null) {
 
             $tamanho = count($lista);
 
@@ -192,6 +190,7 @@ class Mail
         } catch (Exception $e) {
             echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
         }
+       
 
         
     }
