@@ -43,21 +43,9 @@ if (isset($_POST['filtro'])) {
 
         case '4':
 
-        ?>
-
-            <script>
-                Swal.fire({
-                    position: 'top-center',
-                    icon: 'info',
-                    title: 'Serviço não disponível no momento',
-                    showConfirmButton: false,
-                    timer: 4500
-                })
-            </script>
-
-        <?php
-            //header('location: ../../view/cliente/pequenosreparos.php');
+            header('location: ../../view/cliente/cuidador.php');
             break;
+            
 
         case '5':
         ?>
@@ -178,7 +166,7 @@ if (isset($_POST['filtro'])) {
                         <option value="1">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                         <option value="2">Babá</option>
                         <option value="3">Cabeleireiro</option>
-                        <option value="4">Cuidador(a) de Idoso</option>
+                        <option value="4">Cuidador de Pessoas</option>
                         <option value="5">Dedetização</option>
                         <option value="6">Diarista</option>
                         <option value="7">Lavanderia</option>
