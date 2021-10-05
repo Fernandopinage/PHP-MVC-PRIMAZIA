@@ -32,20 +32,8 @@ if (isset($_POST['filtro'])) {
             break;
 
         case '2':
-            //header('location: ../../view/cliente/pequenosreparos.php');
-        ?>
+            header('location: ../../view/cliente/baba.php');
 
-            <script>
-                Swal.fire({
-                    position: 'top-center',
-                    icon: 'info',
-                    title: 'Serviço não disponível no momento',
-                    showConfirmButton: false,
-                    timer: 4500
-                })
-            </script>
-
-        <?php
             break;
 
         case '3':

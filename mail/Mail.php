@@ -16,14 +16,14 @@ include_once "../../dao/Subcategoria.php";
 class Mail
 {
 
-    public function Envio($nome,$email,$pedido,$telefone,$protodolo,$data,$cidade,$rua,$bairro,$complemento,$numero)
+    public function Envio($nome, $email, $pedido, $telefone, $protodolo, $data, $cidade, $rua, $bairro, $complemento, $numero)
     {
 
 
         $mail = new PHPMailer(true); // STOP
 
 
-        if(isset($pedido['termo'])){
+        if (isset($pedido['termo'])) {
 
             $termo = $pedido['termo'];
         }
@@ -31,14 +31,13 @@ class Mail
         if (isset($pedido['tpservico'])) {
 
             $tpservico = $pedido['tpservico'];
-           // $tpservico = implode(',', $tpservico);
+            // $tpservico = implode(',', $tpservico);
         }
 
         if (isset($pedido['categoria'])) {
 
             $categoria = $pedido['categoria'];
             $categoria = implode(', ', $categoria);
-
         }
 
         if (!empty($pedido['descricao'])) {
@@ -112,28 +111,41 @@ class Mail
             $text = $text .  "<b><h3>Dependente: </h3> </b>" . $dependente;
         }
         if (!empty($serviço)) {
-            $text = $text .  "<b><h3>Serviço:</h3> </b>" .strtoupper($serviço);
+            $text = $text .  "<b><h3>Serviço:</h3> </b>" . strtoupper($serviço);
         }
         if (!empty($opcao)) {
             $text = $text .  "<b><h3>Opcao:</h3> </b>" . $opcao;
         }
-        
-        if(!empty($termo)){
+
+        if (!empty($termo)) {
 
             $text = $text .  "<b><h3>Tipo de Contratação:</h3> </b>" . $termo;
         }
 
 
         $parceiros = new SubcategoriaDAO();
-        $lista = $parceiros->selectProfissionalSub($categoria);
-   
+        $lista = $parceiros->selectProfissionalSub($tpservico);
         $emailP = '';
-        foreach($lista as $lista){
 
-            $emailP .=  'Telefone: '.$lista['telefone'].' Nome:'.$lista['nome']."<br>";
+        $tamanho = count($lista);
+
+ 
+
+
+        if ($lista != 'Não já profissional cadastrado nesse seguimento') {
+
+            $tamanho = count($lista);
+
+            for($i = 0; $i<$tamanho; $i++){
+    
+                $emailP .=  'Telefone: ' . $lista[$i]['telefone'] . ' Nome:' . $lista[$i]['nome'] . "<br>";
+            }
+        
+        } else {
+            $emailP =  "Não há profissional cadastrado nesse segmento";
         }
-            
 
+     
         try {
             //Server settings
             //$mail->SMTPDebug = 1;                      //Enable verbose debug output
@@ -160,18 +172,14 @@ class Mail
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
-            $mail->Subject = 'NÚMERO DO PEDIDO '.$protodolo;
+            $mail->Subject = 'NÚMERO DO PEDIDO ' . $protodolo;
 
             $mail->Body    = '
                                 <b><h3>Nome do Cliente:</h3> </b>' . $nome . '<br>
                                 <b><h3>Endereço:</h3> </b>' . $cidade . ',' . $bairro . ',' . $rua . ',' . $numero . ',' . $complemento . '<br>
                                 <b><h3>Telefone:</h3> </b>' . $telefone . '<br>
-                                <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text.'<br>
-                                <b><h3>Profissionais que atendem os pedidos:</h3> </b> <span style="color:blue;">' . $emailP . '</span><br>'
-                                
-                                
-                                ;
-                                
+                                <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text . '<br>
+                                <b><h3>Profissionais que atendem os pedidos:</h3> </b> <span style="color:blue;">' . $emailP . '</span><br>';
 
 
 
@@ -179,8 +187,11 @@ class Mail
 
             $mail->send();
             // echo 'Message has been sent';
+
         } catch (Exception $e) {
             echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
         }
+
+        
     }
 }

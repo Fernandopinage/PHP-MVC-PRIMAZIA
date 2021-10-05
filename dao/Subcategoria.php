@@ -87,22 +87,17 @@ class SubcategoriaDAO extends DAO
     public function selectProfissionalSub($categoria)
     {
 
-        $categoria = explode(",", $categoria);
+       
 
-        $tamanho = count($categoria);
-
-        $lista = array();
-        $array = array();
-        for ($i = 0; $i < $tamanho; $i++) {
-
-            $sql = "SELECT * FROM `profissional` inner join subcategoria on subcategoria_cnpj = profissional_cpf WHERE subcategoria_descricao=:subcategoria_descricao";
+            $sql = "SELECT * FROM `profissional`  WHERE `profissional_servico` = :profissional_servico";
             $select = $this->con->prepare($sql);
-            $select->bindValue(':subcategoria_descricao', $categoria[$i]);
+            $select->bindValue(':profissional_servico', $categoria);
             $select->execute();
+            $array = array();
 
-            if ($row = !$select->fetch(PDO::FETCH_ASSOC)) {
+            if (!$select->fetch(PDO::FETCH_ASSOC)) {
 
-                $array = 'Não já profissional cadastrado nesse seguimento';
+                $array = 'Não há profissional cadastrado nesse segmento';
             }
 
 
@@ -112,16 +107,16 @@ class SubcategoriaDAO extends DAO
                     'cnpj' => $row['profissional_cpf'],
                     'email' => $row['profissional_email'],
                     'nome' => $row['profissional_nome'],
-                    'telefone' => $row['profissional_telefone']
+                    'telefone' => $row['profissional_telefone'],
 
                 );
             }
 
-            $lista = $array;
-        }
+            
+       
 
 
 
-        return $lista;
+        return $array;
     }
 }
