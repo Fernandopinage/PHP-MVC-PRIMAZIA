@@ -155,7 +155,10 @@ if (isset($_POST['filtro'])) {
 <?php
             header('Refresh: 1.5; url=motoboy.php');
             break;
+        case '10':
+            header('location: ../../view/cliente/manicure.php');
 
+            break;
 
         default:
             # code...
@@ -168,10 +171,10 @@ if (isset($_POST['filtro'])) {
 <link href="../../layout/css/cliente_pedido.css" rel="stylesheet">
 
 <div class="container-fluid">
-<a id="retorne" href="../../view/cliente/painel.php" class="btn " style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
+    <a id="retorne" href="../../view/cliente/painel.php" class="btn " style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
     <div class="container" id="registro">
         <div class="text-center">
-        <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+            <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
         </div>
 
         <div class="title text-center">
@@ -193,6 +196,7 @@ if (isset($_POST['filtro'])) {
                         <option value="7">Lavanderia</option>
                         <option value="8">Manutenção de Ar Condicionado</option>
                         <option value="9">Motoboy</option>
+                        <option value="10">Manicure e Pedicure</option>
                     </select><br>
                 </div>
             </div>
