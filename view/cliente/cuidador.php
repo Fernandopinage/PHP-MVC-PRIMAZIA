@@ -194,7 +194,7 @@ if (isset($_POST['salvaBaba'])) {
     </div>
 
     <div class="container" id="registro_logo">
-        <img id='photo' src="../../images/baba.gif" class="img">
+        <img id='photo' src="../../images/cuidador.gif" class="img">
     </div>
 
 
