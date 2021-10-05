@@ -39,11 +39,10 @@ if (isset($_POST['salvaBaba'])) {
 
         );
 
-      
+
         $ClassRequest->SetDescricao($dados);
         $Dedetizacao = new CategoriaDAO();
         $Dedetizacao->insertReparos($ClassRequest);
-        
     }
 }
 
@@ -76,57 +75,64 @@ if (isset($_POST['salvaBaba'])) {
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Cauterização" name="categoria[]" id="Cauterização" title="">
                             <label class="form-check-label" for="Cauterização" title="">
-                            Cauterização
+                                Cauterização
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Coloração" name="categoria[]" id="Coloração" title="">
                             <label class="form-check-label" for="Coloração" title="">
-                            Coloração
+                                Coloração
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Corte" name="categoria[]" id="Corte" title="">
                             <label class="form-check-label" for="Corte" title="">
-                            Corte
+                                Corte
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Escova Progressiva ou Definitiva" name="categoria[]" id="EscovaProgressivaouDefinitiva" title="">
                             <label class="form-check-label" for="EscovaProgressivaouDefinitiva" title="">
-                            Escova Progressiva ou Definitiva
+                                Escova Progressiva ou Definitiva
                             </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Escova, babyliss ou chapinha" name="categoria[]" id="Escovababylissouchapinha" title="">
                             <label class="form-check-label" for="Escovababylissouchapinha" title="">
-                            Escova, babyliss ou chapinha
+                                Escova, babyliss ou chapinha
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Hidratação, Nutrição ou Reconstrução" name="categoria[]" id="HidrataçãoNutriçãoouReconstrução" title="">
                             <label class="form-check-label" for="HidrataçãoNutriçãoouReconstrução" title="">
-                            Hidratação, Nutrição ou Reconstrução
+                                Hidratação, Nutrição ou Reconstrução
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Luzes ou Mechas" name="categoria[]" id="LuzesouMechas" title="">
                             <label class="form-check-label" for="LuzesouMechas" title="">
-                            Luzes ou Mechas
+                                Luzes ou Mechas
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Penteado" name="categoria[]" id="Penteado" title="">
                             <label class="form-check-label" for="Penteado" title="">
-                            Penteado
+                                Penteado
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="Outros" title="">
                             <label class="form-check-label" for="Outros" title="">
-                            Outros
+                                Outros
                             </label>
+                            <div id="lista2">
+
+                                <div class="mb-3">
+                                    <label for="outros" class="form-label"></label>
+                                    <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -143,24 +149,24 @@ if (isset($_POST['salvaBaba'])) {
                 <div id="pergunta02">
                     <div class="row g-5">
                         <div class="col">
-                        <label class="fs-3">Qual a idade da (s) criança (s)?</label>
+                            <label class="fs-3">Qual a idade da (s) criança (s)?</label>
                             <br><br>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Em casa" name="descricao[]" id="Emcasa" title="">
                                 <label class="form-check-label" for="Emcasa" title="">
-                                Em casa
+                                    Em casa
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Em um salão de beleza" name="descricao[]" id="Emumsalãodebeleza" title="">
                                 <label class="form-check-label" for="Emumsalãodebeleza" title="">
-                                Em um salão de beleza
+                                    Em um salão de beleza
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Sem preferência" name="descricao[]" id="Sempreferência" title="">
                                 <label class="form-check-label" for="Sempreferência" title="">
-                                Sem preferência
+                                    Sem preferência
                                 </label>
                             </div>
                         </div>
@@ -192,8 +198,19 @@ if (isset($_POST['salvaBaba'])) {
 </div>
 
 <script>
+    
+    document.getElementById('pergunta02').style.display = 'none';
+    document.getElementById('lista2').style.display = 'none';
 
-    document.getElementById('pergunta02').style.display = 'none';   
+    $('#Outros').click(function(){
+
+        if(document.getElementById('Outros').checked){
+            document.getElementById('lista2').style.display = 'block';
+        }else{
+            document.getElementById('lista2').style.display = 'none';
+        }
+    });
+
     function avançando01() {
 
         var check01 = document.getElementById('Cauterização');
@@ -211,6 +228,8 @@ if (isset($_POST['salvaBaba'])) {
 
             document.getElementById('pergunta01').style.display = 'none';
             document.getElementById('pergunta02').style.display = 'block';
+            
+
         } else {
             Swal.fire({
                 position: 'top-center',

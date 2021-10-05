@@ -43,7 +43,6 @@ if (isset($_POST['salvaBaba'])) {
         $ClassRequest->SetDescricao($dados);
         $Dedetizacao = new CategoriaDAO();
         $Dedetizacao->insertReparos($ClassRequest);
-       
     }
 }
 
@@ -76,54 +75,61 @@ if (isset($_POST['salvaBaba'])) {
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Acompanhamento em saídas (supermercado, Shopping, etc)" name="categoria[]" id="saídas" title="">
                             <label class="form-check-label" for="saídas" title="">
-                            Acompanhamento em saídas (supermercado, Shopping, etc)
+                                Acompanhamento em saídas (supermercado, Shopping, etc)
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Acompanhamento terapêutico (consultas, pós operatório, etc)" name="categoria[]" id="terapêutico" title="">
                             <label class="form-check-label" for="terapêutico" title="">
-                            Acompanhamento terapêutico (consultas, pós operatório, etc)
+                                Acompanhamento terapêutico (consultas, pós operatório, etc)
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Administração de medicamentos" name="categoria[]" id="medicamentos" title="">
                             <label class="form-check-label" for="medicamentos" title="">
-                            Administração de medicamentos
+                                Administração de medicamentos
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Administração de refeições" name="categoria[]" id="refeições" title="">
                             <label class="form-check-label" for="refeições" title="">
-                            Administração de refeições
+                                Administração de refeições
                             </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Banho" name="categoria[]" id="Banho" title="">
                             <label class="form-check-label" for="Banho" title="">
-                            Banho
+                                Banho
                             </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Companhia" name="categoria[]" id="Companhia" title="">
                             <label class="form-check-label" for="Companhia" title="">
-                            Companhia
+                                Companhia
                             </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Transporte" name="categoria[]" id="Transporte" title="">
                             <label class="form-check-label" for="Transporte" title="">
-                            Transporte
+                                Transporte
                             </label>
                         </div>
 
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="Outros" title="">
                             <label class="form-check-label" for="Outros" title="">
-                            Outros
+                                Outros
                             </label>
+                            <div id="lista2">
+
+                                <div class="mb-3">
+                                    <label for="outros" class="form-label"></label>
+                                    <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -140,30 +146,30 @@ if (isset($_POST['salvaBaba'])) {
                 <div id="pergunta02">
                     <div class="row g-5">
                         <div class="col">
-                        <label class="fs-3">O paciente é?</label>
+                            <label class="fs-3">O paciente é?</label>
                             <br><br>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Adulto com limitações" name="descricao[]" id="Adulto" title="">
                                 <label class="form-check-label" for="Adulto" title="">
-                                Adulto com limitações
+                                    Adulto com limitações
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Criança com limitações" name="descricao[]" id="Criança" title="">
                                 <label class="form-check-label" for="Criança" title="">
-                                Criança com limitações
+                                    Criança com limitações
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Idoso" name="descricao[]" id="Idoso" title="">
                                 <label class="form-check-label" for="Idoso" title="">
-                                Idoso
+                                    Idoso
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Gestante" name="descricao[]" id="Gestante" title="">
                                 <label class="form-check-label" for="Gestante" title="">
-                                Gestante
+                                    Gestante
                                 </label>
                             </div>
                         </div>
@@ -195,8 +201,18 @@ if (isset($_POST['salvaBaba'])) {
 </div>
 
 <script>
+    document.getElementById('pergunta02').style.display = 'none';
+    document.getElementById('lista2').style.display = 'none';
+    $('#Outros').click(function() {
 
-    document.getElementById('pergunta02').style.display = 'none';   
+        if (document.getElementById('Outros').checked) {
+            document.getElementById('lista2').style.display = 'block';
+        } else {
+            document.getElementById('lista2').style.display = 'none';
+        }
+    });
+
+
     function avançando01() {
 
         var check01 = document.getElementById('saídas');
