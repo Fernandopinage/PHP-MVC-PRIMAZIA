@@ -254,7 +254,7 @@ if (empty($_SESSION['admin'])) {
                                         <input type="email" name="admemail" id="admemail" class="form-control form-control-sm" value="<?php echo $dadosAdmin['email']; ?>" placeholder="E-mail" aria-label="">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                         <input type="submit" name="editar_admin" class="btn btn-primary" value="Editar">
                                     </div>
                                 </form>
