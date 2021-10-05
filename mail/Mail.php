@@ -126,7 +126,7 @@ class Mail
         $parceiros = new SubcategoriaDAO();
         $lista = $parceiros->selectProfissionalSub($tpservico);
         $emailP = '';
-
+        
         $tamanho = count($lista);
 
  
@@ -144,6 +144,7 @@ class Mail
         } else {
             $emailP =  "Não há profissional cadastrado nesse segmento";
         }
+        
 
      
         try {

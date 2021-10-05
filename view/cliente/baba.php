@@ -34,7 +34,7 @@ if (isset($_POST['salvaBaba'])) {
 
             'tpservico' => 'Babá',
             'categoria' => $_POST['categoria'],
-            'descricao' => $_POST['descricao'],
+            'descricao' => isset($_POST['descricao']),
 
 
         );
@@ -92,7 +92,7 @@ if (isset($_POST['salvaBaba'])) {
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="4 crianças" name="categoria[]" id="4criança" title="">
                             <label class="form-check-label" for="4criança" title="">
-                                3 crianças
+                                4 crianças
                             </label>
                         </div>
 

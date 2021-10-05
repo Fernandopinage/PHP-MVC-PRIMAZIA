@@ -87,36 +87,34 @@ class SubcategoriaDAO extends DAO
     public function selectProfissionalSub($categoria)
     {
 
-       
+    
+        $sql = "SELECT * FROM `profissional` WHERE `profissional_servico` = :profissional_servico";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':profissional_servico', $categoria);
+        $select->execute();
+        $array = array();
 
-            $sql = "SELECT * FROM `profissional`  WHERE `profissional_servico` = :profissional_servico";
-            $select = $this->con->prepare($sql);
-            $select->bindValue(':profissional_servico', $categoria);
-            $select->execute();
-            $array = array();
+        if (!$select->fetch(PDO::FETCH_ASSOC)) {
 
-            if (!$select->fetch(PDO::FETCH_ASSOC)) {
-
-                $array = 'Não há profissional cadastrado nesse segmento';
-            }
-
-
-            while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-
-                $array[] = array(
-                    'cnpj' => $row['profissional_cpf'],
-                    'email' => $row['profissional_email'],
-                    'nome' => $row['profissional_nome'],
-                    'telefone' => $row['profissional_telefone'],
-
-                );
-            }
-
-            
-       
+            $array = 'Não há profissional cadastrado nesse segmento';
+        }
 
 
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+                'cnpj' => $row['profissional_cpf'],
+                'email' => $row['profissional_email'],
+                'nome' => $row['profissional_nome'],
+                'telefone' => $row['profissional_telefone'],
+
+            );
+
+        }
 
         return $array;
+        
     }
+
+    
 }
