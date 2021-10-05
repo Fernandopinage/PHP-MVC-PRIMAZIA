@@ -81,6 +81,10 @@ if (isset($_POST['chamado_finalizado'])) {
 
     $Servico = new ServicoDao();
     $Servico->finalizarServico($ClassServico);
+
+    /********* aqui logica da star *************/
+    //        usar o numero do protocolo        /
+    /***************************************** */
 }
 
 ?>
