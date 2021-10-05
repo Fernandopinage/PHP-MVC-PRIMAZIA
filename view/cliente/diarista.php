@@ -288,28 +288,205 @@ if (isset($_POST['diaristafinal'])) {
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipocontratacao" id="mensal" value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Mensal('mensal')">
+                            <input class="form-check-input" type="radio" name="tipocontratacao" data-bs-toggle="modal" data-bs-target="#exampleModal" id="mensal" value="mensal" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <label class="form-check-label" for="mensal">
                                 Serviço Mensal
                             </label>
                         </div>
-                    </div>
-                    <div>
-                        <p>Leia os <a class="termo" href="http://primazia.agenciaprogride.com.br/wp-content/uploads/2021/09/CONTRATO-DE-LIMPEZA.pdf" target="_blank" style="text-decoration: block; color:tomato;"><b>Termos e Condições</b></a> do Serviço Mensal</p>
-                    </div>
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col text-center">
-                            <button id='botaoEnviar' type="button" id="volta01" onclick="voltando06()" class="btn azulprima btn-lg">VOLTAR</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">TERMO</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-signin">
+
+
+                                            <style>
+                                                .texto {
+                                                    max-height: 500px;
+                                                    overflow-y: auto;
+                                                    justify-content: center;
+                                                }
+                                            </style>
+
+                                            <div class="texto">
+                                                <p style="text-align: center;margin-top:10px"><b style="font-size: 20px">MINUTA DE CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE PAY-PER-USE</b></p>
+                                                <p style="text-align: center"><b style="font-size: 18px">PAGUE PELO USO – LIMPEZA E CONSERVAÇÃO</b></p>
+                                                <p><b>DAS PARTES</b></p>
+
+                                                <p><b>1. CONTRATANTE:</b></p>
+                                                <p><b>2. CONTRATADA:</b></p>
+                                                <br>
+
+                                                <p><b>DO OBJETO DO CONTRATO</b></p>
+
+                                                <p style="margin-left: 30px"><b>3</b>. O objeto do presente instrumento é a prestação de serviço de Pay-per-use (pague
+                                                    pelo uso), compreendendo limpeza e conservação, que deverá acontecer de acordo
+                                                    com o solicitado.</p>
+
+
+                                                <p style="margin-left: 30px"><b>4</b>. O local desta prestação de serviços será no espaço especificado pelo CONTRATANTE</p>
+
+                                                <p style="margin-left: 30px"><b>5</b>. A CONTRATADA designará um colaborador para realizar o serviço nos moldes
+                                                    contratados, devidamente uniformizado e identificado com crachá.</p>
+
+
+
+                                                <p style="margin-left: 30px"><b>6</b>. Estão contemplados no Objeto deste instrumento os serviços de acordo com o
+                                                    solicitado..</p>
+
+                                                <p><b>ÁREAS E SERVIÇOS EXCLUSOS</b></p>
+
+                                                <p style="margin-left: 30px"><b>7</b>. Não estão contemplados no Objeto deste contrato a realização dos seguintes
+                                                    serviços ou fornecimento dos seguintes materiais/insumos:</p>
+
+                                                <p><b style="margin-left: 25px; padding-right:20px"> a. </b>Limpeza de fachada;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> b. </b>Lavagem de carpetes, cadeiras, poltronas, tapetes, cortinas e persianas;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> c. </b>Tratamento de piso;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> d. </b>Fornecimento de insumos de copa;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> e. </b>Fornecimento de descartáveis (papel toalha, papel higiênico, álcool gel,
+                                                    sacos de lixo);</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> f. </b>Fornecimento de desodorizadores e pedras sanitárias;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> g. </b>Fornecimento de insumos de jardinagem</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> h. </b>Serviços de jardinagem;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> i. </b>Fornecimento de descartáveis e higiênicos; </p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> j. </b>Gerenciamento de resíduos;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> k. </b>. Limpeza de luminárias energizadas;</p>
+
+                                                <p><b style="margin-left: 25px; padding-right:20px"> l. </b>Limpeza de equipamentos eletrônicos (computadores, notebooks e similares)
+                                                    e Equipamentos médico hospitalares</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> m. </b>Limpeza interna de geladeiras e frigobar;</p>
+                                                <p><b style="margin-left: 25px; padding-right:20px"> n. </b> Serviços de copa.</p>
+
+                                                <p><b>DO PREÇO</b></p>
+                                                <p style="margin-left: 30px"><b>8</b>. O CONTRATANTE pagará mensalmente em moeda corrente pelos serviços ora
+                                                    contratados conforme será informado na proposta de prestação de serviço.
+                                                </p>
+
+
+                                                <p><b>FORMA DE REAJUSTE</b></p>
+                                                <p style="margin-left: 30px"><b>9</b>. O preço mensal será reajustado, automaticamente, sempre que ocorrer alteração
+                                                    do piso da categoria, criação e/ou majoração dos benefícios ou qualquer outra
+                                                    condição prevista na proposta comercial, mas não limitado a vale refeição,
+                                                    alimentação, transporte, cesta básica, convênio médico e outros, decorrente de Lei,
+                                                    Dissídio, Convenção Coletiva, Acordo Coletivo, Resoluções, Súmulas, Orientação
+                                                    Jurisprudencial do Tribunal Regional do Trabalho e/ou Tribunal Superior do Trabalho
+                                                    e/ou qualquer outra norma com força legal, no mesmo percentual/valor de sua
+                                                    majoração, visando a manutenção do equilíbrio financeiro do contrato.
+                                                </p>
+
+                                                <p><b>CONDIÇÕES DE PAGAMENTO</b></p>
+                                                <p style="margin-left: 30px"><b>10</b>. Até o dia 30 de cada mês a CONTRATADA receberá o valor correspondente à
+                                                    execução dos serviços contratados, através do cartão de crédito, débito ou PIX e
+                                                    apresentará o comprovante da operação à CONTRATADA
+                                                </p>
+                                                <p style="margin-left: 30px"><b>11</b>. Havendo atraso nos pagamentos, por parte da CONTRATANTE, haverá
+                                                    acréscimo sobre o saldo em aberto, sendo: 5% (cinco por cento) de multa contratual
+                                                    no mês e 1% (um por cento) de juros de mora ao mês, além de correção monetária
+                                                </p>
+                                                <p style="margin-left: 30px"><b>12</b>. O não pagamento das faturas após 30 (trinta) dias de seus vencimentos, sujeita o
+                                                    Contrato à rescisão, devendo a CONTRATANTE ressarcir os valores em aberto
+                                                </p>
+
+                                                <p><b>DO PRAZO</b></p>
+                                                <p style="margin-left: 30px"><b>13</b>. Este contrato tem prazo indeterminado de vigência a partir da data de sua
+                                                    assinatura, podendo ser rescindo a qualquer tempo, desde que haja comunicação
+                                                    entre as partes com 07 (sete) dias de antecedência.
+
+                                                </p>
+
+                                                <p><b>OBRIGAÇÕES DA CONTRATADA</b></p>
+                                                <p style="margin-left: 30px"><b>14</b>. Nos casos de faltas eventuais de colaboradores e na impossibilidade de sua
+                                                    substituição imediata, as atividades serão reprogramadas pela CONTRATADA de
+                                                    modo que as prioridades sejam atendidas, conforme as necessidades do cliente.
+                                                    Entenda-se por faltas eventuais, todo evento de ausência do colaborador, fora do
+                                                    controle ou previsão da CONTRATADA
+                                                </p>
+
+                                                <p style="margin-left: 30px"><b>15</b>. A CONTRATADA responderá por todos os ônus decorrentes da Legislação do
+                                                    Trabalho, Previdência Social e Acidente, de acordo com as Leis vigentes, no que se
+                                                    refere a todo pessoal que empregar na execução dos serviços ora contratados, não
+                                                    havendo qualquer relação entre este pessoal e a CONTRATANTE, nem ônus desta
+                                                    para com eles.
+                                                </p>
+
+                                                <p><b>OBRIGAÇÕES DA CONTRATANTE</b></p>
+                                                <p style="margin-left: 30px"><b>16</b>. A CONTRATANTE não poderá utilizar-se dos colaboradores da CONTRATADA
+                                                    para qualquer atividade administrativa, técnica ou de outra espécie, que não aquelas
+                                                    compreendidas no escopo dos serviços ora contratados. Em caso de solicitação de
+                                                    serviço fora do escopo, horas extras solicitadas sem a autorização e ciência da
+                                                    CONTRATADA ou situação semelhante, a CONTRATANTE ficará responsável única
+                                                    e exclusivamente por atos danosos praticados, devendo esta reparar diretamente o
+                                                    prejuízo causado, bem como, responder por demandas judiciais cíveis ou trabalhistas
+                                                    que surgirem em virtude da situação explanada.
+                                                </p>
+
+                                                <p><b>RESCISÃO</b></p>
+                                                <p style="margin-left: 30px"><b>17</b>. O prazo deste contrato é por tempo indeterminado e poderá ser rescindido por
+                                                    qualquer uma das partes, sem qualquer direito a indenização, em qualquer momento,
+                                                    sem que haja qualquer tipo de motivo relevante, não obstante a outra parte deverá ser
+                                                    avisada previamente por escrito, no prazo de 07 (sete) dias
+                                                </p>
+
+                                                <p><b>DISPOSIÇÕES FINAIS</b></p>
+                                                <p style="margin-left: 30px"><b>18</b>. Se durante a vigência deste Contrato ocorrer a criação ou majoração dos tributos,
+                                                    das alíquotas, dos benefícios ou encargos, benefícios e/ou extinção ou redução dos
+                                                    mesmos, que comprovadamente venha a majorar ou diminuir o ônus das partes
+                                                    contratantes, os preços serão revistos na primeira oportunidade, para adequá-lo às
+                                                    modificações havidas, visando o equilíbrio financeiro e a função social do contrato,
+                                                    mediante prévio aviso pela CONTRATADA.
+
+                                                </p>
+
+                                                <p style="margin-left: 30px"><b>19</b>. Quando houver aumento nas frequências de limpeza ou demais operações, em
+                                                    razão de novas áreas ou mesmo alterações das superfícies a serem limpas, ou ainda
+                                                    devido a mudanças de layout das áreas onde os serviços serão prestados, a
+                                                    CONTRATADA poderá solicitar revisão do contrato para adequação dos custos
+                                                    correspondentes.
+                                                </p>
+
+                                                <p style="margin-left: 30px"><b>20</b>. Fica eleito o Foro da Comarca de Manaus, Estado de Amazonas, recusando-se
+                                                    qualquer outro, por mais privilegiado que seja, para todas e quaisquer questões
+                                                    oriundas deste Contrato, correndo a cargo da parte vencida, custas e despesas
+                                                    judiciais, inclusive os honorários advocatícios.
+                                                </p>
+
+                                                <p style="margin-left: 30px"><b>21</b>. E, por estarem assim ajustados e contratados, firmam o presente em 2 (duas) vias
+                                                    de igual teor e forma, juntamente com 2 (duas) testemunhas, para o devido fim legal.
+                                                </p>
+                                                <div class="modal-body">
+                                                    <div class="form-check" style="margin-top: 20px">
+                                                        <input class="form-check-input" type="checkbox" name="termo" id="termo" onclick="Mensal('mensal')" required>
+                                                        <label class="form-check-label" for="flexCheckChecked" style="color: #0d6efd">
+                                                            Li e aceito os Termos da Política de Dados do Site<span><strong></strong></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="col text-center" id="divFinalizar">
-                            <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col text-center">
+                                <button id='botaoEnviar' type="button" id="volta01" onclick="voltando06()" class="btn azulprima btn-lg">VOLTAR</button>
+                            </div>
+
+                            <div class="col text-center" id="divFinalizar">
+                                <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
+                            </div>
+
                         </div>
 
                     </div>
-
                 </div>
-
             </div>
 
         </form>
@@ -363,26 +540,32 @@ if (isset($_POST['diaristafinal'])) {
 </script>
 
 <script>
-
-    $(document).ready(function(){
+    $(document).ready(function() {
 
         document.getElementById('divFinalizar').style.display = 'none';
     });
 
-    function Mensal($id){
 
-                
-        if($id === 'avulso'){
+
+    $('#termo').click(function() {
+
+        if (document.getElementById('termo').checked) {
+
+            document.getElementById('divFinalizar').style.display = 'block';
+        } else {
+            document.getElementById('divFinalizar').style.display = 'none';
+        }
+    });
+
+    function Mensal($id) {
+
+
+        if ($id === 'avulso') {
             document.getElementById('divFinalizar').style.display = 'block';
         }
-        if($id === 'mensal'){
-            document.getElementById('divFinalizar').style.display = 'block';
-        }
+
+
     }
-
-    
-
-
 </script>
 
 <script>
