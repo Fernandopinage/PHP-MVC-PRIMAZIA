@@ -745,7 +745,7 @@ if (empty($_SESSION['admin'])) {
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                         <input type="submit" name="editarCliente" class="btn btn-primary" value="Editar">
                                     </div>
                                 </form>
