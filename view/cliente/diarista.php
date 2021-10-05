@@ -301,9 +301,11 @@ if (isset($_POST['diaristafinal'])) {
                         <div class="col text-center">
                             <button id='botaoEnviar' type="button" id="volta01" onclick="voltando06()" class="btn azulprima btn-lg">VOLTAR</button>
                         </div>
+                        
                         <div class="col text-center" id="divFinalizar">
                             <input id='botaoEnviar' name="diaristafinal" type="submit" value="FINALIZAR" class="btn orangered btn-lg">
                         </div>
+
                     </div>
 
                 </div>
