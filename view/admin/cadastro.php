@@ -209,7 +209,7 @@ if (isset($_POST['salvarCliente'])) {
         <form method="POST">
 
             <div id="administrador">
-                <div id="Pfisica">
+              
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
@@ -219,7 +219,7 @@ if (isset($_POST['salvarCliente'])) {
                             <input type="text" name="admcpf" id="admcpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                         </div>
                     </div>
-                </div>
+               
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <input type="password" name="admsenha" id="admsenha" class="form-control" placeholder="Senha" aria-label="">
@@ -247,13 +247,13 @@ if (isset($_POST['salvarCliente'])) {
             <div id="profissional">
                 <div class="col-md-6">
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="Popt" id="j" onclick="juridica()" value="J" CHECKED>
+                        <input class="pessoa form-check-input" type="radio" name="Popt" id="j" onclick="juridicaP()" value="J" CHECKED>
                         <label class="form-check-label" for="j" id="j">
                             Pessoa Juridica
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="Popt" id="f" onclick="fisica()" value="F">
+                        <input class="pessoa form-check-input" type="radio" name="Popt" id="f" onclick="fisicaP()" value="F">
                         <label class="form-check-label" for="f" id="f">
                             Pessoa Fisica
                         </label>
@@ -345,19 +345,19 @@ if (isset($_POST['salvarCliente'])) {
             <div id="cliente">
                 <div class="col-md-6">
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="jc" onclick="juridica()" value="J" CHECKED>
+                        <input class="pessoa form-check-input" type="radio" name="opt" id="jc" onclick="juridicaC()" value="J" CHECKED>
                         <label class="form-check-label" for="jc" id="jc">
                             Pessoa juridica
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="fc" onclick="fisica()" value="F">
+                        <input class="pessoa form-check-input" type="radio" name="opt" id="fc" onclick="fisicaC()" value="F">
                         <label class="form-check-label" for="fc" id="fc">
                             Pessoa Fisica
                         </label>
                     </div>
                 </div>
-                <div id="Pfisica">
+                <div id="Cfisica">
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
@@ -464,6 +464,36 @@ if (isset($_POST['salvarCliente'])) {
     }
 </script>
 
+<script>
+    function juridicaP() {
+        
+        var Pfisica = document.getElementById('Pfisica').style.display = "block";
+
+
+    }
+
+    function fisicaP() {
+
+    
+        var Pfisica = document.getElementById('Pfisica').style.display = "none";
+
+
+    }
+
+    function juridicaC() {
+
+        var Cfisica = document.getElementById('Cfisica').style.display = "block";
+
+
+    }
+
+    function fisicaC() {
+
+        var Cfisica = document.getElementById('Cfisica').style.display = "none";
+
+
+    }
+</script>
 
 
 
