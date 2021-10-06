@@ -40,12 +40,12 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetEmail($_POST['email']);
             $ClassProfissional->SetServico($_POST['servico']);
 
-       
+
             $subcategoria = $_POST['categoria'];
-           
+
 
             $Profissional = new ProfissionalDAO();
-            $Profissional->insertProfissional($ClassProfissional,$subcategoria);
+            $Profissional->insertProfissional($ClassProfissional, $subcategoria);
         } else {
 
 ?>
@@ -89,7 +89,7 @@ if (isset($_POST['salvarProfissional'])) {
     <div class="container" id="registro">
         <form action="" method="post" enctype="multipart/form-data">
             <div class="text-center">
-            <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+                <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
             </div>
 
             <div class="title text-center">
@@ -186,12 +186,13 @@ if (isset($_POST['salvarProfissional'])) {
                             <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                             <option value="Babá">Babá</option>
                             <option value="Cabeleireiro">Cabeleireiro</option>
-                            <option value="Cuidador(a) de Idoso">Cuidador(a) de Idoso</option>
+                            <option value="Cuidador(a) de Pessoas">Cuidador(a) de Pessoas</option>
                             <option value="Dedetização">Dedetização</option>
                             <option value="Diarista">Diarista</option>
                             <option value="Lavanderia">Lavanderia</option>
                             <option value="Manutenção de Ar Condicionado">Manutenção de Ar Condicionado</option>
                             <option value="Motoboy">Motoboy</option>
+                            <option value="Manicure e Pedicure">Manicure e Pedicure</option>
                         </select>
                     </div>
                     <div id="pergunta01">
@@ -273,22 +274,22 @@ if (isset($_POST['salvarProfissional'])) {
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Instalação" name="categoria[]" id="Instalação" title="">
                             <label style="font-size:18px;" class="form-check-label" for="Instalação" title="Instalação de aparelhos splits e multisplits de diferentes BTU´s com infraestrutura pronta.">
-                            Instalação
+                                Instalação
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Limpeza" name="categoria[]" id="Limpeza" title="">
                             <label style="font-size:18px;" class="form-check-label" for="Limpeza" title="Lavagem de evaporadora e condensadora de aparelhos splits e multisplits de diferentes BTU´s">
-                            Limpeza
+                                Limpeza
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Recarga de gás" name="categoria[]" id="Recarga de gás" title="">
                             <label style="font-size:18px;" class="form-check-label" for="Recarga de gás" title="Recarga de gás refrigerante em aparelhos splits e multisplits de diferentes BTU´s.">
-                            Recarga de gás
+                                Recarga de gás
                             </label>
                         </div>
-    
+
                     </div>
                     <div id="pergunta04">
                         <div class="row g-12 ms-3 p-2">
@@ -425,6 +426,218 @@ if (isset($_POST['salvarProfissional'])) {
                         </div>
                     </div>
 
+                    <div id="pergunta07">
+                        <div class="row g-12 ms-3 p-2">
+                            <samp style="color: red; font-size:20px;">Selecione uma ou mais opções:</samp>
+                            <br><br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1 criança" name="categoria[]" id="1criança" title="">
+                                <label class="form-check-label" for="1criança" title="">
+                                    1 criança
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="2 crianças" name="categoria[]" id="2criança" title="">
+                                <label class="form-check-label" for="2criança" title="">
+                                    2 crianças
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="3 crianças " name="categoria[]" id="3criança" title="">
+                                <label class="form-check-label" for="3criança" title="">
+                                    3 crianças
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="4 crianças" name="categoria[]" id="4criança" title="">
+                                <label class="form-check-label" for="4criança" title="">
+                                    4 crianças
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="pergunta08">
+                        <div class="row g-12 ms-3 p-2">
+                            <samp style="color: red; font-size:20px;">Selecione uma ou mais opções:</samp>
+                            <br><br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Alongamento de unhas" name="categoria[]" id="Alongamentodeunhas" title="">
+                                <label class="form-check-label" for="Alongamentodeunhas" title="">
+                                    Alongamento de unhas
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Manicure" name="categoria[]" id="Manicure" title="">
+                                <label class="form-check-label" for="Manicure" title="">
+                                    Manicure
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Manutenção de alongamento" name="categoria[]" id="Manutençãodealongamento" title="">
+                                <label class="form-check-label" for="Manutençãodealongamento" title="">
+                                    Manutenção de alongamento
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Pedicure" name="categoria[]" id="Pedicure" title="">
+                                <label class="form-check-label" for="Pedicure" title="">
+                                    Pedicure
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Spa dos pés" name="categoria[]" id="Spadospés" title="">
+                                <label class="form-check-label" for="Spadospés" title="">
+                                    Spa dos pés
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Remoção de calosidade" name="categoria[]" id="Remoçãodecalosidade" title="">
+                                <label class="form-check-label" for="Remoçãodecalosidade" title="">
+                                    Remoção de calosidade
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="pergunta09">
+                        <div class="row g-12 ms-3 p-2">
+                            <samp style="color: red; font-size:20px;">Selecione uma ou mais opções:</samp>
+                            <br><br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Cauterização" name="categoria[]" id="Cauterização" title="">
+                                <label class="form-check-label" for="Cauterização" title="">
+                                    Cauterização
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Coloração" name="categoria[]" id="Coloração" title="">
+                                <label class="form-check-label" for="Coloração" title="">
+                                    Coloração
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Corte" name="categoria[]" id="Corte" title="">
+                                <label class="form-check-label" for="Corte" title="">
+                                    Corte
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Escova Progressiva ou Definitiva" name="categoria[]" id="EscovaProgressivaouDefinitiva" title="">
+                                <label class="form-check-label" for="EscovaProgressivaouDefinitiva" title="">
+                                    Escova Progressiva ou Definitiva
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Escova, babyliss ou chapinha" name="categoria[]" id="Escovababylissouchapinha" title="">
+                                <label class="form-check-label" for="Escovababylissouchapinha" title="">
+                                    Escova, babyliss ou chapinha
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Hidratação, Nutrição ou Reconstrução" name="categoria[]" id="HidrataçãoNutriçãoouReconstrução" title="">
+                                <label class="form-check-label" for="HidrataçãoNutriçãoouReconstrução" title="">
+                                    Hidratação, Nutrição ou Reconstrução
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Luzes ou Mechas" name="categoria[]" id="LuzesouMechas" title="">
+                                <label class="form-check-label" for="LuzesouMechas" title="">
+                                    Luzes ou Mechas
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Penteado" name="categoria[]" id="Penteado" title="">
+                                <label class="form-check-label" for="Penteado" title="">
+                                    Penteado
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="Outros1" title="">
+                                <label class="form-check-label" for="Outros1" title="">
+                                    Outros
+                                </label>
+                                <div id="lista1">
+
+                                    <div class="mb-3">
+                                        <label for="outros" class="form-label"></label>
+                                        <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="pergunta10">
+                        <div class="row g-12 ms-3 p-2">
+                            <samp style="color: red; font-size:20px;">Selecione uma ou mais opções:</samp>
+                            <br><br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Acompanhamento em saídas (supermercado, Shopping, etc)" name="categoria[]" id="saídas" title="">
+                                <label class="form-check-label" for="saídas" title="">
+                                    Acompanhamento em saídas (supermercado, Shopping, etc)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Acompanhamento terapêutico (consultas, pós operatório, etc)" name="categoria[]" id="terapêutico" title="">
+                                <label class="form-check-label" for="terapêutico" title="">
+                                    Acompanhamento terapêutico (consultas, pós operatório, etc)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Administração de medicamentos" name="categoria[]" id="medicamentos" title="">
+                                <label class="form-check-label" for="medicamentos" title="">
+                                    Administração de medicamentos
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Administração de refeições" name="categoria[]" id="refeições" title="">
+                                <label class="form-check-label" for="refeições" title="">
+                                    Administração de refeições
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Banho" name="categoria[]" id="Banho" title="">
+                                <label class="form-check-label" for="Banho" title="">
+                                    Banho
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Companhia" name="categoria[]" id="Companhia" title="">
+                                <label class="form-check-label" for="Companhia" title="">
+                                    Companhia
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Transporte" name="categoria[]" id="Transporte" title="">
+                                <label class="form-check-label" for="Transporte" title="">
+                                    Transporte
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Outros" name="categoria[]" id="Outros2" title="">
+                                <label class="form-check-label" for="Outros2" title="">
+                                    Outros
+                                </label>
+                                <div id="lista2">
+
+                                    <div class="mb-3">
+                                        <label for="outros" class="form-label"></label>
+                                        <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="row">
                         <div class="d-grid gap-2 col-3 mx-auto mt-5">
@@ -445,17 +658,52 @@ if (isset($_POST['salvarProfissional'])) {
 
 
 <script>
-    $("#div_outros").hide();
-    $("#lista").hide();
-    $("#lista3").hide();
-    $("#lista4").hide();
+    $(document).ready(function() {
+        $("#div_outros").hide();
+        $("#lista").hide();
+        $("#lista3").hide();
+        $("#lista4").hide();
 
-    $("#pergunta01").hide();
-    $('#pergunta02').hide();
-    $('#pergunta03').hide();
-    $('#pergunta04').hide();
-    $('#pergunta05').hide();
-    $('#pergunta06').hide();
+        $("#pergunta01").hide();
+        $('#pergunta02').hide();
+        $('#pergunta03').hide();
+        $('#pergunta04').hide();
+        $('#pergunta05').hide();
+        $('#pergunta06').hide();
+        $('#pergunta07').hide();
+        $('#pergunta08').hide();
+        $('#pergunta09').hide();
+        $('#pergunta10').hide();
+
+        $('#lista1').hide();
+        $('#lista2').hide();
+    });
+
+    $('#Outros1').click(function() {
+
+        if (document.getElementById('Outros1').checked) {
+
+            $('#lista1').show();
+
+        } else {
+            $('#lista1').hide();
+
+        }
+
+    });
+
+    $('#Outros2').click(function() {
+
+        if (document.getElementById('Outros2').checked) {
+
+            $('#lista2').show();
+
+        } else {
+            $('#lista2').hide();
+
+        }
+
+    });
 
     function change() {
         var select = document.getElementById('servico');
@@ -493,6 +741,31 @@ if (isset($_POST['salvarProfissional'])) {
             $('#pergunta06').show();
         } else {
             $('#pergunta06').hide();
+        }
+
+
+        if (value === 'Babá') {
+            $('#pergunta07').show();
+        } else {
+            $('#pergunta07').hide();
+        }
+
+        if (value === 'Manicure e Pedicure') {
+            $('#pergunta08').show();
+        } else {
+            $('#pergunta08').hide();
+        }
+
+        if (value === 'Cabeleireiro') {
+            $('#pergunta09').show();
+        } else {
+            $('#pergunta09').hide();
+        }
+
+        if (value === 'Cuidador(a) de Pessoas') {
+            $('#pergunta10').show();
+        } else {
+            $('#pergunta10').hide();
         }
 
 
