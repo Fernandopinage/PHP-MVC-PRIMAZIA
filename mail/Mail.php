@@ -140,7 +140,7 @@ class Mail
             }
         
         } else {
-            $emailP =  "Não há profissional cadastrado nesse segmento";
+            $emailP =  '<i style="color:red;" >Não há profissional cadastrado nesse segmento </i>';
         }
         
 

@@ -34,7 +34,7 @@ if (empty($_SESSION['user'])) {
         ?>
 
         <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'] ?></h5><br>
-        <img src="../../images/photo1629981520.jpeg" class="img" width="130"> 4,67</h5></img><br>
+        <img src="../../images/star.png" class="img" width="130"> 0,00</h5></img><br>
     </div>
     
     
