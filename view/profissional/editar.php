@@ -57,6 +57,9 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetEmail($_POST['email']);
             $ClassProfissional->SetServico($_POST['servico']);
 
+            $ClassProfissional->SetSexo($_POST['sexo']);
+            $ClassProfissional->SetNascimento($_POST['data_nascimento']);
+            $ClassProfissional->SetTermo($_POST['termo']);
 
             $subcategoria = $_POST['categoria'];
 
@@ -193,28 +196,34 @@ if (isset($_POST['salvarProfissional'])) {
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
                             <input type="hidden" name="id" value="<?php echo $dados['id'] ?>">
-                            <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control form-control-sm" placeholder="Razão Social" aria-label="Nome de Usuário">
+                            <label>Razão Social</label>
+                            <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control form-control-sm"  aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask" placeholder="Inscrição Estadual">
+                        <label>Inscrição Estadual</label>
+                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control form-control-sm" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                    <label>Nome de Usuário</label>
+                        <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control form-control-sm" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
+                    <label>CPF/CNPJ</label>
                         <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control form-control-sm cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" placeholder="Senha" aria-label="">
+                    <label>Senha</label>
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="">
                     </div>
                     <div class="col-md-6">
-                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" placeholder="Confirmar senha">
+                    <label>Confirmar senha</label>
+                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask">
                     </div>
                 </div>
                 <div class="row g-3 mt-1">

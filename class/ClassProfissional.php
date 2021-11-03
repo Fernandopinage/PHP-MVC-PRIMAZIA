@@ -21,7 +21,9 @@ private $foto;
 private $senha;
 private $servico;
 
-
+private $termo;
+private $sexo;
+private $nascimento;
 
     public function SetId($id){
 
@@ -161,5 +163,28 @@ private $servico;
     }
     public function GetServico(){
         return $this->servico;
+    }
+    public function SetTermo($termo){
+        $this->termo = $termo;
+
+    }
+    public function GetTermo(){
+        return $this->termo;
+    }
+
+    public function SetSexo($sexo){
+        $this->sexo = $sexo;
+
+    }
+    public function GetSexo(){
+        return $this->sexo;
+    }
+
+    public function SetNascimento($nascimento){
+        $this->nascimento = $nascimento;
+
+    }
+    public function GetNascimento(){
+        return $this->nascimento;
     }
 }

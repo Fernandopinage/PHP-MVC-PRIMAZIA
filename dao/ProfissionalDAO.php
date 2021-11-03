@@ -37,7 +37,10 @@ class ProfissionalDAO extends DAO
                 'cidade' => $row['profissional_cidade'],
                 'bairro' => $row['profissional_bairro'],
                 'complemento' => $row['profissional_complemento'],
-                'foto' => $row['profissional_foto']
+                'foto' => $row['profissional_foto'],
+                'termo' => $row['profissional_termo'],
+                'sexo' => $row['profissional_sexo'],
+                'nascimento' => $row['profissional_nascimento']
             );
 
             header('location: ../../view/profissional/painel.php');
@@ -92,7 +95,10 @@ class ProfissionalDAO extends DAO
                 'complemento' => $row['profissional_complemento'],
                 'foto' => $row['profissional_foto'],
                 'senha' => $row['profissional_senha'],
-                'servico' => $row['profissional_servico']
+                'servico' => $row['profissional_servico'],
+                'termo' => $row['profissional_termo'],
+                'sexo' => $row['profissional_sexo'],
+                'nascimento' => $row['profissional_nascimento']
             );
         }
 
@@ -164,9 +170,9 @@ class ProfissionalDAO extends DAO
     public  function updateProfissionalModal($ClassProfissional){
        
         if(!empty($ClassProfissional->GetSenha())){
-            $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome ,`profissional_option`=:profissional_option ,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,`profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,`profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_senha`=:profissional_senha,`profissional_servico`=:profissional_servico WHERE `profissional_servico`=:profissional_servico";
+            $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome ,`profissional_option`=:profissional_option ,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,`profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,`profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_senha`=:profissional_senha,`profissional_servico`=:profissional_servico,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento WHERE `profissional_servico`=:profissional_servico";
         }else{
-            $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome ,`profissional_option`=:profissional_option ,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,`profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,`profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_servico`=:profissional_servico WHERE `profissional_servico`=:profissional_servico";
+            $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome ,`profissional_option`=:profissional_option ,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,`profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,`profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_servico`=:profissional_servico,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento  WHERE `profissional_servico`=:profissional_servico";
         }
 
         
@@ -183,6 +189,10 @@ class ProfissionalDAO extends DAO
         $update->bindValue(':profissional_cidade', $ClassProfissional->GetCidade());
         $update->bindValue(':profissional_bairro', $ClassProfissional->GetBairro());
         $update->bindValue(':profissional_complemento', $ClassProfissional->GetComplemento());
+
+        $update->bindValue(':profissional_termo', $ClassProfissional->GetTermo());
+        $update->bindValue(':profissional_sexo', $ClassProfissional->GetSexo());
+        $update->bindValue(':profissional_nascimento', $ClassProfissional->GetNascimento());
  
         if(!empty($ClassProfissional->GetSenha())){
             $update->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
@@ -232,8 +242,8 @@ class ProfissionalDAO extends DAO
     public function AdminInserirProfissional($ClassProfissional)
     {
 
-        $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`) 
-        VALUES (null, :profissional_nome, :profissional_option, :profissional_razao, :profissional_email, :profissional_cpf, :profissional_telefone, :profissional_cep, :profissional_uf, :profissional_logradouro, :profissional_num, :profissional_cidade, :profissional_bairro, :profissional_complemento, :profissional_foto, :profissional_senha, :profissional_servico)";
+        $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`, `profissional_termo`, `profissional_sexo`, `profissional_nascimento`) 
+        VALUES (null, :profissional_nome, :profissional_option, :profissional_razao, :profissional_email, :profissional_cpf, :profissional_telefone, :profissional_cep, :profissional_uf, :profissional_logradouro, :profissional_num, :profissional_cidade, :profissional_bairro, :profissional_complemento, :profissional_foto, :profissional_senha, :profissional_servico, :profissional_termo, :profissional_sexo, :profissional_nascimento)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':profissional_nome', $ClassProfissional->GetNome());
         $insert->bindValue(':profissional_option', $ClassProfissional->GetOpcao());
@@ -251,6 +261,12 @@ class ProfissionalDAO extends DAO
         $insert->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
         $insert->bindValue(':profissional_servico', $ClassProfissional->GetServico());
         $insert->bindValue(':profissional_uf', $ClassProfissional->GetUf());
+
+        $insert->bindValue(':profissional_termo', $ClassProfissional->GetTermo());
+        $insert->bindValue(':profissional_sexo', $ClassProfissional->GetSexo());
+        $insert->bindValue(':profissional_nascimento', $ClassProfissional->GetNascimento());
+
+
         try {
             $insert->execute();
         ?>
@@ -294,8 +310,8 @@ class ProfissionalDAO extends DAO
     public function insertProfissional($ClassProfissional, $subcategoria)
     {
 
-        $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`) 
-        VALUES (null, :profissional_nome, :profissional_option, :profissional_razao, :profissional_email, :profissional_cpf, :profissional_telefone, :profissional_cep, :profissional_uf, :profissional_logradouro, :profissional_num, :profissional_cidade, :profissional_bairro, :profissional_complemento, :profissional_foto, :profissional_senha, :profissional_servico)";
+        $sql = "INSERT INTO `profissional`(`profissional_id`, `profissional_nome`, `profissional_option`, `profissional_razao`, `profissional_email`, `profissional_cpf`, `profissional_telefone`, `profissional_cep`, `profissional_uf`, `profissional_logradouro`, `profissional_num`, `profissional_cidade`, `profissional_bairro`, `profissional_complemento`, `profissional_foto`, `profissional_senha`, `profissional_servico`, `profissional_termo`, `profissional_sexo`, `profissional_nascimento`) 
+        VALUES (null, :profissional_nome, :profissional_option, :profissional_razao, :profissional_email, :profissional_cpf, :profissional_telefone, :profissional_cep, :profissional_uf, :profissional_logradouro, :profissional_num, :profissional_cidade, :profissional_bairro, :profissional_complemento, :profissional_foto, :profissional_senha, :profissional_servico, :profissional_termo, :profissional_sexo, :profissional_nascimento)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':profissional_nome', $ClassProfissional->GetNome());
         $insert->bindValue(':profissional_option', $ClassProfissional->GetOpcao());
@@ -313,6 +329,11 @@ class ProfissionalDAO extends DAO
         $insert->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
         $insert->bindValue(':profissional_servico', $ClassProfissional->GetServico());
         $insert->bindValue(':profissional_uf', $ClassProfissional->GetUf());
+
+        $insert->bindValue(':profissional_termo', $ClassProfissional->GetTermo());
+        $insert->bindValue(':profissional_sexo', $ClassProfissional->GetSexo());
+        $insert->bindValue(':profissional_nascimento', $ClassProfissional->GetNascimento());
+
         try {
             $insert->execute();
             $subcat = new SubcategoriaDAO();
@@ -344,13 +365,13 @@ class ProfissionalDAO extends DAO
             
             $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome,`profissional_option`=:profissional_option,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,
      `profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,
-     `profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_foto`=:profissional_foto,`profissional_senha`=:profissional_senha,`profissional_servico`=:profissional_servico WHERE profissional_id = :profissional_id";
+     `profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_foto`=:profissional_foto,`profissional_senha`=:profissional_senha,`profissional_servico`=:profissional_servico,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento WHERE profissional_id = :profissional_id";
         
         }else{
 
             $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome,`profissional_option`=:profissional_option,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,
             `profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,
-            `profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_foto`=:profissional_foto,`profissional_servico`=:profissional_servico WHERE profissional_id = :profissional_id";
+            `profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_foto`=:profissional_foto,`profissional_servico`=:profissional_servico,,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento WHERE profissional_id = :profissional_id";
                
         }
 
@@ -370,6 +391,11 @@ class ProfissionalDAO extends DAO
         $update->bindValue(':profissional_bairro', $ClassProfissional->GetBairro());
         $update->bindValue(':profissional_complemento', $ClassProfissional->GetComplemento());
         $update->bindValue(':profissional_foto', $ClassProfissional->GetFoto());
+
+        $update->bindValue(':profissional_termo', $ClassProfissional->GetTermo());
+        $update->bindValue(':profissional_sexo', $ClassProfissional->GetSexo());
+        $update->bindValue(':profissional_nascimento', $ClassProfissional->GetNascimento());
+
         if(!empty($ClassProfissional->GetSenha())){
         $update->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
         }

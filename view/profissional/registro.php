@@ -40,6 +40,9 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetEmail($_POST['email']);
             $ClassProfissional->SetServico($_POST['servico']);
 
+            $ClassProfissional->SetSexo($_POST['sexo']);
+            $ClassProfissional->SetNascimento($_POST['data_nascimento']);
+            $ClassProfissional->SetTermo($_POST['termo']);
 
             $subcategoria = $_POST['categoria'];
 
@@ -125,60 +128,90 @@ if (isset($_POST['salvarProfissional'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
-                            <input type="text" name="razao" id="razao" class="form-control form-control-sm" placeholder="Razão Social" aria-label="Nome de Usuário">
+                        <label>Razão Social</label>
+                            <input type="text" name="razao" id="razao" class="form-control form-control-sm"  aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask" placeholder="Inscrição Estadual">
+                        <label>Inscrição Estadual</label>
+                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask" >
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="nome" id="nome" class="form-control form-control-sm" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                    <label>Nome de Usuário</label>
+                        <input type="text" name="nome" id="nome" class="form-control form-control-sm"  aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                    <label>CPF/CNPJ</label>
+                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask"  onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" placeholder="Senha" aria-label="">
+                    <label>Senha</label>
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm"  aria-label="">
                     </div>
                     <div class="col-md-6">
-                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" placeholder="Confirmar senha">
+                    <label>Confirme sua senha</label>
+                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask">
+                    </div>
+                </div>
+                <div class="row g-3 mt-1">
+                    <div class="col-md-6">
+                        <label>Data de Nascimento</label>
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
+                    </div>
+                    <div class="col-md-6">
+                    <label>Gênero</label>
+                        <select class="form-select form-select-sm" name="sexo" id="sexo">
+              
+                        <option value="masculino" >Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outros">Outros</option>
+                        </select>
                     </div>
                 </div>
 
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                        <label>CEP</label>
+                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm"  onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm" placeholder="Endereço ">
+                    <label>Endereço</label>
+                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm" >
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm" placeholder="Nº ">
+                    <label>Nº</label>
+                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="uf" id="uf" class="form-control form-control-sm" placeholder="UF">
+                    <label>UF</label>
+                        <input type="text" name="uf" id="uf" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
+                    <label>Cidade</label>
                         <input type="text" name="cidade" id="cidade" class="form-control form-control-sm " placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
+                    <label>Bairro</label>
                         <input type="text" name="bairro" id="bairro" class="form-control form-control-sm " placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
-                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm " placeholder="Complemento">
+                    <label>Complemento</label>
+                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm ">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                    <label>Telefone</label>
+                        <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" name="email" id="email" class="form-control form-control-sm" placeholder="E-mail" aria-label="E-mail">
+                    <label>E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control form-control-sm"  aria-label="E-mail">
                     </div>
                     <div class="col-md-12">
                         <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">
