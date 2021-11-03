@@ -193,39 +193,39 @@ if (isset($_POST['salvarProfissional'])) {
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
                             <input type="hidden" name="id" value="<?php echo $dados['id'] ?>">
-                            <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
+                            <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control form-control-sm" placeholder="Razão Social" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask" placeholder="Inscrição Estadual">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                        <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control form-control-sm" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
+                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control form-control-sm cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="">
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" placeholder="Senha" aria-label="">
                     </div>
                     <div class="col-md-6">
-                        <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
+                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento</label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control" placeholder="Data de Nascimento" aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
-                    <label>Sexo</label>
-                        <select class="form-select" name="sexo" id="sexo">
-                        <option selected>Selecionae uma das opções</option>
+                    <label>Gênero</label>
+                        <select class="form-select form-select-sm" name="sexo" id="sexo">
+              
                         <option value="masculino" >Masculino</option>
                         <option value="feminino">Feminino</option>
                         <option value="outros">Outros</option>
@@ -236,35 +236,35 @@ if (isset($_POST['salvarProfissional'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" maxlength="10" name="cep" id="cep" value="<?php echo $dados['cep'] ?>" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                        <input type="text" maxlength="10" name="cep" id="cep" value="<?php echo $dados['cep'] ?>" class="form-control form-control-sm" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="logradouro" id="rua" value="<?php echo $dados['rua'] ?>" class="form-control" placeholder="Endereço ">
+                        <input type="text" name="logradouro" id="rua" value="<?php echo $dados['rua'] ?>" class="form-control form-control-sm" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="numerp" id="numero" value="<?php echo $dados['numero'] ?>" class="form-control" placeholder="Nº ">
+                        <input type="text" name="numerp" id="numero" value="<?php echo $dados['numero'] ?>" class="form-control form-control-sm" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="uf" id="uf" value="<?php echo $dados['uf'] ?>" class="form-control" placeholder="UF">
+                        <input type="text" name="uf" id="uf" value="<?php echo $dados['uf'] ?>" class="form-control form-control-sm" placeholder="UF">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cidade" id="cidade" value="<?php echo $dados['cidade'] ?>" class="form-control " placeholder="Cidade">
+                        <input type="text" name="cidade" id="cidade" value="<?php echo $dados['cidade'] ?>" class="form-control form-control-sm" placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="bairro" id="bairro" value="<?php echo $dados['bairro'] ?>" class="form-control " placeholder="Bairro">
+                        <input type="text" name="bairro" id="bairro" value="<?php echo $dados['bairro'] ?>" class="form-control form-control-sm" placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
-                        <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento'] ?>" class="form-control " placeholder="Complemento">
+                        <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento'] ?>" class="form-control form-control-sm" placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone'] ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                        <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone'] ?>" class="form-control form-control-sm phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control" placeholder="E-mail" aria-label="E-mail" readonly >
+                        <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly >
                     </div>
                     <div class="col-md-12">
-                        <select class="form-select" name="servico" id="servico" onchange="change()">">
+                        <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">">
                             <option value="<?php echo $dados['servico']; ?>"><?php echo $dados['servico']; ?></option>
                             <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
                             <option value="Babá">Babá</option>
