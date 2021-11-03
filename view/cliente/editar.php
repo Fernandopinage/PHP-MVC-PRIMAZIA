@@ -99,14 +99,14 @@ if (isset($_POST['salvarCliente'])) {
 
                             ?>
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto']; ?>" class="img" width="150" style="border-radius: 50%;"></label>
-                                <input class="form-control" type="file" name="imagem" value="<?php echo $dados['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                                <input class="form-control" type="file" name="imagem" value="<?php echo $dados['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
 
                             <?php
                             } else {
                             ?>
 
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
-                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
 
                             <?php
                             }
@@ -170,40 +170,46 @@ if (isset($_POST['salvarCliente'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
+                            <label>Razão Social</label>
                             <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
-                            <input type="text" name="razao" value="<?php echo $dados['razao']; ?>" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
+                            <input type="text" name="razao" value="<?php echo $dados['razao']; ?>" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                            <label>Inscrição Estadual</label>
+                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask" >
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="nome" id="nome" value="<?php echo $dados['nome']; ?>" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
+                        <label>Nome de Usuário</label>
+                        <input type="text" name="nome" id="nome" value="<?php echo $dados['nome']; ?>" class="form-control form-control-sm"  aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf']; ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly>
+                        <label>CPF/CNPJ</label>
+                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf']; ?>" class="form-control form-control-sm cpf-mask" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly>
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="">
+                    <label>Senha</label>
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm"  aria-label="">
                     </div>
                     <div class="col-md-6">
-                        <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
+                    <label>Confirme sua senha</label>
+                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" >
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento</label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control" placeholder="Data de Nascimento" aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
                     <label>Gênero</label>
-                        <select class="form-select" name="sexo" id="sexo">
+                        <select class="form-select form-select-sm" name="sexo" id="sexo">
                         
                         <option value="masculino" >Masculino</option>
                         <option value="feminino">Feminino</option>
@@ -216,32 +222,41 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" maxlength="9" name="cep" id="cep" value="<?php echo $dados['cep']; ?>" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                        <label>CEP</label>
+                        <input type="text" maxlength="9" name="cep" id="cep" value="<?php echo $dados['cep']; ?>" class="form-control form-control-sm"  onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="logradouro" id="rua" value="<?php echo $dados['rua']; ?>" class="form-control" placeholder="Endereço ">
+                        <label>Endereço</label>
+                        <input type="text" name="logradouro" id="rua" value="<?php echo $dados['rua']; ?>" class="form-control form-control-sm" >
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="numerp" id="numero" value="<?php echo $dados['numero']; ?>" class="form-control" placeholder="Nº ">
+                        <label>Nº</label>
+                        <input type="text" name="numerp" id="numero" value="<?php echo $dados['numero']; ?>" class="form-control form-control-sm" >
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="uf" id="uf" value="<?php echo $dados['uf']; ?>" class="form-control" placeholder="UF">
+                        <label>UF</label>
+                        <input type="text" name="uf" id="uf" value="<?php echo $dados['uf']; ?>" class="form-control form-control-sm" >
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cidade" id="cidade" value="<?php echo $dados['cidade']; ?>" class="form-control " placeholder="Cidade">
+                    <label>Cidade</label>
+                        <input type="text" name="cidade" id="cidade" value="<?php echo $dados['cidade']; ?>" class="form-control form-control-sm " >
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="bairro" value="<?php echo $dados['bairro']; ?>" id="bairro" class="form-control " placeholder="Bairro">
+                    <label>Bairro</label>
+                        <input type="text" name="bairro" value="<?php echo $dados['bairro']; ?>" id="bairro" class="form-control form-control-sm " >
                     </div>
 
                     <div class="col-md-6">
-                        <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento']; ?>" class="form-control " placeholder="Complemento">
+                    <label>Complemento</label>
+                        <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento']; ?>" class="form-control form-control-sm" >
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone']; ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                    <label>Telefone</label>
+                        <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone']; ?>" class="form-control form-control-sm phone-ddd-mask"  onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" name="email" id="email" value="<?php echo $dados['email']; ?>" class="form-control" placeholder="E-mail" aria-label="E-mail" readonly>
+                    <label>E-mail</label>
+                        <input type="email" name="email" id="email" value="<?php echo $dados['email']; ?>" class="form-control form-control-sm"  aria-label="E-mail" readonly>
                     </div>
                     <div class="col-md-6">
                         <label class="form-check-label" for="">
