@@ -4,6 +4,9 @@
     font-family: 'Montserrat';
 }
 
+span{
+    color: red;
+}
 
 #logo {
     align-content: center;

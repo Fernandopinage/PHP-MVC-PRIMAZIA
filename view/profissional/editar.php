@@ -196,22 +196,22 @@ if (isset($_POST['salvarProfissional'])) {
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
                             <input type="hidden" name="id" value="<?php echo $dados['id'] ?>">
-                            <label>Razão Social</label>
+                            <label>Razão Social <span style="color: red;">*</span></label>
                             <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control form-control-sm"  aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                        <label>Inscrição Estadual</label>
+                        <label>Inscrição Estadual <span style="color: red;">*</span></label>
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Nome de Usuário</label>
+                    <label>Nome de Usuário <span style="color: red;">*</span></label>
                         <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control form-control-sm" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                    <label>CPF/CNPJ</label>
+                    <label>CPF/CNPJ <span style="color: red;">*</span></label>
                         <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control form-control-sm cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
                     </div>
                 </div>
@@ -228,11 +228,11 @@ if (isset($_POST['salvarProfissional'])) {
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <label>Data de Nascimento</label>
+                        <label>Data de Nascimento <span style="color: red;">*</span></label>
                         <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
-                    <label>Gênero</label>
+                    <label>Gênero <span style="color: red;">*</span></label>
                         <select class="form-select form-select-sm" name="sexo" id="sexo">
               
                         <option value="masculino" >Masculino</option>
@@ -245,31 +245,40 @@ if (isset($_POST['salvarProfissional'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>CEP <span style="color: red;">*</span></label>
                         <input type="text" maxlength="10" name="cep" id="cep" value="<?php echo $dados['cep'] ?>" class="form-control form-control-sm" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
+                    <label>Rua <span style="color: red;">*</span></label>
                         <input type="text" name="logradouro" id="rua" value="<?php echo $dados['rua'] ?>" class="form-control form-control-sm" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
+                    <label>Nº <span style="color: red;">*</span></label>
                         <input type="text" name="numerp" id="numero" value="<?php echo $dados['numero'] ?>" class="form-control form-control-sm" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
+                    <label>UF <span style="color: red;">*</span></label>
                         <input type="text" name="uf" id="uf" value="<?php echo $dados['uf'] ?>" class="form-control form-control-sm" placeholder="UF">
                     </div>
                     <div class="col-md-6">
+                    <label>Cidade <span style="color: red;">*</span></label>
                         <input type="text" name="cidade" id="cidade" value="<?php echo $dados['cidade'] ?>" class="form-control form-control-sm" placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
+                    <label>Bairro <span style="color: red;">*</span></label>
                         <input type="text" name="bairro" id="bairro" value="<?php echo $dados['bairro'] ?>" class="form-control form-control-sm" placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
+                    <label>Complemento <span style="color: red;">*</span></label>
                         <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento'] ?>" class="form-control form-control-sm" placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
+                    <label>Telefone <span style="color: red;">*</span></label>
                         <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone'] ?>" class="form-control form-control-sm phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
+                    <label>E-mail <span style="color: red;">*</span></label>
                         <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly >
                     </div>
                     <div class="col-md-12">
