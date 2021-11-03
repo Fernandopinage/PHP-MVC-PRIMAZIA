@@ -20,6 +20,9 @@ private $complemento;
 private $foto;
 private $senha;
 
+private $termo;
+private $sexo;
+private $nascimento;
 
     public function SetId($id){
 
@@ -151,6 +154,30 @@ private $senha;
     }
     public function GetSenha(){
         return $this->senha;
+    }
+
+    public function SetTermo($termo){
+        $this->termo = $termo;
+
+    }
+    public function GetTermo(){
+        return $this->termo;
+    }
+
+    public function SetSexo($sexo){
+        $this->sexo = $sexo;
+
+    }
+    public function GetSexo(){
+        return $this->sexo;
+    }
+
+    public function SetNascimento($nascimento){
+        $this->nascimento = $nascimento;
+
+    }
+    public function GetNascimento(){
+        return $this->nascimento;
     }
 
 }

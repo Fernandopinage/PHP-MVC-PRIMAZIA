@@ -53,6 +53,9 @@ if (isset($_POST['salvarCliente'])) {
             $ClassCliente->SetTelefone($_POST['telefone']);
             $ClassCliente->SetEmail($_POST['email']);
 
+            $ClassCliente->SetSexo($_POST['sexo']);
+            $ClassCliente->SetNascimento($_POST['data_nascimento']);
+            $ClassCliente->SetTermo($_POST['termo']);
 
             $Cliente = new ClienteDAO();
             $Cliente->editarCliente($ClassCliente);
