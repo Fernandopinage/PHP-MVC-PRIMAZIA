@@ -3,7 +3,7 @@ session_start();
 
 if (empty($_SESSION['user'])) {
 
-   
+
     header('location: ../../view/cliente/login.php');
 }
 
@@ -28,13 +28,13 @@ if (isset($_POST['salvarCliente'])) {
         if ($_POST['senha'] === $_POST['confirmar']) {
 
 
-            if(isset($_FILES['imagem']['name'])){
+            if (isset($_FILES['imagem']['name'])) {
                 $imagem = $_FILES['imagem']['name'];
                 $diretorio = '../../images/';
                 //$diretorioPDF = '../pdf/';
                 move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
             }
-            
+
             $ClassCliente = new Cliente();
             $ClassCliente->SetId($_POST['id']);
             $ClassCliente->SetFoto($imagem);
@@ -56,11 +56,9 @@ if (isset($_POST['salvarCliente'])) {
 
             $Cliente = new ClienteDAO();
             $Cliente->editarCliente($ClassCliente);
-
-
         }
     } else {
-        ?>
+?>
 
         <script>
             Swal.fire({
@@ -96,59 +94,59 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row" style="padding: 40px;">
                     <div class="text-center">
                         <div class="mb-3">
-                            <?php 
-                            if(!empty($dados['foto'])){
+                            <?php
+                            if (!empty($dados['foto'])) {
 
-                                ?>
-                            <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto']; ?>" class="img" width="150" style="border-radius: 50%;"></label>
-                            <input class="form-control" type="file" name="imagem" value="<?php echo $dados['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" >
-                            
-                            <?php 
-                            }else{
-                                ?>
-                                
+                            ?>
+                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto']; ?>" class="img" width="150" style="border-radius: 50%;"></label>
+                                <input class="form-control" type="file" name="imagem" value="<?php echo $dados['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+
+                            <?php
+                            } else {
+                            ?>
+
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
-                                <input class="form-control" type="file" name="imagem"  id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" >
-                            
-                                <?php
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+
+                            <?php
                             }
                             ?>
                         </div>
-                        
+
                     </div>
                 </div>
 
-                <?php 
-                
-                if($dados['razao'] === 'F'){
+                <?php
 
-                    ?>
-                    
-                    <div class="col-md-6">
-                    <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
-                        <label class="form-check-label" for="pessoa" id="j">
-                            Pessoa juridica
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
-                        <label class="form-check-label" for="pessoa" id="f">
-                            Pessoa Fisica
-                        </label>
-                    </div>
-                </div>
-                    
-                    
-                    <?php
+                if ($dados['razao'] === 'F') {
 
-                }else{
+                ?>
 
-
-                    ?>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" >
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                            <label class="form-check-label" for="pessoa" id="j">
+                                Pessoa juridica
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                            <label class="form-check-label" for="pessoa" id="f">
+                                Pessoa Fisica
+                            </label>
+                        </div>
+                    </div>
+
+
+                <?php
+
+                } else {
+
+
+                ?>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J">
                             <label class="form-check-label" for="pessoa" id="j">
                                 Pessoa juridica
                             </label>
@@ -160,12 +158,12 @@ if (isset($_POST['salvarCliente'])) {
                             </label>
                         </div>
                     </div>
-                    
-                    
-                    <?php
+
+
+                <?php
 
                 }
-                
+
                 ?>
 
                 <div id="Pfisica">
@@ -176,7 +174,7 @@ if (isset($_POST['salvarCliente'])) {
                             <input type="text" name="razao" value="<?php echo $dados['razao']; ?>" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" name="Inscrição Estadual"   id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
+                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
                         </div>
                     </div>
                 </div>
@@ -185,18 +183,35 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="text" name="nome" id="nome" value="<?php echo $dados['nome']; ?>" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf']; ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf']; ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly>
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="password" name="senha" id="senha"  class="form-control" placeholder="Senha" aria-label="">
+                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="">
                     </div>
                     <div class="col-md-6">
                         <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
+
+                <div class="row g-3 mt-1">
+                    <div class="col-md-6">
+                        <label>Data de Nascimento</label>
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control" placeholder="Data de Nascimento" aria-label="Data de Nascimento">
+                    </div>
+                    <div class="col-md-6">
+                    <label>Gênero</label>
+                        <select class="form-select" name="sexo" id="sexo">
+                        
+                        <option value="masculino" >Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+
 
 
                 <div class="row g-3 mt-1">
@@ -218,7 +233,7 @@ if (isset($_POST['salvarCliente'])) {
                     <div class="col-md-6">
                         <input type="text" name="bairro" value="<?php echo $dados['bairro']; ?>" id="bairro" class="form-control " placeholder="Bairro">
                     </div>
-                    
+
                     <div class="col-md-6">
                         <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento']; ?>" class="form-control " placeholder="Complemento">
                     </div>
@@ -226,10 +241,34 @@ if (isset($_POST['salvarCliente'])) {
                         <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone']; ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" name="email" id="email" value="<?php echo $dados['email']; ?>" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                        <input type="email" name="email" id="email" value="<?php echo $dados['email']; ?>" class="form-control" placeholder="E-mail" aria-label="E-mail" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="">
+                        Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" >termos</a>  de uso
+                        </label>
+                        <input class="form-check-input" name="termo" type="checkbox" value="" id="flexCheckDefault">
                     </div>
                 </div>
-                
+
+                <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog  modal-lg">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+  
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
 
                 <div class="row">
 
@@ -249,15 +288,13 @@ if (isset($_POST['salvarCliente'])) {
 </div>
 
 <script>
-    
-
-    $(document).ready(function(){
+    $(document).ready(function() {
 
         if (document.getElementById("j").checked) {
 
             var Pfisica = document.getElementById('Pfisica').style.display = "block";
 
-        }else{
+        } else {
             var Pfisica = document.getElementById('Pfisica').style.display = "none";
         }
 
@@ -268,14 +305,14 @@ if (isset($_POST['salvarCliente'])) {
     function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";
-        
+
 
     }
 
     function fisica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "none";
-       
+
 
     }
 </script>
@@ -314,21 +351,19 @@ if (isset($_POST['salvarCliente'])) {
 </script>
 
 <script>
+    $('#editarusuario').click(function() {
+        formFile.executar();
+    });
 
-$('#editarusuario').click(function(){
-    formFile.executar();
-});
+    $('#formFile').change(function() {
 
-$('#formFile').change(function(){
-
-   const file = $(this)[0].files[0];
-   const fileReader = new FileReader()
-   fileReader.onloadend = function(){
-    $('#editarusuario').attr('src',fileReader.result)
-   }
-   fileReader.readAsDataURL(file)
-});
-
+        const file = $(this)[0].files[0];
+        const fileReader = new FileReader()
+        fileReader.onloadend = function() {
+            $('#editarusuario').attr('src', fileReader.result)
+        }
+        fileReader.readAsDataURL(file)
+    });
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

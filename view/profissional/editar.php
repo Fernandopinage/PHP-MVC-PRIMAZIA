@@ -205,7 +205,7 @@ if (isset($_POST['salvarProfissional'])) {
                         <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
                     </div>
                 </div>
 
@@ -215,6 +215,21 @@ if (isset($_POST['salvarProfissional'])) {
                     </div>
                     <div class="col-md-6">
                         <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
+                    </div>
+                </div>
+                <div class="row g-3 mt-1">
+                    <div class="col-md-6">
+                        <label>Data de Nascimento</label>
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control" placeholder="Data de Nascimento" aria-label="Data de Nascimento">
+                    </div>
+                    <div class="col-md-6">
+                    <label>Sexo</label>
+                        <select class="form-select" name="sexo" id="sexo">
+                        <option selected>Selecionae uma das opções</option>
+                        <option value="masculino" >Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outros">Outros</option>
+                        </select>
                     </div>
                 </div>
 
@@ -246,7 +261,7 @@ if (isset($_POST['salvarProfissional'])) {
                         <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone'] ?>" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                        <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                        <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control" placeholder="E-mail" aria-label="E-mail" readonly >
                     </div>
                     <div class="col-md-12">
                         <select class="form-select" name="servico" id="servico" onchange="change()">">

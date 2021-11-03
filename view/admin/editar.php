@@ -235,7 +235,7 @@ if (empty($_SESSION['admin'])) {
 
                                     <div class="mb-3">
                                         <label for="floatingInput">CPF/CNPJ</label>
-                                        <input type="text" name="admcpf" id="admcpf" class="form-control form-control-sm cpf-mask" value="<?php echo $dadosAdmin['cpf']; ?>" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                                        <input type="text" name="admcpf" id="admcpf" class="form-control form-control-sm cpf-mask" value="<?php echo $dadosAdmin['cpf']; ?>" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
                                     </div>
                                     <div class="mb-3">
                                         <label for="floatingInput">Senha</label>
@@ -498,7 +498,7 @@ if (empty($_SESSION['admin'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="floatingInput">E-mail</label>
-                                        <input type="email" name="email" id="email" value="<?php echo $dadosProfissional['email'] ?>" class="form-control  form-control-sm" placeholder="E-mail" aria-label="E-mail">
+                                        <input type="email" name="email" id="email" value="<?php echo $dadosProfissional['email'] ?>" class="form-control  form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly >
                                     </div>
                                     <div class="mb-3">
 

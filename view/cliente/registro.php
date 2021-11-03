@@ -147,6 +147,22 @@ if (isset($_POST['salvarCliente'])) {
                     </div>
                 </div>
 
+                <div class="row g-3 mt-1">
+                    <div class="col-md-6">
+                        <label>Data de Nascimento</label>
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control" placeholder="Data de Nascimento" aria-label="Data de Nascimento">
+                    </div>
+                    <div class="col-md-6">
+                    <label>Gênero</label>
+                        <select class="form-select" name="sexo" id="sexo">
+              
+                        <option value="masculino" >Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
@@ -177,8 +193,30 @@ if (isset($_POST['salvarCliente'])) {
                     <div class="col-md-6">
                         <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="">
+                            Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" >termos</a>  de uso
+                        </label>
+                        <input class="form-check-input" name="termo" type="checkbox" value="" id="flexCheckDefault">
+                    </div>
                 </div>
-                
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog  modal-lg">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+  
+                        </div>
+                        </div>
+                    </div>
+                    </div>
 
                 <div class="row">
 
