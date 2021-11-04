@@ -126,44 +126,44 @@ if (isset($_POST['salvarCliente'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
-                            <label>Nome de Usuário</label>
+                            <label>Nome de Usuário<span style="color: red;">*</span></label>
                             <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                        <label>Inscrição Estadual</label>
+                        <label>Inscrição Estadual<span style="color: red;">*</span></label>
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Nome de Usuário</label>
+                    <label>Nome de Usuário<span style="color: red;">*</span></label>
                         <input type="text" name="nome" id="nome" class="form-control form-control-sm" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                    <label>CPF/CNPJ</label>
+                    <label>CPF/CNPJ<span style="color: red;">*</span></label>
                         <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask"  onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Senha</label>
+                    <label>Senha<span style="color: red;">*</span></label>
                         <input type="password" name="senha" id="senha" class="form-control form-control-sm"  aria-label="">
                     </div>
                     <div class="col-md-6">
-                    <label>Confirme sua senha</label>
+                    <label>Confirme sua senha<span style="color: red;">*</span></label>
                         <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" >
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <label>Data de Nascimento</label>
+                        <label>Data de Nascimento<span style="color: red;">*</span></label>
                         <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
-                    <label>Gênero</label>
+                    <label>Gênero<span style="color: red;">*</span></label>
                         <select class="form-select form-select-sm" name="sexo" id="sexo">
               
                         <option value="masculino" >Masculino</option>
@@ -176,40 +176,40 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Confirme sua senha</label>
+                    <label>CEP<span style="color: red;">*</span></label>
                         <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm"  onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                    <label>Endereço</label>
+                    <label>Endereço<span style="color: red;">*</span></label>
                         <input type="text" name="logradouro" id="rua" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-3">
-                    <label>Nº</label>
+                    <label>Nº<span style="color: red;">*</span></label>
                         <input type="text" name="numerp" id="numero" class="form-control form-control-sm" >
                     </div>
                     <div class="col-md-3">
-                    <label>UF</label>
+                    <label>UF<span style="color: red;">*</span></label>
                         <input type="text" name="uf" id="uf" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
-                    <label>Cidade</label>
+                    <label>Cidade<span style="color: red;">*</span></label>
                         <input type="text" name="cidade" id="cidade" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
-                    <label>Bairro</label>
+                    <label>Bairro<span style="color: red;">*</span></label>
                         <input type="text" name="bairro" id="bairro" class="form-control form-control-sm">
                     </div>
                     
                     <div class="col-md-6">
-                    <label>Complemento</label>
+                    <label>Complemento<span style="color: red;">*</span></label>
                         <input type="text" name="complemento" id="complemento" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
-                    <label>Telefone</label>
+                    <label>Telefone<span style="color: red;">*</span></label>
                         <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                    <label>E-mail</label>
+                    <label>E-mail<span style="color: red;">*</span></label>
                         <input type="email" name="email" id="email" class="form-control form-control-sm"  aria-label="E-mail">
                     </div>
                     <div class="col-md-6">
