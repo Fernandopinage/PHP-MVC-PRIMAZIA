@@ -463,17 +463,21 @@ class ClienteDAO extends DAO
                     timer: 3500
                 })
             </script>
+            <?php
         }
-
+        
     }
 
     public function insertCliente($ClassCliente)
     {
 
+        echo "<pre>";
+        var_dump($ClassCliente);
+        echo "</pre>";
 
 
-        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`, `CLIENTE_TERMO`, `CLIENTE_SEXO`, `CLIENTE_NASCIMENTO`)
-         VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO, :CLIENTE_NUM, :CLIENTE_TERMO, :CLIENTE_SEXO, :_NASCIMENTO)";
+        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`, `CLIENTE_TERMO`, `CLIENTE_SEXO`, `CLIENTE_NASCIMENTO`) VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO, :CLIENTE_NUM, :CLIENTE_TERMO, :CLIENTE_SEXO, :CLIENTE_NASCIMENTO)";
+        
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
         $insert->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
@@ -484,9 +488,6 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
         $insert->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
         $insert->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
-        $insert->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
-        $insert->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
-        $insert->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
         $insert->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
         $insert->bindValue(':CLIENTE_BAIRRO', $ClassCliente->GetBairro());
         $insert->bindValue(':CLIENTE_COMPLEMENTO', $ClassCliente->GetComplemento());
@@ -496,6 +497,7 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_TERMO', $ClassCliente->GetTermo());
         $insert->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
         $insert->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
+        
         try {
             $insert->execute();
         ?>
