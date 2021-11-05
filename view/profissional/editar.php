@@ -132,7 +132,7 @@ if (isset($_POST['salvarProfissional'])) {
                             <div class="mb-3">
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto'] ?>" class="img" width="150" style="border-radius: 50%;"></label>
                                 <input class="form-control" type="file" name="imagem" value="<?php echo $dados['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
-                                <input type="text" name="img2" value="<?php echo $dados['foto'] ?>">
+                                <input type="hidden" name="img2" value="<?php echo $dados['foto'] ?>">
                             </div>
 
 
