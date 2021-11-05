@@ -14,13 +14,13 @@ if (isset($_POST['salvarCliente'])) {
         if ($_POST['senha'] === $_POST['confirmar']) {
 
 
-            if(isset($_FILES['imagem']['name'])){
+            if (isset($_FILES['imagem']['name'])) {
                 $imagem = $_FILES['imagem']['name'];
                 $diretorio = '../../images/';
                 //$diretorioPDF = '../pdf/';
                 move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
             }
-            
+
             $ClassCliente = new Cliente();
             $ClassCliente->SetFoto($imagem);
             $ClassCliente->SetOpcao($_POST['opt']);
@@ -104,7 +104,7 @@ if (isset($_POST['salvarCliente'])) {
                             <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
                             <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -129,45 +129,45 @@ if (isset($_POST['salvarCliente'])) {
                             <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                        <label>Inscrição Estadual<span style="color: red;">*</span></label>
+                            <label>Inscrição Estadual<span style="color: red;">*</span></label>
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Nome de Usuário<span style="color: red;">*</span></label>
+                        <label>Nome de Usuário<span style="color: red;">*</span></label>
                         <input type="text" name="nome" id="nome" class="form-control form-control-sm" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                    <label>CPF/CNPJ<span style="color: red;">*</span></label>
-                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask"  onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <label>CPF/CNPJ<span style="color: red;">*</span></label>
+                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="senha" id="senha" class="form-control form-control-sm"  aria-label="">
+                        <label>Senha<span style="color: red;">*</span></label>
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="">
                     </div>
                     <div class="col-md-6">
-                    <label>Confirme sua senha<span style="color: red;">*</span></label>
-                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" >
+                        <label>Confirme sua senha<span style="color: red;">*</span></label>
+                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento<span style="color: red;">*</span></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm" aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
-                    <label>Gênero<span style="color: red;">*</span></label>
+                        <label>Gênero<span style="color: red;">*</span></label>
                         <select class="form-select form-select-sm" name="sexo" id="sexo">
-              
-                        <option value="masculino" >Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outros">Outros</option>
+
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outros">Outros</option>
                         </select>
                     </div>
                 </div>
@@ -175,67 +175,67 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>CEP<span style="color: red;">*</span></label>
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm"  onkeypress="$(this).mask('00.000-000')">
+                        <label>CEP<span style="color: red;">*</span></label>
+                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                    <label>Endereço<span style="color: red;">*</span></label>
+                        <label>Endereço<span style="color: red;">*</span></label>
                         <input type="text" name="logradouro" id="rua" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-3">
-                    <label>Nº<span style="color: red;">*</span></label>
-                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm" >
+                        <label>Nº<span style="color: red;">*</span></label>
+                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-3">
-                    <label>UF<span style="color: red;">*</span></label>
+                        <label>UF<span style="color: red;">*</span></label>
                         <input type="text" name="uf" id="uf" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
-                    <label>Cidade<span style="color: red;">*</span></label>
+                        <label>Cidade<span style="color: red;">*</span></label>
                         <input type="text" name="cidade" id="cidade" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
-                    <label>Bairro<span style="color: red;">*</span></label>
+                        <label>Bairro<span style="color: red;">*</span></label>
                         <input type="text" name="bairro" id="bairro" class="form-control form-control-sm">
                     </div>
-                    
+
                     <div class="col-md-6">
-                    <label>Complemento<span style="color: red;">*</span></label>
+                        <label>Complemento<span style="color: red;">*</span></label>
                         <input type="text" name="complemento" id="complemento" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
-                    <label>Telefone<span style="color: red;">*</span></label>
+                        <label>Telefone<span style="color: red;">*</span></label>
                         <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                    <label>E-mail<span style="color: red;">*</span></label>
-                        <input type="email" name="email" id="email" class="form-control form-control-sm"  aria-label="E-mail">
+                        <label>E-mail<span style="color: red;">*</span></label>
+                        <input type="email" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail">
                     </div>
                     <div class="col-md-6">
 
                         <label class="form-check-label" for="">
-                            Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" >termos</a>  de uso
+                            Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">termos</a> de uso
                         </label>
-                        <input class="form-check-input" name="termo" type="checkbox"  id="flexCheckDefault">
+                        <input class="form-check-input" name="termo" type="checkbox" id="flexCheckDefault">
                     </div>
                 </div>
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog  modal-lg">
                         <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-  
-                        </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
                         </div>
                     </div>
-                    </div>
+                </div>
 
                 <div class="row">
 
@@ -255,19 +255,17 @@ if (isset($_POST['salvarCliente'])) {
 </div>
 
 <script>
-    
-
     function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";
-        
+
 
     }
 
     function fisica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "none";
-       
+
 
     }
 </script>
@@ -306,21 +304,19 @@ if (isset($_POST['salvarCliente'])) {
 </script>
 
 <script>
+    $('#editarusuario').click(function() {
+        formFile.executar();
+    });
 
-$('#editarusuario').click(function(){
-    formFile.executar();
-});
+    $('#formFile').change(function() {
 
-$('#formFile').change(function(){
-
-   const file = $(this)[0].files[0];
-   const fileReader = new FileReader()
-   fileReader.onloadend = function(){
-    $('#editarusuario').attr('src',fileReader.result)
-   }
-   fileReader.readAsDataURL(file)
-});
-
+        const file = $(this)[0].files[0];
+        const fileReader = new FileReader()
+        fileReader.onloadend = function() {
+            $('#editarusuario').attr('src', fileReader.result)
+        }
+        fileReader.readAsDataURL(file)
+    });
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

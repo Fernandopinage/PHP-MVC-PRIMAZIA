@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -47,9 +46,10 @@ if (isset($_POST['salvarProfissional'])) {
 
             $subcategoria = $_POST['categoria'];
 
-
             $Profissional = new ProfissionalDAO();
             $Profissional->insertProfissional($ClassProfissional, $subcategoria);
+
+            
         } else {
 
 ?>
@@ -129,48 +129,48 @@ if (isset($_POST['salvarProfissional'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
-                        <label>Razão Social<span style="color: red;">*</span></label>
-                            <input type="text" name="razao" id="razao" class="form-control form-control-sm"  aria-label="Nome de Usuário">
+                            <label>Razão Social<span style="color: red;">*</span></label>
+                            <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                        <label>Inscrição Estadual <span style="color: red;">*</span></label>
-                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask" >
+                            <label>Inscrição Estadual <span style="color: red;">*</span></label>
+                            <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Nome de Usuário <span style="color: red;">*</span></label>
-                        <input type="text" name="nome" id="nome" class="form-control form-control-sm"  aria-label="Nome de Usuário">
+                        <label>Nome de Usuário <span style="color: red;">*</span></label>
+                        <input type="text" name="nome" id="nome" class="form-control form-control-sm" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                    <label>CPF/CNPJ <span style="color: red;">*</span></label>
-                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask"  onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <label>CPF/CNPJ <span style="color: red;">*</span></label>
+                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Senha <span style="color: red;">*</span></label>
-                        <input type="password" name="senha" id="senha" class="form-control form-control-sm"  aria-label="">
+                        <label>Senha <span style="color: red;">*</span></label>
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="">
                     </div>
                     <div class="col-md-6">
-                    <label>Confirme sua senha <span style="color: red;">*</span></label>
+                        <label>Confirme sua senha <span style="color: red;">*</span></label>
                         <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask">
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento <span style="color: red;">*</span></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm" aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
-                    <label>Gênero <span style="color: red;">*</span></label>
+                        <label>Gênero <span style="color: red;">*</span></label>
                         <select class="form-select form-select-sm" name="sexo" id="sexo">
-              
-                        <option value="masculino" >Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outros">Outros</option>
+
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outros">Outros</option>
                         </select>
                     </div>
                 </div>
@@ -179,41 +179,42 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>CEP <span style="color: red;">*</span></label>
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm"  onkeypress="$(this).mask('00.000-000')">
+                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                    <label>Endereço <span style="color: red;">*</span></label>
-                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm" >
+                        <label>Endereço <span style="color: red;">*</span></label>
+                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-3">
-                    <label>Nº <span style="color: red;">*</span></label>
+                        <label>Nº <span style="color: red;">*</span></label>
                         <input type="text" name="numerp" id="numero" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-3">
-                    <label>UF <span style="color: red;">*</span></label>
+                        <label>UF <span style="color: red;">*</span></label>
                         <input type="text" name="uf" id="uf" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
-                    <label>Cidade <span style="color: red;">*</span></label>
+                        <label>Cidade <span style="color: red;">*</span></label>
                         <input type="text" name="cidade" id="cidade" class="form-control form-control-sm " placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
-                    <label>Bairro <span style="color: red;">*</span></label>
+                        <label>Bairro <span style="color: red;">*</span></label>
                         <input type="text" name="bairro" id="bairro" class="form-control form-control-sm " placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
-                    <label>Complemento <span style="color: red;">*</span></label>
+                        <label>Complemento <span style="color: red;">*</span></label>
                         <input type="text" name="complemento" id="complemento" class="form-control form-control-sm ">
                     </div>
                     <div class="col-md-6">
-                    <label>Telefone <span style="color: red;">*</span></label>
+                        <label>Telefone <span style="color: red;">*</span></label>
                         <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                    <label>E-mail<span style="color: red;">*</span></label>
-                        <input type="email" name="email" id="email" class="form-control form-control-sm"  aria-label="E-mail">
+                        <label>E-mail<span style="color: red;">*</span></label>
+                        <input type="email" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail">
                     </div>
+
                     <div class="col-md-12">
                         <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">
                             <option selected>Tipo de Serviço</option>
@@ -667,6 +668,30 @@ if (isset($_POST['salvarProfissional'])) {
                                         <label for="outros" class="form-label"></label>
                                         <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <label class="form-check-label" for="">
+                            Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">termos</a> de uso
+                        </label>
+                        <input class="form-check-input" name="termo" type="checkbox" id="flexCheckDefault">
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog  modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+
                                 </div>
                             </div>
                         </div>
