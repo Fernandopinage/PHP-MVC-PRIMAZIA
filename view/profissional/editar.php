@@ -40,7 +40,13 @@ if (isset($_POST['salvarProfissional'])) {
 
             $ClassProfissional = new Profissional();
             $ClassProfissional->SetId($_POST['id']);
-            $ClassProfissional->SetFoto($imagem);
+            if ($imagem != '') {
+
+                $ClassProfissional->SetFoto($imagem);
+            } else {
+
+                $ClassProfissional->SetFoto($_POST['img2']);
+            }
             $ClassProfissional->SetOpcao($_POST['opt']);
             $ClassProfissional->SetRazao($_POST['razao']);
             $ClassProfissional->SetNome($_POST['nome']);
@@ -62,8 +68,6 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetTermo($_POST['termo']);
 
             $subcategoria = $_POST['categoria'];
-
-
 
             $Profissional->alterarProfissinal($ClassProfissional, $subcategoria);
         } else {
@@ -127,7 +131,8 @@ if (isset($_POST['salvarProfissional'])) {
 
                             <div class="mb-3">
                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dados['foto'] ?>" class="img" width="150" style="border-radius: 50%;"></label>
-                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="" value="">
+                                <input class="form-control" type="file" name="imagem" value="<?php echo $dados['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                                <input type="text" name="img2" value="<?php echo $dados['foto'] ?>">
                             </div>
 
 
@@ -197,47 +202,47 @@ if (isset($_POST['salvarProfissional'])) {
                         <div class="col-md-6">
                             <input type="hidden" name="id" value="<?php echo $dados['id'] ?>">
                             <label>Razão Social <span style="color: red;">*</span></label>
-                            <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control form-control-sm"  aria-label="Nome de Usuário">
+                            <input type="text" name="razao" id="razao" value="<?php echo $dados['razao'] ?>" class="form-control form-control-sm" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                        <label>Inscrição Estadual <span style="color: red;">*</span></label>
+                            <label>Inscrição Estadual <span style="color: red;">*</span></label>
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Nome de Usuário <span style="color: red;">*</span></label>
+                        <label>Nome de Usuário <span style="color: red;">*</span></label>
                         <input type="text" name="nome" id="nome" value="<?php echo $dados['nome'] ?>" class="form-control form-control-sm" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
-                    <label>CPF/CNPJ <span style="color: red;">*</span></label>
-                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control form-control-sm cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
+                        <label>CPF/CNPJ <span style="color: red;">*</span></label>
+                        <input type="text" name="cpf" id="cpf" value="<?php echo $dados['cpf'] ?>" class="form-control form-control-sm cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly>
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>Senha</label>
+                        <label>Senha</label>
                         <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="">
                     </div>
                     <div class="col-md-6">
-                    <label>Confirmar senha</label>
+                        <label>Confirmar senha</label>
                         <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask">
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento <span style="color: red;">*</span></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo $dados['nascimento'] ?>" class="form-control form-control-sm" aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
-                    <label>Gênero <span style="color: red;">*</span></label>
+                        <label>Gênero <span style="color: red;">*</span></label>
                         <select class="form-select form-select-sm" name="sexo" id="sexo">
-              
-                        <option value="masculino" >Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outros">Outros</option>
+
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outros">Outros</option>
                         </select>
                     </div>
                 </div>
@@ -245,41 +250,41 @@ if (isset($_POST['salvarProfissional'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                    <label>CEP <span style="color: red;">*</span></label>
+                        <label>CEP <span style="color: red;">*</span></label>
                         <input type="text" maxlength="10" name="cep" id="cep" value="<?php echo $dados['cep'] ?>" class="form-control form-control-sm" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                    <label>Rua <span style="color: red;">*</span></label>
+                        <label>Rua <span style="color: red;">*</span></label>
                         <input type="text" name="logradouro" id="rua" value="<?php echo $dados['rua'] ?>" class="form-control form-control-sm" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
-                    <label>Nº <span style="color: red;">*</span></label>
+                        <label>Nº <span style="color: red;">*</span></label>
                         <input type="text" name="numerp" id="numero" value="<?php echo $dados['numero'] ?>" class="form-control form-control-sm" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
-                    <label>UF <span style="color: red;">*</span></label>
+                        <label>UF <span style="color: red;">*</span></label>
                         <input type="text" name="uf" id="uf" value="<?php echo $dados['uf'] ?>" class="form-control form-control-sm" placeholder="UF">
                     </div>
                     <div class="col-md-6">
-                    <label>Cidade <span style="color: red;">*</span></label>
+                        <label>Cidade <span style="color: red;">*</span></label>
                         <input type="text" name="cidade" id="cidade" value="<?php echo $dados['cidade'] ?>" class="form-control form-control-sm" placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
-                    <label>Bairro <span style="color: red;">*</span></label>
+                        <label>Bairro <span style="color: red;">*</span></label>
                         <input type="text" name="bairro" id="bairro" value="<?php echo $dados['bairro'] ?>" class="form-control form-control-sm" placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
-                    <label>Complemento <span style="color: red;">*</span></label>
+                        <label>Complemento <span style="color: red;">*</span></label>
                         <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento'] ?>" class="form-control form-control-sm" placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
-                    <label>Telefone <span style="color: red;">*</span></label>
+                        <label>Telefone <span style="color: red;">*</span></label>
                         <input type="text" name="telefone" id="telefone" value="<?php echo $dados['telefone'] ?>" class="form-control form-control-sm phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
-                    <label>E-mail <span style="color: red;">*</span></label>
-                        <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly >
+                        <label>E-mail <span style="color: red;">*</span></label>
+                        <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly>
                     </div>
                     <div class="col-md-12">
                         <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">">
@@ -733,6 +738,31 @@ if (isset($_POST['salvarProfissional'])) {
                                         <label for="outros" class="form-label"></label>
                                         <textarea name="categoria[]" class="form-control" id="" rows="3"></textarea>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label class="form-check-label" for="">
+                            Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">termos</a> de uso
+                        </label>
+                        <input class="form-check-input" name="termo" <?php echo $dados['termo'] == "on" ? 'checked' : '' ?> type="checkbox" id="flexCheckDefault">
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog  modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+
                                 </div>
                             </div>
                         </div>
