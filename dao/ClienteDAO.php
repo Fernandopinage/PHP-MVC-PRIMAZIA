@@ -3,6 +3,7 @@
 include_once "../../class/ClassCliente.php";
 include_once "../../dao/DAO.php";
 require_once __DIR__ . "../../mail/cliente_redefinir.php";
+
 class ClienteDAO extends DAO
 {
 
@@ -36,7 +37,7 @@ class ClienteDAO extends DAO
                 'foto' => $row['CLIENTE_FOTO'],
                 'sexo' => $row['CLIENTE_SEXO'],
                 'termo' => $row['CLIENTE_TERMO'],
-                'nascimento' => $row['CLIENTE _NASCIMENTO']
+                'nascimento' => $row['CLIENTE_NASCIMENTO']
             );
 
             header('location: ../../view/cliente/painel.php');
@@ -90,7 +91,7 @@ class ClienteDAO extends DAO
                 'razao' => $row['CLIENTE_RAZAO'],
                 'sexo' => $row['CLIENTE_SEXO'],
                 'termo' => $row['CLIENTE_TERMO'],
-                'nascimento' => $row['CLIENTE _NASCIMENTO']
+                'nascimento' => $row['CLIENTE_NASCIMENTO']
             );
         }
         return $array;
@@ -155,9 +156,9 @@ class ClienteDAO extends DAO
 
         if(!empty($ClassCliente->GetSenha())){
 
-            $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE _NASCIMENTO`=:CLIENTE _NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
+            $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
         }else{
-           $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE _NASCIMENTO`=:CLIENTE _NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
+           $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
         
         }
 
@@ -186,7 +187,7 @@ class ClienteDAO extends DAO
         $update->bindValue(':CLIENTE_NUM', $ClassCliente->GetNumero());
         $update->bindValue(':CLIENTE_TERMO', $ClassCliente->GetTermo());
         $update->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
-        $update->bindValue(':CLIENTE _NASCIMENTO', $ClassCliente->GetNascimento());
+        $update->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
         /*
         */
         try {
@@ -312,8 +313,8 @@ class ClienteDAO extends DAO
 
 
 
-        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`, `CLIENTE_TERMO`, `CLIENTE_SEXO`, `CLIENTE _NASCIMENTO`)
-         VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO, :CLIENTE_NUM, :CLIENTE_TERMO, :CLIENTE_SEXO, :CLIENTE _NASCIMENTO)";
+        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`, `CLIENTE_TERMO`, `CLIENTE_SEXO`, `CLIENTE_NASCIMENTO`)
+         VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO, :CLIENTE_NUM, :CLIENTE_TERMO, :CLIENTE_SEXO, :CLIENTE_NASCIMENTO)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
         $insert->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
@@ -335,7 +336,7 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_NUM', $ClassCliente->GetNumero());
         $insert->bindValue(':CLIENTE_TERMO', $ClassCliente->GetTermo());
         $insert->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
-        $insert->bindValue(':CLIENTE _NASCIMENTO', $ClassCliente->GetNascimento());
+        $insert->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
         try {
             $insert->execute();
         ?>
@@ -376,77 +377,44 @@ class ClienteDAO extends DAO
 
     public function editarCliente($ClassCliente){
 
+       // $nome = $ClassCliente->GetNome();
+
+       echo "<pre>";
+       var_dump($ClassCliente);
+       echo "</pre>";
+
      if(!empty($ClassCliente->GetSenha())){
 
-         $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE _NASCIMENTO`=:CLIENTE _NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
-     }else{
-        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE _NASCIMENTO`=:CLIENTE _NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
+
+
+         $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
+    }else{
+        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
      
      }   
-        
-     $update = $this->con->prepare($sql);
-     $update->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
-     $update->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
-     $update->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
-     $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
-     $update->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
-     $update->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
-     $update->bindValue(':CLIENTE_FOTO', $ClassCliente->GetFoto());
-     if(!empty($ClassCliente->GetSenha())){
-     $update->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
-     }
-     $update->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
-     $update->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
-     $update->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
-     $update->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
-     $update->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
-     $update->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
-     $update->bindValue(':CLIENTE_BAIRRO', $ClassCliente->GetBairro());
-     $update->bindValue(':CLIENTE_COMPLEMENTO', $ClassCliente->GetComplemento());
-     $update->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
-     $update->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
-     $update->bindValue(':CLIENTE_NUM', $ClassCliente->GetNumero());
-     $update->bindValue(':CLIENTE_TERMO', $ClassCliente->GetTermo());
-     $update->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
-     $update->bindValue(':CLIENTE _NASCIMENTO', $ClassCliente->GetNascimento());
-     
-   
-     try {
+
+        $update = $this->con->prepare($sql);
+        $update->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
+        $update->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
+        $update->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
+        $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
+        $update->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
+        $update->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
+        $update->bindValue(':CLIENTE_FOTO', $ClassCliente->GetFoto());
+        $update->bindValue(':CLIENTE_SENHA', $ClassCliente->GetSenha());
+        $update->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
+        $update->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
+        $update->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
+        $update->bindValue(':CLIENTE_BAIRRO', $ClassCliente->GetBairro());
+        $update->bindValue(':CLIENTE_COMPLEMENTO', $ClassCliente->GetComplemento());
+        $update->bindValue(':CLIENTE_OPCAO', $ClassCliente->GetOpcao());
+        $update->bindValue(':CLIENTE_RAZAO', $ClassCliente->GetRazao());
+        $update->bindValue(':CLIENTE_NUM', $ClassCliente->GetNumero());
+        $update->bindValue(':CLIENTE_TERMO', $ClassCliente->GetTermo());
+        $update->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
+        $update->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
+
         $update->execute();
-    ?>
-
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Cadastro atualizado com Sucesso',
-                showConfirmButton: false,
-                timer: 3500
-            })
-        </script>
-
-
-    <?php
-        header('location: ../../view/cliente/editar.php');
-    } catch (PDOException $e) {
-
-
-    ?>
-
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Registro Inválido',
-                showConfirmButton: false,
-                timer: 3500
-            })
-        </script>
-
-<?php
-
-
-    }
 
     }
 
@@ -455,7 +423,7 @@ class ClienteDAO extends DAO
 
 
 
-        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`, `CLIENTE_TERMO`, `CLIENTE_SEXO`, `CLIENTE _NASCIMENTO`)
+        $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`, `CLIENTE_TERMO`, `CLIENTE_SEXO`, `CLIENTE_NASCIMENTO`)
          VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO, :CLIENTE_NUM, :CLIENTE_TERMO, :CLIENTE_SEXO, :_NASCIMENTO)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
@@ -478,7 +446,7 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_NUM', $ClassCliente->GetNumero());
         $insert->bindValue(':CLIENTE_TERMO', $ClassCliente->GetTermo());
         $insert->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
-        $insert->bindValue(':CLIENTE _NASCIMENTO', $ClassCliente->GetNascimento());
+        $insert->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
         try {
             $insert->execute();
         ?>
