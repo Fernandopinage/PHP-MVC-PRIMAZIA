@@ -75,7 +75,7 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
                             if(@$dados2['nome_profissional'] > 0){
                                 echo $dados2['nome_profissional'];
                             }else{
-                                echo "<span style='color:red;'>Em Aguardo</span>";
+                                echo "<span style='color:red;'>Aguardando</span>";
                             }    
                                 
                             ?>
@@ -86,7 +86,7 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                         ?>
                             <div class="text-center">
-                                <a href="#" class="btn btn-success" style="font-family: 'Montserrat', sans-serif;">Status: Em Aberto</a>
+                                <a href="#" class="btn btn-primary" style="font-family: 'Montserrat', sans-serif;">Status: Em Aberto</a>
                             </div>
                         <?php
                         }
@@ -105,10 +105,20 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                         ?>
                             <div class="text-center">
-                                <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Finalizado</a>
+                                <a href="#" class="btn btn-success" style="color: white; font-family: 'Montserrat', sans-serif;">Finalizado</a>
                             </div>
                         <?php
                         }
+
+                        if ($dados['status'] === 'C') {
+
+                            ?>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Cancelado</a>
+                                </div>
+                            <?php
+                            }
+                        
                         ?>
 
 

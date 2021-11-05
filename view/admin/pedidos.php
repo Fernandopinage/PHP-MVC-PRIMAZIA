@@ -93,10 +93,11 @@ if (isset($_POST['chamado_finalizado'])) {
     <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 <br>
-<form method="POST" class="row g-3 m-t-3">
+<form method="POST" class="row g-1 m-t-3">
 
 
-    <div class="col-md-3">
+    
+    <div class="col-md-2">
         <label for="validationServer01" class="form-label">Status</label>
         <select class="form-select" name="status_filtro" aria-label="select example">
             <option value=""></option>
@@ -108,22 +109,32 @@ if (isset($_POST['chamado_finalizado'])) {
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
         <label for="validationDefault01" class="form-label">Número do Pedido</label>
         <input type="text" name="num_filtro" class="form-control" id="validationDefault01">
 
     </div>
-    <div class="col-md-4" style="margin-top: 48px;">
+    <div class="col-md-2">
+        <label for="validationDefault01" class="form-label">Data Pedido</label>
+        <input type="date" name="data_inicio_filtro" class="form-control" id="validationDefault01">
+
+    </div>
+    <div class="col-md-2">
+        <label for="validationDefault01" class="form-label">Data Serviço</label>
+        <input type="date" name="data_final_filtro" class="form-control" id="validationDefault01">
+
+    </div>
+    <div class="col-md-4" style="margin-top: 36px;">
         <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
 
     </div>
 
     <div>
 
-        <img src="../../icons/1.png" width="30"> Em Aberto
+        <img src="../../icons/0.jfif" width="30">Em Aberto 
         <img src="../../icons/2.png" width="30"> Em Atendimento
-        <img src="../../icons/3.png" width="30"> Finalizado
-        <img src="../../icons/4.png" width="30"> Cancelado
+        <img src="../../icons/1.png" width="30"> Finalizado
+        <img src="../../icons/3.png" width="30"> Cancelado
 
 
     </div>
@@ -139,9 +150,9 @@ if (isset($_POST['chamado_finalizado'])) {
                 <th class="text-center" scope="col">Status</th>
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
-                <th scope="col">Telefone</th>
+               <!-- <th scope="col">Telefone</th> --->
                 <th scope="col">Serviço</th>
-                <th scope="col">Tipo de Serviço</th>
+                <!-- <th scope="col">Tipo de Serviço</th> -->
             </tr>
         </thead>
         <tbody style="color: #0D2238;font-family: 'Montserrat', sans-serif">
@@ -155,20 +166,20 @@ if (isset($_POST['chamado_finalizado'])) {
                     <td class="text-center"><?php
 
                                             if ($dados['status'] === 'A') {
-                                            ?> <img src="../../icons/1.png" width="30"> <?php
+                                            ?> <img src="../../icons/0.jfif" width="30"> <?php
                                                                                     } elseif ($dados['status'] === 'E') {
                                                                                         ?> <img src="../../icons/2.png" width="30"> <?php
                                                                                                                                 } elseif ($dados['status'] === 'F') {
-                                                                                                                                    ?> <img src="../../icons/3.png" width="30"> <?php
+                                                                                                                                    ?> <img src="../../icons/1.png" width="30"> <?php
                                                                                                                                                                             } elseif ($dados['status'] === 'C') {
                                                                                                                                                                                 ?>
-                            <img src="../../icons/4.png" width="30"><?php
+                            <img src="../../icons/3.png" width="30"><?php
                                                                                                                                                                             }
                                                                     ?>
                     </td>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo $dados['protocolo']; ?></th>
                     <td><?php echo $dados['nome']; ?></td>
-                    <td><?php echo $dados['telefone']; ?></td>
+                    <!-- <td><?php echo $dados['telefone']; ?></td>-->
                     <td>
                         <?php
 
@@ -178,6 +189,7 @@ if (isset($_POST['chamado_finalizado'])) {
                         ?>
 
                     </td>
+                    <!--
                     <td>
                         <?php
 
@@ -191,6 +203,7 @@ if (isset($_POST['chamado_finalizado'])) {
                         ?>
 
                     </td>
+                    -->
 
                     <?php
 
