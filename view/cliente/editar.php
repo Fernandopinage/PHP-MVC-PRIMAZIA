@@ -217,9 +217,9 @@ if (isset($_POST['salvarCliente'])) {
                     <label>Gênero<span style="color: red;">*</span></label>
                         <select class="form-select form-select-sm" name="sexo" id="sexo">
                         
-                        <option value="masculino" >Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outros">Outros</option>
+                        <option  <?php echo $dados['sexo'] =='masculino'?'selected':'' ; ?> value="masculino" >Masculino</option>
+                        <option  <?php echo $dados['sexo'] =='feminino'?'selected':'' ; ?> value="feminino">Feminino</option>
+                        <option  <?php echo $dados['sexo'] =='outros'?'selected':'' ; ?> value="outros">Outros</option>
                         </select>
                     </div>
                 </div>
@@ -268,7 +268,7 @@ if (isset($_POST['salvarCliente'])) {
                         <label class="form-check-label" for="">
                         Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" >termos</a>  de uso
                         </label>
-                        <input class="form-check-input" name="termo" type="checkbox"  id="flexCheckDefault">
+                        <input class="form-check-input" name="termo" type="checkbox" <?php echo $dados['termo' ]== 'on'? 'checked':''  ?> id="flexCheckDefault">
                     </div>
                 </div>
 

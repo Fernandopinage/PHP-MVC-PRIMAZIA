@@ -2,6 +2,7 @@
 
 include_once "../../class/ClassCliente.php";
 include_once "../../dao/DAO.php";
+include_once "../../mail/msg_cliente.php";
 require_once __DIR__ . "../../mail/cliente_redefinir.php";
 
 class ClienteDAO extends DAO
@@ -379,9 +380,7 @@ class ClienteDAO extends DAO
 
        // $nome = $ClassCliente->GetNome();
 
-       echo "<pre>";
-       var_dump($ClassCliente);
-       echo "</pre>";
+     
 
      if(!empty($ClassCliente->GetSenha())){
 
@@ -391,7 +390,16 @@ class ClienteDAO extends DAO
     }else{
         $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
      
-     }   
+     }  
+     
+     if(empty($ClassCliente->GetFoto())){
+        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
+     }
+
+     if(empty($ClassCliente->GetFoto()) and empty($ClassCliente->GetSenha())){
+
+        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP, `CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
+     }
 
         $update = $this->con->prepare($sql);
         $update->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
@@ -400,8 +408,13 @@ class ClienteDAO extends DAO
         $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
         $update->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
         $update->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
-        $update->bindValue(':CLIENTE_FOTO', $ClassCliente->GetFoto());
-        $update->bindValue(':CLIENTE_SENHA', $ClassCliente->GetSenha());
+        if(!empty($ClassCliente->GetFoto())){
+
+            $update->bindValue(':CLIENTE_FOTO', $ClassCliente->GetFoto());
+        }
+        if(!empty($ClassCliente->GetSenha())){
+            $update->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
+        }
         $update->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
         $update->bindValue(':CLIENTE_CIDADE', $ClassCliente->GetCidade());
         $update->bindValue(':CLIENTE_LOGRADOURO', $ClassCliente->GetLogradouro());
@@ -414,7 +427,43 @@ class ClienteDAO extends DAO
         $update->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
         $update->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
 
-        $update->execute();
+        try {
+        
+            $update->execute();
+            $MSG = new ClienteMSG();
+            $MSG->__mensagem();
+
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Cadastro atualizado com Sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+    
+    
+        <?php
+        header('location: ../../view/cliente/editar.php');
+
+
+        } catch (PDOException $e) {
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Registro Inválido',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+        }
 
     }
 

@@ -14,14 +14,13 @@ require "../../vendor/autoload.php";
 class ClienteMSG
 {
 
-    public function __mensagem($nome){
+    public function __mensagem(){
 
         $mail = new PHPMailer(true); // STOP
         
         try {
             
-            echo $nome;
-
+         
         } catch (\Throwable $th) {
             //throw $th;
         }
