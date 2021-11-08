@@ -4,6 +4,12 @@
     font-family: 'Montserrat';
 }
 
+#DivFil{
+
+    position: absolute;
+    margin-left: 10px;
+}
+
    
     .nav-item{
         margin-right: 20px;

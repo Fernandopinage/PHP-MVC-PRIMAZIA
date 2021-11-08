@@ -29,19 +29,15 @@ if (isset($_POST['filtror'])) {
         $dados = $ClassPedido->pedido();
     }
 
-    if(!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])){
+    if (!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {
 
         $status = $_POST['status_filtro'];
         $data_inicio =  $_POST['data_inicio_filtro'];
         $data_final =  $_POST['data_final_filtro'];
 
         $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->pedidosFiltroData($status, $data_inicio,$data_final);
-
-    
+        $dados = $ClassPedido->pedidosFiltroData($status, $data_inicio, $data_final);
     }
-
-
 } else {
 
     $ClassPedido = new CategoriaDAO();
@@ -58,7 +54,7 @@ if (isset($_POST['chamado'])) {
         $data =  date('Y/m/d');
 
         $ClassServico = new Servico();
-       
+
         $ClassServico->SetNome($_POST['pessoa']);
         $ClassServico->SetData($data);
         $ClassServico->SetStatus($_POST['status']);
@@ -102,59 +98,85 @@ if (isset($_POST['chamado_finalizado'])) {
 }
 
 ?>
-<link href="../../layout/css/admin_painel2.css" rel="stylesheet">
+
 <div id="logo">
     <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
+<hr>
 <br>
-<form method="POST" class="row g-1 m-t-3">
+
+<div class="container">
+    <form method="POST">
+
+        <div class="row g-3">
 
 
-    
-    <div class="col-md-2">
-        <label for="validationServer01" class="form-label">Status</label>
-        <select class="form-select" name="status_filtro" aria-label="select example">
-            <option value=""></option>
-            <option value="A">Em Aberto</option>
-            <option value="E">Em Atendimento</option>
-            <option value="F">Finalizado</option>
-            <option value="C">Cancelado</option>
-        </select>
 
-    </div>
+            <div class="col-md-2">
+                <label for="validationServer01" class="form-label">Status</label>
+                <select class="form-select form-select-sm" name="status_filtro" aria-label="select example">
+                    <option value=""></option>
+                    <option value="A">Em Aberto</option>
+                    <option value="E">Em Atendimento</option>
+                    <option value="F">Finalizado</option>
+                    <option value="C">Cancelado</option>
+                </select>
 
-    <div class="col-md-2">
-        <label for="validationDefault01" class="form-label">Número do Pedido</label>
-        <input type="text" name="num_filtro" class="form-control" id="validationDefault01">
+            </div>
 
-    </div>
-    <div class="col-md-2">
-        <label for="validationDefault01" class="form-label">Data Inicial</label>
-        <input type="date" name="data_inicio_filtro" class="form-control" id="validationDefault01">
+            <div class="col-md-2">
+                <label for="validationDefault01" class="form-label">Número do Pedido</label>
+                <input type="text" name="num_filtro" class="form-control form-control-sm" id="validationDefault01">
 
-    </div>
-    <div class="col-md-2">
-        <label for="validationDefault01" class="form-label">Data Final</label>
-        <input type="date" name="data_final_filtro" class="form-control" id="validationDefault01">
+            </div>
+            <div class="col-md-2">
+                <label for="validationDefault01" class="form-label">Data Inicial</label>
+                <input type="date" name="data_inicio_filtro" class="form-control form-control-sm" id="validationDefault01">
 
-    </div>
-    <div class="col-md-4" style="margin-top: 36px;">
-        <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
+            </div>
+            <div class="col-md-2">
+                <label for="validationDefault01" class="form-label">Data Final</label>
+                <input type="date" name="data_final_filtro" class="form-control form-control-sm" id="validationDefault01">
 
-    </div>
+            </div>
+            <div class="col-md-2">
+                <label for="validationDefault01" class="form-label">Forma de Pagamento</label>
+                <select class="form-select form-select-sm" name="status_filtro" aria-label="select example">
+                    <option value=""></option>
+                    <option value="Dinheiro">Pix</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
 
-    <div>
+                </select>
 
-        <img src="../../icons/0.jfif" width="30">Em Aberto 
+            </div>
+            <div class="col-md-2" style="margin-top: 42px;">
+                <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
+
+            </div>
+
+        </div>
+
+
+
+    </form>
+</div>
+
+<div class="container" style="margin-top:30px; margin-bottom:30px;">
+
+    <div class="text-center">
+
+        <img src="../../icons/0.jfif" width="30"> Em Aberto
         <img src="../../icons/2.png" width="30"> Em Atendimento
         <img src="../../icons/1.png" width="30"> Finalizado
         <img src="../../icons/3.png" width="30"> Cancelado
 
-
     </div>
 
+</div>
 
-</form>
+
+
 <div class="container">
 
 
@@ -164,7 +186,7 @@ if (isset($_POST['chamado_finalizado'])) {
                 <th class="text-center" scope="col">Status</th>
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
-               <!-- <th scope="col">Telefone</th> --->
+                <!-- <th scope="col">Telefone</th> --->
                 <th scope="col">Serviço</th>
                 <!-- <th scope="col">Tipo de Serviço</th> -->
             </tr>
@@ -181,14 +203,14 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             if ($dados['status'] === 'A') {
                                             ?> <img src="../../icons/0.jfif" width="30"> <?php
-                                                                                    } elseif ($dados['status'] === 'E') {
-                                                                                        ?> <img src="../../icons/2.png" width="30"> <?php
-                                                                                                                                } elseif ($dados['status'] === 'F') {
-                                                                                                                                    ?> <img src="../../icons/1.png" width="30"> <?php
-                                                                                                                                                                            } elseif ($dados['status'] === 'C') {
-                                                                                                                                                                                ?>
+                                                                                        } elseif ($dados['status'] === 'E') {
+                                                                                            ?> <img src="../../icons/2.png" width="30"> <?php
+                                                                                                                                    } elseif ($dados['status'] === 'F') {
+                                                                                                                                        ?> <img src="../../icons/1.png" width="30"> <?php
+                                                                                                                                                                                } elseif ($dados['status'] === 'C') {
+                                                                                                                                                                                    ?>
                             <img src="../../icons/3.png" width="30"><?php
-                                                                                                                                                                            }
+                                                                                                                                                                                }
                                                                     ?>
                     </td>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo $dados['protocolo']; ?></th>
@@ -255,7 +277,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             echo '<img id="usuario" src="../../images/perfil.png" class="img">';
                                         }
                                         echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
-                                        echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
+                                        //echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
                                         echo '</div>';
                                         echo '<hr>';
 
@@ -266,7 +288,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         echo '<span style=""><b>Profissional solicitado: </b>' . $obj->tpservico . '</span>';
                                         echo '<br>';
-                                        echo '<span style=""><b>Tipo de Serviço:  </b>';
+                                        //echo '<span style=""><b>Tipo de Serviço:  </b>';
                                         $total = $obj->categoria;
                                         foreach ($total as $total) {
 
@@ -300,7 +322,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                         $ClassPedido = new CategoriaDAO();
                                         $dados3 = $ClassPedido->listaServico($dados['protocolo']);
 
-                                      
+
 
                                         ?>
 
