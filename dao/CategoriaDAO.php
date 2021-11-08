@@ -243,6 +243,53 @@ class CategoriaDAO extends DAO
         return $array;
     }
 
+    public function pedidosFiltroData($status, $data_inicio,$data_final){
+
+
+       
+
+        $sql = "SELECT * FROM `pedido` WHERE pedido_status=:pedido_status and pedido_data BETWEEN :pedido_inicio AND :pedido_final" ;
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':pedido_final', $data_final);
+        $select->bindValue(':pedido_inicio', $data_inicio);
+        $select->bindValue(':pedido_status', $status);
+ 
+        $select->execute();
+
+        
+        $array = array();
+
+
+
+        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
+
+            $array[] = array(
+
+                'id' => $row['pedido_id'],
+                'nome' => $row['pedido_nome'],
+                'telefone' => $row['pedido_telefone'],
+                'email' => $row['pedido_email'],
+                'cpf' => $row['pedido_cpf'],
+                'cep' => $row['pedido_cep'],
+                'data' => $row['pedido_data'],
+                'descricao' => json_decode($row['pedido_descricao']),
+                'uf' => $row['pedido_uf'],
+                'cidade' => $row['pedido_cidade'],
+                'logradouro' => $row['pedido_logradouro'],
+                'bairro' => $row['pedido_bairro'],
+                'complemento' => $row['pedido_complemento'],
+                'protocolo' => $row['pedido_protocolo'],
+                'numero' => $row['pedido_numero'],
+                'status' => $row['pedido_status']
+            );
+        }
+        
+  
+        return $array;
+
+    }
+
 
 
 

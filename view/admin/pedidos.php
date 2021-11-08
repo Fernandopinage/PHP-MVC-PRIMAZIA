@@ -28,6 +28,20 @@ if (isset($_POST['filtror'])) {
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
+
+    if(!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])){
+
+        $status = $_POST['status_filtro'];
+        $data_inicio =  $_POST['data_inicio_filtro'];
+        $data_final =  $_POST['data_final_filtro'];
+
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedidosFiltroData($status, $data_inicio,$data_final);
+
+    
+    }
+
+
 } else {
 
     $ClassPedido = new CategoriaDAO();
@@ -115,12 +129,12 @@ if (isset($_POST['chamado_finalizado'])) {
 
     </div>
     <div class="col-md-2">
-        <label for="validationDefault01" class="form-label">Data Pedido</label>
+        <label for="validationDefault01" class="form-label">Data Inicial</label>
         <input type="date" name="data_inicio_filtro" class="form-control" id="validationDefault01">
 
     </div>
     <div class="col-md-2">
-        <label for="validationDefault01" class="form-label">Data Serviço</label>
+        <label for="validationDefault01" class="form-label">Data Final</label>
         <input type="date" name="data_final_filtro" class="form-control" id="validationDefault01">
 
     </div>

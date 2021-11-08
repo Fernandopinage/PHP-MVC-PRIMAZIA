@@ -38,7 +38,7 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
         foreach ($dados as $dados) {
 
 
-            $protocolo = $dados['protocolo'];
+           $protocolo = $dados['protocolo'];
            $dados2 = $ClassPedido->pedidosProfissionalFiltro($protocolo);
 
            
