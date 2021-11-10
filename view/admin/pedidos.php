@@ -373,6 +373,8 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 <div class="col-4">
                                                     <a class="btn btn-outline-primary btn-sm" onclick="add()">Adicionar</a>
                                                 </div>
+                      
+
                                             </div>
                                         <?php
                                         } else {
@@ -384,8 +386,18 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         </div>
 
-                                        
-
+                                        <hr>
+                                        <p><b>Forma de Pagamento</b></p>
+                                        <div class="row">
+                                        <div class="col-md-4" style="margin-bottom: 50px;">
+                                                    <select class="form-select form-select-sm" name="pagamento" id="pagamento" aria-label="Default select example">
+                                                        <option></option>
+                                                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                                        <option value="Cartão de Debito">Cartão de Debito</option>
+                                                        <option value="Pix">Pix</option>
+                                                    </select>
+                                        </div>
+                                        </div>
                                         <div class="modal-footer">
                                             <?php
 
@@ -482,26 +494,23 @@ if (isset($_POST['chamado_finalizado'])) {
 
 
 <script>
-    
-    
-    
     var cont = 1;
+
     function add() {
 
 
-        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"> <input type="text" name="pessoa[]" id="pessoa'+cont+'"  class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-outline-danger btn-sm" onclick="remover('+cont+')" value="Remover"></div> </div>').appendTo(lista);
+        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"> <input type="text" name="pessoa[]" id="pessoa' + cont + '"  class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-outline-danger btn-sm" onclick="remover(' + cont + ')" value="Remover"></div> </div>').appendTo(lista);
 
         cont++;
 
     }
 
-    function remover(id){
+    function remover(id) {
 
-        document.getElementById('Divpessoa'+id).remove();
+        document.getElementById('Divpessoa' + id).remove();
         cont--;
 
     }
-
 </script>
 
 
