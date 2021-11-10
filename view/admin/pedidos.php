@@ -277,7 +277,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             echo '<img id="usuario" src="../../images/perfil.png" class="img">';
                                         }
                                         echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
-                                        //echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
+                                        echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
                                         echo '</div>';
                                         echo '<hr>';
 
@@ -288,7 +288,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         echo '<span style=""><b>Profissional solicitado: </b>' . $obj->tpservico . '</span>';
                                         echo '<br>';
-                                        //echo '<span style=""><b>Tipo de Serviço:  </b>';
+                                        echo '<span style=""><b>Tipo de Serviço:  </b>';
                                         $total = $obj->categoria;
                                         foreach ($total as $total) {
 
@@ -333,43 +333,54 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         ?>
 
-                                            <select class="form-select" name="pessoa" aria-label="Default select example">
+                                            <div class="row">
+
+                                                <div class="col-md-8">
+                                                    <select class="form-select" name="pessoa" id="pessoa" aria-label="Default select example">
 
 
-                                                <?php
+                                                        <?php
 
-                                                $tamanho = count($dados2);
+                                                        $tamanho = count($dados2);
 
-                                                if ($tamanho > 0) {
+                                                        if ($tamanho > 0) {
 
-                                                    if ($dados['status'] != 'C') {
+                                                            if ($dados['status'] != 'C') {
 
-                                                        if ($dados['status'] != 'F') {
+                                                                if ($dados['status'] != 'F') {
 
-                                                            echo " <option value=''>Selecione o profissional</option>";
-                                                            for ($i = 0; $i < $tamanho; $i++) {
-                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                                    echo " <option>Selecione o profissional</option>";
+                                                                    for ($i = 0; $i < $tamanho; $i++) {
+                                                                        echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                                    }
+                                                                } else {
+                                                                    echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
+                                                                }
+                                                            } else {
+                                                                echo "<option value='Cliente cancelado!'>Cliente cancelado!</option>";
                                                             }
                                                         } else {
-                                                            echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
+                                                            echo "<option value='Não possui profissional para essa demanda!'>Não possui profissional para essa demanda!</option>";
                                                         }
-                                                    } else {
-                                                        echo "<option>Cliente cancelado!</option>";
-                                                    }
-                                                } else {
-                                                    echo "<option>Não possui profissional para essa demanda!</option>";
-                                                }
 
 
-                                                ?>
+                                                        ?>
 
-                                            </select>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <a class="btn btn-outline-primary btn-sm" onclick="add()">Adicionar</a>
+                                                </div>
+                                            </div>
                                         <?php
                                         } else {
 
                                             echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="' . $dados3[0]['nome'] . '"disabled>';
                                         }
                                         ?>
+                                        <div id="lista">
+
+                                        </div>
 
                                         <div class="modal-footer">
                                             <?php
@@ -464,6 +475,32 @@ if (isset($_POST['chamado_finalizado'])) {
         })
     }
 </script>
+
+
+<script>
+    var cont = 0;
+
+    
+    function add() {
+        var pessoa = document.getElementById('pessoa').value
+
+
+        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"> <input type="text" name="pessoa[]" id="pessoa'+cont+'" class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-danger btn-sm" onclick="remove(' + cont + ')" value="Remover"></div> </div>').appendTo(lista);
+
+        document.getElementById('pessoa'+cont).value = pessoa 
+
+        cont++;
+
+    }
+
+    function remove(id) {
+       
+        document.getElementById('Divpessoa'+id).remove();
+        cont--;
+    }
+</script>
+
+
 
 
 <?php
