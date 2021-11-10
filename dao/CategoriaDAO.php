@@ -98,7 +98,7 @@ class CategoriaDAO extends DAO
     public function pedido()
     {
 
-        $sql = "SELECT * FROM `pedido`";
+        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo";
         $select = $this->con->prepare($sql);
         $select->execute();
 
@@ -124,7 +124,8 @@ class CategoriaDAO extends DAO
                 'complemento' => $row['pedido_complemento'],
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status']
+                'status' => $row['pedido_status'],
+                'pagamento' => $row['servico_pagamento']
             );
         }
 
@@ -203,7 +204,7 @@ class CategoriaDAO extends DAO
     public function pedidosFiltro($status, $num)
     {
 
-        $sql = "SELECT * FROM `pedido` where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
+        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
         $select = $this->con->prepare($sql);
         $select->bindValue(':pedido_protocolo', $num);
         $select->bindValue(':pedido_status', $status);
@@ -233,7 +234,8 @@ class CategoriaDAO extends DAO
                 'complemento' => $row['pedido_complemento'],
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status']
+                'status' => $row['pedido_status'],
+                'pagamento' => $row['servico_pagamento']
             );
         }
         
@@ -248,7 +250,7 @@ class CategoriaDAO extends DAO
 
        
 
-        $sql = "SELECT * FROM `pedido` WHERE pedido_status=:pedido_status and pedido_data BETWEEN :pedido_inicio AND :pedido_final" ;
+        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo WHERE pedido_status=:pedido_status and pedido_data BETWEEN :pedido_inicio AND :pedido_final" ;
         $select = $this->con->prepare($sql);
         $select->bindValue(':pedido_final', $data_final);
         $select->bindValue(':pedido_inicio', $data_inicio);
@@ -281,7 +283,8 @@ class CategoriaDAO extends DAO
                 'complemento' => $row['pedido_complemento'],
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status']
+                'status' => $row['pedido_status'],
+                'pagamento' => $row['servico_pagamento']
             );
         }
         

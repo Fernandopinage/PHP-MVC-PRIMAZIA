@@ -21,7 +21,10 @@ if (isset($_POST['filtror'])) {
 
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedidosFiltro($status, $num);
+
+
     }
+
     if (empty($_POST['status_filtro']) and empty($_POST['num_filtro'])) {
 
 
@@ -144,7 +147,7 @@ if (isset($_POST['chamado_finalizado'])) {
             </div>
             <div class="col-md-2">
                 <label for="validationDefault01" class="form-label">Forma de Pagamento</label>
-                <select class="form-select form-select-sm" name="status_filtro" aria-label="select example">
+                <select class="form-select form-select-sm" name="pagamento" aria-label="select example">
                     <option value=""></option>
                     <option value="Dinheiro">Pix</option>
                     <option value="Cartão de Crédito">Cartão de Crédito</option>
@@ -229,7 +232,7 @@ if (isset($_POST['chamado_finalizado'])) {
                         ?>
 
                     </td>
-                    <th scope="row" style="color: #086c24;"></th>
+                    <th scope="row"><?php echo $dados['pagamento']; ?></th>
                     <!--
                     <td>
                         <?php
