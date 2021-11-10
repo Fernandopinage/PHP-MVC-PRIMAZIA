@@ -62,13 +62,8 @@ if (isset($_POST['chamado'])) {
         $ClassServico->SetID($_POST['id']);
         $ClassServico->SetPagamento($_POST['pagamento']);
 
-        echo "<pre>";
-        var_dump($ClassServico);
-        echo "</pre>";
-
-
-        //$Servico = new ServicoDao();
-       // $Servico->inserServico($ClassServico);
+        $Servico = new ServicoDao();
+        $Servico->inserServico($ClassServico);
     }
 }
 
@@ -344,8 +339,8 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             <div class="row">
 
-                                                <div class="col-md-8">
-                                                    <select class="form-select" name="pessoa[]" id="pessoa" aria-label="Default select example">
+                                                <div class="col-md-12">
+                                                    <select class="form-select" name="pessoa" id="pessoa" aria-label="Default select example">
 
 
                                                         <?php
@@ -358,7 +353,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                                                 if ($dados['status'] != 'F') {
 
-                                                                    echo " <option>Selecione o profissional</option>";
+                                                                    echo " <option></option>";
                                                                     for ($i = 0; $i < $tamanho; $i++) {
                                                                         echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
                                                                     }
@@ -377,11 +372,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                                     </select>
                                                 </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-outline-primary btn-sm" onclick="add()">Adicionar</a>
-                                                </div>
-                      
-
+                                      
                                             </div>
                                         <?php
                                         } else {
@@ -389,9 +380,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="' . $dados3[0]['nome'] . '"disabled>';
                                         }
                                         ?>
-                                        <div id="lista" style="margin-bottom: 50px;">
-                                            
-                                        </div>
+      
 
                                         <hr>
                                         <p><b>Forma de Pagamento</b></p>
@@ -498,30 +487,6 @@ if (isset($_POST['chamado_finalizado'])) {
         })
     }
 </script>
-
-
-<script>
-    var cont = 1;
-
-    function add() {
-
-
-        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"><input type="text" name="pessoa[]" id="pessoa' + cont + '"  class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-outline-danger btn-sm" onclick="remover(' + cont + ')" value="Remover"></div> </div>').appendTo(lista);
-
-        cont++;
-
-    }
-
-    function remover(id) {
-
-        document.getElementById('Divpessoa' + id).remove();
-        cont--;
-
-    }
-
-
-</script>
-
 
 
 
