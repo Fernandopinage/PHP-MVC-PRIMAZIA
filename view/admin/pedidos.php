@@ -511,6 +511,8 @@ if (isset($_POST['chamado_finalizado'])) {
         cont--;
 
     }
+
+    
 </script>
 
 
