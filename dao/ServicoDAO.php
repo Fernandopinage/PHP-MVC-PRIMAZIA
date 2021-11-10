@@ -9,6 +9,10 @@ class ServicoDao extends Dao{
     public function inserServico($ClassServico){
 
 
+
+
+        /*   array
+
         $email = explode("-",$ClassServico->GetNome());
         @$email = explode(" ",$email[3]);
 
@@ -32,7 +36,7 @@ class ServicoDao extends Dao{
         $insert->bindValue(':servico_data',$ClassServico->GetData());
         @$insert->bindValue(':servico_idprofissional',$id);
 
-       
+       */
         
         try {
             $insert->execute();

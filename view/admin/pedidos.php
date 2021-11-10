@@ -60,8 +60,15 @@ if (isset($_POST['chamado'])) {
         $ClassServico->SetStatus($_POST['status']);
         $ClassServico->SetProtocolo($_POST['numero_protocolo']);
         $ClassServico->SetID($_POST['id']);
-        $Servico = new ServicoDao();
-        $Servico->inserServico($ClassServico);
+        $ClassServico->SetPagamento($_POST['pagamento']);
+
+        echo "<pre>";
+        var_dump($ClassServico);
+        echo "</pre>";
+
+
+        //$Servico = new ServicoDao();
+       // $Servico->inserServico($ClassServico);
     }
 }
 
@@ -338,7 +345,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <div class="row">
 
                                                 <div class="col-md-8">
-                                                    <select class="form-select" name="pessoa" id="pessoa" aria-label="Default select example">
+                                                    <select class="form-select" name="pessoa[]" id="pessoa" aria-label="Default select example">
 
 
                                                         <?php
@@ -383,7 +390,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                         }
                                         ?>
                                         <div id="lista" style="margin-bottom: 50px;">
-
+                                            
                                         </div>
 
                                         <hr>
@@ -512,7 +519,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
     }
 
-    
+
 </script>
 
 

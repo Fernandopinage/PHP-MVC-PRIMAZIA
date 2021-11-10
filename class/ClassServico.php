@@ -9,6 +9,9 @@ class Servico{
     private $protocolo;
     private $data;
 
+
+    private $pagamento;
+
     public function SetId($id){
 
         $this->id = $id;
@@ -53,6 +56,15 @@ class Servico{
 
     public function GetData(){
         return $this->data;
+    }
+
+    public function SetPagamento($pagamento){
+
+        $this->pagamento = $pagamento;
+    }
+
+    public function GetPagamento(){
+        return $this->pagamento;
     }
 }
 
