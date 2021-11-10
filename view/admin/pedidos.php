@@ -32,7 +32,7 @@ if (isset($_POST['filtror'])) {
         $dados = $ClassPedido->pedidosFiltroAND($status, $num);
     }
 
-    if (!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {
+    if (!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) and !empty($_POST['data_final_filtro'])) {
 
         $status = $_POST['status_filtro'];
         $data_inicio =  $_POST['data_inicio_filtro'];
@@ -41,6 +41,22 @@ if (isset($_POST['filtror'])) {
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedidosFiltroData($status, $data_inicio, $data_final);
     }
+
+    if (!empty($_POST['data_inicio_filtro']) and !empty($_POST['data_final_filtro'])) {
+
+        $data_inicio =  $_POST['data_inicio_filtro'];
+        $data_final =  $_POST['data_final_filtro'];
+
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedidosData($data_inicio, $data_final);
+    }
+
+
+    if(empty($_POST['status_filtro']) and empty($_POST['num_filtro']) and empty($_POST['data_inicio_filtro']) and empty($_POST['data_final_filtro']) and empty($_POST['pagamento'])){
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedido();
+    }
+    
 } else {
 
     $ClassPedido = new CategoriaDAO();
