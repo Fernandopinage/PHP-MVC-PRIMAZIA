@@ -499,7 +499,7 @@ if (isset($_POST['chamado_finalizado'])) {
     function add() {
 
 
-        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"> <input type="text" name="pessoa[]" id="pessoa' + cont + '"  class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-outline-danger btn-sm" onclick="remover(' + cont + ')" value="Remover"></div> </div>').appendTo(lista);
+        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"><input type="text" name="pessoa[]" id="pessoa' + cont + '"  class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-outline-danger btn-sm" onclick="remover(' + cont + ')" value="Remover"></div> </div>').appendTo(lista);
 
         cont++;
 
