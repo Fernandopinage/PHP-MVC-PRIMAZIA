@@ -12,6 +12,10 @@ class ServicoDao extends Dao{
         $email = explode("-",$ClassServico->GetNome());
         @$email = explode(" ",$email[3]);
 
+  
+
+       
+
 
         $query = "SELECT * FROM `profissional` WHERE profissional_email = :profissional_email";
         $select = $this->con->prepare($query);
@@ -23,7 +27,6 @@ class ServicoDao extends Dao{
         }
 
 
-
         $sql = "INSERT INTO `servico`(`servico_id`, `servico_status`, `servico_protocolo`, `servico_profissional`, `servico_data` , `servico_idprofissional`) VALUES (null, :servico_status, :servico_protocolo, :servico_profissional, :servico_data, :servico_idprofissional)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':servico_status', 'E');
@@ -31,8 +34,8 @@ class ServicoDao extends Dao{
         $insert->bindValue(':servico_profissional',$ClassServico->GetNome());
         $insert->bindValue(':servico_data',$ClassServico->GetData());
         @$insert->bindValue(':servico_idprofissional',$id);
-
-       
+        $insert->execute();
+        
         
         try {
             $insert->execute();
@@ -102,6 +105,7 @@ class ServicoDao extends Dao{
         <?php
 
         }
+        
        
 
     }
