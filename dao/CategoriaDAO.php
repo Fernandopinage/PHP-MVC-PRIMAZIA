@@ -427,8 +427,7 @@ class CategoriaDAO extends DAO
 
     public function pedidosData($data_inicio,$data_final){
 
-        echo $data_inicio."<br>";
-        echo $data_final."<br>";
+
      
         $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo WHERE pedido_data BETWEEN :pedido_inicio AND :pedido_final";
         
@@ -439,9 +438,6 @@ class CategoriaDAO extends DAO
      
  
         $select->execute();
-
-        echo $select;
-        
         $array = array();
 
         while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
