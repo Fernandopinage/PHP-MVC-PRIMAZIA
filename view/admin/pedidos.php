@@ -28,16 +28,6 @@ if (isset($_POST['filtror'])) {
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
-
-    if (!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {
-
-        $status = $_POST['status_filtro'];
-        $data_inicio =  $_POST['data_inicio_filtro'];
-        $data_final =  $_POST['data_final_filtro'];
-
-        $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->pedidosFiltroData($status, $data_inicio, $data_final);
-    }
 } else {
 
     $ClassPedido = new CategoriaDAO();
@@ -54,14 +44,12 @@ if (isset($_POST['chamado'])) {
         $data =  date('Y/m/d');
 
         $ClassServico = new Servico();
-
+       
         $ClassServico->SetNome($_POST['pessoa']);
         $ClassServico->SetData($data);
         $ClassServico->SetStatus($_POST['status']);
         $ClassServico->SetProtocolo($_POST['numero_protocolo']);
         $ClassServico->SetID($_POST['id']);
-        $ClassServico->SetPagamento($_POST['pagamento']);
-
         $Servico = new ServicoDao();
         $Servico->inserServico($ClassServico);
     }
@@ -100,85 +88,59 @@ if (isset($_POST['chamado_finalizado'])) {
 }
 
 ?>
-
+<link href="../../layout/css/admin_painel2.css" rel="stylesheet">
 <div id="logo">
     <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
-<hr>
 <br>
-
-<div class="container">
-    <form method="POST">
-
-        <div class="row g-3">
+<form method="POST" class="row g-1 m-t-3">
 
 
+    
+    <div class="col-md-2">
+        <label for="validationServer01" class="form-label">Status</label>
+        <select class="form-select" name="status_filtro" aria-label="select example">
+            <option value=""></option>
+            <option value="A">Em Aberto</option>
+            <option value="E">Em Atendimento</option>
+            <option value="F">Finalizado</option>
+            <option value="C">Cancelado</option>
+        </select>
 
-            <div class="col-md-2">
-                <label for="validationServer01" class="form-label">Status</label>
-                <select class="form-select form-select-sm" name="status_filtro" aria-label="select example">
-                    <option value=""></option>
-                    <option value="A">Em Aberto</option>
-                    <option value="E">Em Atendimento</option>
-                    <option value="F">Finalizado</option>
-                    <option value="C">Cancelado</option>
-                </select>
+    </div>
 
-            </div>
+    <div class="col-md-2">
+        <label for="validationDefault01" class="form-label">Número do Pedido</label>
+        <input type="text" name="num_filtro" class="form-control" id="validationDefault01">
 
-            <div class="col-md-2">
-                <label for="validationDefault01" class="form-label">Número do Pedido</label>
-                <input type="text" name="num_filtro" class="form-control form-control-sm" id="validationDefault01">
+    </div>
+    <div class="col-md-2">
+        <label for="validationDefault01" class="form-label">Data Pedido</label>
+        <input type="date" name="data_inicio_filtro" class="form-control" id="validationDefault01">
 
-            </div>
-            <div class="col-md-2">
-                <label for="validationDefault01" class="form-label">Data Inicial</label>
-                <input type="date" name="data_inicio_filtro" class="form-control form-control-sm" id="validationDefault01">
+    </div>
+    <div class="col-md-2">
+        <label for="validationDefault01" class="form-label">Data Serviço</label>
+        <input type="date" name="data_final_filtro" class="form-control" id="validationDefault01">
 
-            </div>
-            <div class="col-md-2">
-                <label for="validationDefault01" class="form-label">Data Final</label>
-                <input type="date" name="data_final_filtro" class="form-control form-control-sm" id="validationDefault01">
+    </div>
+    <div class="col-md-4" style="margin-top: 36px;">
+        <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
 
-            </div>
-            <div class="col-md-2">
-                <label for="validationDefault01" class="form-label">Forma de Pagamento</label>
-                <select class="form-select form-select-sm" name="status_filtro" aria-label="select example">
-                    <option value=""></option>
-                    <option value="Dinheiro">Pix</option>
-                    <option value="Cartão de Crédito">Cartão de Crédito</option>
-                    <option value="Cartão de Débito">Cartão de Débito</option>
+    </div>
 
-                </select>
+    <div>
 
-            </div>
-            <div class="col-md-2" style="margin-top: 42px;">
-                <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
-
-            </div>
-
-        </div>
-
-
-
-    </form>
-</div>
-
-<div class="container" style="margin-top:30px; margin-bottom:30px;">
-
-    <div class="text-center">
-
-        <img src="../../icons/0.jfif" width="30"> Em Aberto
+        <img src="../../icons/0.jfif" width="30">Em Aberto 
         <img src="../../icons/2.png" width="30"> Em Atendimento
         <img src="../../icons/1.png" width="30"> Finalizado
         <img src="../../icons/3.png" width="30"> Cancelado
 
+
     </div>
 
-</div>
 
-
-
+</form>
 <div class="container">
 
 
@@ -188,10 +150,9 @@ if (isset($_POST['chamado_finalizado'])) {
                 <th class="text-center" scope="col">Status</th>
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
-                <!-- <th scope="col">Telefone</th> --->
+               <!-- <th scope="col">Telefone</th> --->
                 <th scope="col">Serviço</th>
                 <!-- <th scope="col">Tipo de Serviço</th> -->
-                <th scope="col">Pagamento</th>
             </tr>
         </thead>
         <tbody style="color: #0D2238;font-family: 'Montserrat', sans-serif">
@@ -206,14 +167,14 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             if ($dados['status'] === 'A') {
                                             ?> <img src="../../icons/0.jfif" width="30"> <?php
-                                                                                        } elseif ($dados['status'] === 'E') {
-                                                                                            ?> <img src="../../icons/2.png" width="30"> <?php
-                                                                                                                                    } elseif ($dados['status'] === 'F') {
-                                                                                                                                        ?> <img src="../../icons/1.png" width="30"> <?php
-                                                                                                                                                                                } elseif ($dados['status'] === 'C') {
-                                                                                                                                                                                    ?>
+                                                                                    } elseif ($dados['status'] === 'E') {
+                                                                                        ?> <img src="../../icons/2.png" width="30"> <?php
+                                                                                                                                } elseif ($dados['status'] === 'F') {
+                                                                                                                                    ?> <img src="../../icons/1.png" width="30"> <?php
+                                                                                                                                                                            } elseif ($dados['status'] === 'C') {
+                                                                                                                                                                                ?>
                             <img src="../../icons/3.png" width="30"><?php
-                                                                                                                                                                                }
+                                                                                                                                                                            }
                                                                     ?>
                     </td>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo $dados['protocolo']; ?></th>
@@ -228,20 +189,15 @@ if (isset($_POST['chamado_finalizado'])) {
                         ?>
 
                     </td>
-                    <th scope="row" style="color: #086c24;"></th>
                     <!--
                     <td>
                         <?php
-
                         $obj = $dados['descricao'];
                         $total = $obj->categoria;
-
                         foreach ($total as $total) {
-
                             echo $total . "<br>";
                         }
                         ?>
-
                     </td>
                     -->
 
@@ -326,7 +282,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                         $ClassPedido = new CategoriaDAO();
                                         $dados3 = $ClassPedido->listaServico($dados['protocolo']);
 
-
+                                      
 
                                         ?>
 
@@ -337,63 +293,44 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         ?>
 
-                                            <div class="row">
-
-                                                <div class="col-md-12">
-                                                    <select class="form-select" name="pessoa" id="pessoa" aria-label="Default select example">
+                                            <select class="form-select" name="pessoa" aria-label="Default select example">
 
 
-                                                        <?php
+                                                <?php
 
-                                                        $tamanho = count($dados2);
+                                                $tamanho = count($dados2);
 
-                                                        if ($tamanho > 0) {
+                                                if ($tamanho > 0) {
 
-                                                            if ($dados['status'] != 'C') {
+                                                    if ($dados['status'] != 'C') {
 
-                                                                if ($dados['status'] != 'F') {
+                                                        if ($dados['status'] != 'F') {
 
-                                                                    echo " <option></option>";
-                                                                    for ($i = 0; $i < $tamanho; $i++) {
-                                                                        echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
-                                                                    }
-                                                                } else {
-                                                                    echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
-                                                                }
-                                                            } else {
-                                                                echo "<option value='Cliente cancelado!'>Cliente cancelado!</option>";
+                                                            echo " <option value=''>Selecione o profissional</option>";
+                                                            for ($i = 0; $i < $tamanho; $i++) {
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
                                                             }
                                                         } else {
-                                                            echo "<option>Não possui profissional para essa demanda!</option>";
+                                                            echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
                                                         }
+                                                    } else {
+                                                        echo "<option>Cliente cancelado!</option>";
+                                                    }
+                                                } else {
+                                                    echo "<option>Não possui profissional para essa demanda!</option>";
+                                                }
 
 
-                                                        ?>
+                                                ?>
 
-                                                    </select>
-                                                </div>
-                                      
-                                            </div>
+                                            </select>
                                         <?php
                                         } else {
 
                                             echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="' . $dados3[0]['nome'] . '"disabled>';
                                         }
                                         ?>
-      
 
-                                        <hr>
-                                        <p><b>Forma de Pagamento</b></p>
-                                        <div class="row">
-                                        <div class="col-md-4" style="margin-bottom: 50px;">
-                                                    <select class="form-select form-select-sm" name="pagamento" id="pagamento" aria-label="Default select example">
-                                                        <option></option>
-                                                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                                                        <option value="Cartão de Debito">Cartão de Debito</option>
-                                                        <option value="Pix">Pix</option>
-                                                    </select>
-                                        </div>
-                                        </div>
                                         <div class="modal-footer">
                                             <?php
 
@@ -487,7 +424,6 @@ if (isset($_POST['chamado_finalizado'])) {
         })
     }
 </script>
-
 
 
 <?php
