@@ -427,14 +427,20 @@ class CategoriaDAO extends DAO
 
     public function pedidosData($data_inicio,$data_final){
 
-        
+        echo $data_inicio."<br>";
+        echo $data_final."<br>";
+     
         $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo WHERE pedido_data BETWEEN :pedido_inicio AND :pedido_final";
+        
+        
         $select = $this->con->prepare($sql);
-        $select->bindValue(':pedido_final', $data_final);
         $select->bindValue(':pedido_inicio', $data_inicio);
+        $select->bindValue(':pedido_final', $data_final);
      
  
         $select->execute();
+
+        echo $select;
         
         $array = array();
 
@@ -465,7 +471,7 @@ class CategoriaDAO extends DAO
         
   
         return $array;
-
+        
     }
 
 
