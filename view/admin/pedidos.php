@@ -189,6 +189,7 @@ if (isset($_POST['chamado_finalizado'])) {
                 <!-- <th scope="col">Telefone</th> --->
                 <th scope="col">Serviço</th>
                 <!-- <th scope="col">Tipo de Serviço</th> -->
+                <th scope="col">Pagamento</th>
             </tr>
         </thead>
         <tbody style="color: #0D2238;font-family: 'Montserrat', sans-serif">
@@ -225,6 +226,7 @@ if (isset($_POST['chamado_finalizado'])) {
                         ?>
 
                     </td>
+                    <th scope="row" style="color: #086c24;"></th>
                     <!--
                     <td>
                         <?php
@@ -360,7 +362,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                                                 echo "<option value='Cliente cancelado!'>Cliente cancelado!</option>";
                                                             }
                                                         } else {
-                                                            echo "<option value='Não possui profissional para essa demanda!'>Não possui profissional para essa demanda!</option>";
+                                                            echo "<option>Não possui profissional para essa demanda!</option>";
                                                         }
 
 
@@ -378,9 +380,11 @@ if (isset($_POST['chamado_finalizado'])) {
                                             echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="' . $dados3[0]['nome'] . '"disabled>';
                                         }
                                         ?>
-                                        <div id="lista">
+                                        <div id="lista" style="margin-bottom: 50px;">
 
                                         </div>
+
+                                        
 
                                         <div class="modal-footer">
                                             <?php
@@ -478,26 +482,26 @@ if (isset($_POST['chamado_finalizado'])) {
 
 
 <script>
-    var cont = 0;
-
     
+    
+    
+    var cont = 1;
     function add() {
-        var pessoa = document.getElementById('pessoa').value
 
 
-        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"> <input type="text" name="pessoa[]" id="pessoa'+cont+'" class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-danger btn-sm" onclick="remove(' + cont + ')" value="Remover"></div> </div>').appendTo(lista);
-
-        document.getElementById('pessoa'+cont).value = pessoa 
+        $('<div class="row" id="Divpessoa' + cont + '" style="margin-top:20px;"><div class="col-md-8"> <input type="text" name="pessoa[]" id="pessoa'+cont+'"  class="form-control"> </div><div class="col-md-4"><input type="button" class="btn btn-outline-danger btn-sm" onclick="remover('+cont+')" value="Remover"></div> </div>').appendTo(lista);
 
         cont++;
 
     }
 
-    function remove(id) {
-       
+    function remover(id){
+
         document.getElementById('Divpessoa'+id).remove();
         cont--;
+
     }
+
 </script>
 
 
