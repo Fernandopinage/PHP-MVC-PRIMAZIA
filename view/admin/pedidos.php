@@ -25,9 +25,11 @@ if (isset($_POST['filtror'])) {
 
     if (empty($_POST['status_filtro']) and empty($_POST['num_filtro'])) {
 
+        $status =  $_POST['status_filtro'];
+        $num =  $_POST['num_filtro'];
 
         $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->pedido();
+        $dados = $ClassPedido->pedidosFiltroAND($status, $num);
     }
 
     if (!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {

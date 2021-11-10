@@ -245,12 +245,8 @@ class CategoriaDAO extends DAO
                         //'pagamento' => $row['servico_pagamento']
                     );
                 }
-        
-
             
         }else{
-
-        
         
         $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
         $select = $this->con->prepare($sql);
@@ -293,6 +289,97 @@ class CategoriaDAO extends DAO
         return $array;
         
     }
+
+    public function pedidosFiltroAND($status, $num)
+    {
+
+        $query = "SELECT * FROM `servico` WHERE servico_protocolo =:servico_protocolo ";
+        $select = $this->con->prepare($query);
+        $select->bindValue(':servico_protocolo', $num);
+        $select->execute();
+        if(!$select->fetch(PDO::FETCH_ASSOC)){
+
+
+                $sql = "SELECT * FROM `pedido` where pedido_protocolo = :pedido_protocolo and pedido_status =:pedido_status";
+                $select = $this->con->prepare($sql);
+                $select->bindValue(':pedido_protocolo', $num);
+                $select->bindValue(':pedido_status', $status);
+                $select->execute();
+
+                $array = array();
+
+
+
+                while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
+
+                    $array[] = array(
+
+                        'id' => $row['pedido_id'],
+                        'nome' => $row['pedido_nome'],
+                        'telefone' => $row['pedido_telefone'],
+                        'email' => $row['pedido_email'],
+                        'cpf' => $row['pedido_cpf'],
+                        'cep' => $row['pedido_cep'],
+                        'data' => $row['pedido_data'],
+                        'descricao' => json_decode($row['pedido_descricao']),
+                        'uf' => $row['pedido_uf'],
+                        'cidade' => $row['pedido_cidade'],
+                        'logradouro' => $row['pedido_logradouro'],
+                        'bairro' => $row['pedido_bairro'],
+                        'complemento' => $row['pedido_complemento'],
+                        'protocolo' => $row['pedido_protocolo'],
+                        'numero' => $row['pedido_numero'],
+                        'status' => $row['pedido_status'],
+                        //'pagamento' => $row['servico_pagamento']
+                    );
+                }
+            
+        }else{
+        
+        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo where pedido_protocolo = :pedido_protocolo and pedido_status =:pedido_status";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':pedido_protocolo', $num);
+        $select->bindValue(':pedido_status', $status);
+        $select->execute();
+
+        $array = array();
+
+
+
+        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
+
+            $array[] = array(
+
+                'id' => $row['pedido_id'],
+                'nome' => $row['pedido_nome'],
+                'telefone' => $row['pedido_telefone'],
+                'email' => $row['pedido_email'],
+                'cpf' => $row['pedido_cpf'],
+                'cep' => $row['pedido_cep'],
+                'data' => $row['pedido_data'],
+                'descricao' => json_decode($row['pedido_descricao']),
+                'uf' => $row['pedido_uf'],
+                'cidade' => $row['pedido_cidade'],
+                'logradouro' => $row['pedido_logradouro'],
+                'bairro' => $row['pedido_bairro'],
+                'complemento' => $row['pedido_complemento'],
+                'protocolo' => $row['pedido_protocolo'],
+                'numero' => $row['pedido_numero'],
+                'status' => $row['pedido_status'],
+                'pagamento' => $row['servico_pagamento']
+            );
+        }
+        
+    }
+
+
+        return $array;
+        
+    }
+
+
 
     public function pedidosFiltroData($status, $data_inicio,$data_final){
 
