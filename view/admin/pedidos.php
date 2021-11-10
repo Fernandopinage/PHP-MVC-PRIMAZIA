@@ -21,8 +21,6 @@ if (isset($_POST['filtror'])) {
 
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedidosFiltro($status, $num);
-
-
     }
 
     if (empty($_POST['status_filtro']) and empty($_POST['num_filtro'])) {
@@ -232,7 +230,16 @@ if (isset($_POST['chamado_finalizado'])) {
                         ?>
 
                     </td>
-                    <th scope="row"><?php echo $dados['pagamento']; ?></th>
+                    <th scope="row" class="text-center"><?php
+                                    if (isset($dados['pagamento'])) {
+
+                                        echo $dados['pagamento'];
+                                    } else {
+
+                                        echo "---";
+                                    }
+
+                                    ?></th>
                     <!--
                     <td>
                         <?php
@@ -372,18 +379,18 @@ if (isset($_POST['chamado_finalizado'])) {
                                             </select>
 
                                             <hr>
-                                        <p><b>Forma de Pagamento</b></p>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-4" style="margin-bottom: 50px;">
-                                                <select id="pagamento" name="pagamento" class="form-select form-select-sm">
-                                                    <option selected></option>
-                                                    <option value="Cartão Crédito">Cartão Crédito</option>
-                                                    <option value="Cartão Débito">Cartão Débito</option>
-                                                    <option value="PIX">PIX</option>
-                                                </select>
+                                            <p><b>Forma de Pagamento</b></p>
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="margin-bottom: 50px;">
+                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm">
+                                                        <option selected></option>
+                                                        <option value="Cartão Crédito">Cartão Crédito</option>
+                                                        <option value="Cartão Débito">Cartão Débito</option>
+                                                        <option value="PIX">PIX</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
                                         <?php
                                         } else {
 
@@ -391,7 +398,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             echo '<hr><p><b>Forma de Pagamento</b></p>';
                                             echo '<div class="row"> <div class="col-md-4" style="margin-bottom: 50px;">';
                                             echo '<select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>';
-                                            echo '<option selected>'.$dados3[0]['pagamento'].'</option>';
+                                            echo '<option selected>' . $dados3[0]['pagamento'] . '</option>';
                                             echo '</select>';
                                             echo '</div>';
                                         }
