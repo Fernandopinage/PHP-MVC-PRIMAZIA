@@ -60,6 +60,9 @@ if (isset($_POST['chamado'])) {
         $ClassServico->SetStatus($_POST['status']);
         $ClassServico->SetProtocolo($_POST['numero_protocolo']);
         $ClassServico->SetID($_POST['id']);
+        $ClassServico->SetPagamento($_POST['pagamento']);
+
+
         $Servico = new ServicoDao();
         $Servico->inserServico($ClassServico);
     }
@@ -364,12 +367,34 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 ?>
 
                                             </select>
+
+                                            <hr>
+                                        <p><b>Forma de Pagamento</b></p>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-4" style="margin-bottom: 50px;">
+                                                <select id="pagamento" name="pagamento" class="form-select form-select-sm">
+                                                    <option selected></option>
+                                                    <option value="Cartão Crédito">Cartão Crédito</option>
+                                                    <option value="Cartão Débito">Cartão Débito</option>
+                                                    <option value="PIX">PIX</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <?php
                                         } else {
 
                                             echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="' . $dados3[0]['nome'] . '"disabled>';
+                                            echo '<hr><p><b>Forma de Pagamento</b></p>';
+                                            echo '<div class="row"> <div class="col-md-4" style="margin-bottom: 50px;">';
+                                            echo '<select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>';
+                                            echo '<option selected>'.$dados3[0]['pagamento'].'</option>';
+                                            echo '</select>';
+                                            echo '</div>';
                                         }
                                         ?>
+
+
 
                                         <div class="modal-footer">
                                             <?php

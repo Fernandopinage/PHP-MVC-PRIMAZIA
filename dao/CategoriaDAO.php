@@ -573,7 +573,8 @@ class CategoriaDAO extends DAO
 
             $array[] = array(
 
-                'nome' => $row['servico_profissional']
+                'nome' => $row['servico_profissional'],
+                'pagamento' => $row['servico_pagamento']
             );
         }
         return $array;
