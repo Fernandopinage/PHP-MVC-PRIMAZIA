@@ -52,11 +52,10 @@ if (isset($_POST['filtror'])) {
     }
 
 
-    if(empty($_POST['status_filtro']) and empty($_POST['num_filtro']) and empty($_POST['data_inicio_filtro']) and empty($_POST['data_final_filtro']) and empty($_POST['pagamento'])){
+    if (empty($_POST['status_filtro']) and empty($_POST['num_filtro']) and empty($_POST['data_inicio_filtro']) and empty($_POST['data_final_filtro']) and empty($_POST['pagamento'])) {
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
-    
 } else {
 
     $ClassPedido = new CategoriaDAO();
@@ -249,15 +248,15 @@ if (isset($_POST['chamado_finalizado'])) {
 
                     </td>
                     <th scope="row" class="text-center"><?php
-                                    if (isset($dados['pagamento'])) {
+                                                        if (isset($dados['pagamento'])) {
 
-                                        echo $dados['pagamento'];
-                                    } else {
+                                                            echo $dados['pagamento'];
+                                                        } else {
 
-                                        echo "---";
-                                    }
+                                                            echo "---";
+                                                        }
 
-                                    ?></th>
+                                                        ?></th>
                     <!--
                     <td>
                         <?php
@@ -407,6 +406,12 @@ if (isset($_POST['chamado_finalizado'])) {
                                                         <option value="Cartão Débito">Cartão Débito</option>
                                                         <option value="PIX">PIX</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="mb-3">
+                                                <p><b>Descrição do Pedido</b></p>
+                                                    <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
                                                 </div>
                                             </div>
                                         <?php
