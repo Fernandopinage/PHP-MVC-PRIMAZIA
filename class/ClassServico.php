@@ -8,9 +8,10 @@ class Servico{
     private $status;
     private $protocolo;
     private $data;
-
-
     private $pagamento;
+
+    private $text;
+
 
     public function SetId($id){
 
@@ -65,6 +66,15 @@ class Servico{
 
     public function GetPagamento(){
         return $this->pagamento;
+    }
+
+    public function SetText($text){
+
+        $this->text = $text;
+    }
+
+    public function GetText(){
+        return $this->text;
     }
 }
 

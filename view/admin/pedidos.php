@@ -79,8 +79,9 @@ if (isset($_POST['chamado'])) {
         $ClassServico->SetProtocolo($_POST['numero_protocolo']);
         $ClassServico->SetID($_POST['id']);
         $ClassServico->SetPagamento($_POST['pagamento']);
+        $ClassServico->SetText($_POST['text']);
 
-
+  
         $Servico = new ServicoDao();
         $Servico->inserServico($ClassServico);
     }
@@ -248,7 +249,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                     </td>
                     <th scope="row" class="text-center"><?php
-                                                        if (isset($dados['pagamento'])) {
+                                                        if (!empty($dados['pagamento'])) {
 
                                                             echo $dados['pagamento'];
                                                         } else {
@@ -411,7 +412,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <div class="row">
                                                 <div class="mb-3">
                                                 <p><b>Descrição do Pedido</b></p>
-                                                    <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+                                                    <textarea class="form-control" id="text" name="text" rows="3"></textarea>
                                                 </div>
                                             </div>
                                         <?php

@@ -8,11 +8,11 @@ class ServicoDao extends Dao{
 
     public function inserServico($ClassServico){
 
-
+        
         $email = explode("-",$ClassServico->GetNome());
         @$email = explode(" ",$email[3]);
-
-  
+        
+        
         $query = "SELECT * FROM `profissional` WHERE profissional_email = :profissional_email";
         $select = $this->con->prepare($query);
         @$select->bindValue(':profissional_email',$email[1]);
@@ -23,15 +23,17 @@ class ServicoDao extends Dao{
         }
 
 
-        $sql = "INSERT INTO `servico`(`servico_id`, `servico_status`, `servico_protocolo`, `servico_profissional`, `servico_data` , `servico_idprofissional`, `servico_pagamento`) VALUES (null, :servico_status, :servico_protocolo, :servico_profissional, :servico_data, :servico_idprofissional, :servico_pagamento)";
+        $sql = "INSERT INTO `servico`(`servico_id`, `servico_status`, `servico_protocolo`, `servico_profissional`, `servico_data` , `servico_idprofissional`, `servico_pagamento`, `servico_text`) VALUES (null, :servico_status, :servico_protocolo, :servico_profissional, :servico_data, :servico_idprofissional, :servico_pagamento, :servico_text)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':servico_status', 'E');
         $insert->bindValue(':servico_protocolo',$ClassServico->GetProtocolo());
         $insert->bindValue(':servico_profissional',$ClassServico->GetNome());
         $insert->bindValue(':servico_data',$ClassServico->GetData());
         $insert->bindValue(':servico_pagamento',$ClassServico->GetPagamento());
+        $insert->bindValue(':servico_text',$ClassServico->GetText());
         @$insert->bindValue(':servico_idprofissional',$id);
-
+        
+        
         
         
         try {
@@ -83,7 +85,7 @@ class ServicoDao extends Dao{
 
         } catch (\Throwable $th) {
            
-            
+              
 
             ?>
 
@@ -104,7 +106,7 @@ class ServicoDao extends Dao{
         }
         
        
-
+            
     }
 
     public function finalizarServico($ClassServico){

@@ -98,7 +98,7 @@ class CategoriaDAO extends DAO
     public function pedido()
     {
 
-        $sql = "SELECT * FROM `pedido`";
+        $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo";
         $select = $this->con->prepare($sql);
         $select->execute();
 
@@ -125,7 +125,7 @@ class CategoriaDAO extends DAO
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
-                //'pagamento' => $row['servico_pagamento']
+                'pagamento' => $row['servico_pagamento']
             );
         }
 
@@ -211,7 +211,7 @@ class CategoriaDAO extends DAO
         if(!$select->fetch(PDO::FETCH_ASSOC)){
 
 
-                $sql = "SELECT * FROM `pedido` where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
+                $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
                 $select = $this->con->prepare($sql);
                 $select->bindValue(':pedido_protocolo', $num);
                 $select->bindValue(':pedido_status', $status);
@@ -242,7 +242,7 @@ class CategoriaDAO extends DAO
                         'protocolo' => $row['pedido_protocolo'],
                         'numero' => $row['pedido_numero'],
                         'status' => $row['pedido_status'],
-                        //'pagamento' => $row['servico_pagamento']
+                        'pagamento' => $row['servico_pagamento']
                     );
                 }
             
@@ -331,7 +331,7 @@ class CategoriaDAO extends DAO
                         'protocolo' => $row['pedido_protocolo'],
                         'numero' => $row['pedido_numero'],
                         'status' => $row['pedido_status'],
-                        //'pagamento' => $row['servico_pagamento']
+                        'pagamento' => $row['servico_pagamento']
                     );
                 }
             
