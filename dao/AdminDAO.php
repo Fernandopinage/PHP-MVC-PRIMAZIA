@@ -539,12 +539,13 @@ class AdminDAO extends DAO
          return $array;
     }
 
-    public function ListarClienteFiltro($nome,$email){
+    public function ListarClienteFiltro($nome, $email, $cpf){
 
-        $sql = "SELECT * FROM `cliente` where CLIENTE_NOME =:CLIENTE_NOME or CLIENTE_EMAIL = :CLIENTE_EMAIL";
+        $sql = "SELECT * FROM `cliente` where CLIENTE_NOME =:CLIENTE_NOME or CLIENTE_EMAIL = :CLIENTE_EMAIL or CLIENTE_CPF = :CLIENTE_CPF";
         $select = $this->con->prepare($sql);
         $select->bindValue(':CLIENTE_NOME', $nome);
         $select->bindValue(':CLIENTE_EMAIL', $email);
+        $select->bindValue(':CLIENTE_CPF', $cpf);
         $select->execute();
         $array = array();
 
