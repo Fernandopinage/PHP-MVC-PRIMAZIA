@@ -314,7 +314,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                         echo '</div>';
                                         echo '<hr>';
 
-                                        echo '<p style=""><b>Endereço: </b>' . $perfil["logradouro"] . ', ' . $perfil["numero"] . ', ' . $perfil["bairro"] . '</p>';
+                                        echo '<p style=""><b>Endereço: </b>' . $perfil["logradouro"] . ', <b>Nº: </b> ' . $perfil["numero"] . ', <b>Bairro: </b> ' . $perfil["bairro"] . ', <b>CEP: </b>' . $perfil["cep"] . '</p>';
                                         echo '<b>Complemento: </b>' . $perfil["complemento"];
                                         echo '<hr>';
 
