@@ -400,12 +400,18 @@ class AdminDAO extends DAO
         return $array;
 
     }
-    public function ListarAdminsFiltro($nome,$email){
+    public function ListarAdminsFiltro($nome, $email, $cpf ){
 
-        $sql = "SELECT * FROM `admin` WHERE `admin_nome` = :admin_nome or `admin_email` = :admin_email";
+        echo "<pre>";
+        var_dump($cpf);
+        echo "</pre>";
+
+        
+        $sql = "SELECT * FROM `admin` WHERE `admin_nome` = :admin_nome or `admin_email` = :admin_email or `admin_cfp` =:admin_cfp";
         $select = $this->con->prepare($sql);
         $select->bindValue(':admin_nome', $nome);
         $select->bindValue(':admin_email', $email);
+        $select->bindValue(':admin_cfp', $cpf);
         $select->execute();
         $array = array();
 
@@ -427,7 +433,7 @@ class AdminDAO extends DAO
         }
 
         return $array;
-
+       
     }
 
     public function ListarProfissional(){

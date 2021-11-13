@@ -168,7 +168,7 @@ if (empty($_SESSION['admin'])) {
                 </div>
                 <div class="col-md-3">
                     <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_email">
+                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_cpf">
 
                 </div>
                 <div class="col-md-2" style="margin-top: 31px;">
@@ -195,13 +195,17 @@ if (empty($_SESSION['admin'])) {
             if (isset($_POST['filtror_adm'])) {
 
 
-                if (!empty($_POST['adm_name'])  or !empty($_POST['adm_email'])) {
+                if (!empty($_POST['adm_name'])  or !empty($_POST['adm_email']) or !empty($_POST['adm_cpf'])) {
 
                     $nome = $_POST['adm_name'];
                     $email = $_POST['adm_email'];
+                    $cpf = $_POST['adm_cpf'];
+
 
                     $Admin = new AdminDAO();
-                    $dadosAdmin = $Admin->ListarAdminsFiltro($nome, $email);
+                    $dadosAdmin = $Admin->ListarAdminsFiltro($nome, $email, $cpf );
+
+
                 } else {
 
                     $Admin = new AdminDAO();
