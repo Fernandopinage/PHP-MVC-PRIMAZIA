@@ -293,14 +293,15 @@ if (empty($_SESSION['admin'])) {
 
 
 
-        if (!empty($_POST['profissinal_name'])  or !empty($_POST['profissinal_email'])) {
+        if (!empty($_POST['profissinal_name'])  or !empty($_POST['profissinal_email']) or !empty($_POST['profissinal_cpf'])) {
 
 
             $nome = $_POST['profissinal_name'];
             $email = $_POST['profissinal_email'];
+            $cpf = $_POST['profissinal_cpf'];
 
             $Profissional = new AdminDAO();
-            $dadosProfissional = $Profissional->ListarProfissionalFiltro($nome, $email);
+            $dadosProfissional = $Profissional->ListarProfissionalFiltro($nome, $email, $cpf);
     ?>
             <script>
                 elt = document.getElementById('opcao');
@@ -346,7 +347,7 @@ if (empty($_SESSION['admin'])) {
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_email">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_cpf">
 
             </div>
             <div class="col-md-2" style="margin-top: 31px;">

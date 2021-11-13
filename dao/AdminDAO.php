@@ -469,12 +469,13 @@ class AdminDAO extends DAO
          return $array;
     }
 
-    public function ListarProfissionalFiltro($nome, $email){
+    public function ListarProfissionalFiltro($nome, $email, $cpf){
 
-        $sql = "SELECT * FROM `profissional` where profissional_nome = :profissional_nome  or  profissional_email = :profissional_email ";
+        $sql = "SELECT * FROM `profissional` where profissional_nome = :profissional_nome  or  profissional_email = :profissional_email or  profissional_cpf = :profissional_cpf ";
         $select = $this->con->prepare($sql);
         $select->bindValue(':profissional_nome', $nome);
         $select->bindValue(':profissional_email', $email);
+        $select->bindValue(':profissional_cpf', $cpf);
         $select->execute();
         $array = array();
 
