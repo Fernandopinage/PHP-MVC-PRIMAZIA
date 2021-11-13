@@ -168,7 +168,7 @@ if (empty($_SESSION['admin'])) {
                 </div>
                 <div class="col-md-3">
                     <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_cpf">
+                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" >
 
                 </div>
                 <div class="col-md-2" style="margin-top: 31px;">
@@ -347,7 +347,7 @@ if (empty($_SESSION['admin'])) {
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_cpf">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);"  >
 
             </div>
             <div class="col-md-2" style="margin-top: 31px;">
@@ -618,7 +618,7 @@ if (empty($_SESSION['admin'])) {
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_cpf">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);"  >
 
             </div>
             <div class="col-md-2" style="margin-top: 31px;">
