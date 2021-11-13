@@ -158,15 +158,20 @@ if (empty($_SESSION['admin'])) {
 
                 <div class="col-md-3">
                     <label for="validationServer01" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="adm_name">
+                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_name">
 
                 </div>
                 <div class="col-md-3">
                     <label for="validationServer01" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="adm_email">
+                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_email">
 
                 </div>
-                <div class="col-md-4" style="margin-top: 31px;">
+                <div class="col-md-3">
+                    <label for="validationServer01" class="form-label">CPF/CNPJ</label>
+                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_email">
+
+                </div>
+                <div class="col-md-2" style="margin-top: 31px;">
                     <input type="submit" name="filtror_adm" class="btn btn-secondary" value="Filtrar">
 
                 </div>
@@ -179,6 +184,7 @@ if (empty($_SESSION['admin'])) {
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
             <tr>
                 <th class="text-center" scope="col">Nome</th>
+                <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
             </tr>
@@ -214,6 +220,7 @@ if (empty($_SESSION['admin'])) {
 
                 <tr data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>">
                     <td class="text-center" scope="col"><?php echo $dadosAdmin['nome']; ?></td>
+                    <td class="text-center" scope="col"><?php echo $dadosAdmin['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['email']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['telefone']; ?></td>
                 </tr>
@@ -325,15 +332,20 @@ if (empty($_SESSION['admin'])) {
 
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_name">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_name">
 
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">E-mail</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="profissinal_email">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_email">
 
             </div>
-            <div class="col-md-4" style="margin-top: 31px;">
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">CPF/CNPJ</label>
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_email">
+
+            </div>
+            <div class="col-md-2" style="margin-top: 31px;">
                 <input id="filtror_profissional" type="submit" name="filtror_profissional" class="btn btn-secondary" value="Filtrar">
 
             </div>
@@ -346,6 +358,7 @@ if (empty($_SESSION['admin'])) {
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
             <tr>
                 <th class="text-center" scope="col">Nome</th>
+                <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
             </tr>
@@ -361,6 +374,7 @@ if (empty($_SESSION['admin'])) {
 
                 <tr data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>">
                     <td class="text-center" scope="col"><?php echo $dadosProfissional['nome']; ?></td>
+                    <td class="text-center"><?php echo $dadosProfissional['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['telefone']; ?></td>
                 </tr>
@@ -588,15 +602,20 @@ if (empty($_SESSION['admin'])) {
         <div id="cliente" class="row ms-3 p-2">
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_name">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_name">
 
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">E-mail</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="cliente_email">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_email">
 
             </div>
-            <div class="col-md-4" style="margin-top: 31px;">
+            <div class="col-md-3">
+                <label for="validationServer01" class="form-label">CPF/CNPJ</label>
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_email">
+
+            </div>
+            <div class="col-md-2" style="margin-top: 31px;">
                 <input type="submit" name="filtror_cliente" class="btn btn-secondary" value="Filtrar">
 
             </div>
@@ -609,6 +628,7 @@ if (empty($_SESSION['admin'])) {
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif;">
             <tr>
                 <th class="text-center" scope="col">Nome</th>
+                <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
             </tr>
@@ -623,6 +643,7 @@ if (empty($_SESSION['admin'])) {
 
                 <tr data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>">
                     <td class="text-center" scope="col"><?php echo $dadosCliente['nome']; ?></td>
+                    <td class="text-center"><?php echo $dadosCliente['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
                 </tr>
