@@ -396,17 +396,41 @@ class AdminDAO extends DAO
             );
 
         }
-
+        
         return $array;
 
     }
+
+    public function excel(){
+
+        $file = "test.xls";
+    
+
+        $html ='<table borde="1">';
+        $html .='<tr>';
+        $html .='<td colspan="4">Dados do Administrativo</td>';
+        $html .='</tr>';
+    
+        $html .= '<tr>';
+        $html .= '<td><b>Nome</b></td>';
+        $html .= '<td><b>Nome</b></td>';
+        $html .= '<td><b>Nome</b></td>';
+        $html .= '<td><b>Nome</b></td>';
+        $html .= '</tr>';
+    
+    
+        header('Content-Type: application/x-msexcel');
+        header('Content-Disposition: attachment; filename='.$file);
+        header("Content-Description: PHP Generated Data");
+    
+        echo $html;
+        exit;
+
+    }
+ 
     public function ListarAdminsFiltro($nome, $email, $cpf ){
 
-        echo "<pre>";
-        var_dump($cpf);
-        echo "</pre>";
-
-        
+         
         $sql = "SELECT * FROM `admin` WHERE `admin_nome` = :admin_nome or `admin_email` = :admin_email or `admin_cfp` =:admin_cfp";
         $select = $this->con->prepare($sql);
         $select->bindValue(':admin_nome', $nome);

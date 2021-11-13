@@ -171,8 +171,12 @@ if (empty($_SESSION['admin'])) {
                     <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" >
 
                 </div>
-                <div class="col-md-2" style="margin-top: 31px;">
+                <div class="col-md-1" style="margin-top: 31px;">
                     <input type="submit" name="filtror_adm" class="btn btn-secondary" value="Filtrar">
+
+                </div>
+                <div class="col-md-1" style="margin-top: 31px;">
+                    <a href="./excel.php" name="gerarexcell" class="btn btn-success">Excel</a>
 
                 </div>
         </form>
