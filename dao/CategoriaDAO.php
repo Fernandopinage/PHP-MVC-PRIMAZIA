@@ -242,7 +242,8 @@ class CategoriaDAO extends DAO
                         'protocolo' => $row['pedido_protocolo'],
                         'numero' => $row['pedido_numero'],
                         'status' => $row['pedido_status'],
-                        'pagamento' => $row['servico_pagamento']
+                        'pagamento' => $row['servico_pagamento'],
+                        'text' => $row['servico_text']
                     );
                 }
             
@@ -279,7 +280,8 @@ class CategoriaDAO extends DAO
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento']
+                'pagamento' => $row['servico_pagamento'],
+                'text' => $row['servico_text']
             );
         }
         
@@ -331,7 +333,8 @@ class CategoriaDAO extends DAO
                         'protocolo' => $row['pedido_protocolo'],
                         'numero' => $row['pedido_numero'],
                         'status' => $row['pedido_status'],
-                        'pagamento' => $row['servico_pagamento']
+                        'pagamento' => $row['servico_pagamento'],
+                        'text' => $row['servico_text']
                     );
                 }
             
@@ -368,7 +371,8 @@ class CategoriaDAO extends DAO
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento']
+                'pagamento' => $row['servico_pagamento'],
+                'text' => $row['servico_text']
             );
         }
         
@@ -415,7 +419,8 @@ class CategoriaDAO extends DAO
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento']
+                'pagamento' => $row['servico_pagamento'],
+                'text' => $row['servico_text']
             );
         }
         
@@ -461,7 +466,8 @@ class CategoriaDAO extends DAO
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento']
+                'pagamento' => $row['servico_pagamento'],
+                'text' => $row['servico_text']
             );
         }
         
@@ -743,7 +749,7 @@ class CategoriaDAO extends DAO
     public function listaServico($id)
     {
 
-        $sql = "SELECT * FROM `servico` WHERE servico_protocolo = :servico_protocolo";
+        $sql = "SELECT * FROM `servico` INNER join `pedido` on pedido_protocolo = servico_protocolo WHERE servico_protocolo = :servico_protocolo";
         $select = $this->con->prepare($sql);
         $select->bindValue(':servico_protocolo', $id);
         $select->execute();
@@ -754,7 +760,8 @@ class CategoriaDAO extends DAO
             $array[] = array(
 
                 'nome' => $row['servico_profissional'],
-                'pagamento' => $row['servico_pagamento']
+                'pagamento' => $row['servico_pagamento'],
+                'text' => $row['servico_text']
             );
         }
         return $array;

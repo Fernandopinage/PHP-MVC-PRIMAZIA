@@ -425,6 +425,16 @@ if (isset($_POST['chamado_finalizado'])) {
                                             echo '<option selected>' . $dados3[0]['pagamento'] . '</option>';
                                             echo '</select>';
                                             echo '</div>';
+
+
+                                            echo '<div class="row">';
+                                            echo '<div class="mb-3">';
+                                            echo '<p><b>Descrição do Pedido</b></p>';
+                                            //echo '<textarea class="form-control" id="text" name="text" value="' . $dados3[0]['text'] .'" rows="3" disabled></textarea>';
+                                            echo "<p>".$dados3[0]['text'] ."</p>";
+                                            echo '</div>';
+                                            echo '</div>';
+
                                         }
                                         ?>
 
