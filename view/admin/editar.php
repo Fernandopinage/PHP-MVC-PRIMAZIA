@@ -564,13 +564,14 @@ if (empty($_SESSION['admin'])) {
 
     if (isset($_POST['filtror_cliente'])) {
 
-        if (!empty($_POST['cliente_name']) or !empty($_POST['cliente_email'])) {
+        if (!empty($_POST['cliente_name']) or !empty($_POST['cliente_email']) or !empty($_POST['cliente_cpf'])) {
 
             $nome = $_POST['cliente_name'];
             $email = $_POST['cliente_email'];
+            $cpf = $_POST['cliente_cpf'];
 
             $Cliente = new AdminDAO();
-            $dadosCliente = $Cliente->ListarClienteFiltro($nome, $email);
+            $dadosCliente = $Cliente->ListarClienteFiltro($nome, $email, $cpf);
 
     ?>
             <script>
@@ -617,7 +618,7 @@ if (empty($_SESSION['admin'])) {
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_email">
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_cpf">
 
             </div>
             <div class="col-md-2" style="margin-top: 31px;">
