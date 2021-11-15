@@ -211,6 +211,7 @@ if (isset($_POST['chamado_finalizado'])) {
                 <!-- <th scope="col">Telefone</th> --->
                 <th scope="col">Serviço</th>
                 <!-- <th scope="col">Tipo de Serviço</th> -->
+                <th scope="col">Valor do Pagamento</th>
                 <th scope="col">Pagamento</th>
             </tr>
         </thead>
@@ -248,6 +249,16 @@ if (isset($_POST['chamado_finalizado'])) {
                         ?>
 
                     </td>
+                    <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php if (!empty($dados['valor'])) {
+
+                                                            echo $dados['valor'];
+                                                        } else {
+
+                                                            echo "---";
+                                                        }
+                    
+                    
+                     ?></th>
                     <th scope="row" class="text-center"><?php
                                                         if (!empty($dados['pagamento'])) {
 

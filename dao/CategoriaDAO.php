@@ -98,39 +98,82 @@ class CategoriaDAO extends DAO
     public function pedido()
     {
 
-        $sql = "SELECT * FROM `pedido`";
+        $sql = "SELECT * FROM `servico`";
         $select = $this->con->prepare($sql);
         $select->execute();
 
-        $array = array();
+        if($select->fetch(PDO::FETCH_ASSOC)){
+           
+            
+            $query = "SELECT * FROM `pedido` INNER JOIN servico on servico_protocolo = pedido_protocolo";
+            $parametro = $this->con->prepare($query);
+            $parametro->execute();
+
+            $array = array();
+            while ($row = $parametro->fetch(PDO::FETCH_ASSOC)) {
+
+
+                $array[] = array(
+    
+                    'id' => $row['pedido_id'],
+                    'nome' => $row['pedido_nome'],
+                    'telefone' => $row['pedido_telefone'],
+                    'email' => $row['pedido_email'],
+                    'cpf' => $row['pedido_cpf'],
+                    'cep' => $row['pedido_cep'],
+                    'data' => $row['pedido_data'],
+                    'descricao' => json_decode($row['pedido_descricao']),
+                    'uf' => $row['pedido_uf'],
+                    'cidade' => $row['pedido_cidade'],
+                    'logradouro' => $row['pedido_logradouro'],
+                    'bairro' => $row['pedido_bairro'],
+                    'complemento' => $row['pedido_complemento'],
+                    'protocolo' => $row['pedido_protocolo'],
+                    'numero' => $row['pedido_numero'],
+                    'status' => $row['pedido_status'],
+                    'pagamento' => $row['servico_pagamento'],
+                    'valor' => $row['servico_valor'],
+                );
+            }
+    
+            
+        }else{
 
         
-        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            $query = "SELECT * FROM `pedido`";
+            $parametro = $this->con->prepare($query);
+            $parametro->execute();
+
+            $array = array();
+            while ($row = $parametro->fetch(PDO::FETCH_ASSOC)) {
 
 
-            $array[] = array(
+                $array[] = array(
+    
+                    'id' => $row['pedido_id'],
+                    'nome' => $row['pedido_nome'],
+                    'telefone' => $row['pedido_telefone'],
+                    'email' => $row['pedido_email'],
+                    'cpf' => $row['pedido_cpf'],
+                    'cep' => $row['pedido_cep'],
+                    'data' => $row['pedido_data'],
+                    'descricao' => json_decode($row['pedido_descricao']),
+                    'uf' => $row['pedido_uf'],
+                    'cidade' => $row['pedido_cidade'],
+                    'logradouro' => $row['pedido_logradouro'],
+                    'bairro' => $row['pedido_bairro'],
+                    'complemento' => $row['pedido_complemento'],
+                    'protocolo' => $row['pedido_protocolo'],
+                    'numero' => $row['pedido_numero'],
+                    'status' => $row['pedido_status'],
+                    //'pagamento' => $row['servico_pagamento'],
+                    //'valor' => $row['servico_valor'],
+                );
+            }
 
-                'id' => $row['pedido_id'],
-                'nome' => $row['pedido_nome'],
-                'telefone' => $row['pedido_telefone'],
-                'email' => $row['pedido_email'],
-                'cpf' => $row['pedido_cpf'],
-                'cep' => $row['pedido_cep'],
-                'data' => $row['pedido_data'],
-                'descricao' => json_decode($row['pedido_descricao']),
-                'uf' => $row['pedido_uf'],
-                'cidade' => $row['pedido_cidade'],
-                'logradouro' => $row['pedido_logradouro'],
-                'bairro' => $row['pedido_bairro'],
-                'complemento' => $row['pedido_complemento'],
-                'protocolo' => $row['pedido_protocolo'],
-                'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status'],
-                //'pagamento' => $row['servico_pagamento']
-            );
         }
-
         return $array;
+        
     }
 
 
@@ -244,7 +287,8 @@ class CategoriaDAO extends DAO
                         'numero' => $row['pedido_numero'],
                         'status' => $row['pedido_status'],
                         'pagamento' => $row['servico_pagamento'],
-                        'text' => $row['servico_text']
+                        'text' => $row['servico_text'],
+                        'valor' => $row['servico_valor']
                     );
                 }
             
@@ -282,7 +326,8 @@ class CategoriaDAO extends DAO
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
                 'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text']
+                'text' => $row['servico_text'],
+                'valor' => $row['servico_valor']
             );
         }
         
@@ -335,7 +380,8 @@ class CategoriaDAO extends DAO
                         'numero' => $row['pedido_numero'],
                         'status' => $row['pedido_status'],
                         'pagamento' => $row['servico_pagamento'],
-                        'text' => $row['servico_text']
+                        'text' => $row['servico_text'],
+                        'valor' => $row['servico_valor']
                     );
                 }
             
@@ -373,7 +419,8 @@ class CategoriaDAO extends DAO
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
                 'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text']
+                'text' => $row['servico_text'],
+                'valor' => $row['servico_valor']
             );
         }
         
@@ -421,7 +468,8 @@ class CategoriaDAO extends DAO
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
                 'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text']
+                'text' => $row['servico_text'],
+                'valor' => $row['servico_valor']
             );
         }
         
@@ -468,7 +516,8 @@ class CategoriaDAO extends DAO
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
                 'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text']
+                'text' => $row['servico_text'],
+                'valor' => $row['servico_valor']
             );
         }
         
