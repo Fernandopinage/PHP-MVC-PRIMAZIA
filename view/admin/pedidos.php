@@ -24,6 +24,8 @@ if (isset($_POST['filtror'])) {
 
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final);
+
+
     }else{
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
@@ -103,6 +105,7 @@ if (isset($_POST['chamado_finalizado'])) {
 <br>
 
 <div class="container">
+
     <form method="POST">
 
         <div class="row g-3">
@@ -149,6 +152,7 @@ if (isset($_POST['chamado_finalizado'])) {
             </div>
             <div class="col-md-2" style="margin-top: 42px;">
                 <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
+                <input type="submit" name="excel" class="btn btn-success" value="Gerar Excel">
 
             </div>
 
@@ -157,6 +161,10 @@ if (isset($_POST['chamado_finalizado'])) {
 
 
     </form>
+    <?php 
+    
+   echo $dados[0]['excel'];
+    ?>
 </div>
 
 <div class="container" style="margin-top:30px; margin-bottom:30px;">
@@ -195,7 +203,6 @@ if (isset($_POST['chamado_finalizado'])) {
             <?php
 
             foreach ($dados as $dados) {
-
 
             ?>
                 <tr data-bs-toggle="modal" data-bs-target="#view<?php echo $dados['id']; ?>">
