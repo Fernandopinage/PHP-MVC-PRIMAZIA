@@ -181,12 +181,13 @@ if (isset($_POST['chamado_finalizado'])) {
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
             <tr>
                 <th class="text-center" scope="col">Status</th>
+                <th class="text-center" scope="col">Data</th>
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
                 <!-- <th scope="col">Telefone</th> --->
                 <th scope="col">Serviço</th>
                 <!-- <th scope="col">Tipo de Serviço</th> -->
-                <th scope="col">Valor do Pagamento</th>
+                <th scope="col">Valor do Serviço</th>
                 <th scope="col">Pagamento</th>
             </tr>
         </thead>
@@ -212,6 +213,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                                                                                                                                                                 }
                                                                     ?>
                     </td>
+                    <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo date('d/m/Y', strtotime($dados['data'])); ?></th>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php echo $dados['protocolo']; ?></th>
                     <td><?php echo $dados['nome']; ?></td>
                     <!-- <td><?php echo $dados['telefone']; ?></td>-->
