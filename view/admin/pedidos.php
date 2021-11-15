@@ -81,7 +81,7 @@ if (isset($_POST['chamado'])) {
         $ClassServico->SetPagamento($_POST['pagamento']);
         $ClassServico->SetText($_POST['text']);
 
-  
+
         $Servico = new ServicoDao();
         $Servico->inserServico($ClassServico);
     }
@@ -397,10 +397,9 @@ if (isset($_POST['chamado_finalizado'])) {
                                             </select>
 
                                             <hr>
-                                            <p><b>Forma de Pagamento</b></p>
-
                                             <div class="row">
-                                                <div class="col-md-4" style="margin-bottom: 50px;">
+                                                <div class="col-md-4">
+                                                    <p><b>Forma de Pagamento</b></p>
                                                     <select id="pagamento" name="pagamento" class="form-select form-select-sm">
                                                         <option selected></option>
                                                         <option value="Cartão Crédito">Cartão Crédito</option>
@@ -408,33 +407,43 @@ if (isset($_POST['chamado_finalizado'])) {
                                                         <option value="PIX">PIX</option>
                                                     </select>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <p><b>Forma de Pagamento</b></p>
+                                                    <input type="text" class="form-control form-control-sm" name="valor">
+                                                </div>
                                             </div>
+                                            <br>
+
                                             <div class="row">
                                                 <div class="mb-3">
-                                                <p><b>Descrição do Pedido</b></p>
+                                                    <p><b>Descrição do Pedido</b></p>
                                                     <textarea class="form-control" id="text" name="text" rows="3"></textarea>
                                                 </div>
                                             </div>
                                         <?php
                                         } else {
+                                        ?>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><b>Forma de Pagamento</b></p>
+                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
+                                                        <option selected> <?php echo $dados3[0]['pagamento'];?></option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <p><b>Forma de Pagamento</b></p>
+                                                    <input type="text" class="form-control form-control-sm" value="" name="valor" disabled>
+                                                </div>
+                                            </div>
+                                            <br>
 
-                                            echo '<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="' . $dados3[0]['nome'] . '"disabled>';
-                                            echo '<hr><p><b>Forma de Pagamento</b></p>';
-                                            echo '<div class="row"> <div class="col-md-4" style="margin-bottom: 50px;">';
-                                            echo '<select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>';
-                                            echo '<option selected>' . $dados3[0]['pagamento'] . '</option>';
-                                            echo '</select>';
-                                            echo '</div>';
-
-
-                                            echo '<div class="row">';
-                                            echo '<div class="mb-3">';
-                                            echo '<p><b>Descrição do Pedido</b></p>';
-                                            //echo '<textarea class="form-control" id="text" name="text" value="' . $dados3[0]['text'] .'" rows="3" disabled></textarea>';
-                                            echo "<p>".$dados3[0]['text'] ."</p>";
-                                            echo '</div>';
-                                            echo '</div>';
-
+                                            <div class="row">
+                                                <div class="mb-3">
+                                                    <p><b>Descrição do Pedido</b></p>
+                                                    <textarea class="form-control" id="text" name="text" rows="3" disabled><?php echo $dados3[0]['text'];?></textarea>
+                                                </div>
+                                            </div>
+                                        <?php
                                         }
                                         ?>
 
@@ -537,4 +546,4 @@ if (isset($_POST['chamado_finalizado'])) {
 
 <?php
 require "../../layout/footer.php";
-?>
+?>  
