@@ -102,9 +102,9 @@ class CategoriaDAO extends DAO
         $select = $this->con->prepare($sql);
         $select->execute();
 
-        if($select->fetch(PDO::FETCH_ASSOC)){
-           
-            
+        if ($select->fetch(PDO::FETCH_ASSOC)) {
+
+
             $query = "SELECT * FROM `pedido` INNER JOIN servico on servico_protocolo = pedido_protocolo";
             $parametro = $this->con->prepare($query);
             $parametro->execute();
@@ -114,7 +114,7 @@ class CategoriaDAO extends DAO
 
 
                 $array[] = array(
-    
+
                     'id' => $row['pedido_id'],
                     'nome' => $row['pedido_nome'],
                     'telefone' => $row['pedido_telefone'],
@@ -135,11 +135,9 @@ class CategoriaDAO extends DAO
                     'valor' => $row['servico_valor'],
                 );
             }
-    
-            
-        }else{
+        } else {
 
-        
+
             $query = "SELECT * FROM `pedido`";
             $parametro = $this->con->prepare($query);
             $parametro->execute();
@@ -149,7 +147,7 @@ class CategoriaDAO extends DAO
 
 
                 $array[] = array(
-    
+
                     'id' => $row['pedido_id'],
                     'nome' => $row['pedido_nome'],
                     'telefone' => $row['pedido_telefone'],
@@ -170,10 +168,8 @@ class CategoriaDAO extends DAO
                     //'valor' => $row['servico_valor'],
                 );
             }
-
         }
         return $array;
-        
     }
 
 
@@ -245,154 +241,84 @@ class CategoriaDAO extends DAO
         return $array;
     }
 
-    public function pedidosFiltro($status, $num)
+    public function pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final)
     {
+        $where ="";
 
-        $query = "SELECT * FROM `servico` WHERE servico_protocolo =:servico_protocolo ";
-        $select = $this->con->prepare($query);
-        $select->bindValue(':servico_protocolo', $num);
-        $select->execute();
-        if(!$select->fetch(PDO::FETCH_ASSOC)){
+        if(!empty($status)){
 
+            $where .= "pedido_status ='".$status."'";
+        }
+        
+        if(!empty($num)){
+            if(!empty($status)){
 
-                $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
-                $select = $this->con->prepare($sql);
-                $select->bindValue(':pedido_protocolo', $num);
-                $select->bindValue(':pedido_status', $status);
-                $select->execute();
+                $where .= " and pedido_protocolo ='".$num."'";
+            }else{
+                $where .= "pedido_protocolo ='".$num."'";
+            }
+        }
 
-                $array = array();
+        if(!empty($pagamento)){
 
+            if(!empty($num) or !empty($status)){
 
+                $where .= " and servico_pagamento ='".$pagamento."'";
+            }else{
+                $where .= " servico_pagamento ='".$pagamento."'";
+            }
 
-                while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+        }
 
-
-                    $array[] = array(
-
-                        'id' => $row['pedido_id'],
-                        'nome' => $row['pedido_nome'],
-                        'telefone' => $row['pedido_telefone'],
-                        'email' => $row['pedido_email'],
-                        'cpf' => $row['pedido_cpf'],
-                        'cep' => $row['pedido_cep'],
-                        'data' => $row['pedido_data'],
-                        'descricao' => json_decode($row['pedido_descricao']),
-                        'uf' => $row['pedido_uf'],
-                        'cidade' => $row['pedido_cidade'],
-                        'logradouro' => $row['pedido_logradouro'],
-                        'bairro' => $row['pedido_bairro'],
-                        'complemento' => $row['pedido_complemento'],
-                        'protocolo' => $row['pedido_protocolo'],
-                        'numero' => $row['pedido_numero'],
-                        'status' => $row['pedido_status'],
-                        'pagamento' => $row['servico_pagamento'],
-                        'text' => $row['servico_text'],
-                        'valor' => $row['servico_valor']
-                    );
-                }
+        if(!empty($data_inicio) and !empty($data_final)){
             
-        }else{
-        
-        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo where pedido_protocolo = :pedido_protocolo or pedido_status =:pedido_status";
-        $select = $this->con->prepare($sql);
-        $select->bindValue(':pedido_protocolo', $num);
-        $select->bindValue(':pedido_status', $status);
-        $select->execute();
+            if($data_inicio > $data_final){
 
-        $array = array();
+                ?>
 
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Erro',
+                        text: 'Data Inicial não pode ser maior que Data Final',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+            <?php
 
+            }else{
 
-        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                if(!empty($num) or !empty($status) or !empty($pagamento)){
 
-
-            $array[] = array(
-
-                'id' => $row['pedido_id'],
-                'nome' => $row['pedido_nome'],
-                'telefone' => $row['pedido_telefone'],
-                'email' => $row['pedido_email'],
-                'cpf' => $row['pedido_cpf'],
-                'cep' => $row['pedido_cep'],
-                'data' => $row['pedido_data'],
-                'descricao' => json_decode($row['pedido_descricao']),
-                'uf' => $row['pedido_uf'],
-                'cidade' => $row['pedido_cidade'],
-                'logradouro' => $row['pedido_logradouro'],
-                'bairro' => $row['pedido_bairro'],
-                'complemento' => $row['pedido_complemento'],
-                'protocolo' => $row['pedido_protocolo'],
-                'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text'],
-                'valor' => $row['servico_valor']
-            );
-        }
-        
-    }
-
-
-        return $array;
-        
-    }
-
-    public function pedidosFiltroAND($status, $num)
-    {
-
-        $query = "SELECT * FROM `servico` WHERE servico_protocolo =:servico_protocolo ";
-        $select = $this->con->prepare($query);
-        $select->bindValue(':servico_protocolo', $num);
-        $select->execute();
-        if(!$select->fetch(PDO::FETCH_ASSOC)){
-
-
-                $sql = "SELECT * FROM `pedido` where pedido_protocolo = :pedido_protocolo and pedido_status =:pedido_status";
-                $select = $this->con->prepare($sql);
-                $select->bindValue(':pedido_protocolo', $num);
-                $select->bindValue(':pedido_status', $status);
-                $select->execute();
-
-                $array = array();
-
-
-
-                while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-
-
-                    $array[] = array(
-
-                        'id' => $row['pedido_id'],
-                        'nome' => $row['pedido_nome'],
-                        'telefone' => $row['pedido_telefone'],
-                        'email' => $row['pedido_email'],
-                        'cpf' => $row['pedido_cpf'],
-                        'cep' => $row['pedido_cep'],
-                        'data' => $row['pedido_data'],
-                        'descricao' => json_decode($row['pedido_descricao']),
-                        'uf' => $row['pedido_uf'],
-                        'cidade' => $row['pedido_cidade'],
-                        'logradouro' => $row['pedido_logradouro'],
-                        'bairro' => $row['pedido_bairro'],
-                        'complemento' => $row['pedido_complemento'],
-                        'protocolo' => $row['pedido_protocolo'],
-                        'numero' => $row['pedido_numero'],
-                        'status' => $row['pedido_status'],
-                        'pagamento' => $row['servico_pagamento'],
-                        'text' => $row['servico_text'],
-                        'valor' => $row['servico_valor']
-                    );
+                    $where .= " and pedido_data BETWEEN '".$data_inicio."' and '".$data_final."'";
+                }else{
+                    $where .= " pedido_data BETWEEN '".$data_inicio."' and '".$data_final."'";
                 }
-            
+                
+
+            }
+        }
+
+
+
+        if(!empty($where)){
+
+            $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo where ".$where;
         }else{
-        
-        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo where pedido_protocolo = :pedido_protocolo and pedido_status =:pedido_status";
+            $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo";
+        }
         $select = $this->con->prepare($sql);
-        $select->bindValue(':pedido_protocolo', $num);
-        $select->bindValue(':pedido_status', $status);
-        $select->execute();
+        //$select->bindValue(':pedido_protocolo', $num);
+        //$select->bindValue(':pedido_status', $status);
+        //$select->bindValue(':servico_pagamento', $pagamento);
 
+        if(!empty($where)){
+            $select->execute();
+        }
+        //var_dump($select);
+      
         $array = array();
 
 
@@ -423,111 +349,12 @@ class CategoriaDAO extends DAO
                 'valor' => $row['servico_valor']
             );
         }
+
         
-    }
-
-
         return $array;
         
+      
     }
-
-
-
-    public function pedidosFiltroData($status, $data_inicio,$data_final){
-
-        
-        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo WHERE pedido_status=:pedido_status and pedido_data BETWEEN :pedido_inicio AND :pedido_final" ;
-        $select = $this->con->prepare($sql);
-        $select->bindValue(':pedido_final', $data_final);
-        $select->bindValue(':pedido_inicio', $data_inicio);
-        $select->bindValue(':pedido_status', $status);
- 
-        $select->execute();
-        
-        $array = array();
-
-        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-
-
-            $array[] = array(
-
-                'id' => $row['pedido_id'],
-                'nome' => $row['pedido_nome'],
-                'telefone' => $row['pedido_telefone'],
-                'email' => $row['pedido_email'],
-                'cpf' => $row['pedido_cpf'],
-                'cep' => $row['pedido_cep'],
-                'data' => $row['pedido_data'],
-                'descricao' => json_decode($row['pedido_descricao']),
-                'uf' => $row['pedido_uf'],
-                'cidade' => $row['pedido_cidade'],
-                'logradouro' => $row['pedido_logradouro'],
-                'bairro' => $row['pedido_bairro'],
-                'complemento' => $row['pedido_complemento'],
-                'protocolo' => $row['pedido_protocolo'],
-                'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text'],
-                'valor' => $row['servico_valor']
-            );
-        }
-        
-  
-        return $array;
-
-    }
-
-
-    public function pedidosData($data_inicio,$data_final){
-
-
-     
-        $sql = "SELECT * FROM `pedido` INNER join `servico` on pedido_protocolo = servico_protocolo WHERE pedido_data BETWEEN :pedido_inicio AND :pedido_final";
-        
-        
-        $select = $this->con->prepare($sql);
-        $select->bindValue(':pedido_inicio', $data_inicio);
-        $select->bindValue(':pedido_final', $data_final);
-     
- 
-        $select->execute();
-        $array = array();
-
-        while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-
-
-            $array[] = array(
-
-                'id' => $row['pedido_id'],
-                'nome' => $row['pedido_nome'],
-                'telefone' => $row['pedido_telefone'],
-                'email' => $row['pedido_email'],
-                'cpf' => $row['pedido_cpf'],
-                'cep' => $row['pedido_cep'],
-                'data' => $row['pedido_data'],
-                'descricao' => json_decode($row['pedido_descricao']),
-                'uf' => $row['pedido_uf'],
-                'cidade' => $row['pedido_cidade'],
-                'logradouro' => $row['pedido_logradouro'],
-                'bairro' => $row['pedido_bairro'],
-                'complemento' => $row['pedido_complemento'],
-                'protocolo' => $row['pedido_protocolo'],
-                'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text'],
-                'valor' => $row['servico_valor']
-            );
-        }
-        
-  
-        return $array;
-        
-    }
-
-
-
 
 
     public function ativaStatus($id)
@@ -665,8 +492,9 @@ class CategoriaDAO extends DAO
             return $lista;
         }
     }
- 
-    public function pedidosCliente($email){
+
+    public function pedidosCliente($email)
+    {
 
         $sql = "SELECT * FROM `pedido` where pedido_email = :pedido_email ORDER BY `pedido`.`pedido_id` DESC";
         $select = $this->con->prepare($sql);
@@ -701,7 +529,6 @@ class CategoriaDAO extends DAO
 
 
         return $array;
-
     }
 
 
@@ -812,7 +639,7 @@ class CategoriaDAO extends DAO
                 'nome' => $row['servico_profissional'],
                 'pagamento' => $row['servico_pagamento'],
                 'text' => $row['servico_text'],
-                'valor' =>$row['servico_valor'],
+                'valor' => $row['servico_valor'],
             );
         }
         return $array;

@@ -14,48 +14,23 @@ if (empty($_SESSION['admin'])) {
 
 if (isset($_POST['filtror'])) {
 
-    if (isset($_POST['status_filtro']) or isset($_POST['num_filtro'])) {
+    if (!empty($_POST['status_filtro']) or !empty($_POST['num_filtro']) or !empty($_POST['pagamento']) or !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {
 
         $status =  $_POST['status_filtro'];
         $num =  $_POST['num_filtro'];
-
-        $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->pedidosFiltro($status, $num);
-    }
-
-    if (empty($_POST['status_filtro']) and empty($_POST['num_filtro'])) {
-
-        $status =  $_POST['status_filtro'];
-        $num =  $_POST['num_filtro'];
-
-        $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->pedidosFiltroAND($status, $num);
-    }
-
-    if (!empty($_POST['status_filtro']) and !empty($_POST['data_inicio_filtro']) and !empty($_POST['data_final_filtro'])) {
-
-        $status = $_POST['status_filtro'];
+        $pagamento =  $_POST['pagamento'];
         $data_inicio =  $_POST['data_inicio_filtro'];
         $data_final =  $_POST['data_final_filtro'];
 
         $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->pedidosFiltroData($status, $data_inicio, $data_final);
-    }
-
-    if (!empty($_POST['data_inicio_filtro']) and !empty($_POST['data_final_filtro'])) {
-
-        $data_inicio =  $_POST['data_inicio_filtro'];
-        $data_final =  $_POST['data_final_filtro'];
-
-        $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->pedidosData($data_inicio, $data_final);
-    }
-
-
-    if (empty($_POST['status_filtro']) and empty($_POST['num_filtro']) and empty($_POST['data_inicio_filtro']) and empty($_POST['data_final_filtro']) and empty($_POST['pagamento'])) {
+        $dados = $ClassPedido->pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final);
+    }else{
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
+
+
+
 } else {
 
     $ClassPedido = new CategoriaDAO();
@@ -165,7 +140,7 @@ if (isset($_POST['chamado_finalizado'])) {
                 <label for="validationDefault01" class="form-label">Forma de Pagamento</label>
                 <select class="form-select form-select-sm" name="pagamento" aria-label="select example">
                     <option value=""></option>
-                    <option value="Dinheiro">Pix</option>
+                    <option value="Pix">Pix</option>
                     <option value="Cartão de Crédito">Cartão de Crédito</option>
                     <option value="Cartão de Débito">Cartão de Débito</option>
 
