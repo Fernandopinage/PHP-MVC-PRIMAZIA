@@ -98,12 +98,13 @@ class CategoriaDAO extends DAO
     public function pedido()
     {
 
-        $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo";
+        $sql = "SELECT * FROM `pedido`";
         $select = $this->con->prepare($sql);
         $select->execute();
 
         $array = array();
 
+        
         while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 
 
@@ -125,7 +126,7 @@ class CategoriaDAO extends DAO
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento']
+                //'pagamento' => $row['servico_pagamento']
             );
         }
 
