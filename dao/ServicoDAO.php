@@ -23,7 +23,7 @@ class ServicoDao extends Dao{
         }
 
 
-        $sql = "INSERT INTO `servico`(`servico_id`, `servico_status`, `servico_protocolo`, `servico_profissional`, `servico_data` , `servico_idprofissional`, `servico_pagamento`, `servico_text`) VALUES (null, :servico_status, :servico_protocolo, :servico_profissional, :servico_data, :servico_idprofissional, :servico_pagamento, :servico_text)";
+        $sql = "INSERT INTO `servico`(`servico_id`, `servico_status`, `servico_protocolo`, `servico_profissional`, `servico_data` , `servico_idprofissional`, `servico_pagamento`, `servico_text`, `servico_valor`) VALUES (null, :servico_status, :servico_protocolo, :servico_profissional, :servico_data, :servico_idprofissional, :servico_pagamento, :servico_text, :servico_valor)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':servico_status', 'E');
         $insert->bindValue(':servico_protocolo',$ClassServico->GetProtocolo());
@@ -31,9 +31,8 @@ class ServicoDao extends Dao{
         $insert->bindValue(':servico_data',$ClassServico->GetData());
         $insert->bindValue(':servico_pagamento',$ClassServico->GetPagamento());
         $insert->bindValue(':servico_text',$ClassServico->GetText());
+        $insert->bindValue(':servico_valor',$ClassServico->GetValor());
         @$insert->bindValue(':servico_idprofissional',$id);
-        
-        
         
         
         try {

@@ -80,7 +80,7 @@ if (isset($_POST['chamado'])) {
         $ClassServico->SetID($_POST['id']);
         $ClassServico->SetPagamento($_POST['pagamento']);
         $ClassServico->SetText($_POST['text']);
-
+        $ClassServico->SetValor($_POST['valor']);
 
         $Servico = new ServicoDao();
         $Servico->inserServico($ClassServico);

@@ -9,8 +9,8 @@ class Servico{
     private $protocolo;
     private $data;
     private $pagamento;
-
     private $text;
+    private $valor;
 
 
     public function SetId($id){
@@ -75,6 +75,15 @@ class Servico{
 
     public function GetText(){
         return $this->text;
+    }
+
+    public function SetValor($valor){
+
+        $this->valor = $valor;
+    }
+
+    public function GetValor(){
+        return $this->valor;
     }
 }
 
