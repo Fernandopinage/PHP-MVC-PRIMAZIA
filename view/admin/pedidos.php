@@ -432,7 +432,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p><b>Forma de Pagamento</b></p>
-                                                    <input type="text" class="form-control form-control-sm" value="" name="valor" disabled>
+                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor'];?>" name="valor" disabled>
                                                 </div>
                                             </div>
                                             <br>
