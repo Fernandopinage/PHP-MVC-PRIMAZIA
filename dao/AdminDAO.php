@@ -428,6 +428,8 @@ class AdminDAO extends DAO
         exit;
 
     }
+
+
  
     public function ListarAdminsFiltro($nome, $email, $cpf ){
 
@@ -464,6 +466,41 @@ class AdminDAO extends DAO
         return $array;
        
     }
+
+    public function excelAdm($sql){
+
+
+        $select = $this->con->prepare($sql);
+        // $select->bindValue(':admin_nome', $nome);
+        // $select->bindValue(':admin_email', $email);
+        // $select->bindValue(':admin_cfp', $cpf);
+ 
+         //var_dump($query);
+         
+         $select->execute();
+         $array = array();
+ 
+ 
+         while($row = $select->fetch(PDO::FETCH_ASSOC)){
+ 
+             $array[] = array(
+                
+                 'id' => $row['admin_id'],
+                 'nome' => $row['admin_nome'],
+                 'email' => $row['admin_email'],
+                 'foto' => $row['admin_foto'],
+                 'telefone' => $row['admin_telefone'],
+                 'cpf' => $row['admin_cfp'],
+                 'senha' => $row['admin_senha']
+ 
+             );
+ 
+         }
+ 
+         return $array;
+
+    }
+
 
     public function ListarProfissional(){
 

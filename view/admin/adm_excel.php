@@ -1,6 +1,6 @@
 <?php
 
-include_once "../../dao/CategoriaDAO.php";
+include_once "../../dao/AdminDAO.php";
 
 ?>
 <!DOCTYPE html>
@@ -20,65 +20,40 @@ include_once "../../dao/CategoriaDAO.php";
 
     if(isset($_GET['p'])){
 
-        $excel = $_GET['p'];
-        $ClassPedido = new CategoriaDAO();
-        $dados = $ClassPedido->gerarExcel($excel);
-        
+        $sql = $_GET['p'];
+        $ClassPedido = new AdminDAO();
+        $dados = $ClassPedido->excelAdm($sql);
+
     }
 
-        header ("Content-type: application/x-msexcel");
-        header ("Content-Disposition: attachment; filename=\"nome_arquivo.xls\"" );
 
 
 
     ?>
-
+        
     <table border="1">
         <thead>
             <tr>
-                <th scope="col">Status</th>
-                <th scope="col">Data</th>
-                <th scope="col">Nº Pedido</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">Serviço</th>
-                <th scope="col">Valor do Serviço</th>
-                <th scope="col">Pagamento</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF/CNPJ</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefone</th>
+    
 
             </tr>
         </thead>
         <tbody>
-            <?php 
+        <?php 
             
             foreach($dados as $dados){
                 ?>
                 <tr>
-                <th scope="col"><?php 
-                    if($dados['status'] === 'A'){
-                        echo "EM ABERTO";
-                    }
-                    if($dados['status'] === 'E'){
-                        echo "Em Atendimento";
-                    }
-                    if($dados['status'] === 'F'){
-                        echo "Finalizado";
-                    }
-                    if($dados['status'] === 'C'){
-                        echo "Cancelado";
-                    }
-                
-                ?></th>
-                <th scope="col"><?php echo $dados['data'];?></th>
-                <th scope="col"><?php echo $dados['protocolo'];?></th>
                 <th scope="col"><?php echo $dados['nome'];?></th>
-                <th scope="col"><?php
-
-                            $obj = $dados['descricao'];
-                            print_r($obj->tpservico);
-
-                            ?></th>
-                <th scope="col"><?php echo $dados['valor'];?></th>
-                <th scope="col"><?php echo $dados['pagamento'];?></th>
-            </tr>
+                <th scope="col"><?php echo $dados['cpf'];?></th>
+                <th scope="col"><?php echo $dados['email'];?></th>
+                <th scope="col"><?php echo $dados['telefone'];?></th>
+                
+                </tr>
                 
                 <?php
             }
@@ -87,7 +62,14 @@ include_once "../../dao/CategoriaDAO.php";
             ?>
         </tbody>
     </table>
-
+        
+            <?php
+               
+        header ("Content-type: application/x-msexcel");
+        header ("Content-Disposition: attachment; filename=\"administrativo.xls\"" );
+            
+         
+            ?>
 </body>
 
 </html>

@@ -208,12 +208,10 @@ if (empty($_SESSION['admin'])) {
                 </div>
                 <?php
                 if (isset($dadosAdmin)) {
-
                     
                 ?>      
-
                     <div class="col-md-1" style="margin-top: 31px;">
-                        <a href="../admin/?p=<?php echo $dadosAdmin[0]['excel']; ?>" name="gerarexcell" class="btn btn-success">Excel</a>
+                        <a href="../admin/adm_excel.php?p=<?php echo $dadosAdmin[0]['excel'];?>" name="gerarexcell" class="btn btn-success">Excel</a>
                     </div>
                 <?php
                 }
