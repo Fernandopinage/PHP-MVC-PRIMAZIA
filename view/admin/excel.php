@@ -33,7 +33,7 @@ include_once "../../dao/CategoriaDAO.php";
 
     ?>
 
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <th scope="col">Status</th>
