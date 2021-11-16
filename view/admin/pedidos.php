@@ -1,4 +1,6 @@
 <?php
+
+
 include_once "../../layout/heard.php";
 include_once "../../dao/CategoriaDAO.php";
 include_once "../../class/ClassServico.php";
@@ -96,6 +98,9 @@ if (isset($_POST['chamado_finalizado'])) {
     /***************************************** */
 }
 
+
+
+
 ?>
 
 <div id="logo">
@@ -152,7 +157,17 @@ if (isset($_POST['chamado_finalizado'])) {
             </div>
             <div class="col-md-2" style="margin-top: 42px;">
                 <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
-                <input type="submit" name="excel" class="btn btn-success" value="Gerar Excel">
+                <?php 
+                if(isset($dados[0]['excel'])){
+
+                
+                ?>
+              <!--  <button type="submit" name="excel" class="btn btn-success" value="<?php echo $dados[0]['excel']?>">Gerar Excel</button>-->
+               <a href="../admin/excel.php?p=<?php  echo $dados[0]['excel']?>" class="btn btn-success" >Gerar Excel</a>
+               <?php
+               
+                }
+                ?>
 
             </div>
 
@@ -161,10 +176,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
 
     </form>
-    <?php 
-    
-   echo $dados[0]['excel'];
-    ?>
+
 </div>
 
 <div class="container" style="margin-top:30px; margin-bottom:30px;">
