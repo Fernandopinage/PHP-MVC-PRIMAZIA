@@ -376,6 +376,7 @@ class AdminDAO extends DAO
     public function ListarAdmins(){
 
         $sql = "SELECT * FROM `admin`";
+        $query = $sql;
         $select = $this->con->prepare($sql);
         $select->execute();
         $array = array();
@@ -384,7 +385,7 @@ class AdminDAO extends DAO
         while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
             $array[] = array(
-
+                'excel' =>$query,
                 'id' => $row['admin_id'],
                 'nome' => $row['admin_nome'],
                 'email' => $row['admin_email'],
@@ -431,11 +432,15 @@ class AdminDAO extends DAO
     public function ListarAdminsFiltro($nome, $email, $cpf ){
 
          
-        $sql = "SELECT * FROM `admin` WHERE `admin_nome` = :admin_nome or `admin_email` = :admin_email or `admin_cfp` =:admin_cfp";
+        $sql = "SELECT * FROM `admin` WHERE `admin_nome` = '{$nome}' or `admin_email` = '{$email}' or `admin_cfp` ='{$email}'";
+        $query = $sql;
         $select = $this->con->prepare($sql);
-        $select->bindValue(':admin_nome', $nome);
-        $select->bindValue(':admin_email', $email);
-        $select->bindValue(':admin_cfp', $cpf);
+       // $select->bindValue(':admin_nome', $nome);
+       // $select->bindValue(':admin_email', $email);
+       // $select->bindValue(':admin_cfp', $cpf);
+
+        //var_dump($query);
+        
         $select->execute();
         $array = array();
 
@@ -443,7 +448,7 @@ class AdminDAO extends DAO
         while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
             $array[] = array(
-
+                'excel' => $query,
                 'id' => $row['admin_id'],
                 'nome' => $row['admin_nome'],
                 'email' => $row['admin_email'],

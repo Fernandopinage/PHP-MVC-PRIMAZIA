@@ -148,6 +148,37 @@ if (empty($_SESSION['admin'])) {
             }
         }
 
+        ?>
+
+        <?php
+
+        if (isset($_POST['filtror_adm'])) {
+
+
+            if (!empty($_POST['adm_name'])  or !empty($_POST['adm_email']) or !empty($_POST['adm_cpf'])) {
+        
+
+                $nome = $_POST['adm_name'];
+                $email = $_POST['adm_email'];
+                $cpf = $_POST['adm_cpf'];
+
+
+                $Admin = new AdminDAO();
+                $dadosAdmin = $Admin->ListarAdminsFiltro($nome, $email, $cpf);
+            } else {
+
+           
+
+                $Admin = new AdminDAO();
+                $dadosAdmin = $Admin->ListarAdmins();
+            }
+        } else {
+          
+
+            $Admin = new AdminDAO();
+            $dadosAdmin = $Admin->ListarAdmins();
+        }
+
 
 
 
@@ -168,17 +199,26 @@ if (empty($_SESSION['admin'])) {
                 </div>
                 <div class="col-md-3">
                     <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" >
+                    <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="adm_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
 
                 </div>
                 <div class="col-md-1" style="margin-top: 31px;">
                     <input type="submit" name="filtror_adm" class="btn btn-secondary" value="Filtrar">
 
                 </div>
-                <div class="col-md-1" style="margin-top: 31px;">
-                    <a href="./excel.php" name="gerarexcell" class="btn btn-success">Excel</a>
+                <?php
+                if (isset($dadosAdmin)) {
 
-                </div>
+                    
+                ?>      
+
+                    <div class="col-md-1" style="margin-top: 31px;">
+                        <a href="../admin/?p=<?php echo $dadosAdmin[0]['excel']; ?>" name="gerarexcell" class="btn btn-success">Excel</a>
+                    </div>
+                <?php
+                }
+                ?>
+
         </form>
 
     </div>
@@ -196,30 +236,7 @@ if (empty($_SESSION['admin'])) {
         <tbody>
             <?php
 
-            if (isset($_POST['filtror_adm'])) {
 
-
-                if (!empty($_POST['adm_name'])  or !empty($_POST['adm_email']) or !empty($_POST['adm_cpf'])) {
-
-                    $nome = $_POST['adm_name'];
-                    $email = $_POST['adm_email'];
-                    $cpf = $_POST['adm_cpf'];
-
-
-                    $Admin = new AdminDAO();
-                    $dadosAdmin = $Admin->ListarAdminsFiltro($nome, $email, $cpf );
-
-
-                } else {
-
-                    $Admin = new AdminDAO();
-                    $dadosAdmin = $Admin->ListarAdmins();
-                }
-            } else {
-
-                $Admin = new AdminDAO();
-                $dadosAdmin = $Admin->ListarAdmins();
-            }
 
             foreach ($dadosAdmin as $dadosAdmin) {
 
@@ -250,7 +267,7 @@ if (empty($_SESSION['admin'])) {
 
                                     <div class="mb-3">
                                         <label for="floatingInput">CPF/CNPJ</label>
-                                        <input type="text" name="admcpf" id="admcpf" class="form-control form-control-sm cpf-mask" value="<?php echo $dadosAdmin['cpf']; ?>" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly >
+                                        <input type="text" name="admcpf" id="admcpf" class="form-control form-control-sm cpf-mask" value="<?php echo $dadosAdmin['cpf']; ?>" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="floatingInput">Senha</label>
@@ -351,7 +368,7 @@ if (empty($_SESSION['admin'])) {
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);"  >
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
 
             </div>
             <div class="col-md-2" style="margin-top: 31px;">
@@ -521,7 +538,7 @@ if (empty($_SESSION['admin'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="floatingInput">E-mail</label>
-                                        <input type="email" name="email" id="email" value="<?php echo $dadosProfissional['email'] ?>" class="form-control  form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly >
+                                        <input type="email" name="email" id="email" value="<?php echo $dadosProfissional['email'] ?>" class="form-control  form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly>
                                     </div>
                                     <div class="mb-3">
 
@@ -622,7 +639,7 @@ if (empty($_SESSION['admin'])) {
             </div>
             <div class="col-md-3">
                 <label for="validationServer01" class="form-label">CPF/CNPJ</label>
-                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);"  >
+                <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
 
             </div>
             <div class="col-md-2" style="margin-top: 31px;">
