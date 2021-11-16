@@ -156,7 +156,7 @@ if (empty($_SESSION['admin'])) {
 
 
             if (!empty($_POST['adm_name'])  or !empty($_POST['adm_email']) or !empty($_POST['adm_cpf'])) {
-        
+
 
                 $nome = $_POST['adm_name'];
                 $email = $_POST['adm_email'];
@@ -167,19 +167,103 @@ if (empty($_SESSION['admin'])) {
                 $dadosAdmin = $Admin->ListarAdminsFiltro($nome, $email, $cpf);
             } else {
 
-           
+
 
                 $Admin = new AdminDAO();
                 $dadosAdmin = $Admin->ListarAdmins();
             }
         } else {
-          
+
 
             $Admin = new AdminDAO();
             $dadosAdmin = $Admin->ListarAdmins();
         }
 
 
+        /************************* */
+
+        if (isset($_POST['filtror_profissional'])) {
+
+
+
+            if (!empty($_POST['profissinal_name'])  or !empty($_POST['profissinal_email']) or !empty($_POST['profissinal_cpf'])) {
+
+
+                $nome = $_POST['profissinal_name'];
+                $email = $_POST['profissinal_email'];
+                $cpf = $_POST['profissinal_cpf'];
+
+                $Profissional = new AdminDAO();
+                $dadosProfissional = $Profissional->ListarProfissionalFiltro($nome, $email, $cpf);
+        ?>
+                <script>
+                    elt = document.getElementById('opcao');
+                    var opt = elt.getElementsByTagName("option");
+                    elt.value = 2;
+                </script>
+
+            <?php
+            } else {
+
+                $Profissional = new AdminDAO();
+                $dadosProfissional = $Profissional->ListarProfissional();
+            ?>
+                <script>
+                    elt = document.getElementById('opcao');
+                    var opt = elt.getElementsByTagName("option");
+                    elt.value = 2;
+                </script>
+
+        <?php
+            }
+        } else {
+            $Profissional = new AdminDAO();
+            $dadosProfissional = $Profissional->ListarProfissional();
+        }
+
+
+        /************************* */
+
+
+
+    if (isset($_POST['filtror_cliente'])) {
+
+        if (!empty($_POST['cliente_name']) or !empty($_POST['cliente_email']) or !empty($_POST['cliente_cpf'])) {
+
+            $nome = $_POST['cliente_name'];
+            $email = $_POST['cliente_email'];
+            $cpf = $_POST['cliente_cpf'];
+
+            $Cliente = new AdminDAO();
+            $dadosCliente = $Cliente->ListarClienteFiltro($nome, $email, $cpf);
+
+    ?>
+            <script>
+                elt = document.getElementById('opcao');
+                var opt = elt.getElementsByTagName("option");
+                elt.value = 3;
+            </script>
+
+        <?php
+
+        } else {
+
+            $Cliente = new AdminDAO();
+            $dadosCliente = $Cliente->ListarCliente();
+        ?>
+            <script>
+                elt = document.getElementById('opcao');
+                var opt = elt.getElementsByTagName("option");
+                elt.value = 3;
+            </script>
+
+    <?php
+        }
+    } else {
+
+        $Cliente = new AdminDAO();
+        $dadosCliente = $Cliente->ListarCliente();
+    }
 
 
         ?>
@@ -208,10 +292,10 @@ if (empty($_SESSION['admin'])) {
                 </div>
                 <?php
                 if (isset($dadosAdmin)) {
-                    
-                ?>      
+
+                ?>
                     <div class="col-md-1" style="margin-top: 31px;">
-                        <a href="../admin/adm_excel.php?p=<?php echo $dadosAdmin[0]['excel'];?>" name="gerarexcell" class="btn btn-success">Excel</a>
+                        <a href="../admin/adm_excel.php?p=<?php echo $dadosAdmin[0]['excel']; ?>" name="gerarexcell" class="btn btn-success">Excel</a>
                     </div>
                 <?php
                 }
@@ -304,52 +388,6 @@ if (empty($_SESSION['admin'])) {
 </div>
 <div id="editarProfissional">
 
-    <?php
-
-
-
-    if (isset($_POST['filtror_profissional'])) {
-
-
-
-        if (!empty($_POST['profissinal_name'])  or !empty($_POST['profissinal_email']) or !empty($_POST['profissinal_cpf'])) {
-
-
-            $nome = $_POST['profissinal_name'];
-            $email = $_POST['profissinal_email'];
-            $cpf = $_POST['profissinal_cpf'];
-
-            $Profissional = new AdminDAO();
-            $dadosProfissional = $Profissional->ListarProfissionalFiltro($nome, $email, $cpf);
-    ?>
-            <script>
-                elt = document.getElementById('opcao');
-                var opt = elt.getElementsByTagName("option");
-                elt.value = 2;
-            </script>
-
-        <?php
-        } else {
-
-            $Profissional = new AdminDAO();
-            $dadosProfissional = $Profissional->ListarProfissional();
-        ?>
-            <script>
-                elt = document.getElementById('opcao');
-                var opt = elt.getElementsByTagName("option");
-                elt.value = 2;
-            </script>
-
-    <?php
-        }
-    } else {
-        $Profissional = new AdminDAO();
-        $dadosProfissional = $Profissional->ListarProfissional();
-    }
-
-
-    ?>
-
     <form method="POST">
 
         <div id="profissional" class="row ms-3 p-2">
@@ -369,10 +407,20 @@ if (empty($_SESSION['admin'])) {
                 <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="profissinal_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
 
             </div>
-            <div class="col-md-2" style="margin-top: 31px;">
+            <div class="col-md-1" style="margin-top: 31px;">
                 <input id="filtror_profissional" type="submit" name="filtror_profissional" class="btn btn-secondary" value="Filtrar">
 
             </div>
+            <?php
+            if (isset($dadosProfissional)) {
+
+            ?>
+                <div class="col-md-1" style="margin-top: 31px;">
+                    <a href="../admin/pro_excel.php?p=<?php echo $dadosProfissional[0]['excel']; ?>" name="gerarexcell" class="btn btn-success">Excel</a>
+                </div>
+            <?php
+            }
+            ?>
 
         </div>
     </form>
@@ -578,48 +626,7 @@ if (empty($_SESSION['admin'])) {
 
     <?php
 
-    $Cliente = new AdminDAO();
-    $dadosCliente = $Cliente->ListarCliente();
-
-    if (isset($_POST['filtror_cliente'])) {
-
-        if (!empty($_POST['cliente_name']) or !empty($_POST['cliente_email']) or !empty($_POST['cliente_cpf'])) {
-
-            $nome = $_POST['cliente_name'];
-            $email = $_POST['cliente_email'];
-            $cpf = $_POST['cliente_cpf'];
-
-            $Cliente = new AdminDAO();
-            $dadosCliente = $Cliente->ListarClienteFiltro($nome, $email, $cpf);
-
-    ?>
-            <script>
-                elt = document.getElementById('opcao');
-                var opt = elt.getElementsByTagName("option");
-                elt.value = 3;
-            </script>
-
-        <?php
-
-        } else {
-
-            $Cliente = new AdminDAO();
-            $dadosCliente = $Cliente->ListarCliente();
-        ?>
-            <script>
-                elt = document.getElementById('opcao');
-                var opt = elt.getElementsByTagName("option");
-                elt.value = 3;
-            </script>
-
-    <?php
-        }
-    } else {
-
-        $Cliente = new AdminDAO();
-        $dadosCliente = $Cliente->ListarCliente();
-    }
-
+    
     ?>
 
     <form method="POST">
@@ -640,11 +647,22 @@ if (empty($_SESSION['admin'])) {
                 <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" name="cliente_cpf" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
 
             </div>
-            <div class="col-md-2" style="margin-top: 31px;">
+            <div class="col-md-1" style="margin-top: 31px;">
                 <input type="submit" name="filtror_cliente" class="btn btn-secondary" value="Filtrar">
 
             </div>
+            <?php
+            
+            if(isset($dadosCliente)){
 
+                ?>
+                    <div class="col-md-1" style="margin-top: 31px;">
+                        <a href="../admin/cli_excel.php?p=<?php echo $dadosCliente[0]['excel']; ?>" name="gerarexcell" class="btn btn-success">Excel</a>
+                    </div>
+                <?php
+            }
+            
+            ?>
         </div>
     </form>
     <br>

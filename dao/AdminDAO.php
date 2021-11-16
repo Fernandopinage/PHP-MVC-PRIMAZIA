@@ -501,10 +501,53 @@ class AdminDAO extends DAO
 
     }
 
+    public function excelPro($sql){
+
+
+        $select = $this->con->prepare($sql);
+        // $select->bindValue(':admin_nome', $nome);
+        // $select->bindValue(':admin_email', $email);
+        // $select->bindValue(':admin_cfp', $cpf);
+ 
+         //var_dump($query);
+         
+         $select->execute();
+         $array = array();
+ 
+ 
+         while($row = $select->fetch(PDO::FETCH_ASSOC)){
+ 
+            $array[] = array(
+                
+                'id' => $row['profissional_id'],
+                'nome' => $row['profissional_nome'],
+                'razao' => $row['profissional_razao'],
+                'email' => $row['profissional_email'],
+                'cpf' => $row['profissional_cpf'],
+                'telefone' => $row['profissional_telefone'],
+                'cep' => $row['profissional_cep'],
+                'uf' => $row['profissional_uf'],
+                'rua' => $row['profissional_logradouro'],
+                'numero' => $row['profissional_num'],
+                'cidade' => $row['profissional_cidade'],
+                'bairro' => $row['profissional_bairro'],
+                'complemento' => $row['profissional_complemento'],
+                'foto' => $row['profissional_foto'],
+                'opt' => $row['profissional_servico']
+
+            );
+ 
+         }
+ 
+         return $array;
+
+    }
+
 
     public function ListarProfissional(){
 
         $sql = "SELECT * FROM `profissional`";
+        $query = $sql;
         $select = $this->con->prepare($sql);
         $select->execute();
         $array = array();
@@ -512,7 +555,7 @@ class AdminDAO extends DAO
         while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
             $array[] = array(
-                
+                'excel' => $query,
                 'id' => $row['profissional_id'],
                 'nome' => $row['profissional_nome'],
                 'razao' => $row['profissional_razao'],
@@ -538,6 +581,7 @@ class AdminDAO extends DAO
     public function ListarProfissionalFiltro($nome, $email, $cpf){
 
         $sql = "SELECT * FROM `profissional` where profissional_nome = :profissional_nome  or  profissional_email = :profissional_email or  profissional_cpf = :profissional_cpf ";
+        $query = $sql;
         $select = $this->con->prepare($sql);
         $select->bindValue(':profissional_nome', $nome);
         $select->bindValue(':profissional_email', $email);
@@ -548,7 +592,7 @@ class AdminDAO extends DAO
         while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
             $array[] = array(
-                
+                'excel' => $query,
                 'id' => $row['profissional_id'],
                 'nome' => $row['profissional_nome'],
                 'razao' => $row['profissional_razao'],
@@ -574,6 +618,7 @@ class AdminDAO extends DAO
     public function ListarCliente(){
 
         $sql = "SELECT * FROM `cliente`";
+        $query = $sql;
         $select = $this->con->prepare($sql);
         $select->execute();
         $array = array();
@@ -582,6 +627,7 @@ class AdminDAO extends DAO
 
             $array[] = array(
                 
+                'excel' => $query,
                 'id' => $row['CLIENTE_ID'],
                 'nome' => $row['CLIENTE_NOME'],
                 'cpf' => $row['CLIENTE_CPF'],
@@ -607,18 +653,19 @@ class AdminDAO extends DAO
 
     public function ListarClienteFiltro($nome, $email, $cpf){
 
-        $sql = "SELECT * FROM `cliente` where CLIENTE_NOME =:CLIENTE_NOME or CLIENTE_EMAIL = :CLIENTE_EMAIL or CLIENTE_CPF = :CLIENTE_CPF";
+        $sql = "SELECT * FROM `cliente` where CLIENTE_NOME = '{$nome}' or CLIENTE_EMAIL = '{$email}' or CLIENTE_CPF = '{$cpf}' ";
+        $query = $sql;
         $select = $this->con->prepare($sql);
-        $select->bindValue(':CLIENTE_NOME', $nome);
-        $select->bindValue(':CLIENTE_EMAIL', $email);
-        $select->bindValue(':CLIENTE_CPF', $cpf);
+        // $select->bindValue(':CLIENTE_NOME', $nome);
+        //$select->bindValue(':CLIENTE_EMAIL', $email);
+        //$select->bindValue(':CLIENTE_CPF', $cpf);
         $select->execute();
         $array = array();
 
         while($row = $select->fetch(PDO::FETCH_ASSOC)){
 
             $array[] = array(
-                
+                'excel' => $query,
                 'id' => $row['CLIENTE_ID'],
                 'nome' => $row['CLIENTE_NOME'],
                 'cpf' => $row['CLIENTE_CPF'],
@@ -641,6 +688,42 @@ class AdminDAO extends DAO
 
          return $array;
 
+    }
+
+    public function execelCli($sql){
+
+        $select = $this->con->prepare($sql);
+        // $select->bindValue(':CLIENTE_NOME', $nome);
+        //$select->bindValue(':CLIENTE_EMAIL', $email);
+        //$select->bindValue(':CLIENTE_CPF', $cpf);
+        $select->execute();
+        $array = array();
+
+        while($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $array[] = array(
+             
+                'id' => $row['CLIENTE_ID'],
+                'nome' => $row['CLIENTE_NOME'],
+                'cpf' => $row['CLIENTE_CPF'],
+                'email' => $row['CLIENTE_EMAIL'],
+                'telefone' => $row['CLIENTE_TELEFONE'],
+                'cep' => $row['CLIENTE_CEP'],
+                'foto' => $row['CLIENTE_FOTO'],
+                'senha' => $row['CLIENTE_SENHA'],
+                'uf' => $row['CLIENTE_UF'],
+                'cidade' => $row['CLIENTE_CIDADE'],
+                'logradouro' => $row['CLIENTE_LOGRADOURO'],
+                'bairro' => $row['CLIENTE_BAIRRO'],
+                'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                'opcao' => $row['CLIENTE_OPCAO'],
+                'razao' => $row['CLIENTE_RAZAO'],
+                'numero' => $row['CLIENTE_NUM'],
+
+            );
+        }
+
+         return $array;
     }
 
 
