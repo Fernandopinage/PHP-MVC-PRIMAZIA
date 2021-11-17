@@ -321,7 +321,7 @@ if (isset($_POST['salvarCliente'])) {
                     <div class="col-md-12">
                         <select class="form-select" name="Pservico">
                             <option selected>Tipo de Serviço</option>
-                            <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
+                            <option value="Artífice (Eletricista, Pintor e Hidráulico)">Artífice (Eletricista, Pintor e Hidráulico)</option>
                             <option value="Babá">Babá</option>
                             <option value="Cabeleireiro">Cabeleireiro</option>
                             <option value="Cuidador(a) de Idoso">Cuidador(a) de Idoso</option>

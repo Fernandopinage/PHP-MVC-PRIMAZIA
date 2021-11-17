@@ -52,7 +52,7 @@ require "../../layout/head.php";
                     <div class="col">
                         <select class="form-select" name="select[]" aria-label="Default select example">
                             <option selected>Selecione sua Profissão</option>
-                            <option value="1">Artífice (Pedreiro,Pintor e Hidráulico)</option>
+                            <option value="1">Artífice (Eletricista, Pintor e Hidráulico)</option>
                             <option value="2">Babá</option>
                             <option value="3">Cabeleireiro</option>
                             <option value="4">Cuidador(a) de Idoso</option>

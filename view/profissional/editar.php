@@ -289,7 +289,7 @@ if (isset($_POST['salvarProfissional'])) {
                     <div class="col-md-12">
                         <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">">
                             <option value="<?php echo $dados['servico']; ?>"><?php echo $dados['servico']; ?></option>
-                            <option value="Artífice (Pedreiro,Pintor e Hidráulico)">Artífice (Pedreiro,Pintor e Hidráulico)</option>
+                            <option value="Artífice (Eletricista, Pintor e Hidráulico)">Artífice (Eletricistas, Pintor e Hidráulico)</option>
                             <option value="Babá">Babá</option>
                             <option value="Cabeleireiro">Cabeleireiro</option>
                             <option value="Cuidador(a) de Pessoas">Cuidador(a) de Pessoas</option>
@@ -867,7 +867,7 @@ if (isset($_POST['salvarProfissional'])) {
             $('#pergunta05').hide();
         }
 
-        if (value === 'Artífice (Pedreiro,Pintor e Hidráulico)') {
+        if (value === 'Artífice (Eletricistas, Pintor e Hidráulico)') {
             $('#pergunta06').show();
         } else {
             $('#pergunta06').hide();

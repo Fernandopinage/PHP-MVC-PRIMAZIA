@@ -31,7 +31,7 @@ if (isset($_POST['pequenosreparos'])) {
         $ClassRequest->SetComplemento($_SESSION['user']['complemento']);
         $ClassRequest->SetProtocolo(Protocolo::gerarProtocolo());
         $dados = array(
-            'tpservico' => 'Artífice (Pedreiro,Pintor e Hidráulico)',
+            'tpservico' => 'Artífice (Eletricista,Pintor e Hidráulico)',
             'categoria' => $_POST['categoria'],
             'descricao' => $_POST['descricao'],
 
