@@ -111,13 +111,13 @@ if (isset($_POST['salvarCliente'])) {
                     <div class="form-check">
                         <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
                         <label class="form-check-label" for="pessoa" id="j">
-                            Pessoa juridica
+                            Pessoa Jurídica
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
                         <label class="form-check-label" for="pessoa" id="f">
-                            Pessoa Fisica
+                            Pessoa Física
                         </label>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ if (isset($_POST['salvarCliente'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
-                            <label>Nome de Usuário<span style="color: red;">*</span></label>
+                            <label>Razão Social<span style="color: red;">*</span></label>
                             <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
@@ -148,22 +148,22 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="">
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="" required>
                     </div>
                     <div class="col-md-6">
                         <label>Confirme sua senha<span style="color: red;">*</span></label>
-                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask">
+                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" required>
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento<span style="color: red;">*</span></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm" aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm" aria-label="Data de Nascimento" required>
                     </div>
                     <div class="col-md-6">
                         <label>Gênero<span style="color: red;">*</span></label>
-                        <select class="form-select form-select-sm" name="sexo" id="sexo">
+                        <select class="form-select form-select-sm" name="sexo" id="sexo" required>
 
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
@@ -176,40 +176,40 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>CEP<span style="color: red;">*</span></label>
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm" onkeypress="$(this).mask('00.000-000')">
+                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm" onkeypress="$(this).mask('00.000-000')" required>
                     </div>
                     <div class="col-md-6">
                         <label>Endereço<span style="color: red;">*</span></label>
-                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm">
+                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm" required>
                     </div>
                     <div class="col-md-3">
                         <label>Nº<span style="color: red;">*</span></label>
-                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm">
+                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm" required>
                     </div>
                     <div class="col-md-3">
                         <label>UF<span style="color: red;">*</span></label>
-                        <input type="text" name="uf" id="uf" class="form-control form-control-sm">
+                        <input type="text" name="uf" id="uf" class="form-control form-control-sm" required>
                     </div>
                     <div class="col-md-6">
                         <label>Cidade<span style="color: red;">*</span></label>
-                        <input type="text" name="cidade" id="cidade" class="form-control form-control-sm">
+                        <input type="text" name="cidade" id="cidade" class="form-control form-control-sm" required>
                     </div>
                     <div class="col-md-6">
                         <label>Bairro<span style="color: red;">*</span></label>
-                        <input type="text" name="bairro" id="bairro" class="form-control form-control-sm">
+                        <input type="text" name="bairro" id="bairro" class="form-control form-control-sm" required>
                     </div>
 
                     <div class="col-md-6">
-                        <label>Complemento<span style="color: red;">*</span></label>
+                        <label>Complemento</label>
                         <input type="text" name="complemento" id="complemento" class="form-control form-control-sm">
                     </div>
                     <div class="col-md-6">
                         <label>Telefone<span style="color: red;">*</span></label>
-                        <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                        <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" required>
                     </div>
                     <div class="col-md-6">
                         <label>E-mail<span style="color: red;">*</span></label>
-                        <input type="email" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail">
+                        <input type="email" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail" required>
                     </div>
                     <div class="col-md-6">
 
@@ -255,6 +255,17 @@ if (isset($_POST['salvarCliente'])) {
 </div>
 
 <script>
+
+    $(document).ready(function(){
+
+        if(document.getElementById('j').checked){
+            document.getElementById('Pfisica').style.display = "block"
+        }else{
+            document.getElementById('Pfisica').style.display = "none"
+        }
+    })
+
+
     function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";

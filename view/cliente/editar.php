@@ -130,15 +130,15 @@ if (isset($_POST['salvarCliente'])) {
 
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED disabled>
                             <label class="form-check-label" for="pessoa" id="j">
-                                Pessoa juridica
+                            Pessoa Jurídica
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F" disabled>
                             <label class="form-check-label" for="pessoa" id="f">
-                                Pessoa Fisica
+                            Pessoa Física
                             </label>
                         </div>
                     </div>
@@ -152,15 +152,15 @@ if (isset($_POST['salvarCliente'])) {
                 ?>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" disabled>
                             <label class="form-check-label" for="pessoa" id="j">
-                                Pessoa juridica
+                            Pessoa Jurídica
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F" CHECKED>
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F" CHECKED disabled>
                             <label class="form-check-label" for="pessoa" id="f">
-                                Pessoa Fisica
+                            Pessoa Física
                             </label>
                         </div>
                     </div>
@@ -211,7 +211,7 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento<span style="color: red;">*</span></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm"  aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo $dados['nascimento'];?>" class="form-control form-control-sm"  aria-label="Data de Nascimento">
                     </div>
                     <div class="col-md-6">
                     <label>Gênero<span style="color: red;">*</span></label>
