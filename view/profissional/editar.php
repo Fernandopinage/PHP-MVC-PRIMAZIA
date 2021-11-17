@@ -275,7 +275,7 @@ if (isset($_POST['salvarProfissional'])) {
                     </div>
 
                     <div class="col-md-6">
-                        <label>Complemento <span style="color: red;">*</span></label>
+                        <label>Complemento </label>
                         <input type="text" name="complemento" id="complemento" value="<?php echo $dados['complemento'] ?>" class="form-control form-control-sm" placeholder="Complemento">
                     </div>
                     <div class="col-md-6">

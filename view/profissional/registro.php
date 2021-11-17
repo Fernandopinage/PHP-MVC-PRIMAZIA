@@ -130,7 +130,7 @@ if (isset($_POST['salvarProfissional'])) {
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
                             <label>Razão Social<span style="color: red;">*</span></label>
-                            <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário">
+                            <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário" >
                         </div>
                         <div class="col-md-6">
                             <label>Inscrição Estadual <span style="color: red;">*</span></label>
@@ -152,21 +152,21 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Senha <span style="color: red;">*</span></label>
-                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="">
+                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="" required>
                     </div>
                     <div class="col-md-6">
                         <label>Confirme sua senha <span style="color: red;">*</span></label>
-                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask">
+                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" required>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento <span style="color: red;">*</span></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm" aria-label="Data de Nascimento">
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm" aria-label="Data de Nascimento" required>
                     </div>
                     <div class="col-md-6">
                         <label>Gênero <span style="color: red;">*</span></label>
-                        <select class="form-select form-select-sm" name="sexo" id="sexo">
+                        <select class="form-select form-select-sm" name="sexo" id="sexo" required>
 
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
@@ -179,40 +179,40 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>CEP <span style="color: red;">*</span></label>
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm" onkeypress="$(this).mask('00.000-000')">
+                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control form-control-sm" onkeypress="$(this).mask('00.000-000')" required>
                     </div>
                     <div class="col-md-6">
                         <label>Endereço <span style="color: red;">*</span></label>
-                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm">
+                        <input type="text" name="logradouro" id="rua" class="form-control form-control-sm" required>
                     </div>
                     <div class="col-md-3">
                         <label>Nº <span style="color: red;">*</span></label>
-                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm">
+                        <input type="text" name="numerp" id="numero" class="form-control form-control-sm" required>
                     </div>
                     <div class="col-md-3">
                         <label>UF <span style="color: red;">*</span></label>
-                        <input type="text" name="uf" id="uf" class="form-control form-control-sm">
+                        <input type="text" name="uf" id="uf" class="form-control form-control-sm" required>
                     </div>
                     <div class="col-md-6">
                         <label>Cidade <span style="color: red;">*</span></label>
-                        <input type="text" name="cidade" id="cidade" class="form-control form-control-sm " placeholder="Cidade">
+                        <input type="text" name="cidade" id="cidade" class="form-control form-control-sm " placeholder="Cidade" required>
                     </div>
                     <div class="col-md-6">
                         <label>Bairro <span style="color: red;">*</span></label>
-                        <input type="text" name="bairro" id="bairro" class="form-control form-control-sm " placeholder="Bairro">
+                        <input type="text" name="bairro" id="bairro" class="form-control form-control-sm " placeholder="Bairro" required>
                     </div>
 
                     <div class="col-md-6">
-                        <label>Complemento <span style="color: red;">*</span></label>
-                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm ">
+                        <label>Complemento</label>
+                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm " required>
                     </div>
                     <div class="col-md-6">
                         <label>Telefone <span style="color: red;">*</span></label>
-                        <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+                        <input type="text" name="telefone" id="telefone" class="form-control form-control-sm phone-ddd-mask" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"required>
                     </div>
                     <div class="col-md-6">
                         <label>E-mail<span style="color: red;">*</span></label>
-                        <input type="email" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail">
+                        <input type="email" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail" required>
                     </div>
 
                     <div class="col-md-12">
@@ -677,7 +677,7 @@ if (isset($_POST['salvarProfissional'])) {
                         <label class="form-check-label" for="">
                             Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">termos</a> de uso
                         </label>
-                        <input class="form-check-input" name="termo" type="checkbox" id="flexCheckDefault">
+                        <input class="form-check-input" name="termo" type="checkbox" id="flexCheckDefault" required>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
