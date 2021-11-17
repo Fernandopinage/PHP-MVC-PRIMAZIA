@@ -204,7 +204,7 @@ if (isset($_POST['salvarProfissional'])) {
 
                     <div class="col-md-6">
                         <label>Complemento</label>
-                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm " required>
+                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm ">
                     </div>
                     <div class="col-md-6">
                         <label>Telefone <span style="color: red;">*</span></label>
