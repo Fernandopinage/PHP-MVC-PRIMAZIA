@@ -216,7 +216,7 @@ if (isset($_POST['salvarCliente'])) {
                         <label class="form-check-label" for="">
                             Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">termos</a> de uso
                         </label>
-                        <input class="form-check-input" name="termo" type="checkbox" id="flexCheckDefault">
+                        <input class="form-check-input" name="termo" type="checkbox" id="flexCheckDefault" required>
                     </div>
                 </div>
                 <!-- Modal -->
