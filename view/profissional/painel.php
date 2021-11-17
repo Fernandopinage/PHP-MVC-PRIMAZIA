@@ -8,12 +8,7 @@ if (empty($_SESSION['profissional'])) {
     header('location: ../../view/profissional/login.php');
 }
 
-
-
 ?>
-
-
-
 
 <link href="../../layout/css/profissional_painel.css" rel="stylesheet">
 <div id="logo">
