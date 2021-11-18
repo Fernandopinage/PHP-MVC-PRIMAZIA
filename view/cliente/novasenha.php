@@ -49,7 +49,7 @@ if (isset($_POST['novasenha'])) {
 <link href="../../layout/css/profissional_login.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="text-center">
-    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
     </div>
 
     <div class="title text-center">

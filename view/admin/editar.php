@@ -17,7 +17,7 @@ if (empty($_SESSION['admin'])) {
 ?>
 <link href="../../layout/css/admin_painel2.css" rel="stylesheet">
 <div id="logo">
-    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 
 <div class="container">

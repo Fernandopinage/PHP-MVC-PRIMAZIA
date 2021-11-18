@@ -7,7 +7,7 @@ require "../../layout/head.php";
 <div id="desktop">
     <div id="conteudo-left">
 
-    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
         <div id='titlespecial'>
             <title>DIARISTA</title>
             <h1>

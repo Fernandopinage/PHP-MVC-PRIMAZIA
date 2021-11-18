@@ -59,7 +59,7 @@ class CategoriaDAO extends DAO
                     position: 'center',
                     icon: 'success',
                     title: 'Parabéns',
-                    html: 'O seu Pedido G2S Foi Realizado Com Sucesso' + '<br>' + ' Em breve estaremos entrando em contato' + '<br>' + ' Horário da central de atendimento das 08:00 ás 18:00 hs de segunda a sexta',
+                    html: 'O seu Pedido G2S Foi Realizado Com Sucesso' + '<br>' + ' Em breve estaremos entrando em contato' + '<br>' + ' Horário da central de atendimento das 08:00 ás 17:00 hs de segunda a sexta',
                     showConfirmButton: false,
                     timer: 4600,
                     timerProgressBar: true,

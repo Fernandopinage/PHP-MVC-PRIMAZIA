@@ -104,7 +104,7 @@ if (isset($_POST['chamado_finalizado'])) {
 ?>
 
 <div id="logo">
-    <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 <hr>
 <br>

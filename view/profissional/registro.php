@@ -93,7 +93,7 @@ if (isset($_POST['salvarProfissional'])) {
     <div class="container" id="registro">
         <form action="" method="post" enctype="multipart/form-data">
             <div class="text-center">
-                <a href="https://primazia.agenciaprogride.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+                <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
             </div>
 
             <div class="title text-center">
