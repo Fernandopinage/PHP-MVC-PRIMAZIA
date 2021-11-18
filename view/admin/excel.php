@@ -41,8 +41,8 @@ include_once "../../dao/CategoriaDAO.php";
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Serviço</th>
+                <th scope="col">Forma de Pagamento</th>
                 <th scope="col">Valor do Serviço</th>
-                <th scope="col">Pagamento</th>
 
             </tr>
         </thead>
@@ -76,8 +76,8 @@ include_once "../../dao/CategoriaDAO.php";
                             print_r($obj->tpservico);
 
                             ?></th>
-                <th scope="col"><?php echo $dados['valor'];?></th>
                 <th scope="col"><?php echo $dados['pagamento'];?></th>
+                <th scope="col"><?php echo $dados['valor'];?></th>
             </tr>
                 
                 <?php

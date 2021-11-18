@@ -208,7 +208,7 @@ if (isset($_POST['chamado_finalizado'])) {
                 <th scope="col">Serviço</th>
                 <!-- <th scope="col">Tipo de Serviço</th> -->
                 <th scope="col">Valor do Serviço</th>
-                <th scope="col">Pagamento</th>
+                <th scope="col">Forma de Pagamento</th>
             </tr>
         </thead>
         <tbody style="color: #0D2238;font-family: 'Montserrat', sans-serif">

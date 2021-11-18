@@ -326,7 +326,7 @@ if (empty($_SESSION['admin'])) {
             ?>
 
                 <tr data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>">
-                    <td class="text-center" scope="col"><?php echo $dadosAdmin['nome']; ?></td>
+                    <td class="text-left" scope="col"><?php echo $dadosAdmin['nome']; ?></td>
                     <td class="text-center" scope="col"><?php echo $dadosAdmin['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['email']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['telefone']; ?></td>
@@ -445,7 +445,7 @@ if (empty($_SESSION['admin'])) {
             ?>
 
                 <tr data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>">
-                    <td class="text-center" scope="col"><?php echo $dadosProfissional['nome']; ?></td>
+                    <td class="text-left" scope="col"><?php echo $dadosProfissional['nome']; ?></td>
                     <td class="text-center"><?php echo $dadosProfissional['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['telefone']; ?></td>
@@ -685,7 +685,7 @@ if (empty($_SESSION['admin'])) {
             ?>
 
                 <tr data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>">
-                    <td class="text-center" scope="col"><?php echo $dadosCliente['nome']; ?></td>
+                    <td class="text-left" scope="col"><?php echo $dadosCliente['nome']; ?></td>
                     <td class="text-center"><?php echo $dadosCliente['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
