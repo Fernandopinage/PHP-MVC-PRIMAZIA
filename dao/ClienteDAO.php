@@ -431,7 +431,7 @@ class ClienteDAO extends DAO
         
             $update->execute();
             $MSG = new ClienteMSG();
-            $MSG->__mensagem();
+            $MSG->__mensagem($ClassCliente);
 
 
             ?>
@@ -448,7 +448,7 @@ class ClienteDAO extends DAO
     
     
         <?php
-        header('location: ../../view/cliente/editar.php');
+       // header('location: ../../view/cliente/editar.php');
 
 
         } catch (PDOException $e) {

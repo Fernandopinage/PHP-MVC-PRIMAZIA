@@ -38,7 +38,7 @@ if (isset($_POST['salvarCliente'])) {
             $ClassCliente = new Cliente();
             $ClassCliente->SetId($_POST['id']);
             $ClassCliente->SetFoto($imagem);
-            $ClassCliente->SetOpcao($_POST['opt']);
+            @$ClassCliente->SetOpcao($_POST['opt']);
             $ClassCliente->SetRazao($_POST['razao']);
             $ClassCliente->SetNome($_POST['nome']);
             $ClassCliente->SetSenha($_POST['senha']);
