@@ -86,13 +86,12 @@ if (isset($_POST['chamado_finalizado'])) {
     $ClassServico->SetProtocolo($_POST['numero_protocolo']);
     $ClassServico->SetNome($_POST['pessoa_finalizado']);
 
-    echo "<pre>";
-    var_dump($ClassServico);
-    echo "</pre>";
-    /*
     $Servico = new ServicoDao();
     $Servico->finalizarServico($ClassServico);
+    /*
     */
+
+
     /********* aqui logica da star *************/
     //        usar o numero do protocolo        /
     /***************************************** */

@@ -19,10 +19,11 @@ private $bairro;
 private $complemento;
 private $foto;
 private $senha;
-
 private $termo;
 private $sexo;
 private $nascimento;
+
+
 
     public function SetId($id){
 
