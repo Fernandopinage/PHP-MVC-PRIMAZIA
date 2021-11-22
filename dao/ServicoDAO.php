@@ -114,7 +114,7 @@ class ServicoDao extends Dao{
         $nome =  $ClassServico->GetNome();
         $nome = explode('-',$nome);
         $Email_Pro = $nome[3];
-        
+
         $query = "SELECT * FROM `pedido` inner JOIN servico on servico_protocolo = pedido_protocolo WHERE pedido_protocolo =:pedido_protocolo";
         $select = $this->con->prepare($query);
         $select->bindValue(':pedido_protocolo',$ClassServico->GetProtocolo());
