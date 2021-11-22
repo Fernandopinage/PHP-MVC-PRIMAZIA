@@ -45,7 +45,7 @@ class ClienteMSG
                                 <p>Identificamos que você fez uma atualização em seu perfil <b>G2S – GoToService</b>, caso não tenha feito esta alteração, por favor entre em contato com nossos administradores.</p><br><br>
                                
                             
-                                    <b>Central de Ajuda, G2S GoToService.</b>
+                                    <b>Central de Ajuda, G2S GoToService -  atendimento@gotoservice.com.br - (92) 98566-0283</b>
                             ';
                                 
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
