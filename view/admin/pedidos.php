@@ -26,15 +26,10 @@ if (isset($_POST['filtror'])) {
 
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final);
-
-
-    }else{
+    } else {
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
-
-
-
 } else {
 
     $ClassPedido = new CategoriaDAO();
@@ -89,10 +84,15 @@ if (isset($_POST['chamado_finalizado'])) {
     $ClassServico = new Servico();
     $ClassServico->SetStatus($_POST['status']);
     $ClassServico->SetProtocolo($_POST['numero_protocolo']);
+    $ClassServico->SetNome($_POST['pessoa_finalizado']);
 
+    echo "<pre>";
+    var_dump($ClassServico);
+    echo "</pre>";
+    /*
     $Servico = new ServicoDao();
     $Servico->finalizarServico($ClassServico);
-
+    */
     /********* aqui logica da star *************/
     //        usar o numero do protocolo        /
     /***************************************** */
@@ -157,15 +157,15 @@ if (isset($_POST['chamado_finalizado'])) {
             </div>
             <div class="col-md-2" style="margin-top: 42px;">
                 <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
-                <?php 
-                if(isset($dados[0]['excel'])){
+                <?php
+                if (isset($dados[0]['excel'])) {
 
-                
+
                 ?>
-              <!--  <button type="submit" name="excel" class="btn btn-success" value="<?php echo $dados[0]['excel']?>">Gerar Excel</button>-->
-               <a href="../admin/excel.php?p=<?php  echo $dados[0]['excel']?>" class="btn btn-success" >Gerar Excel</a>
-               <?php
-               
+                    <!--  <button type="submit" name="excel" class="btn btn-success" value="<?php echo $dados[0]['excel'] ?>">Gerar Excel</button>-->
+                    <a href="../admin/excel.php?p=<?php echo $dados[0]['excel'] ?>" class="btn btn-success">Gerar Excel</a>
+                <?php
+
                 }
                 ?>
 
@@ -247,14 +247,14 @@ if (isset($_POST['chamado_finalizado'])) {
                     </td>
                     <th scope="row" style="color: #086c24;" data-bs-toggle="modal"><?php if (!empty($dados['valor'])) {
 
-                                                            echo $dados['valor'];
-                                                        } else {
+                                                                                        echo $dados['valor'];
+                                                                                    } else {
 
-                                                            echo "---";
-                                                        }
-                    
-                    
-                     ?></th>
+                                                                                        echo "---";
+                                                                                    }
+
+
+                                                                                    ?></th>
                     <th scope="row" class="text-center"><?php
                                                         if (!empty($dados['pagamento'])) {
 
@@ -416,7 +416,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p><b>Valor do Serviço</b></p>
-                                                    <input type="text" class="form-control form-control-sm" name="valor"  onkeypress="return(moeda(this,'.',',',event))">
+                                                    <input type="text" class="form-control form-control-sm" name="valor" onkeypress="return(moeda(this,'.',',',event))">
                                                 </div>
                                             </div>
                                             <br>
@@ -431,15 +431,24 @@ if (isset($_POST['chamado_finalizado'])) {
                                         } else {
                                         ?>
                                             <div class="row">
+                                                <div class="col-md-12">
+                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>"name="pessoa_finalizado">
+                                                    <select class="form-select form-select-sm"  aria-label="Default select example" disabled>
+                                                        <option value="<?php echo $dados3[0]['profissional']; ?>"><?php echo $dados3[0]['profissional']; ?></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
                                                 <div class="col-md-4">
                                                     <p><b>Forma de Pagamento</b></p>
                                                     <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
-                                                        <option selected> <?php echo $dados3[0]['pagamento'];?></option>
+                                                        <option selected> <?php echo $dados3[0]['pagamento']; ?></option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p><b>Valor do Serviço</b></p>
-                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor'];?>" name="valor" disabled>
+                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor']; ?>" name="valor" disabled>
                                                 </div>
                                             </div>
                                             <br>
@@ -447,7 +456,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <div class="row">
                                                 <div class="mb-3">
                                                     <p><b>Descrição do Pedido</b></p>
-                                                    <textarea class="form-control" id="text" name="text" rows="3" disabled><?php echo $dados3[0]['text'];?></textarea>
+                                                    <textarea class="form-control" id="text" name="text" rows="3" disabled><?php echo $dados3[0]['text']; ?></textarea>
                                                 </div>
                                             </div>
                                         <?php
@@ -552,43 +561,43 @@ if (isset($_POST['chamado_finalizado'])) {
 
 <script>
     function moeda(a, e, r, t) {
-    let n = ""
-      , h = j = 0
-      , u = tamanho2 = 0
-      , l = ajd2 = ""
-      , o = window.Event ? t.which : t.keyCode;
-    if (13 == o || 8 == o)
-        return !0;
-    if (n = String.fromCharCode(o),
-    -1 == "0123456789".indexOf(n))
-        return !1;
-    for (u = a.value.length,
-    h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
+        let n = "",
+            h = j = 0,
+            u = tamanho2 = 0,
+            l = ajd2 = "",
+            o = window.Event ? t.which : t.keyCode;
+        if (13 == o || 8 == o)
+            return !0;
+        if (n = String.fromCharCode(o),
+            -1 == "0123456789".indexOf(n))
+            return !1;
+        for (u = a.value.length,
+            h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
         ;
-    for (l = ""; h < u; h++)
-        -1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
-    if (l += n,
-    0 == (u = l.length) && (a.value = ""),
-    1 == u && (a.value = "0" + r + "0" + l),
-    2 == u && (a.value = "0" + r + l),
-    u > 2) {
-        for (ajd2 = "",
-        j = 0,
-        h = u - 3; h >= 0; h--)
-            3 == j && (ajd2 += e,
-            j = 0),
-            ajd2 += l.charAt(h),
-            j++;
-        for (a.value = "",
-        tamanho2 = ajd2.length,
-        h = tamanho2 - 1; h >= 0; h--)
-            a.value += ajd2.charAt(h);
-        a.value += r + l.substr(u - 2, u)
+        for (l = ""; h < u; h++)
+            -
+            1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
+        if (l += n,
+            0 == (u = l.length) && (a.value = ""),
+            1 == u && (a.value = "0" + r + "0" + l),
+            2 == u && (a.value = "0" + r + l),
+            u > 2) {
+            for (ajd2 = "",
+                j = 0,
+                h = u - 3; h >= 0; h--)
+                3 == j && (ajd2 += e,
+                    j = 0),
+                ajd2 += l.charAt(h),
+                j++;
+            for (a.value = "",
+                tamanho2 = ajd2.length,
+                h = tamanho2 - 1; h >= 0; h--)
+                a.value += ajd2.charAt(h);
+            a.value += r + l.substr(u - 2, u)
+        }
+        return !1
     }
-    return !1
-}
-
 </script>
 <?php
 require "../../layout/footer.php";
-?>  
+?>

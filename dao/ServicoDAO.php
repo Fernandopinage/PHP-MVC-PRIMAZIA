@@ -110,6 +110,8 @@ class ServicoDao extends Dao{
 
     public function finalizarServico($ClassServico){
 
+        
+        /*
         $sql = "UPDATE `pedido` SET pedido_status=:pedido_status WHERE pedido_protocolo=:pedido_protocolo";
         $update = $this->con->prepare($sql);
         $update->bindValue(':pedido_status','F');
@@ -146,7 +148,7 @@ class ServicoDao extends Dao{
         } catch (\Throwable $th) {
             //throw $th;
         }
-
+        */
 
     }
 
