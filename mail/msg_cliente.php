@@ -16,11 +16,6 @@ class ClienteMSG
 
     public function __mensagem($ClassCliente){
 
-        /*
-        echo "<pre>";
-        var_dump($ClassCliente->GetNome());
-        echo "</pre>";
-        */
         
         $mail = new PHPMailer(true); // STOP
         
@@ -47,7 +42,7 @@ class ClienteMSG
             $mail->Body    = '
 
                                 <p><h2>Olá, '.$ClassCliente->GetNome().'</h2><p><br><br>
-                                <p>Identificamos que você fez uma atualização em seu perfil G2S – GoToService, caso não tenha feito esta alteração, por favor entre em contato com nossos administradores.</p><br><br>
+                                <p>Identificamos que você fez uma atualização em seu perfil <b>G2S – GoToService</b>, caso não tenha feito esta alteração, por favor entre em contato com nossos administradores.</p><br><br>
                                
                             
                                     <b>Central de Ajuda, G2S GoToService.</b>
