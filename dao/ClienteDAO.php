@@ -11,6 +11,31 @@ class ClienteDAO extends DAO
     public function validarLogin($ClienteClass)
     {
 
+        $query = "SELECT * FROM `star` WHERE star_cli_email =:star_cli_email and 	star_status_cli = 'of'";
+        $select = $this->con->prepare($query);
+        $select->bindValue(':star_cli_email', $ClienteClass->GetEmail());
+        $select->execute();
+
+        $star = array();
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+          
+            $star = array(
+
+                'cliente' => $row['star_cli_email'],
+                'profissional' => $row['star_pro_email'],
+                'cliente_status' => $row['star_status_cli'],
+                'profissional_status' => $row['star_status_pro'],
+                'cliente_note' => $row['star_nota_cli'],
+                'profissional_note' => $row['star_nota_pro'],
+                'protocolo' => $row['star_protocolo'],
+
+
+            );
+            
+           header('location: ../../view/cliente/valiar.php');
+            
+        }else{
+           
         $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL = :CLIENTE_EMAIL  and CLIENTE_SENHA = :CLIENTE_SENHA ";
         $select = $this->con->prepare($sql);
         $select->bindValue(':CLIENTE_EMAIL', $ClienteClass->GetEmail());
@@ -43,7 +68,7 @@ class ClienteDAO extends DAO
 
             header('location: ../../view/cliente/painel.php');
         } else {
-?>
+        ?>
 
             <script>
                 Swal.fire({
@@ -58,6 +83,65 @@ class ClienteDAO extends DAO
 
         <?php
         }
+
+
+
+
+        }
+
+        /*
+
+        $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL = :CLIENTE_EMAIL  and CLIENTE_SENHA = :CLIENTE_SENHA ";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':CLIENTE_EMAIL', $ClienteClass->GetEmail());
+        $select->bindValue(':CLIENTE_SENHA', md5($ClienteClass->GetSenha()));
+        $select->execute();
+
+        $_SESSION['user'] = array();
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            session_start();
+
+            $_SESSION['user'] = array(
+
+                'id' => $row['CLIENTE_ID'],
+                'nome' => $row['CLIENTE_NOME'],
+                'email' => $row['CLIENTE_EMAIL'],
+                'cpf' => $row['CLIENTE_CPF'],
+                'telefone' => $row['CLIENTE_TELEFONE'],
+                'cep' => $row['CLIENTE_CEP'],
+                'uf' => $row['CLIENTE_UF'],
+                'rua' => $row['CLIENTE_LOGRADOURO'],
+                'numero' => $row['CLIENTE_NUM'],
+                'cidade' => $row['CLIENTE_CIDADE'],
+                'bairro' => $row['CLIENTE_BAIRRO'],
+                'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                'foto' => $row['CLIENTE_FOTO'],
+                'sexo' => $row['CLIENTE_SEXO'],
+                'termo' => $row['CLIENTE_TERMO'],
+                'nascimento' => $row['CLIENTE_NASCIMENTO']
+            );
+
+            header('location: ../../view/cliente/painel.php');
+        } else {
+        ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Dados inválidos',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+        <?php
+        }
+        */
+
+
+
     }
 
 
