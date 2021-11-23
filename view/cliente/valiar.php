@@ -14,40 +14,50 @@ include_once "../../layout/heard.php";
 
     </div>
     <div class="container">
-        <form class="row g-2" id="form" method="POST">
+        <form id="" method="POST">
 
-            <div class="text-center">
+            <div class="row">
 
-                <span id="str01" style="padding-left: 3px;" onmousemove="star1ON()" onmouseout="star1OF()" onclick="star1()"><img src=".././../icons/star.png"></span>
-                <span id="str02" style="padding-left: 3px;" onmousemove="star2ON()" onmouseout="star2OF()" onclick="star2()"><img src=".././../icons/star.png"></span>
-                <span id="str03" style="padding-left: 3px;" onmousemove="star3ON()" onmouseout="star3OF()" onclick="star3()"><img src=".././../icons/star.png"></span>
-                <span id="str04" style="padding-left: 3px;" onmousemove="star4ON()" onmouseout="star4OF()" onclick="star4()"><img src=".././../icons/star.png"></span>
-                <span id="str05" style="padding-left: 3px;" onmousemove="star5ON()" onmouseout="star5OF()" onclick="star5()"><img src=".././../icons/star.png"></span>
+                <div class="text-center">
 
+                    <span id="str01" style="padding-left: 3px;" onmousemove="star1ON()" onmouseout="star1OF()" onclick="star1()"><img src=".././../icons/star.png"></span>
+                    <span id="str02" style="padding-left: 3px;" onmousemove="star2ON()" onmouseout="star2OF()" onclick="star2()"><img src=".././../icons/star.png"></span>
+                    <span id="str03" style="padding-left: 3px;" onmousemove="star3ON()" onmouseout="star3OF()" onclick="star3()"><img src=".././../icons/star.png"></span>
+                    <span id="str04" style="padding-left: 3px;" onmousemove="star4ON()" onmouseout="star4OF()" onclick="star4()"><img src=".././../icons/star.png"></span>
+                    <span id="str05" style="padding-left: 3px;" onmousemove="star5ON()" onmouseout="star5OF()" onclick="star5()"><img src=".././../icons/star.png"></span>
+
+
+
+                </div>
+
+                <div class="form-check form-switch" style="display: none;">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_01" name="valor">
+
+                </div>
+
+                <div class="form-check form-switch" style="display: none;">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_02" name="valor">
+
+                </div>
+
+                <div class="form-check form-switch" style="display: none;">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_03" name="valor">
+
+                </div>
+                <div class="form-check form-switch" style="display: none;">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_04" name="valor">
+
+                </div>
+                <div class="form-check form-switch" style="display: none;">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_05" name="valor">
+                </div>
             </div>
-            <div class="form-check form-switch" style="display: block;">
-                <input class="form-check-input" type="checkbox" role="switch" id="str_01">
-
+            <div class="row" style="margin-top: 150px;">
+            <div class="col-6-align-self-center">
+                <button class="btn btn-primary" type="button">Button</button>
             </div>
-
-            <div class="form-check form-switch" style="display: block;">
-                <input class="form-check-input" type="checkbox" role="switch" id="str_02">
-
+                
             </div>
-
-            <div class="form-check form-switch" style="display: block;">
-                <input class="form-check-input" type="checkbox" role="switch" id="str_03">
-
-            </div>
-            <div class="form-check form-switch" style="display: block;">
-                <input class="form-check-input" type="checkbox" role="switch" id="str_04">
-
-            </div>
-            <div class="form-check form-switch" style="display: block;">
-                <input class="form-check-input" type="checkbox" role="switch" id="str_05">
-
-            </div>
-
         </form>
     </div>
 
@@ -126,6 +136,8 @@ include_once "../../layout/heard.php";
             document.getElementById('str02').innerHTML = '<img src=".././../icons/star.png">';
         }
 
+
+
     }
 
 
@@ -135,7 +147,11 @@ include_once "../../layout/heard.php";
             document.getElementById('str01').innerHTML = '<img src=".././../icons/star_on.png">';
             document.getElementById('str02').innerHTML = '<img src=".././../icons/star_on.png">';
             document.getElementById('str03').innerHTML = '<img src=".././../icons/star_on.png">';
+            document.getElementById('str_01').checked = false;
+            document.getElementById('str_02').checked = false;
             document.getElementById('str_03').checked = true;
+            document.getElementById('str_04').checked = false;
+            document.getElementById('str_05').checked = false;
 
         } else {
             document.getElementById('str01').innerHTML = '<img src=".././../icons/star.png">';
@@ -177,7 +193,11 @@ include_once "../../layout/heard.php";
             document.getElementById('str02').innerHTML = '<img src=".././../icons/star_on.png">';
             document.getElementById('str03').innerHTML = '<img src=".././../icons/star_on.png">';
             document.getElementById('str04').innerHTML = '<img src=".././../icons/star_on.png">';
+            document.getElementById('str_01').checked = false;
+            document.getElementById('str_02').checked = false;
+            document.getElementById('str_03').checked = false;
             document.getElementById('str_04').checked = true;
+            document.getElementById('str_05').checked = false;
 
         } else {
             document.getElementById('str01').innerHTML = '<img src=".././../icons/star.png">';
@@ -221,6 +241,10 @@ include_once "../../layout/heard.php";
             document.getElementById('str03').innerHTML = '<img src=".././../icons/star_on.png">';
             document.getElementById('str04').innerHTML = '<img src=".././../icons/star_on.png">';
             document.getElementById('str05').innerHTML = '<img src=".././../icons/star_on.png">';
+            document.getElementById('str_01').checked = false;
+            document.getElementById('str_02').checked = false;
+            document.getElementById('str_03').checked = false;
+            document.getElementById('str_04').checked = false;
             document.getElementById('str_05').checked = true;
 
         } else {
@@ -229,7 +253,7 @@ include_once "../../layout/heard.php";
             document.getElementById('str03').innerHTML = '<img src=".././../icons/star.png">';
             document.getElementById('str04').innerHTML = '<img src=".././../icons/star.png">';
             document.getElementById('str05').innerHTML = '<img src=".././../icons/star.png">';
-            document.getElementById('str_04').checked = false;
+            document.getElementById('str_05').checked = false;
         }
 
     }
@@ -242,26 +266,24 @@ include_once "../../layout/heard.php";
         document.getElementById('str04').innerHTML = '<img src=".././../icons/star_on.png">';
         document.getElementById('str05').innerHTML = '<img src=".././../icons/star_on.png">';
     }
-    
+
     function star5OF() {
 
-    if (document.getElementById('str_05').checked == true) {
-        document.getElementById('str01').innerHTML = '<img src=".././../icons/star_on.png">';
-        document.getElementById('str02').innerHTML = '<img src=".././../icons/star_on.png">';
-        document.getElementById('str03').innerHTML = '<img src=".././../icons/star_on.png">';
-        document.getElementById('str04').innerHTML = '<img src=".././../icons/star_on.png">';
-        document.getElementById('str05').innerHTML = '<img src=".././../icons/star_on.png">';
-    } else {
-        document.getElementById('str01').innerHTML = '<img src=".././../icons/star.png">';
-        document.getElementById('str02').innerHTML = '<img src=".././../icons/star.png">';
-        document.getElementById('str03').innerHTML = '<img src=".././../icons/star.png">';
-        document.getElementById('str04').innerHTML = '<img src=".././../icons/star.png">';
-        document.getElementById('str05').innerHTML = '<img src=".././../icons/star.png">';
+        if (document.getElementById('str_05').checked == true) {
+            document.getElementById('str01').innerHTML = '<img src=".././../icons/star_on.png">';
+            document.getElementById('str02').innerHTML = '<img src=".././../icons/star_on.png">';
+            document.getElementById('str03').innerHTML = '<img src=".././../icons/star_on.png">';
+            document.getElementById('str04').innerHTML = '<img src=".././../icons/star_on.png">';
+            document.getElementById('str05').innerHTML = '<img src=".././../icons/star_on.png">';
+        } else {
+            document.getElementById('str01').innerHTML = '<img src=".././../icons/star.png">';
+            document.getElementById('str02').innerHTML = '<img src=".././../icons/star.png">';
+            document.getElementById('str03').innerHTML = '<img src=".././../icons/star.png">';
+            document.getElementById('str04').innerHTML = '<img src=".././../icons/star.png">';
+            document.getElementById('str05').innerHTML = '<img src=".././../icons/star.png">';
+        }
+
     }
-
-}
-
-
 </script>
 
 <?php
