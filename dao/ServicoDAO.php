@@ -130,14 +130,14 @@ class ServicoDao extends Dao{
                 'Email_Pro' => $Email_Pro,
                 'protocolo' => $row['pedido_protocolo']
             );
-            echo $log['Email_Pro'];
+             $log['Email_Pro'];
 
             $queryinsert = "INSERT INTO `star`(`star_id`, `star_cli_email`, `star_pro_email`, `star_status_cli`, `star_status_pro`, `star_nota_cli`, `star_nota_pro`,`star_protocolo`) VALUES (null, '".$log['Email_CLi']."', '".trim($log['Email_Pro'])."', 'of', 'of', 0, 0,'".$log['protocolo']."')";
             $select1 = $this->con->prepare($queryinsert);
             $select1->execute();
 
         }
-        /*
+        
      
         $sql = "UPDATE `pedido` SET pedido_status=:pedido_status WHERE pedido_protocolo=:pedido_protocolo";
         $update = $this->con->prepare($sql);
@@ -175,7 +175,7 @@ class ServicoDao extends Dao{
         } catch (\Throwable $th) {
             //throw $th;
         }
-        */
+        
 
     }
 
