@@ -10,62 +10,142 @@ class ProfissionalDAO extends DAO
 
     public function validarLogin($ProfissionalClass)
     {
+        $email =  $ProfissionalClass->GetEmail();
 
-        $sql = "SELECT * FROM `profissional` WHERE PROFISSIONAL_EMAIL = :PROFISSIONAL_EMAIL  and PROFISSIONAL_SENHA = :PROFISSIONAL_SENHA ";
-        $select = $this->con->prepare($sql);
-        $select->bindValue(':PROFISSIONAL_EMAIL', $ProfissionalClass->GetEmail());
-        $select->bindValue(':PROFISSIONAL_SENHA', md5($ProfissionalClass->GetSenha()));
+        $query = "SELECT * FROM `star` WHERE star_pro_email = '" . $email . "' and 	star_status_pro = 'of'";
+        $select = $this->con->prepare($query);
+        // $select->bindValue(':star_pro_email', $email);
         $select->execute();
 
-        $_SESSION['profissional'] = array();
-
+        // $star = array();
 
         if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
             session_start();
+            $_SESSION['star']  = array(
 
-            $_SESSION['profissional'] = array(
+                'cliente' => $row['star_cli_email'],
+                'profissional' => $row['star_pro_email'],
+                'cliente_status' => $row['star_status_cli'],
+                'profissional_status' => $row['star_status_pro'],
+                'cliente_note' => $row['star_nota_cli'],
+                'profissional_note' => $row['star_nota_pro'],
+                'protocolo' => $row['star_protocolo'],
 
-                'id' => $row['profissional_id'],
-                'nome' => $row['profissional_nome'],
-                'email' => $row['profissional_email'],
-                'cpf' => $row['profissional_cpf'],
-                'telefone' => $row['profissional_telefone'],
-                'cep' => $row['profissional_cep'],
-                'uf' => $row['profissional_uf'],
-                'rua' => $row['profissional_logradouro'],
-                'numero' => $row['profissional_num'],
-                'cidade' => $row['profissional_cidade'],
-                'bairro' => $row['profissional_bairro'],
-                'complemento' => $row['profissional_complemento'],
-                'foto' => $row['profissional_foto'],
-                'termo' => $row['profissional_termo'],
-                'sexo' => $row['profissional_sexo'],
-                'nascimento' => $row['profissional_nascimento']
+
             );
 
-            header('location: ../../view/profissional/painel.php');
-        } else {
+            $sql = "SELECT * FROM `profissional` WHERE PROFISSIONAL_EMAIL = :PROFISSIONAL_EMAIL  and PROFISSIONAL_SENHA = :PROFISSIONAL_SENHA ";
+            $select = $this->con->prepare($sql);
+            $select->bindValue(':PROFISSIONAL_EMAIL', $ProfissionalClass->GetEmail());
+            $select->bindValue(':PROFISSIONAL_SENHA', md5($ProfissionalClass->GetSenha()));
+            $select->execute();
+
+            $_SESSION['profissional'] = array();
+
+
+            if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                session_start();
+
+                $_SESSION['profissional'] = array(
+
+                    'id' => $row['profissional_id'],
+                    'nome' => $row['profissional_nome'],
+                    'email' => $row['profissional_email'],
+                    'cpf' => $row['profissional_cpf'],
+                    'telefone' => $row['profissional_telefone'],
+                    'cep' => $row['profissional_cep'],
+                    'uf' => $row['profissional_uf'],
+                    'rua' => $row['profissional_logradouro'],
+                    'numero' => $row['profissional_num'],
+                    'cidade' => $row['profissional_cidade'],
+                    'bairro' => $row['profissional_bairro'],
+                    'complemento' => $row['profissional_complemento'],
+                    'foto' => $row['profissional_foto'],
+                    'termo' => $row['profissional_termo'],
+                    'sexo' => $row['profissional_sexo'],
+                    'nascimento' => $row['profissional_nascimento']
+                );
+               
+                header('location: ../../view/profissional/avaliar.php');
+            } else {
 
 
 ?>
 
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Dados inválidos',
-                    showConfirmButton: false,
-                    timer: 3500
-                })
-            </script>
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Dados inválidos',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
 
 
-        <?php
+            <?php
 
+            }
+        } else {
+
+
+            $sql = "SELECT * FROM `profissional` WHERE PROFISSIONAL_EMAIL = :PROFISSIONAL_EMAIL  and PROFISSIONAL_SENHA = :PROFISSIONAL_SENHA ";
+            $select = $this->con->prepare($sql);
+            $select->bindValue(':PROFISSIONAL_EMAIL', $ProfissionalClass->GetEmail());
+            $select->bindValue(':PROFISSIONAL_SENHA', md5($ProfissionalClass->GetSenha()));
+            $select->execute();
+
+            $_SESSION['profissional'] = array();
+
+
+            if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                session_start();
+
+                $_SESSION['profissional'] = array(
+
+                    'id' => $row['profissional_id'],
+                    'nome' => $row['profissional_nome'],
+                    'email' => $row['profissional_email'],
+                    'cpf' => $row['profissional_cpf'],
+                    'telefone' => $row['profissional_telefone'],
+                    'cep' => $row['profissional_cep'],
+                    'uf' => $row['profissional_uf'],
+                    'rua' => $row['profissional_logradouro'],
+                    'numero' => $row['profissional_num'],
+                    'cidade' => $row['profissional_cidade'],
+                    'bairro' => $row['profissional_bairro'],
+                    'complemento' => $row['profissional_complemento'],
+                    'foto' => $row['profissional_foto'],
+                    'termo' => $row['profissional_termo'],
+                    'sexo' => $row['profissional_sexo'],
+                    'nascimento' => $row['profissional_nascimento']
+                );
+
+                header('location: ../../view/profissional/painel.php');
+            } else {
+
+
+            ?>
+
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Dados inválidos',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+
+
+            <?php
+
+            }
         }
     }
 
-    public function listarProfissional($ClassProfissional){
+    public function listarProfissional($ClassProfissional)
+    {
         $sql = "SELECT * FROM `profissional` WHERE profissional_id = :profissional_id";
         $select = $this->con->prepare($sql);
         $select->bindValue(':profissional_id', $ClassProfissional->GetId());
@@ -75,7 +155,7 @@ class ProfissionalDAO extends DAO
 
 
         if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-            
+
 
             $array = array(
 
@@ -130,7 +210,7 @@ class ProfissionalDAO extends DAO
             $update->execute();
 
 
-        ?>
+            ?>
 
             <script>
                 Swal.fire({
@@ -167,15 +247,16 @@ class ProfissionalDAO extends DAO
         }
     }
 
-    public  function updateProfissionalModal($ClassProfissional){
-       
-        if(!empty($ClassProfissional->GetSenha())){
+    public  function updateProfissionalModal($ClassProfissional)
+    {
+
+        if (!empty($ClassProfissional->GetSenha())) {
             $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome ,`profissional_option`=:profissional_option ,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,`profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,`profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_senha`=:profissional_senha,`profissional_servico`=:profissional_servico,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento WHERE `profissional_servico`=:profissional_servico";
-        }else{
+        } else {
             $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome ,`profissional_option`=:profissional_option ,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,`profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,`profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_servico`=:profissional_servico,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento  WHERE `profissional_servico`=:profissional_servico";
         }
 
-        
+
         $update = $this->con->prepare($sql);
         $update->bindValue(':profissional_nome', $ClassProfissional->GetNome());
         $update->bindValue(':profissional_option', $ClassProfissional->GetOpcao());
@@ -193,16 +274,16 @@ class ProfissionalDAO extends DAO
         $update->bindValue(':profissional_termo', $ClassProfissional->GetTermo());
         $update->bindValue(':profissional_sexo', $ClassProfissional->GetSexo());
         $update->bindValue(':profissional_nascimento', $ClassProfissional->GetNascimento());
- 
-        if(!empty($ClassProfissional->GetSenha())){
+
+        if (!empty($ClassProfissional->GetSenha())) {
             $update->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
         }
         $update->bindValue(':profissional_servico', $ClassProfissional->GetServico());
         $update->bindValue(':profissional_uf', $ClassProfissional->GetUf());
-        
 
-       try {
-        $update->execute();
+
+        try {
+            $update->execute();
         ?>
 
             <script>
@@ -218,25 +299,24 @@ class ProfissionalDAO extends DAO
 
 
         <?php
-       } catch (\Throwable $th) {
-           echo $th;
+        } catch (\Throwable $th) {
+            echo $th;
         ?>
 
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Error',
-                text:'Por favor entre em contato com administração!',
-                showConfirmButton: false,
-                timer: 3500
-            })
-        </script>
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Por favor entre em contato com administração!',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
 
-    <?php
+        <?php
 
-       }
-
+        }
     }
 
     public function AdminInserirProfissional($ClassProfissional)
@@ -352,30 +432,29 @@ class ProfissionalDAO extends DAO
                 })
             </script>
 
-            <?php
+        <?php
 
 
         }
     }
 
-    public function alterarProfissinal($ClassProfissional, $subcategoria){
+    public function alterarProfissinal($ClassProfissional, $subcategoria)
+    {
 
-        if(!empty($ClassProfissional->GetSenha())){
+        if (!empty($ClassProfissional->GetSenha())) {
 
-            
+
             $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome,`profissional_option`=:profissional_option,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,
      `profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,
      `profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_foto`=:profissional_foto,`profissional_senha`=:profissional_senha,`profissional_servico`=:profissional_servico,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento WHERE profissional_id = :profissional_id";
-        
         }
-        if(empty($ClassProfissional->GetSenha())){
+        if (empty($ClassProfissional->GetSenha())) {
 
             $sql = "UPDATE `profissional` SET `profissional_nome`=:profissional_nome,`profissional_option`=:profissional_option,`profissional_razao`=:profissional_razao,`profissional_email`=:profissional_email,`profissional_cpf`=:profissional_cpf,`profissional_telefone`=:profissional_telefone,
      `profissional_cep`=:profissional_cep,`profissional_uf`=:profissional_uf,`profissional_logradouro`=:profissional_logradouro,`profissional_num`=:profissional_num,
      `profissional_cidade`=:profissional_cidade,`profissional_bairro`=:profissional_bairro,`profissional_complemento`=:profissional_complemento,`profissional_foto`=:profissional_foto,`profissional_servico`=:profissional_servico,`profissional_termo`=:profissional_termo,`profissional_sexo`=:profissional_sexo,`profissional_nascimento`=:profissional_nascimento WHERE profissional_id = :profissional_id";
-        
         }
-  
+
 
         $update = $this->con->prepare($sql);
 
@@ -394,24 +473,24 @@ class ProfissionalDAO extends DAO
         $update->bindValue(':profissional_complemento', $ClassProfissional->GetComplemento());
         $update->bindValue(':profissional_foto', $ClassProfissional->GetFoto());
 
-        if(!empty($ClassProfissional->GetSenha())){
-        $update->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
+        if (!empty($ClassProfissional->GetSenha())) {
+            $update->bindValue(':profissional_senha', md5($ClassProfissional->GetSenha()));
         }
         $update->bindValue(':profissional_servico', $ClassProfissional->GetServico());
         $update->bindValue(':profissional_uf', $ClassProfissional->GetUf());
-        
+
         $update->bindValue(':profissional_termo', $ClassProfissional->GetTermo());
         $update->bindValue(':profissional_sexo', $ClassProfissional->GetSexo());
         $update->bindValue(':profissional_nascimento', $ClassProfissional->GetNascimento());
 
         try {
-            
+
             $update->execute();
             $subcat = new SubcategoriaDAO();
             $subcat->updateSubcategoria($ClassProfissional, $subcategoria);
         } catch (\Throwable $th) {
             echo $th;
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
@@ -425,7 +504,6 @@ class ProfissionalDAO extends DAO
 
             <?php
         }
-
     }
 
     public static function logout($dados)
@@ -537,8 +615,6 @@ class ProfissionalDAO extends DAO
 
         return $token;
     }
-
-
 }
 
 

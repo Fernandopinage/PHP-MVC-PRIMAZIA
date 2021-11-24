@@ -62,7 +62,7 @@ class ClienteDAO extends DAO
                 );
             }
 
-            header('location: ../../view/cliente/valiar.php');
+            header('location: ../../view/cliente/avaliar.php');
         } else {
 
             $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL = :CLIENTE_EMAIL  and CLIENTE_SENHA = :CLIENTE_SENHA ";
