@@ -23,12 +23,12 @@ if (empty($_SESSION['user'])) {
         <?php
         if (!empty($_SESSION['user']['foto'])) {
         ?>
-            <img id="usuario" src="../../images/<?php echo $_SESSION['user']['foto'] ?>" class="img"><br><br>
+            <img style="border-radius:50%" id="usuario" src="../../images/<?php echo $_SESSION['user']['foto'] ?>" class="img"><br><br>
         <?php
 
         } else {
         ?>
-            <img id="usuario" src="../../images/perfil.png" class="img"><br><br>
+            <img style="border-radius:50%" id="usuario" src="../../images/perfil.png" class="img"><br><br>
         <?php
         }
         ?>
@@ -89,7 +89,18 @@ if (empty($_SESSION['user'])) {
 </div>
 
 
+<script>
 
+$(document).ready(function(){
+
+    var perfil = document.getElementById('usuario');
+
+        perfil.style.width ="200px";
+        perfil.style.borderRadius  ="50%";
+
+});
+
+</script>
 
 <?php
 require "../../layout/footer.php";

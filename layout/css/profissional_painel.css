@@ -50,36 +50,6 @@
 }
 
 
-/*
-    #conteudo-top {
-        width: 100%;
-        background-color: white;
-    }
-    #caixalupa {
-        width: 550px;
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-    }
-    #botaoarea {
-        background-color: #353b47;
-        border-color: #353b47;
-        padding-left: 15x;
-        margin-right: 15px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        padding-right: 20px;
-        border-bottom-right-radius: 20px;
-        border-top-left-radius: 20px;
-        
-    }
-    #ola {
-        color: #001457;
-        background-color: transparent;
-        border-color: transparent;
-        margin-right: 20px;
-        margin-left: 5px;
-    }
-    */
 
 #usuario {
     border-radius: 50%;
