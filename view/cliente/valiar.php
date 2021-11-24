@@ -14,7 +14,7 @@ include_once "../../layout/heard.php";
 
     </div>
     <div class="container">
-        <form id="" method="POST">
+        <form  method="POST">
 
             <div class="row">
 
@@ -52,11 +52,17 @@ include_once "../../layout/heard.php";
                     <input class="form-check-input" type="checkbox" role="switch" id="str_05" name="valor">
                 </div>
             </div>
-            <div class="row" style="margin-top: 150px;">
-            <div class="col-6-align-self-center">
-                <button class="btn btn-primary" type="button">Button</button>
+
+
+            <div class="row g-4" style="margin-top:60px;">
+            <div class="col-4">
             </div>
-                
+            <div class="col-2 d-grid gap-2">
+                <input type="submit" class="btn btn-secondary btn-lg" value="Cancelar" style="background-color: #fff; color:#E97513; border-color:#E97513">
+            </div>
+            <div class="col-2 d-grid gap-2">
+                <input type="submit" class="btn btn btn-lg" value="Avaliar"  style="background-color: #E97513; color:white;border-color:#E97513">
+            </div>
             </div>
         </form>
     </div>
