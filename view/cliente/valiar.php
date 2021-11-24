@@ -2,7 +2,7 @@
 session_start();
 include_once "../../dao/StarDAO.php";
 
-if(isset($_POST['valiar_cancel'])){
+if (isset($_POST['valiar_cancel'])) {
 
 
 
@@ -13,10 +13,51 @@ if(isset($_POST['valiar_cancel'])){
 
     $Valiar = new StarDAO();
     $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
+}
 
+if (isset($_POST['valiar_avaliar'])) {
 
-    
+    $profissional =  $_SESSION['star']['profissional'];
+    $protocolo =  $_SESSION['star']['protocolo'];
+    $status = 'on';
 
+    if (isset($_POST['valor1'])) {
+
+        if ($_POST['valor1'] == 'on') {
+
+            $valor = 1;
+        }
+    }
+
+    if (isset($_POST['valor2'])) {
+        if ($_POST['valor2'] == 'on') {
+
+            $valor = 2;
+        }
+    }
+
+    if (isset($_POST['valor3'])) {
+        if ($_POST['valor3'] == 'on') {
+
+            $valor = 3;
+        }
+    }
+
+    if (isset($_POST['valor4'])) {
+        if ($_POST['valor4'] == 'on') {
+
+            $valor = 4;
+        }
+    }
+
+    if (isset($_POST['valor5'])) {
+        if ($_POST['valor5'] == 'on') {
+
+            $valor = 5;
+        }
+    }
+    $Valiar = new StarDAO();
+    $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
 }
 
 
@@ -36,7 +77,7 @@ include_once "../../layout/heard.php";
 
     </div>
     <div class="container">
-        <form  method="POST">
+        <form method="POST">
 
             <div class="row">
 
@@ -53,38 +94,38 @@ include_once "../../layout/heard.php";
                 </div>
 
                 <div class="form-check form-switch" style="display: none;">
-                    <input class="form-check-input" type="checkbox" role="switch" id="str_01" name="valor">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_01" name="valor1">
 
                 </div>
 
                 <div class="form-check form-switch" style="display: none;">
-                    <input class="form-check-input" type="checkbox" role="switch" id="str_02" name="valor">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_02" name="valor2">
 
                 </div>
 
                 <div class="form-check form-switch" style="display: none;">
-                    <input class="form-check-input" type="checkbox" role="switch" id="str_03" name="valor">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_03" name="valor3">
 
                 </div>
                 <div class="form-check form-switch" style="display: none;">
-                    <input class="form-check-input" type="checkbox" role="switch" id="str_04" name="valor">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_04" name="valor4">
 
                 </div>
                 <div class="form-check form-switch" style="display: none;">
-                    <input class="form-check-input" type="checkbox" role="switch" id="str_05" name="valor">
+                    <input class="form-check-input" type="checkbox" role="switch" id="str_05" name="valor5">
                 </div>
             </div>
 
 
             <div class="row g-4" style="margin-top:60px;">
-            <div class="col-4">
-            </div>
-            <div class="col-2 d-grid gap-2">
-                <input type="submit" class="btn btn-secondary btn-lg" name="valiar_cancel" value="Cancelar" style="background-color: #fff; color:#E97513; border-color:#E97513">
-            </div>
-            <div class="col-2 d-grid gap-2">
-                <input type="submit" class="btn btn btn-lg" value="Avaliar" name="valiar_avaliar"  style="background-color: #E97513; color:white;border-color:#E97513">
-            </div>
+                <div class="col-4">
+                </div>
+                <div class="col-2 d-grid gap-2">
+                    <input type="submit" class="btn btn-secondary btn-lg" name="valiar_cancel" value="Cancelar" style="background-color: #fff; color:#E97513; border-color:#E97513">
+                </div>
+                <div class="col-2 d-grid gap-2">
+                    <input type="submit" class="btn btn btn-lg" value="Avaliar" name="valiar_avaliar" style="background-color: #E97513; color:white;border-color:#E97513">
+                </div>
             </div>
         </form>
     </div>
