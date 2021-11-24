@@ -1,6 +1,6 @@
 <?php
 include_once "../../layout/heard.php";
-
+include_once "../../dao/ClienteDAO.php";
 session_start();
 
 if (empty($_SESSION['user'])) {
@@ -8,6 +8,9 @@ if (empty($_SESSION['user'])) {
    
     header('location: ../../view/cliente/login.php');
 }
+
+$Star = new ClienteDAO();
+$star = $Star->selectStar($_SESSION['user']['email']);
 
 
 ?>
@@ -34,7 +37,54 @@ if (empty($_SESSION['user'])) {
         ?>
 
         <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'] ?></h5><br>
-        <img src="../../images/star.png" class="img" width="130"> 0,00</h5></img><br>
+        
+        
+        <?php 
+        
+            if($star == 1){
+                ?>
+                <img src="../../icons/1pp.png" class="img" width="130">
+                <?php
+
+                echo $star;
+            }
+            
+            if($star == 2){
+                ?>
+                <img src="../../icons/2pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+
+            if($star == 3){
+                ?>
+                <img src="../../icons/3pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+
+            if($star == 4){
+                ?>
+                <img src="../../icons/4pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+
+            if($star == 5){
+                ?>
+                <img src="../../icons/5pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+        ?>
+    
+    
+    
+        </h5></img><br>
     </div>
     
     
