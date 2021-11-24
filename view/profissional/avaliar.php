@@ -21,7 +21,7 @@ if (isset($_POST['valiar_cancel'])) {
 
 if (isset($_POST['valiar_avaliar'])) {
 
-    $profissional =  $_SESSION['star']['cliente'];
+    $cliente =  $_SESSION['star']['cliente'];
     $protocolo =  $_SESSION['star']['protocolo'];
     $status = 'on';
 
@@ -61,7 +61,7 @@ if (isset($_POST['valiar_avaliar'])) {
         }
     }
     $Valiar = new StarDAO();
-    $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
+    $Valiar->updateStarCliente($cliente, $protocolo, $status, $valor);
 }
 
 
