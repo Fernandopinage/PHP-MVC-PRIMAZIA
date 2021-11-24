@@ -26,10 +26,7 @@ class StarDAO extends Dao{
 
     public function selectProfissional($email){
 
-        $email = explode(" ",$email);
-  
-
-        $sql = "SELECT * FROM `profissional` WHERE profissional_email ='".$email[1]."'";
+        $sql = "SELECT * FROM `profissional` WHERE profissional_email ='".$email."'";
         $select = $this->con->prepare($sql);
       
         $select->execute();
