@@ -16,10 +16,10 @@ class ClienteDAO extends DAO
         $select->bindValue(':star_cli_email', $ClienteClass->GetEmail());
         $select->execute();
 
-        $star = array();
-        if($row = $select->fetch(PDO::FETCH_ASSOC)){
-          
-            $star = array(
+        // $star = array();
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            session_start();
+            $_SESSION['star']  = array(
 
                 'cliente' => $row['star_cli_email'],
                 'profissional' => $row['star_pro_email'],
@@ -31,62 +31,87 @@ class ClienteDAO extends DAO
 
 
             );
-            
-           header('location: ../../view/cliente/valiar.php');
-            
-        }else{
-           
-        $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL = :CLIENTE_EMAIL  and CLIENTE_SENHA = :CLIENTE_SENHA ";
-        $select = $this->con->prepare($sql);
-        $select->bindValue(':CLIENTE_EMAIL', $ClienteClass->GetEmail());
-        $select->bindValue(':CLIENTE_SENHA', md5($ClienteClass->GetSenha()));
-        $select->execute();
 
-        $_SESSION['user'] = array();
-        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-            session_start();
+            $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL = :CLIENTE_EMAIL  and CLIENTE_SENHA = :CLIENTE_SENHA ";
+            $select = $this->con->prepare($sql);
+            $select->bindValue(':CLIENTE_EMAIL', $ClienteClass->GetEmail());
+            $select->bindValue(':CLIENTE_SENHA', md5($ClienteClass->GetSenha()));
+            $select->execute();
+            $_SESSION['user'] = array();
+            if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                session_start();
 
-            $_SESSION['user'] = array(
+                $_SESSION['user'] = array(
 
-                'id' => $row['CLIENTE_ID'],
-                'nome' => $row['CLIENTE_NOME'],
-                'email' => $row['CLIENTE_EMAIL'],
-                'cpf' => $row['CLIENTE_CPF'],
-                'telefone' => $row['CLIENTE_TELEFONE'],
-                'cep' => $row['CLIENTE_CEP'],
-                'uf' => $row['CLIENTE_UF'],
-                'rua' => $row['CLIENTE_LOGRADOURO'],
-                'numero' => $row['CLIENTE_NUM'],
-                'cidade' => $row['CLIENTE_CIDADE'],
-                'bairro' => $row['CLIENTE_BAIRRO'],
-                'complemento' => $row['CLIENTE_COMPLEMENTO'],
-                'foto' => $row['CLIENTE_FOTO'],
-                'sexo' => $row['CLIENTE_SEXO'],
-                'termo' => $row['CLIENTE_TERMO'],
-                'nascimento' => $row['CLIENTE_NASCIMENTO']
-            );
+                    'id' => $row['CLIENTE_ID'],
+                    'nome' => $row['CLIENTE_NOME'],
+                    'email' => $row['CLIENTE_EMAIL'],
+                    'cpf' => $row['CLIENTE_CPF'],
+                    'telefone' => $row['CLIENTE_TELEFONE'],
+                    'cep' => $row['CLIENTE_CEP'],
+                    'uf' => $row['CLIENTE_UF'],
+                    'rua' => $row['CLIENTE_LOGRADOURO'],
+                    'numero' => $row['CLIENTE_NUM'],
+                    'cidade' => $row['CLIENTE_CIDADE'],
+                    'bairro' => $row['CLIENTE_BAIRRO'],
+                    'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                    'foto' => $row['CLIENTE_FOTO'],
+                    'sexo' => $row['CLIENTE_SEXO'],
+                    'termo' => $row['CLIENTE_TERMO'],
+                    'nascimento' => $row['CLIENTE_NASCIMENTO']
+                );
+            }
 
-            header('location: ../../view/cliente/painel.php');
+            header('location: ../../view/cliente/valiar.php');
         } else {
-        ?>
 
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Dados inválidos',
-                    showConfirmButton: false,
-                    timer: 3500
-                })
-            </script>
+            $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL = :CLIENTE_EMAIL  and CLIENTE_SENHA = :CLIENTE_SENHA ";
+            $select = $this->con->prepare($sql);
+            $select->bindValue(':CLIENTE_EMAIL', $ClienteClass->GetEmail());
+            $select->bindValue(':CLIENTE_SENHA', md5($ClienteClass->GetSenha()));
+            $select->execute();
+
+            $_SESSION['user'] = array();
+            if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                session_start();
+
+                $_SESSION['user'] = array(
+
+                    'id' => $row['CLIENTE_ID'],
+                    'nome' => $row['CLIENTE_NOME'],
+                    'email' => $row['CLIENTE_EMAIL'],
+                    'cpf' => $row['CLIENTE_CPF'],
+                    'telefone' => $row['CLIENTE_TELEFONE'],
+                    'cep' => $row['CLIENTE_CEP'],
+                    'uf' => $row['CLIENTE_UF'],
+                    'rua' => $row['CLIENTE_LOGRADOURO'],
+                    'numero' => $row['CLIENTE_NUM'],
+                    'cidade' => $row['CLIENTE_CIDADE'],
+                    'bairro' => $row['CLIENTE_BAIRRO'],
+                    'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                    'foto' => $row['CLIENTE_FOTO'],
+                    'sexo' => $row['CLIENTE_SEXO'],
+                    'termo' => $row['CLIENTE_TERMO'],
+                    'nascimento' => $row['CLIENTE_NASCIMENTO']
+                );
+
+                header('location: ../../view/cliente/painel.php');
+            } else {
+?>
+
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Dados inválidos',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
 
 
-        <?php
-        }
-
-
-
-
+            <?php
+            }
         }
 
         /*
@@ -139,23 +164,21 @@ class ClienteDAO extends DAO
         <?php
         }
         */
-
-
-
     }
 
 
-    public function listarCliente($ClassCLiente){
+    public function listarCliente($ClassCLiente)
+    {
 
         $sql = "SELECT * FROM `cliente` WHERE CLIENTE_ID = :CLIENTE_ID";
         $select = $this->con->prepare($sql);
         $select->bindValue(':CLIENTE_ID', $ClassCLiente->GetId());
-        
+
         $select->execute();
 
         $array = array();
         if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-           
+
 
             $array = array(
 
@@ -200,7 +223,7 @@ class ClienteDAO extends DAO
             $update->bindValue(':CLIENTE_SENHA', $new);
             $update->execute();
 
-        ?>
+            ?>
 
             <script>
                 Swal.fire({
@@ -239,12 +262,11 @@ class ClienteDAO extends DAO
     public function updateCliente($ClassCliente)
     {
 
-        if(!empty($ClassCliente->GetSenha())){
+        if (!empty($ClassCliente->GetSenha())) {
 
             $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
-        }else{
-           $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
-        
+        } else {
+            $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM, `CLIENTE_TERMO`=:CLIENTE_TERMO, `CLIENTE_SEXO`=:CLIENTE_SEXO,  `CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
         }
 
         $update = $this->con->prepare($sql);
@@ -460,30 +482,30 @@ class ClienteDAO extends DAO
         }
     }
 
-    public function editarCliente($ClassCliente){
+    public function editarCliente($ClassCliente)
+    {
 
-       // $nome = $ClassCliente->GetNome();
-
-     
-
-     if(!empty($ClassCliente->GetSenha())){
+        // $nome = $ClassCliente->GetNome();
 
 
 
-         $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
-    }else{
-        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
-     
-     }  
-     
-     if(empty($ClassCliente->GetFoto())){
-        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
-     }
+        if (!empty($ClassCliente->GetSenha())) {
 
-     if(empty($ClassCliente->GetFoto()) and empty($ClassCliente->GetSenha())){
 
-        $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP, `CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
-     }
+
+            $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
+        } else {
+            $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_FOTO`=:CLIENTE_FOTO,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO WHERE `CLIENTE_ID`=:CLIENTE_ID";
+        }
+
+        if (empty($ClassCliente->GetFoto())) {
+            $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP,`CLIENTE_SENHA`=:CLIENTE_SENHA,`CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
+        }
+
+        if (empty($ClassCliente->GetFoto()) and empty($ClassCliente->GetSenha())) {
+
+            $sql = "UPDATE `cliente` SET `CLIENTE_NOME`=:CLIENTE_NOME,`CLIENTE_CPF`=:CLIENTE_CPF,`CLIENTE_EMAIL`=:CLIENTE_EMAIL,`CLIENTE_TELEFONE`=:CLIENTE_TELEFONE,`CLIENTE_CEP`=:CLIENTE_CEP, `CLIENTE_UF`=:CLIENTE_UF,`CLIENTE_CIDADE`=:CLIENTE_CIDADE,`CLIENTE_LOGRADOURO`=:CLIENTE_LOGRADOURO,`CLIENTE_BAIRRO`=:CLIENTE_BAIRRO,`CLIENTE_COMPLEMENTO`=:CLIENTE_COMPLEMENTO,`CLIENTE_OPCAO`=:CLIENTE_OPCAO,`CLIENTE_RAZAO`=:CLIENTE_RAZAO,`CLIENTE_NUM`=:CLIENTE_NUM,`CLIENTE_TERMO`=:CLIENTE_TERMO,`CLIENTE_SEXO`=:CLIENTE_SEXO,`CLIENTE_NASCIMENTO`=:CLIENTE_NASCIMENTO  WHERE `CLIENTE_ID`=:CLIENTE_ID";
+        }
 
         $update = $this->con->prepare($sql);
         $update->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
@@ -492,11 +514,11 @@ class ClienteDAO extends DAO
         $update->bindValue(':CLIENTE_EMAIL', $ClassCliente->GetEmail());
         $update->bindValue(':CLIENTE_TELEFONE', $ClassCliente->GetTelefone());
         $update->bindValue(':CLIENTE_CEP', $ClassCliente->GetCep());
-        if(!empty($ClassCliente->GetFoto())){
+        if (!empty($ClassCliente->GetFoto())) {
 
             $update->bindValue(':CLIENTE_FOTO', $ClassCliente->GetFoto());
         }
-        if(!empty($ClassCliente->GetSenha())){
+        if (!empty($ClassCliente->GetSenha())) {
             $update->bindValue(':CLIENTE_SENHA', md5($ClassCliente->GetSenha()));
         }
         $update->bindValue(':CLIENTE_UF', $ClassCliente->GetUf());
@@ -512,13 +534,13 @@ class ClienteDAO extends DAO
         $update->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
 
         try {
-        
+
             $update->execute();
             $MSG = new ClienteMSG();
             $MSG->__mensagem($ClassCliente);
 
 
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
@@ -529,14 +551,14 @@ class ClienteDAO extends DAO
                     timer: 3500
                 })
             </script>
-    
-    
+
+
         <?php
-       // header('location: ../../view/cliente/editar.php');
+            // header('location: ../../view/cliente/editar.php');
 
 
         } catch (PDOException $e) {
-            ?>
+        ?>
 
             <script>
                 Swal.fire({
@@ -547,9 +569,8 @@ class ClienteDAO extends DAO
                     timer: 3500
                 })
             </script>
-            <?php
+        <?php
         }
-        
     }
 
     public function insertCliente($ClassCliente)
@@ -557,7 +578,7 @@ class ClienteDAO extends DAO
 
 
         $sql = "INSERT INTO `cliente`(`CLIENTE_ID`, `CLIENTE_NOME`, `CLIENTE_CPF`, `CLIENTE_EMAIL`, `CLIENTE_TELEFONE`, `CLIENTE_CEP`, `CLIENTE_FOTO`, `CLIENTE_SENHA`, `CLIENTE_UF`, `CLIENTE_CIDADE`, `CLIENTE_LOGRADOURO`, `CLIENTE_BAIRRO`, `CLIENTE_COMPLEMENTO`, `CLIENTE_OPCAO`, `CLIENTE_RAZAO`, `CLIENTE_NUM`, `CLIENTE_TERMO`, `CLIENTE_SEXO`, `CLIENTE_NASCIMENTO`) VALUES (null, :CLIENTE_NOME, :CLIENTE_CPF, :CLIENTE_EMAIL, :CLIENTE_TELEFONE, :CLIENTE_CEP, :CLIENTE_FOTO, :CLIENTE_SENHA, :CLIENTE_UF, :CLIENTE_CIDADE, :CLIENTE_LOGRADOURO, :CLIENTE_BAIRRO, :CLIENTE_COMPLEMENTO, :CLIENTE_OPCAO, :CLIENTE_RAZAO, :CLIENTE_NUM, :CLIENTE_TERMO, :CLIENTE_SEXO, :CLIENTE_NASCIMENTO)";
-        
+
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':CLIENTE_NOME', $ClassCliente->GetNome());
         $insert->bindValue(':CLIENTE_CPF', $ClassCliente->GetCpf());
@@ -577,7 +598,7 @@ class ClienteDAO extends DAO
         $insert->bindValue(':CLIENTE_TERMO', $ClassCliente->GetTermo());
         $insert->bindValue(':CLIENTE_SEXO', $ClassCliente->GetSexo());
         $insert->bindValue(':CLIENTE_NASCIMENTO', $ClassCliente->GetNascimento());
-        
+
         try {
             $insert->execute();
         ?>

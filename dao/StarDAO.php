@@ -24,6 +24,16 @@ class StarDAO extends Dao{
 
     }
 
+    public  function updateStarCancel($profissional, $protocolo, $status, $valo)
+    {
+     
+        $sql = "UPDATE `star` SET star_status_cli = '$status' , star_nota_cli = $valo  WHERE star_protocolo = '$protocolo' and star_pro_email = '$profissional' ";
+        $update = $this->con->prepare($sql);
+        $update->execute();
+
+        header('location: ../../view/cliente/painel.php');
+    }
+
 
 }
 

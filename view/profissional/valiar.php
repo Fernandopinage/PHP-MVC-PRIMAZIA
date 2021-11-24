@@ -1,26 +1,4 @@
 <?php
-session_start();
-include_once "../../dao/StarDAO.php";
-
-if(isset($_POST['valiar_cancel'])){
-
-
-
-    $profissional =  $_SESSION['star']['profissional'];
-    $protocolo =  $_SESSION['star']['protocolo'];
-    $status = 'on';
-    $valor = 5;
-
-    $Valiar = new StarDAO();
-    $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
-
-
-    
-
-}
-
-
-
 
 include_once "../../layout/heard.php";
 ?>
@@ -31,7 +9,7 @@ include_once "../../layout/heard.php";
     </div>
 
     <div class="title text-center">
-        <p>AVALIE O PROFISSIONAL</p>
+        <p>AVALIE O CLIENTE</p>
         <!-- <h5 id="registro">Já possui um cadastro?</h5> -->
 
     </div>
@@ -80,10 +58,10 @@ include_once "../../layout/heard.php";
             <div class="col-4">
             </div>
             <div class="col-2 d-grid gap-2">
-                <input type="submit" class="btn btn-secondary btn-lg" name="valiar_cancel" value="Cancelar" style="background-color: #fff; color:#E97513; border-color:#E97513">
+                <input type="submit" class="btn btn-secondary btn-lg" value="Cancelar" style="background-color: #fff; color:#E97513; border-color:#E97513">
             </div>
             <div class="col-2 d-grid gap-2">
-                <input type="submit" class="btn btn btn-lg" value="Avaliar" name="valiar_avaliar"  style="background-color: #E97513; color:white;border-color:#E97513">
+                <input type="submit" class="btn btn btn-lg" value="Avaliar"  style="background-color: #E97513; color:white;border-color:#E97513">
             </div>
             </div>
         </form>
