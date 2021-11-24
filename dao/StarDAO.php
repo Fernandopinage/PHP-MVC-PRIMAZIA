@@ -24,6 +24,49 @@ class StarDAO extends Dao{
 
     }
 
+    public function selectProfissional($email){
+
+        $email = explode(" ",$email);
+  
+
+        $sql = "SELECT * FROM `profissional` WHERE profissional_email ='".$email[1]."'";
+        $select = $this->con->prepare($sql);
+      
+        $select->execute();
+
+        $array = array();
+
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            
+
+            $array = array(
+
+                'id' => $row['profissional_id'],
+                'nome' => $row['profissional_nome'],
+                'opt' => $row['profissional_option'],
+                'razao' => $row['profissional_razao'],
+                'email' => $row['profissional_email'],
+                'cpf' => $row['profissional_cpf'],
+                'telefone' => $row['profissional_telefone'],
+                'cep' => $row['profissional_cep'],
+                'uf' => $row['profissional_uf'],
+                'rua' => $row['profissional_logradouro'],
+                'numero' => $row['profissional_num'],
+                'cidade' => $row['profissional_cidade'],
+                'bairro' => $row['profissional_bairro'],
+                'complemento' => $row['profissional_complemento'],
+                'foto' => $row['profissional_foto'],
+                'senha' => $row['profissional_senha'],
+                'servico' => $row['profissional_servico'],
+                'termo' => $row['profissional_termo'],
+                'sexo' => $row['profissional_sexo'],
+                'nascimento' => $row['profissional_nascimento']
+            );
+        }
+
+        return $array; 
+    }
+
     public  function updateStarCancel($profissional, $protocolo, $status, $valo)
     {
      
@@ -36,5 +79,3 @@ class StarDAO extends Dao{
 
 
 }
-
-?>

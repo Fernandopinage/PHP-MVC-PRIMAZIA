@@ -2,6 +2,13 @@
 session_start();
 include_once "../../dao/StarDAO.php";
 
+$email = $_SESSION['star']['profissional'];
+
+$Valiar = new StarDAO();
+$dados = $Valiar->selectProfissional($email);
+
+
+
 if (isset($_POST['valiar_cancel'])) {
 
 
@@ -11,7 +18,6 @@ if (isset($_POST['valiar_cancel'])) {
     $status = 'on';
     $valor = 5;
 
-    $Valiar = new StarDAO();
     $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
 }
 
@@ -77,6 +83,25 @@ include_once "../../layout/heard.php";
 
     </div>
     <div class="container">
+
+    <div class="text-center">
+        <?php
+        if (!empty($dados['foto'])) {
+        ?>
+            <img id="usuario" src="../../images/<?php echo $dados['foto'] ?>" class="img" style="width: 150px; border-radius:8px"><br><br>
+        <?php
+
+        } else {
+        ?>
+            <img id="usuario" src="../../images/perfil.png" class="img"  style="width: 150px;border-radius:8px"><br><br>
+        <?php
+        }
+        ?>
+
+        <h5 style="text-transform: capitalize;"><?php echo $dados['nome'] ?></h5><br>
+        
+    </div>
+
         <form method="POST">
 
             <div class="row">
