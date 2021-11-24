@@ -1,12 +1,14 @@
 <?php
 include_once "../../layout/heard.php";
-
+include_once "../../dao/ProfissionalDAO.php";
 session_start();
 
 if (empty($_SESSION['profissional'])) {
 
     header('location: ../../view/profissional/login.php');
 }
+$Star = new ProfissionalDAO();
+$star = $Star->selectStar($_SESSION['profissional']['email']);
 
 ?>
 
@@ -33,7 +35,49 @@ if (empty($_SESSION['profissional'])) {
         ?>
 
         <h5 style="text-transform: capitalize;"><?php echo $_SESSION['profissional']['nome']; ?></h5><br>
-        <img src="../../images/star.png" class="img" width="130"> 0,00</h5></img><br>
+        <?php 
+            
+            if($star == 1){
+                ?>
+                <img src="../../icons/1pp.png" class="img" width="130">
+                <?php
+
+                echo $star;
+            }
+            
+            if($star == 2){
+                ?>
+                <img src="../../icons/2pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+
+            if($star == 3){
+                ?>
+                <img src="../../icons/3pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+
+            if($star == 4){
+                ?>
+                <img src="../../icons/4pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+
+            if($star == 5){
+                ?>
+                <img src="../../icons/5pp.png" class="img" width="130">
+                <?php
+                
+                echo $star;
+            }
+        ?>
+    
     </div>
 
 

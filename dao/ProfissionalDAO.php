@@ -615,6 +615,24 @@ class ProfissionalDAO extends DAO
 
         return $token;
     }
+
+    public function selectStar($email){
+
+        $sql = "SELECT COUNT(star_nota_pro) as quantidade, sum(star_nota_pro) as soma FROM `star` WHERE star_pro_email =:star_pro_email ";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':star_pro_email',$email);
+        $select->execute();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $quantidade = $row['quantidade'];
+            $soma = $row['soma'];
+
+            $rest = (($soma/$quantidade)*100)*0.01;
+        }
+
+        return $rest;
+    }
 }
 
 

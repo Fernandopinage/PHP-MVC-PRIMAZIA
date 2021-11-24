@@ -40,7 +40,7 @@ $star = $Star->selectStar($_SESSION['user']['email']);
         
         
         <?php 
-        
+            
             if($star == 1){
                 ?>
                 <img src="../../icons/1pp.png" class="img" width="130">
