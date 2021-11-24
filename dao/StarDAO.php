@@ -64,14 +64,62 @@ class StarDAO extends Dao{
         return $array; 
     }
 
+    public function selectCliente($email){
+
+        $sql = "SELECT * FROM `cliente` WHERE CLIENTE_EMAIL ='".$email."'";
+        $select = $this->con->prepare($sql);
+      
+        $select->execute();
+
+        $array = array();
+
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+            
+
+            $array = array(
+
+                    'id' => $row['CLIENTE_ID'],
+                    'nome' => $row['CLIENTE_NOME'],
+                    'email' => $row['CLIENTE_EMAIL'],
+                    'cpf' => $row['CLIENTE_CPF'],
+                    'telefone' => $row['CLIENTE_TELEFONE'],
+                    'cep' => $row['CLIENTE_CEP'],
+                    'uf' => $row['CLIENTE_UF'],
+                    'rua' => $row['CLIENTE_LOGRADOURO'],
+                    'numero' => $row['CLIENTE_NUM'],
+                    'cidade' => $row['CLIENTE_CIDADE'],
+                    'bairro' => $row['CLIENTE_BAIRRO'],
+                    'complemento' => $row['CLIENTE_COMPLEMENTO'],
+                    'foto' => $row['CLIENTE_FOTO'],
+                    'sexo' => $row['CLIENTE_SEXO'],
+                    'termo' => $row['CLIENTE_TERMO'],
+                    'nascimento' => $row['CLIENTE_NASCIMENTO']
+            );
+        }
+
+        return $array; 
+
+    }
+
+
     public  function updateStarCancel($profissional, $protocolo, $status, $valo)
     {
      
-        $sql = "UPDATE `star` SET star_status_cli = '$status' , star_nota_cli = $valo  WHERE star_protocolo = '$protocolo' and star_pro_email = '$profissional' ";
+        $sql = "UPDATE `star` SET star_status_cli = '$status' , star_nota_pro = $valo  WHERE star_protocolo = '$protocolo' and star_pro_email = '$profissional' ";
         $update = $this->con->prepare($sql);
         $update->execute();
 
         header('location: ../../view/cliente/painel.php');
+    }
+
+    public  function updateStarCliente($cliente, $protocolo, $status, $valo)
+    {
+     
+        $sql = "UPDATE `star` SET star_status_pro = '$status' , star_nota_cli = $valo  WHERE star_protocolo = '$protocolo' and star_cli_email = '$cliente' ";
+        $update = $this->con->prepare($sql);
+        $update->execute();
+
+        header('location: ../../view/profissional/painel.php');
     }
 
 

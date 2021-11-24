@@ -2,28 +2,26 @@
 session_start();
 include_once "../../dao/StarDAO.php";
 
-$email = $_SESSION['star']['profissional'];
+$email = $_SESSION['star']['cliente'];
 
 $Valiar = new StarDAO();
-$dados = $Valiar->selectProfissional($email);
-
-
+$dados = $Valiar->selectCliente($email);
 
 if (isset($_POST['valiar_cancel'])) {
 
 
 
-    $profissional =  $_SESSION['star']['profissional'];
+    $cliente =  $_SESSION['star']['cliente'];
     $protocolo =  $_SESSION['star']['protocolo'];
     $status = 'on';
     $valor = 5;
 
-    $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
+    $Valiar->updateStarCliente($cliente, $protocolo, $status, $valor);
 }
 
 if (isset($_POST['valiar_avaliar'])) {
 
-    $profissional =  $_SESSION['star']['profissional'];
+    $profissional =  $_SESSION['star']['cliente'];
     $protocolo =  $_SESSION['star']['protocolo'];
     $status = 'on';
 
