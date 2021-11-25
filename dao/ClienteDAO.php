@@ -596,7 +596,7 @@ class ClienteDAO extends DAO
 
         session_destroy();
 
-        header('location: http://primazia.agenciaprogride.com.br/home-resumida-cdaivpysmvvotjwotzxbvm/');
+        header('location: https://gotoservice.com.br/');
     }
 
     public static function RandonSenha($length = 7)
