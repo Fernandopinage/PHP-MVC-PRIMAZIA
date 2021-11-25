@@ -98,47 +98,7 @@ class CategoriaDAO extends DAO
     public function pedido()
     {
 
-        $sql = "SELECT * FROM `servico`";
-        $select = $this->con->prepare($sql);
-        $select->execute();
-
-        if ($select->fetch(PDO::FETCH_ASSOC)) {
-
-
-            $query = "SELECT * FROM `pedido` INNER JOIN servico on servico_protocolo = pedido_protocolo";
-            $parametro = $this->con->prepare($query);
-            $parametro->execute();
-
-            $array = array();
-            while ($row = $parametro->fetch(PDO::FETCH_ASSOC)) {
-
-
-                $array[] = array(
-
-                    'id' => $row['pedido_id'],
-                    'nome' => $row['pedido_nome'],
-                    'telefone' => $row['pedido_telefone'],
-                    'email' => $row['pedido_email'],
-                    'cpf' => $row['pedido_cpf'],
-                    'cep' => $row['pedido_cep'],
-                    'data' => $row['pedido_data'],
-                    'descricao' => json_decode($row['pedido_descricao']),
-                    'uf' => $row['pedido_uf'],
-                    'cidade' => $row['pedido_cidade'],
-                    'logradouro' => $row['pedido_logradouro'],
-                    'bairro' => $row['pedido_bairro'],
-                    'complemento' => $row['pedido_complemento'],
-                    'protocolo' => $row['pedido_protocolo'],
-                    'numero' => $row['pedido_numero'],
-                    'status' => $row['pedido_status'],
-                    'pagamento' => $row['servico_pagamento'],
-                    'valor' => $row['servico_valor'],
-                );
-            }
-        } else {
-
-
-            $query = "SELECT * FROM `pedido`";
+        $query = "SELECT * FROM `pedido` where pedido_status ='A'";
             $parametro = $this->con->prepare($query);
             $parametro->execute();
 
@@ -168,7 +128,6 @@ class CategoriaDAO extends DAO
                     //'valor' => $row['servico_valor'],
                 );
             }
-        }
         return $array;
     }
 
@@ -244,7 +203,7 @@ class CategoriaDAO extends DAO
     public function pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final)
     {
         $where ="";
-
+        
         if(!empty($status)){
 
             $where .= "pedido_status ='".$status."'";

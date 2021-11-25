@@ -30,6 +30,11 @@ if (isset($_POST['filtror'])) {
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
+
+    
+
+
+
 } else {
 
     $ClassPedido = new CategoriaDAO();
@@ -120,7 +125,7 @@ if (isset($_POST['chamado_finalizado'])) {
                 <label for="validationServer01" class="form-label">Status</label>
                 <select class="form-select form-select-sm" name="status_filtro" aria-label="select example">
                     <option value=""></option>
-                    <option value="A">Em Aberto</option>
+                    <option value="">Em Aberto</option>
                     <option value="E">Em Atendimento</option>
                     <option value="F">Finalizado</option>
                     <option value="C">Cancelado</option>
