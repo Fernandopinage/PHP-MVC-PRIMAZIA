@@ -593,7 +593,7 @@ if (empty($_SESSION['admin'])) {
                                     <div class="mb-3">
                                         <select class="form-select" name="servico" id="servico" onchange="change()">
 
-                                            <option value="Artífice (Eletricista, Pintor e Hidráulico)">Artífice (Eletricista, Pintor e Hidráulico)</option>
+                                            <option value="Artífice (Eletricista,Pintor e Hidráulico)">Artífice (Eletricista, Pintor e Hidráulico)</option>
                                             <option value="Babá">Babá</option>
                                             <option value="Cabeleireiro">Cabeleireiro</option>
                                             <option value="Cuidador(a) de Idoso">Cuidador(a) de Idoso</option>

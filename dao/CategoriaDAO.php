@@ -821,6 +821,9 @@ class CategoriaDAO extends DAO
     public function listarProfissionalCategoria($pedido)
     {
 
+        echo $pedido;
+
+
         $sql = 'SELECT  DISTINCT  profissional_id,profissional_nome,profissional_email,profissional_telefone FROM pedido inner JOIN profissional on profissional_servico = JSON_EXTRACT(pedido_descricao, "$.tpservico") WHERE JSON_EXTRACT(pedido_descricao, "$.tpservico") = :pedido_fun';
         $select = $this->con->prepare($sql);
         $select->bindValue(':pedido_fun', $pedido);

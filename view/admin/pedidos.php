@@ -356,6 +356,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         <?php
                                         $pedido = $obj->tpservico;
+                                        
                                         $dados2 = $ClassPedido->listarProfissionalCategoria($pedido);
 
                                         $ClassPedido = new CategoriaDAO();
