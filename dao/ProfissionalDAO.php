@@ -618,7 +618,7 @@ class ProfissionalDAO extends DAO
 
     public function selectStar($email){
 
-        $sql = "SELECT COUNT(star_nota_pro) as quantidade, sum(star_nota_pro) as soma FROM `star` WHERE star_pro_email =:star_pro_email ";
+        $sql = "SELECT COUNT(star_nota_pro) as quantidade, sum(star_nota_pro) as soma FROM `star` WHERE star_pro_email =:star_pro_email and  star_nota_pro != 0 ";
         $select = $this->con->prepare($sql);
         $select->bindValue(':star_pro_email',$email);
         $select->execute();

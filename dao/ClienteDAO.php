@@ -617,7 +617,7 @@ class ClienteDAO extends DAO
 
     public function selectStar($email){
 
-        $sql = "SELECT COUNT(star_nota_cli) as quantidade, sum(star_nota_cli) as soma FROM `star` WHERE star_cli_email =:star_cli_email ";
+        $sql = "SELECT COUNT(star_nota_cli) as quantidade, sum(star_nota_cli) as soma FROM `star` WHERE star_cli_email =:star_cli_email and  star_nota_cli != 0 ";
         $select = $this->con->prepare($sql);
         $select->bindValue(':star_cli_email',$email);
         $select->execute();
