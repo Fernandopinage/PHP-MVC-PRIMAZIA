@@ -39,12 +39,20 @@ $star = $Star->selectStar($_SESSION['user']['email']);
         <h5 style="text-transform: capitalize;"><?php echo $_SESSION['user']['nome'] ?></h5><br>
         
         
-        <?php 
+         <?php 
 
 
-            
-            
-            if($star <= 1.5){
+            if($star ==  0.00){
+
+                ?>
+                <img src="../../icons/5pp.png" class="img" width="130">
+                <?php
+
+                echo 5;
+            }
+                
+       
+            if($star >=  1.00 and $star <=  1.5){
                 ?>
                 <img src="../../icons/1pp.png" class="img" width="130">
                 <?php
@@ -111,15 +119,16 @@ $star = $Star->selectStar($_SESSION['user']['email']);
                 
                 echo $star;
             }
-            if($star == 5 ){
+            if($star == 5){
                 ?>
                 <img src="../../icons/5pp.png" class="img" width="130">
                 <?php
                 
                 echo $star;
             }
+  
+            
         ?>
-    
     
     
         </h5></img><br>

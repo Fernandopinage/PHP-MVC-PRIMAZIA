@@ -625,12 +625,20 @@ class ProfissionalDAO extends DAO
 
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
 
+
             $quantidade = $row['quantidade'];
             $soma = $row['soma'];
 
-            $rest = (($soma/$quantidade)*100)*0.01;
+            if(!empty($quantidade) and !empty($soma)){
+
+                $rest = (($soma/$quantidade)*100)*0.01;
+            }else{
+                $rest = 5.0;
+            }
+
         }
 
+        
         return $rest;
     }
 }

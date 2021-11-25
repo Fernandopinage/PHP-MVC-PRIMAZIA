@@ -76,7 +76,7 @@ include_once "../../layout/heard.php";
     </div>
 
     <div class="title text-center">
-        <p>AVALIE O PROFISSIONAL</p>
+        <p>AVALIE O CLIENTE</p>
         <!-- <h5 id="registro">Já possui um cadastro?</h5> -->
 
     </div>

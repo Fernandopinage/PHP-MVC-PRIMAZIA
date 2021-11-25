@@ -10,11 +10,14 @@ if (empty($_SESSION['profissional'])) {
 $Star = new ProfissionalDAO();
 $star = $Star->selectStar($_SESSION['profissional']['email']);
 
+
+
+
 ?>
 
 <link href="../../layout/css/profissional_painel.css" rel="stylesheet">
 <div id="logo">
-<a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
 
 
@@ -38,87 +41,97 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
 
 
 
-                <?php 
+        <?php
 
 
-            
-            
-            if($star <= 1.5){
-                ?>
-                <img src="../../icons/1pp.png" class="img" width="130">
-                <?php
+        if ($star ==  0.00) {
 
-                echo $star;
-            }
-
-
-
-            if($star >= 1.51 and $star <= 1.99){
-                ?>
-                <img src="../../icons/1.5pp.png" class="img" width="130">
-                <?php
-
-                echo $star;
-            }
-
-            
-            if($star >= 2.00 and $star <= 2.49 ){
-                ?>
-                <img src="../../icons/2pp.png" class="img" width="130">
-                <?php
-                
-                echo $star;
-            }
-
-            if($star >= 2.50 and $star <= 2.99 ){
-                ?>
-                <img src="../../icons/2.5pp.png" class="img" width="130">
-                <?php
-
-                echo $star;
-            }
-
-            if($star >= 3.00 and $star <= 3.49 ){
-                ?>
-                <img src="../../icons/3pp.png" class="img" width="130">
-                <?php
-                
-                echo $star;
-            }
-
-
-            if($star >= 3.50 and $star <= 3.99 ){
-                ?>
-                <img src="../../icons/3.5pp.png" class="img" width="130">
-                <?php
-                
-                echo $star;
-            }
-
-            if($star >= 4.00 and $star <= 4.49 ){
-                ?>
-                <img src="../../icons/4pp.png" class="img" width="130">
-                <?php
-
-                echo $star;
-            }
-
-            if($star >= 4.50 and $star <= 4.99){
-                ?>
-                <img src="../../icons/4.5pp.png" class="img" width="130">
-                <?php
-                
-                echo $star;
-            }
-            if($star == 5 ){
-                ?>
-                <img src="../../icons/5pp.png" class="img" width="130">
-                <?php
-                
-                echo $star;
-            }
         ?>
-    
+            <img src="../../icons/5pp.png" class="img" width="130">
+        <?php
+
+            echo 5;
+        }
+
+
+        if ($star >=  1.00 and $star <=  1.5) {
+        ?>
+            <img src="../../icons/1pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+
+
+        if ($star >= 1.51 and $star <= 1.99) {
+        ?>
+            <img src="../../icons/1.5pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+
+        if ($star >= 2.00 and $star <= 2.49) {
+        ?>
+            <img src="../../icons/2pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+        if ($star >= 2.50 and $star <= 2.99) {
+        ?>
+            <img src="../../icons/2.5pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+        if ($star >= 3.00 and $star <= 3.49) {
+        ?>
+            <img src="../../icons/3pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+
+        if ($star >= 3.50 and $star <= 3.99) {
+        ?>
+            <img src="../../icons/3.5pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+        if ($star >= 4.00 and $star <= 4.49) {
+        ?>
+            <img src="../../icons/4pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+        if ($star >= 4.50 and $star <= 4.99) {
+        ?>
+            <img src="../../icons/4.5pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+        if ($star == 5) {
+        ?>
+            <img src="../../icons/5pp.png" class="img" width="130">
+        <?php
+
+            echo $star;
+        }
+
+
+        ?>
+
     </div>
 
 
@@ -136,11 +149,11 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             </div>
             <div class="col-md">
                 <a class="navbar-brand" href="../profissional/meu_pedidos.php">
-                <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
-            </a>
-            <p class="fs-7"> Meus Pedidos</p>
-        </div>
-        
+                    <img src="../../images/pedidosquesolicitei.png" alt="" width="70" height="70">
+                </a>
+                <p class="fs-7"> Meus Pedidos</p>
+            </div>
+
             <div class="col-md">
                 <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/contato-home/">
                     <img src="../../images/faleconosco.png" alt="" width="80" height="80">
