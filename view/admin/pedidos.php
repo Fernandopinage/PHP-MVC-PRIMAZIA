@@ -406,8 +406,8 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <p><b>Forma de Pagamento</b></p>
-                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm">
+                                                    <p><b>Forma de Pagamento</b><span style="color: red; font-size:16px"> *</span></p>
+                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm" required>
                                                         <option selected></option>
                                                         <option value="Cartão Crédito">Cartão Crédito</option>
                                                         <option value="Cartão Débito">Cartão Débito</option>
@@ -415,8 +415,8 @@ if (isset($_POST['chamado_finalizado'])) {
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <p><b>Valor do Serviço</b></p>
-                                                    <input type="text" class="form-control form-control-sm" name="valor" onkeypress="return(moeda(this,'.',',',event))">
+                                                    <p><b>Valor do Serviço</b><span style="color: red; font-size:16px"> *</span></p>
+                                                    <input type="text" class="form-control form-control-sm" name="valor" onkeypress="return(moeda(this,'.',',',event))" required>
                                                 </div>
                                             </div>
                                             <br>
