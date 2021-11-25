@@ -98,14 +98,8 @@ class CategoriaDAO extends DAO
     public function pedido()
     {
 
-        $sql = "SELECT * FROM `servico`";
-        $select = $this->con->prepare($sql);
-        $select->execute();
-
-        if ($select->fetch(PDO::FETCH_ASSOC)) {
-
-
-            $query = "SELECT * FROM `pedido` INNER JOIN servico on servico_protocolo = pedido_protocolo";
+            $query = "SELECT * FROM `pedido` where pedido_status ='A'";
+            $excel = $query;
             $parametro = $this->con->prepare($query);
             $parametro->execute();
 
@@ -114,40 +108,7 @@ class CategoriaDAO extends DAO
 
 
                 $array[] = array(
-
-                    'id' => $row['pedido_id'],
-                    'nome' => $row['pedido_nome'],
-                    'telefone' => $row['pedido_telefone'],
-                    'email' => $row['pedido_email'],
-                    'cpf' => $row['pedido_cpf'],
-                    'cep' => $row['pedido_cep'],
-                    'data' => $row['pedido_data'],
-                    'descricao' => json_decode($row['pedido_descricao']),
-                    'uf' => $row['pedido_uf'],
-                    'cidade' => $row['pedido_cidade'],
-                    'logradouro' => $row['pedido_logradouro'],
-                    'bairro' => $row['pedido_bairro'],
-                    'complemento' => $row['pedido_complemento'],
-                    'protocolo' => $row['pedido_protocolo'],
-                    'numero' => $row['pedido_numero'],
-                    'status' => $row['pedido_status'],
-                    'pagamento' => $row['servico_pagamento'],
-                    'valor' => $row['servico_valor'],
-                );
-            }
-        } else {
-
-
-            $query = "SELECT * FROM `pedido`";
-            $parametro = $this->con->prepare($query);
-            $parametro->execute();
-
-            $array = array();
-            while ($row = $parametro->fetch(PDO::FETCH_ASSOC)) {
-
-
-                $array[] = array(
-
+                    'excel' => $excel,
                     'id' => $row['pedido_id'],
                     'nome' => $row['pedido_nome'],
                     'telefone' => $row['pedido_telefone'],
@@ -168,9 +129,11 @@ class CategoriaDAO extends DAO
                     //'valor' => $row['servico_valor'],
                 );
             }
-        }
+        
         return $array;
     }
+
+
 
 
     public function pedidos($email)
@@ -243,6 +206,220 @@ class CategoriaDAO extends DAO
 
     public function pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final)
     {
+
+
+
+        if($status == 'C'){
+
+            $where ="";
+
+            if(!empty($status)){
+    
+                $where .= "pedido_status ='".$status."'";
+            }
+            
+            if(!empty($num)){
+                if(!empty($status)){
+    
+                    $where .= " and pedido_protocolo ='".$num."'";
+                }else{
+                    $where .= "pedido_protocolo ='".$num."'";
+                }
+            }
+    
+            if(!empty($data_inicio) and !empty($data_final)){
+                
+                if($data_inicio > $data_final){
+    
+                    ?>
+    
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Erro',
+                            text: 'Data Inicial não pode ser maior que Data Final',
+                            showConfirmButton: false,
+                            timer: 3500
+                        })
+                    </script>
+                <?php
+    
+                }else{
+    
+                    if(!empty($num) or !empty($status) or !empty($pagamento)){
+    
+                        $where .= " and pedido_data BETWEEN '".$data_inicio."' and '".$data_final."'";
+                    }else{
+                        $where .= " pedido_data BETWEEN '".$data_inicio."' and '".$data_final."'";
+                    }
+                    
+    
+                }
+            }
+    
+    
+    
+            if(!empty($where)){
+    
+                $sql = "SELECT * FROM `pedido`  where ".$where;
+            }else{
+                $sql = "SELECT * FROM `pedido` ";
+            }
+            $select = $this->con->prepare($sql);
+            //$select->bindValue(':pedido_protocolo', $num);
+            //$select->bindValue(':pedido_status', $status);
+            //$select->bindValue(':servico_pagamento', $pagamento);
+    
+            if(!empty($where)){
+                $excel = $sql;
+                $select->execute();
+            }
+            //var_dump($select);
+          
+            $array = array();
+    
+    
+    
+            while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+    
+    
+                $array[] = array(
+    
+                    'excel' => $excel,
+                    'id' => $row['pedido_id'],
+                    'nome' => $row['pedido_nome'],
+                    'telefone' => $row['pedido_telefone'],
+                    'email' => $row['pedido_email'],
+                    'cpf' => $row['pedido_cpf'],
+                    'cep' => $row['pedido_cep'],
+                    'data' => $row['pedido_data'],
+                    'descricao' => json_decode($row['pedido_descricao']),
+                    'uf' => $row['pedido_uf'],
+                    'cidade' => $row['pedido_cidade'],
+                    'logradouro' => $row['pedido_logradouro'],
+                    'bairro' => $row['pedido_bairro'],
+                    'complemento' => $row['pedido_complemento'],
+                    'protocolo' => $row['pedido_protocolo'],
+                    'numero' => $row['pedido_numero'],
+                    'status' => $row['pedido_status'],
+                    //'pagamento' => $row['servico_pagamento'],
+                    //'text' => $row['servico_text'],
+                    //'valor' => $row['servico_valor']
+                );
+            }
+    
+            
+            return $array;
+        }
+
+
+        if($status == 'A'){
+
+            $where ="";
+
+            if(!empty($status)){
+    
+                $where .= "pedido_status ='".$status."'";
+            }
+            
+            if(!empty($num)){
+                if(!empty($status)){
+    
+                    $where .= " and pedido_protocolo ='".$num."'";
+                }else{
+                    $where .= "pedido_protocolo ='".$num."'";
+                }
+            }
+    
+            if(!empty($data_inicio) and !empty($data_final)){
+                
+                if($data_inicio > $data_final){
+    
+                    ?>
+    
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Erro',
+                            text: 'Data Inicial não pode ser maior que Data Final',
+                            showConfirmButton: false,
+                            timer: 3500
+                        })
+                    </script>
+                <?php
+    
+                }else{
+    
+                    if(!empty($num) or !empty($status) or !empty($pagamento)){
+    
+                        $where .= " and pedido_data BETWEEN '".$data_inicio."' and '".$data_final."'";
+                    }else{
+                        $where .= " pedido_data BETWEEN '".$data_inicio."' and '".$data_final."'";
+                    }
+                    
+    
+                }
+            }
+    
+    
+    
+            if(!empty($where)){
+    
+                $sql = "SELECT * FROM `pedido`  where ".$where;
+            }else{
+                $sql = "SELECT * FROM `pedido` ";
+            }
+            $select = $this->con->prepare($sql);
+            //$select->bindValue(':pedido_protocolo', $num);
+            //$select->bindValue(':pedido_status', $status);
+            //$select->bindValue(':servico_pagamento', $pagamento);
+    
+            if(!empty($where)){
+                $excel = $sql;
+                $select->execute();
+            }
+            //var_dump($select);
+          
+            $array = array();
+    
+    
+    
+            while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+    
+    
+                $array[] = array(
+    
+                    'excel' => $excel,
+                    'id' => $row['pedido_id'],
+                    'nome' => $row['pedido_nome'],
+                    'telefone' => $row['pedido_telefone'],
+                    'email' => $row['pedido_email'],
+                    'cpf' => $row['pedido_cpf'],
+                    'cep' => $row['pedido_cep'],
+                    'data' => $row['pedido_data'],
+                    'descricao' => json_decode($row['pedido_descricao']),
+                    'uf' => $row['pedido_uf'],
+                    'cidade' => $row['pedido_cidade'],
+                    'logradouro' => $row['pedido_logradouro'],
+                    'bairro' => $row['pedido_bairro'],
+                    'complemento' => $row['pedido_complemento'],
+                    'protocolo' => $row['pedido_protocolo'],
+                    'numero' => $row['pedido_numero'],
+                    'status' => $row['pedido_status'],
+                    //'pagamento' => $row['servico_pagamento'],
+                    //'text' => $row['servico_text'],
+                    //'valor' => $row['servico_valor']
+                );
+            }
+    
+            
+            return $array;
+        }else{
+
+        /********************************************* */
+
         $where ="";
 
         if(!empty($status)){
@@ -354,7 +531,7 @@ class CategoriaDAO extends DAO
 
         
         return $array;
-        
+    }
       
     }
 
@@ -384,9 +561,9 @@ class CategoriaDAO extends DAO
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
                 'status' => $row['pedido_status'],
-                'pagamento' => $row['servico_pagamento'],
-                'text' => $row['servico_text'],
-                'valor' => $row['servico_valor']
+                'pagamento' => @$row['servico_pagamento'],
+                'text' => @$row['servico_text'],
+                'valor' => @$row['servico_valor']
             );
         }
 

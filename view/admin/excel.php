@@ -76,8 +76,26 @@ include_once "../../dao/CategoriaDAO.php";
                             print_r($obj->tpservico);
 
                             ?></th>
-                <th scope="col"><?php echo $dados['pagamento'];?></th>
-                <th scope="col"><?php echo $dados['valor'];?></th>
+                <th scope="col">
+                    <?php
+                    
+                    if(isset($dados['pagamento'])){
+
+                        echo $dados['pagamento'];
+                    }else{
+                        echo "---";
+                    }
+                    ?>
+                
+                </th>
+                <th scope="col">
+                    <?php
+                    if(isset($dados['valor'])){
+                        echo $dados['valor'];
+                    }else{
+                        echo  "---";
+                    }
+                     ?></th>
             </tr>
                 
                 <?php
