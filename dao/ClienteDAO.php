@@ -627,7 +627,12 @@ class ClienteDAO extends DAO
             $quantidade = $row['quantidade'];
             $soma = $row['soma'];
 
-            $rest = (($soma/$quantidade)*100)*0.01;
+            if(!empty($quantidade) and !empty($soma)){
+
+                $rest = (($soma/$quantidade)*100)*0.01;
+            }else{
+                $rest = 5.0;
+            }
         }
 
         return $rest;
