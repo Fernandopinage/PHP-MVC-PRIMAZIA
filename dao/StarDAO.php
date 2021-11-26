@@ -173,9 +173,9 @@ class StarDAO extends Dao{
         $update = $this->con->prepare($sql);
         $update->execute();
 
-        $query = "SELECT * FROM `star` WHERE star_pro_email =:star_pro_email and 	star_status_pro = 'of'";
+        $query = "SELECT * FROM `star` WHERE star_pro_email =:star_pro_email and star_status_pro = 'of'";
         $select = $this->con->prepare($query);
-        $select->bindValue(':star_pro_email', 'luizfernandoluck@gmail.com');
+        $select->bindValue(':star_pro_email', 'luizfernandoluck@hotmail.com');
         $select->execute();
 
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
