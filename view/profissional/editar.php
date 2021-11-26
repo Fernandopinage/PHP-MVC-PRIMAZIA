@@ -288,15 +288,15 @@ if (isset($_POST['salvarProfissional'])) {
                     </div>
                     <div class="col-md-12">
                         <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">">
-                            <option value="<?php $dados['servico'] == 'Artífice (Eletricista,Pintor e Hidráulico)' ? 'selected':''  ?>Artífice (Eletricista,Pintor e Hidráulico)" selected>Artífice (Eletricistas, Pintor e Hidráulico)</option>
-                            <option value="<?php $dados['servico'] == 'Babá' ? 'selected':''  ?>Babá">Babá</option>
-                            <option value="<?php $dados['servico'] == 'Cabeleireiro' ? 'selected':''  ?>Cabeleireiro">Cabeleireiro</option>
-                            <option value="<?php $dados['servico'] == 'Cuidador(a) de Pessoas' ? 'selected':''  ?>Cuidador(a) de Pessoas">Cuidador(a) de Pessoas</option>
-                            <option value="<?php $dados['servico'] == 'Dedetização' ? 'selected':''  ?>Dedetização">Dedetização</option>
-                            <option value="<?php $dados['servico'] == 'Diarista' ? 'selected':''  ?>Diarista">Diarista</option>
-                            <option value="<?php $dados['servico'] == 'Lavanderia' ? 'selected':''  ?>Lavanderia">Lavanderia</option>
-                            <option value="<?php $dados['servico'] == 'Manutenção de Ar Condicionado' ? 'selected':''  ?>Manutenção de Ar Condicionado">Manutenção de Ar Condicionado</option>
-                            <option value="<?php $dados['servico'] == 'Motoboy' ? 'selected':''  ?>Motoboy">Motoboy</option>
+                            <option <?php $dados['servico'] == 'Artífice (Eletricista,Pintor e Hidráulico)' ? 'selected':''  ?> value="Artífice (Eletricista,Pintor e Hidráulico)">Artífice (Eletricistas, Pintor e Hidráulico)</option>
+                            <option <?php $dados['servico'] == 'Babá' ? 'selected': ''  ?> value="Babá">Babá</option>
+                            <option <?php $dados['servico'] == 'Cabeleireiro' ? 'selected':''  ?> value="Cabeleireiro">Cabeleireiro</option>
+                            <option <?php $dados['servico'] == 'Cuidador(a) de Pessoas' ? 'selected':''  ?> value="Cuidador(a) de Pessoas">Cuidador(a) de Pessoas</option>
+                            <option <?php $dados['servico'] == 'Dedetização' ? 'selected':''  ?> value="Dedetização">Dedetização</option>
+                            <option <?php $dados['servico'] == 'Diarista' ? 'selected':''  ?> value="Diarista">Diarista</option>
+                            <option <?php $dados['servico'] == 'Lavanderia' ? 'selected':''  ?> value="Lavanderia">Lavanderia</option>
+                            <option <?php $dados['servico'] == 'Manutenção de Ar Condicionado' ? 'selected':''  ?> value="Manutenção de Ar Condicionado">Manutenção de Ar Condicionado</option>
+                            <option <?php $dados['servico'] == 'Motoboy' ? 'selected':''  ?> value="Motoboy">Motoboy</option>
                         </select>
                     </div>
                     <div id="pergunta01">
