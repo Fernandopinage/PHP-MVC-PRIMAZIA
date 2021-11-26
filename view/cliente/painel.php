@@ -162,7 +162,7 @@ $star = $Star->selectStar($_SESSION['user']['email']);
             </div>
 
             <div class="col-md">
-                <a class="navbar-brand" href="https://gotoservice.com.br/view/profissional/registro.php">
+                <a class="navbar-brand" href="https://sistema.gotoservice.com.br/view/profissional/registro.php">
                     <img src="../../images/cadastresecomoprofissional.png" alt="" width="70" height="70">
                 </a>
                 <p class="fs-6"> Cadastre-se como Profissional</p>
