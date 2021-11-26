@@ -59,7 +59,7 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/1pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
 
@@ -69,7 +69,7 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/1.5pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
 
@@ -78,7 +78,7 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/2pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
         if ($star >= 2.50 and $star <= 2.99) {
@@ -86,7 +86,7 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/2.5pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
         if ($star >= 3.00 and $star <= 3.49) {
@@ -94,7 +94,7 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/3pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
 
@@ -103,7 +103,7 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/3.5pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
         if ($star >= 4.00 and $star <= 4.49) {
@@ -111,7 +111,7 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/4pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
         if ($star >= 4.50 and $star <= 4.99) {
@@ -119,14 +119,14 @@ $star = $Star->selectStar($_SESSION['profissional']['email']);
             <img src="../../icons/4.5pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
         if ($star == 5) {
         ?>
             <img src="../../icons/5pp.png" class="img" width="130">
         <?php
 
-            echo $star;
+            echo $star = round($star,2);
         }
 
 
