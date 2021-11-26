@@ -1,5 +1,5 @@
 <?php
-
+include_once "../../layout/heard.php";
 include_once "../../class/ClassStar.php";
 include_once "../../dao/DAO.php";
 
@@ -109,7 +109,61 @@ class StarDAO extends Dao{
         $update = $this->con->prepare($sql);
         $update->execute();
 
-        header('location: ../../view/cliente/painel.php');
+        $query = "SELECT * FROM `star` WHERE star_cli_email =:star_cli_email and 	star_status_cli = 'of'";
+        $select = $this->con->prepare($query);
+        $select->bindValue(':star_cli_email', 'luiz.c@progride.com.br');
+        $select->execute();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+           @session_start();
+            $_SESSION['star']  = array(
+
+                'cliente' => $row['star_cli_email'],
+                'profissional' => $row['star_pro_email'],
+                'cliente_status' => $row['star_status_cli'],
+                'profissional_status' => $row['star_status_pro'],
+                'cliente_note' => $row['star_nota_cli'],
+                'profissional_note' => $row['star_nota_pro'],
+                'protocolo' => $row['star_protocolo'],
+
+
+            );
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Profissional avaliado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+            <?php
+
+                header('Refresh: 3.5; url=../cliente/avaliar.php');
+            //header('location: ../../view/cliente/avaliar.php');
+
+        }else{
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Profissional avaliado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+            <?php
+
+           // header('location: ../../view/cliente/painel.php');
+            header('Refresh: 3.5; url=../cliente/painel.php');
+        }
+
     }
 
     public  function updateStarCliente($cliente, $protocolo, $status, $valo)
@@ -119,7 +173,63 @@ class StarDAO extends Dao{
         $update = $this->con->prepare($sql);
         $update->execute();
 
-        header('location: ../../view/profissional/painel.php');
+        $query = "SELECT * FROM `star` WHERE star_pro_email =:star_pro_email and 	star_status_pro = 'of'";
+        $select = $this->con->prepare($query);
+        $select->bindValue(':star_pro_email', 'luizfernandoluck@gmail.com');
+        $select->execute();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+            @session_start();
+             $_SESSION['star']  = array(
+ 
+                 'cliente' => $row['star_cli_email'],
+                 'profissional' => $row['star_pro_email'],
+                 'cliente_status' => $row['star_status_cli'],
+                 'profissional_status' => $row['star_status_pro'],
+                 'cliente_note' => $row['star_nota_cli'],
+                 'profissional_note' => $row['star_nota_pro'],
+                 'protocolo' => $row['star_protocolo'],
+ 
+ 
+             );
+ 
+             ?>
+ 
+             <script>
+                 Swal.fire({
+                     position: 'center',
+                     icon: 'success',
+                     title: 'Cliente avaliado com sucesso',
+                     showConfirmButton: false,
+                     timer: 3500
+                 })
+             </script>
+             <?php
+ 
+                 header('Refresh: 3.5; url=../cliente/avaliar.php');
+             //header('location: ../../view/cliente/avaliar.php');
+ 
+         }else{
+ 
+             ?>
+ 
+             <script>
+                 Swal.fire({
+                     position: 'center',
+                     icon: 'success',
+                     title: 'Cliente avaliado com sucesso',
+                     showConfirmButton: false,
+                     timer: 3500
+                 })
+             </script>
+             <?php
+ 
+            // header('location: ../../view/cliente/painel.php');
+             header('Refresh: 3.5; url=../profissional/painel.php');
+         }
+
+
+        //header('location: ../../view/profissional/painel.php');
     }
 
 

@@ -23,8 +23,11 @@ if (isset($_POST['valiar_cancel'])) {
 
 if (isset($_POST['valiar_avaliar'])) {
 
-    $profissional =  $_SESSION['star']['profissional'];
-    $protocolo =  $_SESSION['star']['protocolo'];
+    //$profissional =  $_SESSION['star']['profissional'];
+    //$protocolo =  $_SESSION['star']['protocolo'];
+
+    $profissional = $_POST['profissional'];
+    $protocolo = $_POST['protocolo'];
     $status = 'on';
 
     if (isset($_POST['valor1'])) {
@@ -64,13 +67,13 @@ if (isset($_POST['valiar_avaliar'])) {
     }
     $Valiar = new StarDAO();
     $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
+
 }
-
-
 
 
 include_once "../../layout/heard.php";
 ?>
+
 <link href="../../layout/css/star.css" rel="stylesheet">
 <div class="container-fluid">
     <div class="text-center">
@@ -101,9 +104,13 @@ include_once "../../layout/heard.php";
         <h5 style="text-transform: capitalize;"><?php echo $dados['nome'] ?></h5><br>
         
     </div>
+    
 
         <form method="POST">
 
+
+                <input type="hidden" name="profissional" value="<?php echo $_SESSION['star']['profissional']?>">
+                <input type="hidden" name="protocolo" value="<?php echo $_SESSION['star']['protocolo']?>">
             <div class="row">
 
                 <div class="text-center">
@@ -381,6 +388,5 @@ include_once "../../layout/heard.php";
 </script>
 
 <?php
-
 include_once "../../layout/footer.php";
 ?>

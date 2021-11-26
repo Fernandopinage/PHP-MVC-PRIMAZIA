@@ -21,8 +21,12 @@ if (isset($_POST['valiar_cancel'])) {
 
 if (isset($_POST['valiar_avaliar'])) {
 
-    $cliente =  $_SESSION['star']['cliente'];
-    $protocolo =  $_SESSION['star']['protocolo'];
+    //$cliente =  $_SESSION['star']['cliente'];
+    //$protocolo =  $_SESSION['star']['protocolo'];
+
+    $cliente =  $_POST['cliente'];
+    $protocolo = $_POST['protocolo'];
+
     $status = 'on';
 
     if (isset($_POST['valor1'])) {
@@ -101,6 +105,9 @@ include_once "../../layout/heard.php";
     </div>
 
         <form method="POST">
+
+                <input type="hidden" name="cliente" value="<?php echo $_SESSION['star']['cliente']?>">
+                <input type="hidden" name="protocolo" value="<?php echo $_SESSION['star']['protocolo']?>">
 
             <div class="row">
 
