@@ -420,6 +420,25 @@ class ProfissionalDAO extends DAO
             $subcat->insertSubcategoria($ClassProfissional, $subcategoria);
         } catch (PDOException $e) {
 
+        
+
+            if($e->errorInfo[2] == "Duplicate entry '".$ClassProfissional->GetEmail()."' for key 'profissional_email'"){
+                ?>
+
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Registro Inválido',
+                        text:'E-mail Duplicado por favor entre em contato com os administradores',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+    
+            <?php
+            } else{
+               
         ?>
 
             <script>
@@ -427,12 +446,14 @@ class ProfissionalDAO extends DAO
                     position: 'center',
                     icon: 'error',
                     title: 'Registro Inválido',
+                    text:'CPF/CNPJ Duplicado por favor entre em contato com os administradores',
                     showConfirmButton: false,
                     timer: 3500
                 })
             </script>
 
         <?php
+            } 
 
 
         }

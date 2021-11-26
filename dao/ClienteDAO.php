@@ -571,8 +571,26 @@ class ClienteDAO extends DAO
         <?php
             header('location: ../../view/cliente/login.php');
         } catch (PDOException $e) {
+            
+           
 
+            if($e->errorInfo[2] == "Duplicate entry '".$ClassCliente->GetEmail()."' for key 'CLIENTE_EMAIL'"){
+                ?>
 
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Registro Inválido',
+                        text:'E-mail Duplicado por favor entre em contato com os administradores',
+                        showConfirmButton: false,
+                        timer: 3500
+                    })
+                </script>
+    
+            <?php
+            } else{
+               
         ?>
 
             <script>
@@ -580,12 +598,15 @@ class ClienteDAO extends DAO
                     position: 'center',
                     icon: 'error',
                     title: 'Registro Inválido',
+                    text:'CPF/CNPJ Duplicado por favor entre em contato com os administradores',
                     showConfirmButton: false,
                     timer: 3500
                 })
             </script>
 
-<?php
+        <?php
+            } 
+          
 
 
         }
