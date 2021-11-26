@@ -152,11 +152,11 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Senha <span style="color: red;">*</span></label>
-                        <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="" required>
+                        <input type="password" minlength="6" name="senha" id="senha" class="form-control form-control-sm" aria-label="" required>
                     </div>
                     <div class="col-md-6">
                         <label>Confirme sua senha <span style="color: red;">*</span></label>
-                        <input type="password" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" required>
+                        <input type="password" minlength="6" name="confirmar" id="confirmar" class="form-control form-control-sm cpf-mask" required>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
