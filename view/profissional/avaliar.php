@@ -11,12 +11,17 @@ if (isset($_POST['valiar_cancel'])) {
 
 
 
-    $cliente =  $_SESSION['star']['cliente'];
-    $protocolo =  $_SESSION['star']['protocolo'];
+     //$cliente =  $_SESSION['star']['cliente'];
+    //$protocolo =  $_SESSION['star']['protocolo'];
+
+    $cliente = $_POST['cliente'];
+    $profissional = $_POST['profissional'];
+    $protocolo = $_POST['protocolo'];
+
     $status = 'on';
     $valor = 5;
 
-    $Valiar->updateStarCliente($cliente, $protocolo, $status, $valor);
+    $Valiar->updateStarCliente($cliente, $profissional, $protocolo, $status, $valor);
 }
 
 if (isset($_POST['valiar_avaliar'])) {
@@ -24,7 +29,8 @@ if (isset($_POST['valiar_avaliar'])) {
     //$cliente =  $_SESSION['star']['cliente'];
     //$protocolo =  $_SESSION['star']['protocolo'];
 
-    $cliente =  $_POST['cliente'];
+    $cliente = $_POST['cliente'];
+    $profissional = $_POST['profissional'];
     $protocolo = $_POST['protocolo'];
 
     $status = 'on';
@@ -65,7 +71,7 @@ if (isset($_POST['valiar_avaliar'])) {
         }
     }
     $Valiar = new StarDAO();
-    $Valiar->updateStarCliente($cliente, $protocolo, $status, $valor);
+    $Valiar->updateStarCliente($cliente, $profissional, $protocolo, $status, $valor);
 }
 
 
@@ -107,6 +113,7 @@ include_once "../../layout/heard.php";
         <form method="POST">
 
                 <input type="hidden" name="cliente" value="<?php echo $_SESSION['star']['cliente']?>">
+                <input type="hidden" name="profissional" value="<?php echo $_SESSION['star']['profissional']?>">
                 <input type="hidden" name="protocolo" value="<?php echo $_SESSION['star']['protocolo']?>">
 
             <div class="row">

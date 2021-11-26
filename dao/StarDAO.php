@@ -102,16 +102,16 @@ class StarDAO extends Dao{
     }
 
 
-    public  function updateStarCancel($profissional, $protocolo, $status, $valo)
+    public  function updateStarCancel($cliente, $profissional, $protocolo, $status, $valor)
     {
      
-        $sql = "UPDATE `star` SET star_status_cli = '$status' , star_nota_pro = $valo  WHERE star_protocolo = '$protocolo' and star_pro_email = '$profissional' ";
+        $sql = "UPDATE `star` SET star_status_cli = '$status' , star_nota_pro = $valor  WHERE star_protocolo = '$protocolo' and star_pro_email = '$profissional' ";
         $update = $this->con->prepare($sql);
         $update->execute();
 
         $query = "SELECT * FROM `star` WHERE star_cli_email =:star_cli_email and 	star_status_cli = 'of'";
         $select = $this->con->prepare($query);
-        $select->bindValue(':star_cli_email', 'luiz.c@progride.com.br');
+        $select->bindValue(':star_cli_email', $cliente);
         $select->execute();
 
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
@@ -166,16 +166,16 @@ class StarDAO extends Dao{
 
     }
 
-    public  function updateStarCliente($cliente, $protocolo, $status, $valo)
+    public  function updateStarCliente($cliente, $profissional, $protocolo, $status, $valor)
     {
      
-        $sql = "UPDATE `star` SET star_status_pro = '$status' , star_nota_cli = $valo  WHERE star_protocolo = '$protocolo' and star_cli_email = '$cliente' ";
+        $sql = "UPDATE `star` SET star_status_pro = '$status' , star_nota_cli = $valor  WHERE star_protocolo = '$protocolo' and star_cli_email = '$cliente' ";
         $update = $this->con->prepare($sql);
         $update->execute();
 
         $query = "SELECT * FROM `star` WHERE star_pro_email =:star_pro_email and star_status_pro = 'of'";
         $select = $this->con->prepare($query);
-        $select->bindValue(':star_pro_email', 'luizfernandoluck@hotmail.com');
+        $select->bindValue(':star_pro_email', $profissional);
         $select->execute();
 
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
@@ -206,7 +206,7 @@ class StarDAO extends Dao{
              </script>
              <?php
  
-                 header('Refresh: 3.5; url=../cliente/avaliar.php');
+                 header('Refresh: 3.5; url=../profissional/avaliar.php');
              //header('location: ../../view/cliente/avaliar.php');
  
          }else{

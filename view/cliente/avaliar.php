@@ -13,19 +13,22 @@ if (isset($_POST['valiar_cancel'])) {
 
 
 
-    $profissional =  $_SESSION['star']['profissional'];
-    $protocolo =  $_SESSION['star']['protocolo'];
+     //$profissional =  $_SESSION['star']['profissional'];
+    //$protocolo =  $_SESSION['star']['protocolo'];
+    $cliente = $_POST['cliente'];
+    $profissional = $_POST['profissional'];
+    $protocolo = $_POST['protocolo'];
     $status = 'on';
     $valor = 5;
 
-    $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
+    $Valiar->updateStarCancel($cliente, $profissional, $protocolo, $status, $valor);
 }
 
 if (isset($_POST['valiar_avaliar'])) {
 
     //$profissional =  $_SESSION['star']['profissional'];
     //$protocolo =  $_SESSION['star']['protocolo'];
-
+    $cliente = $_POST['cliente'];
     $profissional = $_POST['profissional'];
     $protocolo = $_POST['protocolo'];
     $status = 'on';
@@ -66,7 +69,7 @@ if (isset($_POST['valiar_avaliar'])) {
         }
     }
     $Valiar = new StarDAO();
-    $Valiar->updateStarCancel($profissional, $protocolo, $status, $valor);
+    $Valiar->updateStarCancel($cliente, $profissional, $protocolo, $status, $valor);
 
 }
 
@@ -108,7 +111,7 @@ include_once "../../layout/heard.php";
 
         <form method="POST">
 
-
+                <input type="hidden" name="cliente" value="<?php echo $_SESSION['star']['cliente']?>">
                 <input type="hidden" name="profissional" value="<?php echo $_SESSION['star']['profissional']?>">
                 <input type="hidden" name="protocolo" value="<?php echo $_SESSION['star']['protocolo']?>">
             <div class="row">
