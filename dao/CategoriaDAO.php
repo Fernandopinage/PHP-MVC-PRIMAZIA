@@ -46,8 +46,8 @@ class CategoriaDAO extends DAO
         $data = date('d/m/Y');
 
 
-        $MAIL = new Mail();
-        $MAIL->Envio($nome, $email, $pedido, $telefone, $protodolo, $data, $cidade, $rua, $bairro, $complemento, $numero);
+        $mail = new Mail();
+        $mail->Envio($nome, $email, $pedido, $telefone, $protodolo, $data, $cidade, $rua, $bairro, $complemento, $numero);
 
         try {
             $insert->execute();
