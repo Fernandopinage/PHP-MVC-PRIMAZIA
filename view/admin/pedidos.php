@@ -448,7 +448,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p><b>Valor do Serviço</b></p>
-                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor']; ?>" name="valor" disabled>
+                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor']; ?>" onkeypress="return(moeda(this,'.',',',event))" name="valor" disabled>
                                                 </div>
                                             </div>
                                             <br>
