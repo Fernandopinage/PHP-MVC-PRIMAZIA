@@ -33,12 +33,12 @@ if (isset($_POST['diaristafinal'])) {
         $dados = array(
 
             'tpservico' => 'Diarista',
-            'categoria' => $_POST['categoria'],
-            'descricao' => $_POST['descricao'],
-            'local' => $_POST['local'],
-            'dependente' => $_POST['dependente'],
-            'serviço' => $_POST['serviço'],
-            'termo' => $_POST['tipocontratacao']
+            'categoria' => @$_POST['categoria'],
+            'descricao' => @$_POST['descricao'],
+            'local' => @$_POST['local'],
+            'dependente' => @$_POST['dependente'],
+            'serviço' => @$_POST['serviço'],
+            'termo' => @$_POST['tipocontratacao']
         );
         $ClassRequest->SetDescricao($dados);
 

@@ -30,8 +30,8 @@ if(isset($_POST['salvadedetiza'])){
    $dados = array(
 
     'tpservico' => 'Dedetização',
-    'categoria' => $_POST['categoria'],
-    'descricao' => $_POST['descricao']
+    'categoria' => @$_POST['categoria'],
+    'descricao' => @$_POST['descricao']
 
     );
     $ClassRequest->SetDescricao($dados);

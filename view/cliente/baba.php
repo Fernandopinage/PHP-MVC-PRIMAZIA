@@ -33,8 +33,8 @@ if (isset($_POST['salvaBaba'])) {
         $dados = array(
 
             'tpservico' => 'Babá',
-            'categoria' => $_POST['categoria'],
-            'descricao' => $_POST['descricao'],
+            'categoria' => @$_POST['categoria'],
+            'descricao' => @$_POST['descricao'],
 
 
         );

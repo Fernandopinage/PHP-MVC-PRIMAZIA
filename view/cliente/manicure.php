@@ -33,8 +33,8 @@ if (isset($_POST['salvaManicure'])) {
         $dados = array(
 
             'tpservico' => 'Manicure',
-            'categoria' => $_POST['categoria'],
-            'descricao' => $_POST['descricao'],
+            'categoria' => @$_POST['categoria'],
+            'descricao' => @$_POST['descricao'],
 
 
         );
