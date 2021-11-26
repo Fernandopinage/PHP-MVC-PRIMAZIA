@@ -31,7 +31,7 @@ if (isset($_POST['valiar_avaliar'])) {
 
     $cliente = $_POST['cliente'];
     $profissional = $_POST['profissional'];
-    $protocolo = $_POST['protocolo'];
+    $protocolo = $_POST['protocolo'];  
 
     $status = 'on';
 
