@@ -25,7 +25,7 @@ if (isset($_POST['valiar_cancel'])) {
 }
 
 if (isset($_POST['valiar_avaliar'])) {
-
+ 
     //$cliente =  $_SESSION['star']['cliente'];
     //$protocolo =  $_SESSION['star']['protocolo'];
 
