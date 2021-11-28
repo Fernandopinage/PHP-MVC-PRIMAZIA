@@ -223,29 +223,38 @@ if (isset($_POST['salvarCliente'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
+                        <label>Nome Completo<span style="color: red;">*</span></label>
                             <input type="text" name="admnome" id="admnome" class="form-control" placeholder="Nome" aria-label="Nome do administrador">
                         </div>
                         <div class="col-md-6">
+                        <label>CNPJ/CPF<span style="color: red;">*</span></label>
                             <input type="text" name="admcpf" id="admcpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                         </div>
                     </div>
                
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>Senha<span style="color: red;">*</span></label>
                         <input type="password" name="admsenha" id="admsenha" class="form-control" placeholder="Senha" aria-label="">
                     </div>
                     <div class="col-md-6">
+                    <label>Confirmar Senha<span style="color: red;">*</span></label>
                         <input type="password" name="admconfirmar" id="admconfirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>Telefone<span style="color: red;">*</span></label>
                         <input type="text" name="admtel" id="tel" class="form-control" placeholder="Telefone" aria-label="" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
+                    <label>Email<span style="color: red;">*</span></label>
                         <input type="email" name="admemail" id="admemail" class="form-control" placeholder="E-mail" aria-label="">
                     </div>
+                </div>
+                <div class="text-start" style="margin-top: 10px;">
+                    <p style="color: red;">Campos Obrigatorios <b>*</b></p>
                 </div>
                 <div class="row">
 
@@ -273,27 +282,33 @@ if (isset($_POST['salvarCliente'])) {
 
                     <div class="row g-3 mt-1">
                         <div class="col-md-6">
+                        <label>Razão Social<span style="color: red;">*</span></label>
                             <input type="text" name="Prazao" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
+                        <label>Inscrição Estadual<span style="color: red;">*</span></label>
                             <input type="text" name="PInscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>Nome Completo<span style="color: red;">*</span></label>
                         <input type="text" name="Pnome" id="nome" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
+                    <label>CNPJ/CPF<span style="color: red;">*</span></label>
                         <input type="text" name="Pcpf" id="cpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>Senha<span style="color: red;">*</span></label>
                         <input type="password" name="Psenha" id="senha" class="form-control" placeholder="Senha" aria-label="">
                     </div>
                     <div class="col-md-6">
+                    <label>Confirma Senha<span style="color: red;">*</span></label>
                         <input type="password" name="Pconfirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
@@ -301,34 +316,44 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>CEP<span style="color: red;">*</span></label>
                         <input type="text" maxlength="9" name="Pcep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
+                    <label>Endereço<span style="color: red;">*</span></label>
                         <input type="text" name="Plogradouro" id="rua" class="form-control" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
+                    <label>Nº<span style="color: red;">*</span></label>
                         <input type="text" name="Pnumerp" id="numero" class="form-control" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
+                    <label>UF<span style="color: red;">*</span></label>
                         <input type="text" name="Puf" id="uf" class="form-control" placeholder="UF">
                     </div>
                     <div class="col-md-6">
+                    <label>Cidade<span style="color: red;">*</span></label>
                         <input type="text" name="Pcidade" id="cidade" class="form-control " placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
+                    <label>Bairro<span style="color: red;">*</span></label>
                         <input type="text" name="Pbairro" id="bairro" class="form-control " placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
+                    <label>Complemento<span style="color: red;">*</span></label>
                         <input type="text" name="Pcomplemento" id="complemento" class="form-control " placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
+                    <label>Telefone<span style="color: red;">*</span></label>
                         <input type="text" name="Ptelefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
+                    <label>E-mail<span style="color: red;">*</span></label>
                         <input type="email" name="Pemail" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                     </div>
                     <div class="col-md-12">
+                    <label>Tipo de Serviço<span style="color: red;">*</span></label>
                         <select class="form-select" name="Pservico">
                             <option selected>Tipo de Serviço</option>
                             <option value="Artífice (Eletricista,Pintor e Hidráulico)">Artífice (Eletricista, Pintor e Hidráulico)</option>
@@ -343,7 +368,9 @@ if (isset($_POST['salvarCliente'])) {
                         </select>
                     </div>
                 </div>
-
+                <div class="text-start" style="margin-top: 10px;">
+                    <p style="color: red;">Campos Obrigatorios <b>*</b></p>
+                </div>
 
                 <div class="row">
 
@@ -370,28 +397,34 @@ if (isset($_POST['salvarCliente'])) {
                 <div id="Cfisica">
 
                     <div class="row g-3 mt-1">
+                    <label>Nome de Usuário<span style="color: red;">*</span></label>
                         <div class="col-md-6">
                             <input type="text" name="razao" id="razao" class="form-control" placeholder="Razão Social" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
+                        <label>Inscrição Estadual<span style="color: red;">*</span></label>
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control cpf-mask" placeholder="Inscrição Estadual">
                         </div>
                     </div>
                 </div>
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>Nome Completo<span style="color: red;">*</span></label>
                         <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome de Usuário" aria-label="Nome de Usuário">
                     </div>
                     <div class="col-md-6">
+                    <label>CNPJ/CPF<span style="color: red;">*</span></label>
                         <input type="text" name="cpf" id="cpf" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                     </div>
                 </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>Senha<span style="color: red;">*</span></label>
                         <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="">
                     </div>
                     <div class="col-md-6">
+                    <label>Confirmar Senha<span style="color: red;">*</span></label>
                         <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                     </div>
                 </div>
@@ -399,35 +432,46 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
+                    <label>CEP<span style="color: red;">*</span></label>
                         <input type="text" maxlength="9" name="cep" id="Ccep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
+                    <label>Endereço<span style="color: red;">*</span></label>
                         <input type="text" name="logradouro" id="Crua" class="form-control" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
+                    <label>Nº<span style="color: red;">*</span></label>
                         <input type="text" name="numerp" id="Cnumero" class="form-control" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
+                    <label>UF<span style="color: red;">*</span></label>
                         <input type="text" name="uf" id="Cuf" class="form-control" placeholder="UF">
                     </div>
                     <div class="col-md-6">
+                    <label>Cidade<span style="color: red;">*</span></label>
                         <input type="text" name="cidade" id="Ccidade" class="form-control " placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
+                    <label>Bairro<span style="color: red;">*</span></label>
                         <input type="text" name="bairro" id="Cbairro" class="form-control " placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
+                    <label>Complemento<span style="color: red;">*</span></label>
                         <input type="text" name="complemento" id="Ccomplemento" class="form-control " placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
+                    <label>Telefone<span style="color: red;">*</span></label>
                         <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
+                    <label>E-mail<span style="color: red;">*</span></label>
                         <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                     </div>
                 </div>
-
+                <div class="text-start" style="margin-top: 10px;">
+                    <p style="color: red;">Campos Obrigatorios <b>*</b></p>
+                </div>
 
                 <div class="row">
 
