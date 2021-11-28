@@ -154,7 +154,7 @@ $star = $Star->selectStar($_SESSION['user']['email']);
                 <p class="fs-6"> Encontre um Profissional</p>
             </div>
             <div class="col-md">
-                <a class="navbar-brand" href="http://primazia.agenciaprogride.com.br/contato-home/">
+                <a class="navbar-brand" href="https://gotoservice.com.br/contato-home/">
                     <img src="../../images/faleconosco.png" alt="" width="80" height="80">
                 </a>
                 <p class="fs-6"> Fale Conosco </p>
