@@ -186,8 +186,14 @@ if (isset($_POST['salvarCliente'])) {
 
 
 ?>
+
+
+
 <link href="../../layout/css/cliente_registro.css" rel="stylesheet">
 
+<div style="margin-left: 50px;">
+    <a id="retorne" href="../../view/admin/painel.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
+</div>
 <div class="text-center">
     <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
