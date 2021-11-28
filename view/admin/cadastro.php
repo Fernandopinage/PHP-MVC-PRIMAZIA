@@ -235,7 +235,7 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" name="admtel" id="tel" class="form-control" placeholder="Telefone" aria-label="">
+                        <input type="text" name="admtel" id="tel" class="form-control" placeholder="Telefone" aria-label="" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
                     </div>
                     <div class="col-md-6">
                         <input type="email" name="admemail" id="admemail" class="form-control" placeholder="E-mail" aria-label="">
