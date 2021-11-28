@@ -97,15 +97,15 @@ function mphone(v) {
 
        function limpa_formulário_cep() {
          // Limpa valores do formulário de cep.
-         $("#rua2").val("");
-         $("#bairro2").val("");
-         $("#cidade2").val("");
-         $("#uf2").val("");
-         $("#ibge2").val("");
+         $("#Crua").val("");
+         $("#Cbairro").val("");
+         $("#Ccidade").val("");
+         $("#Cuf").val("");
+         $("#Cibge").val("");
        }
 
        //Quando o campo cep perde o foco.
-       $("#cep2").blur(function() {
+       $("#Ccep").blur(function() {
 
          //Nova variável "cep" somente com dígitos.
          var cep = $(this).val().replace(/\D/g, '');
@@ -120,22 +120,22 @@ function mphone(v) {
            if (validacep.test(cep)) {
 
              //Preenche os campos com "..." enquanto consulta webservice.
-             $("#rua2").val("...");
-             $("#bairro2").val("...");
-             $("#cidade2").val("...");
-             $("#uf2").val("...");
-             $("#ibge2").val("...");
+             $("#Crua").val("...");
+             $("#Cbairro").val("...");
+             $("#Ccidade").val("...");
+             $("#Cuf").val("...");
+             $("#Cibge").val("...");
 
              //Consulta o webservice viacep.com.br/
              $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function(dados) {
 
                if (!("erro" in dados)) {
                  //Atualiza os campos com os valores da consulta.
-                 $("#rua2").val(dados.logradouro);
-                 $("#bairro2").val(dados.bairro);
-                 $("#cidade2").val(dados.localidade);
-                 $("#uf2").val(dados.uf);
-                 $("#ibge2").val(dados.ibge);
+                 $("#Crua").val(dados.logradouro);
+                 $("#Cbairro").val(dados.bairro);
+                 $("#Ccidade").val(dados.localidade);
+                 $("#Cuf").val(dados.uf);
+                 $("#Cibge").val(dados.ibge);
                } //end if.
                else {
                  //CEP pesquisado não foi encontrado.
