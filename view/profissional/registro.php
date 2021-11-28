@@ -141,11 +141,11 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Nome de Usuário <span style="color: red;">*</span></label>
-                        <input type="text" name="nome" id="nome" class="form-control form-control-sm" aria-label="Nome de Usuário">
+                        <input type="text" name="nome" id="nome" class="form-control form-control-sm" aria-label="Nome de Usuário" required>
                     </div>
                     <div class="col-md-6">
                         <label>CPF/CNPJ <span style="color: red;">*</span></label>
-                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" required>
                     </div>
                 </div>
 
@@ -216,7 +216,7 @@ if (isset($_POST['salvarProfissional'])) {
                     </div>
 
                     <div class="col-md-12">
-                        <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">
+                        <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()" required>
                             <option selected>Tipo de Serviço</option>
                             <option value="Artífice (Eletricista,Pintor e Hidráulico)">Artífice (Eletricista, Pintor e Hidráulico)</option>
                             <option value="Babá">Babá</option>
