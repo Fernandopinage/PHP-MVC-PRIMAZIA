@@ -40,7 +40,7 @@ class AdminDAO extends DAO
            
    
            } catch (\Throwable $th) {
-               echo $th;
+               //echo $th;
                ?>
    
                <script>

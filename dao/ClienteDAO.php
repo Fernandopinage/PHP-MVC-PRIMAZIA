@@ -417,7 +417,7 @@ class ClienteDAO extends DAO
 
         } catch (PDOException $e) {
 
-
+            //echo $e;
         ?>
 
             <script>

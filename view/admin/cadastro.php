@@ -1,7 +1,11 @@
 <?php
 
 include_once "../../layout/heard.php";
+include_once "../../class/ClassCliente.php";
 include_once "../../class/ClassAdmin.php";
+include_once "../../class/ClassProfissional.php";
+include_once "../../dao/ClienteDAO.php";
+include_once "../../dao/ProfissionalDAO.php";
 include_once "../../dao/AdminDAO.php";
 session_start();
 
@@ -389,26 +393,26 @@ if (isset($_POST['salvarCliente'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <input type="text" maxlength="9" name="cep" id="cep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
+                        <input type="text" maxlength="9" name="cep" id="Ccep" class="form-control" placeholder="CEP" onkeypress="$(this).mask('00.000-000')">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="logradouro" id="rua" class="form-control" placeholder="Endereço ">
+                        <input type="text" name="logradouro" id="Crua" class="form-control" placeholder="Endereço ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="numerp" id="numero" class="form-control" placeholder="Nº ">
+                        <input type="text" name="numerp" id="Cnumero" class="form-control" placeholder="Nº ">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" name="uf" id="uf" class="form-control" placeholder="UF">
+                        <input type="text" name="uf" id="Cuf" class="form-control" placeholder="UF">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="cidade" id="cidade" class="form-control " placeholder="Cidade">
+                        <input type="text" name="cidade" id="Ccidade" class="form-control " placeholder="Cidade">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="bairro" id="bairro" class="form-control " placeholder="Bairro">
+                        <input type="text" name="bairro" id="Cbairro" class="form-control " placeholder="Bairro">
                     </div>
 
                     <div class="col-md-6">
-                        <input type="text" name="complemento" id="complemento" class="form-control " placeholder="Complemento">
+                        <input type="text" name="complemento" id="Ccomplemento" class="form-control " placeholder="Complemento">
                     </div>
                     <div class="col-md-6">
                         <input type="text" name="telefone" id="telefone" class="form-control phone-ddd-mask" placeholder="Telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">

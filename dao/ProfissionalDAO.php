@@ -367,7 +367,7 @@ class ProfissionalDAO extends DAO
 
         } catch (PDOException $e) {
 
-
+            //echo $e;
 
         ?>
 
