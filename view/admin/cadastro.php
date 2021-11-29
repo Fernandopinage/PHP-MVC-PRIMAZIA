@@ -40,7 +40,7 @@ if (isset($_POST['salvarAdmin'])) {
             Swal.fire({
                 position: 'center',
                 icon: 'warning',
-                title: 'Senhas Não Coincidem',
+                title: 'Preencha todos os campos obrigatório',
                 showConfirmButton: false,
                 timer: 3500
             })
@@ -107,8 +107,8 @@ if (isset($_POST['salvarProfissional'])) {
         <script>
             Swal.fire({
                 position: 'center',
-                icon: 'info',
-                title: 'Preencha Todos os Campos',
+                icon: 'warning',
+                title: 'Preencha todos os campos obrigatório',
                 showConfirmButton: false,
                 timer: 3500
             })
@@ -173,15 +173,15 @@ if (isset($_POST['salvarCliente'])) {
         <script>
             Swal.fire({
                 position: 'center',
-                icon: 'info',
-                title: 'Preencha Todos os Campos',
+                icon: 'warning',
+                title: 'Preencha todos os campos obrigatório',
                 showConfirmButton: false,
                 timer: 3500
             })
         </script>
 
 
-<?php
+        <?php
 
     }
 }
@@ -257,7 +257,7 @@ if (isset($_POST['salvarCliente'])) {
                     </div>
                 </div>
                 <div class="text-start" style="margin-top: 10px;">
-                    <p style="color: red;">Campos Obrigatorios <b>*</b></p>
+                    <p style="color: red;">Campos Obrigatórios <b>*</b></p>
                 </div>
                 <div class="row">
 
@@ -814,7 +814,7 @@ if (isset($_POST['salvarCliente'])) {
                     </div>
                 </div>
                 <div class="text-start" style="margin-top: 10px;">
-                    <p style="color: red;">Campos Obrigatorios <b>*</b></p>
+                    <p style="color: red;">Campos Obrigatórios <b>*</b></p>
                 </div>
 
                 <div class="row">
@@ -915,7 +915,7 @@ if (isset($_POST['salvarCliente'])) {
                     </div>
                 </div>
                 <div class="text-start" style="margin-top: 10px;">
-                    <p style="color: red;">Campos Obrigatorios <b>*</b></p>
+                    <p style="color: red;">Campos Obrigatórios <b>*</b></p>
                 </div>
 
                 <div class="row">
