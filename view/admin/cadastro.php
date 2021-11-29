@@ -236,11 +236,11 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="admsenha" id="admsenha" class="form-control" placeholder="Senha" aria-label="" required>
+                        <input type="password" minlength="6" name="admsenha" id="admsenha" class="form-control" placeholder="Senha" aria-label="" required>
                     </div>
                     <div class="col-md-6">
                         <label>Confirmar Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="admconfirmar" id="admconfirmar" class="form-control cpf-mask" placeholder="Confirmar senha" required>
+                        <input type="password" minlength="6" name="admconfirmar" id="admconfirmar" class="form-control cpf-mask" placeholder="Confirmar senha" required>
                     </div>
                 </div>
 
@@ -311,11 +311,11 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="Psenha" id="senha" class="form-control" placeholder="Senha" aria-label="" required>
+                        <input type="password" minlength="6" name="Psenha" id="senha" class="form-control" placeholder="Senha" aria-label="" required>
                     </div>
                     <div class="col-md-6">
                         <label>Confirma Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="Pconfirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha" required>
+                        <input type="password" minlength="6" name="Pconfirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha" required>
                     </div>
                 </div>
 
@@ -871,11 +871,11 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="" required>
+                        <input type="password" minlength="6" name="senha" id="senha" class="form-control" placeholder="Senha" aria-label="" required>
                     </div>
                     <div class="col-md-6">
                         <label>Confirmar Senha<span style="color: red;">*</span></label>
-                        <input type="password" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha" required>
+                        <input type="password" minlength="6" name="confirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha" required>
                     </div>
                 </div>
 
