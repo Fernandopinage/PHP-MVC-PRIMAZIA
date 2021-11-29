@@ -439,10 +439,6 @@ class ClienteDAO extends DAO
     public function editarCliente($ClassCliente)
     {
 
-        // $nome = $ClassCliente->GetNome();
-
-
-
         if (!empty($ClassCliente->GetSenha())) {
 
 
@@ -490,6 +486,27 @@ class ClienteDAO extends DAO
         try {
 
             $update->execute();
+            $_SESSION['user'] = array(
+
+                'id' => $ClassCliente->GetId(),
+                'nome' => $ClassCliente->GetNome(),
+                'email' => $ClassCliente->GetEmail(),
+                'cpf' => $ClassCliente->GetCpf(),
+                'telefone' => $ClassCliente->GetTelefone(),
+                'cep' => $ClassCliente->GetCep(),
+                'uf' => $ClassCliente->GetUf(),
+                'rua' => $ClassCliente->GetLogradouro(),
+                'numero' => $ClassCliente->GetNumero(),
+                'cidade' => $ClassCliente->GetCidade(),
+                'bairro' => $ClassCliente->GetBairro(),
+                'complemento' => $ClassCliente->GetComplemento(),
+                'foto' => $ClassCliente->GetFoto(),
+                'sexo' => $ClassCliente->GetSexo(),
+                'termo' => $ClassCliente->GetTermo(),
+                'nascimento' => $ClassCliente->GetNascimento()
+            );
+
+
             $MSG = new ClienteMSG();
             $MSG->__mensagem($ClassCliente);
 
@@ -508,6 +525,7 @@ class ClienteDAO extends DAO
 
 
         <?php
+                header('Refresh: 3.5; url=../cliente/painel.php');
             // header('location: ../../view/cliente/editar.php');
 
 

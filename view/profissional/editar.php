@@ -47,7 +47,7 @@ if (isset($_POST['salvarProfissional'])) {
 
                 $ClassProfissional->SetFoto($_POST['img2']);
             }
-            $ClassProfissional->SetOpcao($_POST['opt']);
+            @$ClassProfissional->SetOpcao($_POST['opt']);
             $ClassProfissional->SetRazao($_POST['razao']);
             $ClassProfissional->SetNome($_POST['nome']);
             $ClassProfissional->SetSenha($_POST['senha']);

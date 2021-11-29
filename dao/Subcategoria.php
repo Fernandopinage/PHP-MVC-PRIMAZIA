@@ -117,7 +117,7 @@ class SubcategoriaDAO extends DAO
 
 
     <?php
-        header('Refresh: 3.4; url=../profissional/editar.php');
+        header('Refresh: 3.4; url=../profissional/painel.php');
         //header('location: ../../view/profissional/editar.php');
     }
 

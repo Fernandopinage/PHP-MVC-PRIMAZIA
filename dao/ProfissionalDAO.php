@@ -509,8 +509,33 @@ class ProfissionalDAO extends DAO
         try {
 
             $update->execute();
+
+            $_SESSION['profissional'] = array(
+
+                'id' => $ClassProfissional->GetId(),
+                'nome' => $ClassProfissional->GetNome(),
+                'email' => $ClassProfissional->GetEmail(),
+                'cpf' => $ClassProfissional->GetCpf(),
+                'telefone' => $ClassProfissional->GetTelefone(),
+                'cep' => $ClassProfissional->GetCep(),
+                'uf' => $ClassProfissional->GetUf(),
+                'rua' => $ClassProfissional->GetLogradouro(),
+                'numero' => $ClassProfissional->GetNumero(),
+                'cidade' => $ClassProfissional->GetCidade(),
+                'bairro' => $ClassProfissional->GetBairro(),
+                'complemento' => $ClassProfissional->GetComplemento(),
+                'foto' => $ClassProfissional->GetFoto(),
+                'termo' => $ClassProfissional->GetTermo(),
+                'sexo' => $ClassProfissional->GetSexo(),
+                'nascimento' => $ClassProfissional->GetNascimento()
+            );
+
+
+
             $subcat = new SubcategoriaDAO();
             $subcat->updateSubcategoria($ClassProfissional, $subcategoria);
+
+
         } catch (\Throwable $th) {
             echo $th;
         ?>
