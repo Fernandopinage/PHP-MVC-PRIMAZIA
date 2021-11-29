@@ -161,13 +161,13 @@ if (isset($_POST['salvarProfissional'])) {
                 ?>
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED disabled>
                             <label class="form-check-label" for="pessoa" id="j">
                                 Pessoa Juridica
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F" disabled> 
                             <label class="form-check-label" for="pessoa" id="f">
                                 Pessoa Fisica
                             </label>
@@ -179,13 +179,13 @@ if (isset($_POST['salvarProfissional'])) {
 
                     <div class="col-md-6">
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" disabled>
                             <label class="form-check-label" for="pessoa" id="j">
                                 Pessoa Juridica
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                            <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F" CHECKED disabled>
                             <label class="form-check-label" for="pessoa" id="f">
                                 Pessoa Fisica
                             </label>
