@@ -569,7 +569,8 @@ class ClienteDAO extends DAO
 
 
         <?php
-            header('location: ../../view/cliente/login.php');
+            header('Refresh: 3.5; url=../cliente/login.php');
+            //header('location: ../../view/cliente/login.php');
         } catch (PDOException $e) {
             
            

@@ -129,7 +129,7 @@ if (isset($_POST['salvarCliente'])) {
                             <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário">
                         </div>
                         <div class="col-md-6">
-                            <label>Inscrição Estadual<span style="color: red;">*</span></label>
+                            <label>Inscrição Estadual</label>
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
@@ -137,11 +137,11 @@ if (isset($_POST['salvarCliente'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Nome de Usuário<span style="color: red;">*</span></label>
-                        <input type="text" name="nome" id="nome" class="form-control form-control-sm" aria-label="Nome de Usuário">
+                        <input type="text" name="nome" id="nome" class="form-control form-control-sm" aria-label="Nome de Usuário" required>
                     </div>
                     <div class="col-md-6">
                         <label>CPF/CNPJ<span style="color: red;">*</span></label>
-                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
+                        <input type="text" name="cpf" id="cpf" class="form-control form-control-sm cpf-mask" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);" required>
                     </div>
                 </div>
 
@@ -349,8 +349,20 @@ if (isset($_POST['salvarCliente'])) {
 
         if (document.getElementById('j').checked) {
             document.getElementById('Pfisica').style.display = "block"
+
+            var razao = document.getElementById('razao')
+                razao.required = true;
+
+
+
         } else {
+
             document.getElementById('Pfisica').style.display = "none"
+            var razao = document.getElementById('razao')
+                razao.required = false;
+            
+            var razao = document.getElementById('estadual')
+            razao.required = false;
         }
     })
 
@@ -358,6 +370,8 @@ if (isset($_POST['salvarCliente'])) {
     function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";
+        var razao = document.getElementById('razao')
+                razao.required = true;
 
 
     }
@@ -365,6 +379,8 @@ if (isset($_POST['salvarCliente'])) {
     function fisica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "none";
+        var razao = document.getElementById('razao')
+                razao.required = false;
 
 
     }
