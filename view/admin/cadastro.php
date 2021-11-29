@@ -935,6 +935,37 @@ if (isset($_POST['salvarCliente'])) {
 </div>
 
 <script>
+    function formatarCampo(campoTexto) {
+        if (campoTexto.value.length <= 11) {
+            campoTexto.value = mascaraCpf(campoTexto.value);
+        } else {
+            campoTexto.value = mascaraCnpj(campoTexto.value);
+        }
+    }
+
+    function retirarFormatacao(campoTexto) {
+        campoTexto.value = campoTexto.value.replace(/(\.|\/|\-)/g, "");
+    }
+
+    function mascaraCpf(valor) {
+        return valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4");
+    }
+
+    function somenteNumeros(e) {
+        var charCode = e.charCode ? e.charCode : e.keyCode;
+        // charCode 8 = backspace   
+        // charCode 9 = tab
+        if (charCode != 8 && charCode != 9) {
+            // charCode 48 equivale a 0   
+            // charCode 57 equivale a 9
+            if (charCode < 48 || charCode > 57) {
+                return false;
+            }
+        }
+    }
+</script>
+
+<script>
     $(document).ready(function() {
         $("#div_outros").hide();
         $("#lista").hide();
