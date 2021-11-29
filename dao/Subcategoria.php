@@ -38,7 +38,8 @@ class SubcategoriaDAO extends DAO
 
 
     <?php
-        header('location: ../../view/profissional/login.php');
+        header('Refresh: 3.5; url=../profissional/login.php');
+        //header('location: ../../view/profissional/login.php');
     }
 
     public  function AdminSubcategoria($ClassProfissional, $subcategoria)

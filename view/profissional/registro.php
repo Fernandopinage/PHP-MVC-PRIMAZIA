@@ -133,7 +133,7 @@ if (isset($_POST['salvarProfissional'])) {
                             <input type="text" name="razao" id="razao" class="form-control form-control-sm" aria-label="Nome de Usuário" >
                         </div>
                         <div class="col-md-6">
-                            <label>Inscrição Estadual <span style="color: red;">*</span></label>
+                            <label>Inscrição Estadual</label>
                             <input type="text" name="Inscrição Estadual" id="estadual" class="form-control form-control-sm cpf-mask">
                         </div>
                     </div>
@@ -992,16 +992,40 @@ if (isset($_POST['salvarProfissional'])) {
 </script>
 
 <script>
+
+    $(document).ready(function(){
+        if (document.getElementById('j').checked) {
+            document.getElementById('Pfisica').style.display = "block"
+
+            var razao = document.getElementById('razao')
+                razao.required = true;
+
+
+
+        } else {
+
+            document.getElementById('Pfisica').style.display = "none"
+            var razao = document.getElementById('razao')
+                razao.required = false;
+            
+            var razao = document.getElementById('estadual')
+            razao.required = false;
+        }
+    });
+
+
     function juridica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "block";
-
-
+        var razao = document.getElementById('razao') 
+            razao.required = true;
     }
 
     function fisica() {
 
         var Pfisica = document.getElementById('Pfisica').style.display = "none";
+        var razao = document.getElementById('razao')
+                razao.required = false;
 
 
     }
