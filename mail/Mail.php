@@ -90,7 +90,7 @@ class Mail
         }
 
         if (!empty($tpservico)) {
-            $text = "<b><h3>Profissional solicitado: </h3> </b>" . $tpservico;
+            $text = " <b><h3>Profissional solicitado: </h3> </b>" . $tpservico;
         }
 
         if (!empty($categoria)) {
@@ -178,7 +178,7 @@ class Mail
                                 <b><h3>Endereço:</h3> </b>' . $cidade . ',' . $bairro . ',' . $rua . ',' . $numero . ',' . $complemento . '<br>
                                 <b><h3>Telefone:</h3> </b>' . $telefone . '<br>
                                 <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text . '<br>
-                                <b><h3>Profissionais que atendem os pedidos:</h3> </b> <span style="color:blue;">' . $emailP . '</span><br>';
+                                <b><h3>Profissionais que atendem os pedidos: </h3> </b> <span style="color:blue;">' . $emailP . ' </span><br>';
 
 
 
