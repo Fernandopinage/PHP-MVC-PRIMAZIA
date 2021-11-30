@@ -18,6 +18,8 @@ if (isset($_POST['filtror'])) {
 
     if (!empty($_POST['status_filtro']) or !empty($_POST['num_filtro']) or !empty($_POST['pagamento']) or !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {
 
+
+
         $status =  $_POST['status_filtro'];
         $num =  $_POST['num_filtro'];
         $pagamento =  $_POST['pagamento'];

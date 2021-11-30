@@ -309,7 +309,7 @@ class CategoriaDAO extends DAO
                 );
             }
     
-            
+                
             return $array;
         }
 
@@ -413,11 +413,12 @@ class CategoriaDAO extends DAO
                     //'valor' => $row['servico_valor']
                 );
             }
-    
+            
+               
             
             return $array;
         }else{
-
+            
         /********************************************* */
 
         $where ="";
@@ -495,7 +496,7 @@ class CategoriaDAO extends DAO
             $excel = $sql;
             $select->execute();
         }
-        //var_dump($select);
+        //var_dump($sql);
       
         $array = array();
 
