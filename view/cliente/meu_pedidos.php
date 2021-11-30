@@ -74,9 +74,7 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
                             <?php 
                             if(@$dados2['nome_profissional'] > 0){
                                 echo $dados2['nome_profissional'];
-                            }else{
-                                echo "<span style='color:red;'>Aguardando</span>";
-                            }    
+                            }  
                                 
                             ?>
                         </b></p>
@@ -86,7 +84,10 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                         ?>
                             <div class="text-center">
-                                <a href="#" class="btn btn-primary" style="font-family: 'Montserrat', sans-serif;">Status: Em Aberto</a>
+                                
+                                <div class="alert alert-primary" role="alert">
+                                Status: Em Aberto
+                                </div>
                             </div>
                         <?php
                         }
@@ -95,7 +96,10 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                         ?>
                             <div class="text-center">
-                                <a href="#" class="btn btn" style="background-color: #ffc107; color: white; font-family: 'Montserrat', sans-serif;">Em Atendimento</a>
+                                
+                                <div class="alert alert-warning" role="alert">
+                                Status: Em Atendimento
+                                </div>
                             </div>
                         <?php
 
@@ -105,7 +109,10 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                         ?>
                             <div class="text-center">
-                                <a href="#" class="btn btn-success" style="color: white; font-family: 'Montserrat', sans-serif;">Finalizado</a>
+                                
+                                <div class="alert alert-success" role="alert">
+                                Status: Finalizado
+                                </div>
                             </div>
                         <?php
                         }
@@ -114,7 +121,10 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                             ?>
                                 <div class="text-center">
-                                    <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Cancelado</a>
+                                   <!-- <a  class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Cancelado</a> -->
+                                   <div class="alert alert-danger" role="alert">
+                                        Status: Cancelado
+                                    </div>
                                 </div>
                             <?php
                             }

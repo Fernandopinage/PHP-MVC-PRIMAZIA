@@ -74,7 +74,7 @@ class CategoriaDAO extends DAO
 
             header('Refresh: 7.0; url=painel.php');
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
         ?>
 
 

@@ -171,7 +171,7 @@ class Mail
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
-            $mail->Subject = 'NÚMERO DO PEDIDO ' . $protodolo;
+            $mail->Subject = $tpservico.' NÚMERO DO PEDIDO ' . $protodolo;
 
             $mail->Body    = '
                                 <b><h3>Nome do Cliente:</h3> </b>' . $nome . '<br>

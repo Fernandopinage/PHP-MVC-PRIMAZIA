@@ -223,7 +223,7 @@ if (isset($_POST['salvarProfissional'])) {
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
-                        <label>Senha</label>
+                        <label>Alterar Senha</label>
                         <input type="password" name="senha" id="senha" class="form-control form-control-sm" aria-label="">
                     </div>
                     <div class="col-md-6">
@@ -287,16 +287,18 @@ if (isset($_POST['salvarProfissional'])) {
                         <input type="email" name="email" id="email" value="<?php echo $dados['email'] ?>" class="form-control form-control-sm" placeholder="E-mail" aria-label="E-mail" readonly>
                     </div>
                     <div class="col-md-12">
+                        <label>Tipo de Serviço</label>
                         <select class="form-select form-select-sm" name="servico" id="servico" onchange="change()">">
-                            <option <?php $dados['servico'] == 'Artífice (Eletricista,Pintor e Hidráulico)' ? 'selected':''  ?> value="Artífice (Eletricista,Pintor e Hidráulico)">Artífice (Eletricistas, Pintor e Hidráulico)</option>
-                            <option <?php $dados['servico'] == 'Babá' ? 'selected': ''  ?> value="Babá">Babá</option>
-                            <option <?php $dados['servico'] == 'Cabeleireiro' ? 'selected':''  ?> value="Cabeleireiro">Cabeleireiro</option>
-                            <option <?php $dados['servico'] == 'Cuidador(a) de Pessoas' ? 'selected':''  ?> value="Cuidador(a) de Pessoas">Cuidador(a) de Pessoas</option>
-                            <option <?php $dados['servico'] == 'Dedetização' ? 'selected':''  ?> value="Dedetização">Dedetização</option>
-                            <option <?php $dados['servico'] == 'Diarista' ? 'selected':''  ?> value="Diarista">Diarista</option>
-                            <option <?php $dados['servico'] == 'Lavanderia' ? 'selected':''  ?> value="Lavanderia">Lavanderia</option>
-                            <option <?php $dados['servico'] == 'Manutenção de Ar Condicionado' ? 'selected':''  ?> value="Manutenção de Ar Condicionado">Manutenção de Ar Condicionado</option>
-                            <option <?php $dados['servico'] == 'Motoboy' ? 'selected':''  ?> value="Motoboy">Motoboy</option>
+                            <option <?php echo $dados['servico'] == 'Artífice (Eletricista,Pintor e Hidráulico)' ? 'selected':''  ?> value="Artífice (Eletricista,Pintor e Hidráulico)">Artífice (Eletricistas, Pintor e Hidráulico)</option>
+                            <option <?php echo $dados['servico'] == 'Babá' ? 'selected': ''  ?> value="Babá">Babá</option>
+                            <option <?php echo $dados['servico'] == 'Cabeleireiro' ? 'selected':''  ?> value="Cabeleireiro">Cabeleireiro</option>
+                            <option <?php echo $dados['servico'] == 'Cuidador(a) de Pessoas' ? 'selected':''  ?> value="Cuidador(a) de Pessoas">Cuidador(a) de Pessoas</option>
+                            <option <?php echo $dados['servico'] == 'Dedetização' ? 'selected':''  ?> value="Dedetização">Dedetização</option>
+                            <option <?php echo $dados['servico'] == 'Diarista' ? 'selected':''  ?> value="Diarista">Diarista</option>
+                            <option <?php echo $dados['servico'] == 'Lavanderia' ? 'selected':''  ?> value="Lavanderia">Lavanderia</option>
+                            <option <?php echo $dados['servico'] == 'Manutenção de Ar Condicionado' ? 'selected':''  ?> value="Manutenção de Ar Condicionado">Manutenção de Ar Condicionado</option>
+                            <option <?php echo $dados['servico'] == 'Motoboy' ? 'selected':''  ?> value="Motoboy">Motoboy</option>
+                            <option <?php echo $dados['servico'] == 'Manicure e Pedicure' ? 'selected':''  ?> value="Manicure e Pedicure">Manicure e Pedicure</option>
                         </select>
                     </div>
                     <div id="pergunta01">
@@ -751,20 +753,111 @@ if (isset($_POST['salvarProfissional'])) {
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog  modal-lg">
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Termo</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+
+                                <div class="text-center" style="margin-bottom: 50px;">
+                                    <h2><b>Política de Privacidade</b></h2>
                                 </div>
+                                <div style="margin-bottom: 50px;">
+                                    <p>A sua privacidade é importante para nós. É política do respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site , e outros sites que possuímos e operamos.</p>
+                                    <p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.</p>
+                                    <p>Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis ​​para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.</p>
+                                    <p>Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.</p>
+                                    <p>O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.</p>
+                                    <p>Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p>
+                                    <p>O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.</p>
+
+                                </div>
+
+                                <div style="margin-bottom: 50px;">
+                                    <h4 style="margin-bottom: 20px;"><b>Política de Cookies</b></h4>
+                                    <h6><b>O que são cookies?</b></h6>
+                                    <p>Como é prática comum em quase todos os sites profissionais, este site usa cookies, que são pequenos arquivos baixados no seu computador, para melhorar sua experiência. Esta página descreve quais informações eles coletam, como as usamos e por que às vezes precisamos armazenar esses cookies. Também compartilharemos como você pode impedir que esses cookies sejam armazenados, no entanto, isso pode fazer o downgrade ou ‘quebrar’ certos elementos da funcionalidade do site.</p>
+                                   
+                                    <h6><b>Como usamos os cookies?</b></h6>
+                                    <p>Utilizamos cookies por vários motivos, detalhados abaixo. Infelizmente, na maioria dos casos, não existem opções padrão do setor para desativar os cookies sem desativar completamente a funcionalidade e os recursos que eles adicionam a este site. É recomendável que você deixe todos os cookies se não tiver certeza se precisa ou não deles, caso sejam usados ​​para fornecer um serviço que você usa.</p>
+                                    <h6><b>Cookies que definimos</b></h6>
+
+                                    <p>
+                                        <li>Cookies relacionados à conta</li>
+                                    </p>
+                                    <p>Se você criar uma conta connosco, usaremos cookies para o gerenciamento do processo de inscrição e administração geral. Esses cookies geralmente serão excluídos quando você sair do sistema, porém, em alguns casos, eles poderão permanecer posteriormente para lembrar as preferências do seu site ao sair.</p>
+
+                                    <p>
+                                        <li>Cookies relacionados ao login</li>
+                                    </p>
+                                    <p>Utilizamos cookies quando você está logado, para que possamos lembrar dessa ação. Isso evita que você precise fazer login sempre que visitar uma nova página. Esses cookies são normalmente removidos ou limpos quando você efetua logout para garantir que você possa acessar apenas a recursos e áreas restritas ao efetuar login.</p>
+
+                                    <p>
+                                        <li>Cookies relacionados a boletins por e-mail</li>
+                                    </p>
+                                    <p>Este site oferece serviços de assinatura de boletim informativo ou e-mail e os cookies podem ser usados ​​para lembrar se você já está registrado e se deve mostrar determinadas notificações válidas apenas para usuários inscritos / não inscritos.</p>
+
+                                    <p>
+                                        <li>Pedidos processando cookies relacionados</li>
+                                    </p>
+                                    <p>Este site oferece facilidades de comércio eletrônico ou pagamento e alguns cookies são essenciais para garantir que seu pedido seja lembrado entre as páginas, para que possamos processá-lo adequadamente.</p>
+
+
+                                    <p>
+                                        <li>Cookies relacionados a formulários</li>
+                                    </p>
+                                    <p>Quando você envia dados por meio de um formulário como os encontrados nas páginas de contacto ou nos formulários de comentários, os cookies podem ser configurados para lembrar os detalhes do usuário para correspondência futura.</p>
+
+                                    <p>
+                                        <li>Cookies de preferências do site</li>
+                                    </p>
+                                    <p>Para proporcionar uma ótima experiência neste site, fornecemos a funcionalidade para definir suas preferências de como esse site é executado quando você o usa. Para lembrar suas preferências, precisamos definir cookies para que essas informações possam ser chamadas sempre que você interagir com uma página for afetada por suas preferências.</p>
+
+                                </div>
+
+                                <div style="margin-bottom: 50px;">
+                                    <h4><b>Cookies de Terceiros</b></h4>
+                                    <p>Em alguns casos especiais, também usamos cookies fornecidos por terceiros confiáveis. A seção a seguir detalha quais cookies de terceiros você pode encontrar através deste site.</p>
+                                    <p>
+                                        <li>Este site usa o Google Analytics, que é uma das soluções de análise mais difundidas e confiáveis ​​da Web, para nos ajudar a entender como você usa o site e como podemos melhorar sua experiência. Esses cookies podem rastrear itens como quanto tempo você gasta no site e as páginas visitadas, para que possamos continuar produzindo conteúdo atraente.</li>
+                                    </p>
+                                    <p>Para mais informações sobre cookies do Google Analytics, consulte a página oficial do Google Analytics.</p>
+                                    <p>
+                                        <li>As análises de terceiros são usadas para rastrear e medir o uso deste site, para que possamos continuar produzindo conteúdo atrativo. Esses cookies podem rastrear itens como o tempo que você passa no site ou as páginas visitadas, o que nos ajuda a entender como podemos melhorar o site para você.</li>
+                                    </p>
+                                    <p>
+                                        <li>Periodicamente, testamos novos recursos e fazemos alterações subtis na maneira como o site se apresenta. Quando ainda estamos testando novos recursos, esses cookies podem ser usados ​​para garantir que você receba uma experiência consistente enquanto estiver no site, enquanto entendemos quais otimizações os nossos usuários mais apreciam.</li>
+                                    </p>
+                                    <p>
+                                        <li>À medida que vendemos produtos, é importante entendermos as estatísticas sobre quantos visitantes de nosso site realmente compram e, portanto, esse é o tipo de dados que esses cookies rastrearão. Isso é importante para você, pois significa que podemos fazer previsões de negócios com precisão que nos permitem analizar nossos custos de publicidade e produtos para garantir o melhor preço possível.</li>
+                                    </p>
+
+                                </div>
+
+                                <div>
+                                    <h4><b>Compromisso do Usuário</b></h4>
+                                    <p>O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o oferece no site e com caráter enunciativo, mas não limitativo:</p>
+                                    <p>
+                                        <li>A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé a à ordem pública;</li>
+                                    </p>
+                                    <p>
+                                        <li>B) Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, ou salmao, casas de apostas (ex.: Betway), jogos de sorte e azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos;</li>
+                                    </p>
+                                    <p>
+                                        <li>C) Não causar danos aos sistemas físicos (hardwares) e lógicos (softwares) do , de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados.</li>
+                                    </p>
+
+                                </div>
+
+                            </div>
                                 <div class="modal-footer">
 
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
 
 
