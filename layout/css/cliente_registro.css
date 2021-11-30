@@ -9,6 +9,11 @@
     align-content: center;
     width: 300px;
 }
+#editarusuario{
+
+    width: 150px;
+    border-radius: 50%;
+}
 .title{
     font-size: 2.5rem;
     font-family: 'Montserrat', sans-serif;
