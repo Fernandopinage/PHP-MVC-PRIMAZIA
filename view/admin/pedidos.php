@@ -371,7 +371,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         ?>
 
-                                            <select class="form-select" name="pessoa" aria-label="Default select example">
+                                            <select class="form-select" name="pessoa" aria-label="Default select example"required >
 
 
                                                 <?php
