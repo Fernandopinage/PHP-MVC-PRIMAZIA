@@ -114,13 +114,13 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="col-md-6">
                     <div class="form-check">
                         <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
-                        <label class="form-check-label" for="pessoa" id="j">
+                        <label class="form-check-label" for="j" id="j">
                             Pessoa Juridica
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
-                        <label class="form-check-label" for="pessoa" id="f">
+                        <label class="form-check-label" for="f" id="f">
                             Pessoa Fisica
                         </label>
                     </div>

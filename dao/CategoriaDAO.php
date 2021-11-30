@@ -61,7 +61,7 @@ class CategoriaDAO extends DAO
                     title: 'Parabéns',
                     html: 'O seu Pedido G2S Foi Realizado Com Sucesso' + '<br>' + ' Em breve estaremos entrando em contato' + '<br>' + ' Horário da central de atendimento das 08:00 ás 17:00 hs de segunda a sexta',
                     showConfirmButton: false,
-                    timer: 4600,
+                    timer: 7000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -72,7 +72,7 @@ class CategoriaDAO extends DAO
 
         <?php
 
-            header('Refresh: 4.5; url=painel.php');
+            header('Refresh: 7.0; url=painel.php');
         } catch (PDOException $e) {
             echo $e->getMessage();
         ?>
