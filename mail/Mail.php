@@ -191,7 +191,7 @@ class Mail
             // echo 'Message has been sent';
 
         } catch (Exception $e) {
-            echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
+            //echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
         }
        
 
