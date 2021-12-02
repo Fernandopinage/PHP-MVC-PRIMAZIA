@@ -159,7 +159,7 @@ class Mail
             //Recipients
             $mail->setFrom('g2s@gotoservice.com.br', 'G2S - GoToService');
             $mail->addAddress($email, 'G2S - GoToService');     //Add a recipient
-            //$mail->addAddress('ellen@example.com');               //Name is optional
+            $mail->addAddress('atendimento@gotoservice.com.br');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
             //$mail->addBCC('bcc@example.com');
