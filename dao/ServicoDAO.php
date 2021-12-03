@@ -132,6 +132,23 @@ class ServicoDao extends Dao{
             $update->bindValue(':servico_text',$ClassServico->GetText());
             $update->execute();
 
+
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'O profissional',
+                    text: 'Foi atualizado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+    
+    
+            <?php
+
         }
         
       
@@ -157,11 +174,15 @@ class ServicoDao extends Dao{
         $select->execute();
         $arry = array();
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+
             $array[] =  array(
             'nome' => $row['profissional_nome'],
             'email' => $row['profissional_email'],
             'telefone' => $row['profissional_telefone'],
-         );
+            );
+
+            
         }
 
         return $array;

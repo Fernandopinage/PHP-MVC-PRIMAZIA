@@ -534,7 +534,6 @@ if (isset($_POST['chamado_atualizado'])) {
                                                     $update = new ServicoDao();
                                                     $dados4 = $update->profissionalAtualizando($protocolo);
 
-                                        
                                                     ?>
 
                                                     <select class="form-select form-select-sm" aria-label="Default select example" disabled>
