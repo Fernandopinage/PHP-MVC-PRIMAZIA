@@ -368,7 +368,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         <?php
 
-                                        if ($dados['status'] === 'A' or $dados['status'] === 'C') {
+                                        if ($dados['status'] === 'A'){
 
 
                                         ?>
@@ -430,7 +430,107 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 </div>
                                             </div>
                                         <?php
-                                        } else {
+                                        } 
+
+
+                                        if ($dados['status'] === 'C'){
+
+
+                                            ?>
+    
+                                                <select class="form-select" name="pessoa" aria-label="Default select example"required >
+    
+    
+                                                    <?php
+    
+                                                    $tamanho = count($dados2);
+    
+                                                    if ($tamanho > 0) {
+    
+                                                        if ($dados['status'] != 'C') {
+    
+                                                            if ($dados['status'] != 'F') {
+    
+                                                                echo " <option value=''>Selecione o profissional</option>";
+                                                                for ($i = 0; $i < $tamanho; $i++) {
+                                                                    echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                                }
+                                                            } else {
+                                                                echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<option>Cliente cancelado!</option>";
+                                                        }
+                                                    } else {
+                                                        echo "<option>Não possui profissional para essa demanda!</option>";
+                                                    }
+    
+    
+                                                    ?>
+    
+                                                </select>
+    
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p><b>Forma de Pagamento</b><span style="color: red; font-size:16px"> *</span></p>
+                                                        <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
+                                                            <option selected></option>
+                                                            <option value="Cartão Crédito">Cartão Crédito</option>
+                                                            <option value="Cartão Débito">Cartão Débito</option>
+                                                            <option value="PIX">PIX</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p><b>Valor do Serviço</b><span style="color: red; font-size:16px"> *</span></p>
+                                                        <input type="text" class="form-control form-control-sm" name="valor" onkeypress="return(moeda(this,'.',',',event))" disabled>
+                                                    </div>
+                                                </div>
+                                                <br>
+    
+                                                <div class="row">
+                                                    <div class="mb-3">
+                                                        <p><b>Descrição do Pedido</b></p>
+                                                        <textarea class="form-control" id="text" name="text" rows="3" disabled></textarea>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                        }
+                                        
+                                        if($dados['status'] === 'E'){
+                                        ?>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>"name="pessoa_finalizado">
+                                                    <select class="form-select form-select-sm"  aria-label="Default select example" disabled>
+                                                        <option value="<?php echo $dados3[0]['profissional']; ?>"><?php echo $dados3[0]['profissional']; ?></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><b>Forma de Pagamento</b></p>
+                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
+                                                        <option selected> <?php echo $dados3[0]['pagamento']; ?></option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <p><b>Valor do Serviço</b></p>
+                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor']; ?>" onkeypress="return(moeda(this,'.',',',event))" name="valor" disabled>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="mb-3">
+                                                    <p><b>Descrição do Pedido</b></p>
+                                                    <textarea class="form-control" id="text" name="text" rows="3" disabled><?php echo $dados3[0]['text']; ?></textarea>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                        if($dados['status'] === 'F'){
                                         ?>
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -514,7 +614,7 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
-                                                <input type="submit" name="chamado_ativar" class="btn btn-success" value="Ativar">
+                                                <!--<input type="submit" name="chamado_ativar" class="btn btn-success" value="Ativar"> -->
                                                 <button type="button" class="btn btn-danger">Cancelado</button>
 
                                             <?php
