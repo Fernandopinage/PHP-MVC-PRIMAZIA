@@ -524,15 +524,27 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 </div>
                                                 <div class="row">
                                                 <div class="col-md-12" style="margin-top: 20px;">
+                                                <hr>
                                                     <p><b>Profissional  que está atendendo</b></p>
 
 
+                                                    <?php
+                                                    
+                                                    $protocolo = $dados3[0]['protocolo'];
+                                                    $update = new ServicoDao();
+                                                    $dados4 = $update->profissionalAtualizando($protocolo);
+
+                                        
+                                                    ?>
+
                                                     <select class="form-select form-select-sm" aria-label="Default select example" disabled>
                                                         <?php
+                                                                                                      
+                                                         
 
-                                                        $tamanho = count($dados3);
+                                                        $tamanho = count($dados4);
                                                         for ($i = 0; $i < $tamanho; $i++) {
-                                                            echo "<option>" . $dados3[$i]['nome']."</option>";
+                                                            echo "<option value='" . $dados4[$i]['nome'] . " - " . $dados4[$i]['telefone'] . " - " . $dados4[$i]['email'] . "'>" . $dados4[$i]['nome'] . " - " . $dados4[$i]['telefone'] . " - " . $dados4[$i]['email'] . "</option>";
                                                         }
                                                         ?>
                                                        

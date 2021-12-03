@@ -138,6 +138,38 @@ class ServicoDao extends Dao{
     }
 
 
+    public function profissionalAtualizando($id){
+   
+        $sql="SELECT * FROM `servico` WHERE servico_protocolo = :servico_protocolo";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':servico_protocolo',$id);
+        $select->execute();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+             $id = $row['servico_idprofissional'];
+
+        }
+
+        $query = "SELECT * FROM `profissional` WHERE profissional_id =:profissional_id";
+        $select = $this->con->prepare($query);
+        $select->bindValue(':profissional_id',$id);
+        $select->execute();
+        $arry = array();
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+            $array[] =  array(
+            'nome' => $row['profissional_nome'],
+            'email' => $row['profissional_email'],
+            'telefone' => $row['profissional_telefone'],
+         );
+        }
+
+        return $array;
+
+
+    }
+
+
     public function finalizarServico($ClassServico){
 
     
