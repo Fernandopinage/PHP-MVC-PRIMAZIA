@@ -510,7 +510,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <input type="hidden" value="<?php echo $dados3[0]['protocolo']; ?>" name="protocolo">
-                                    
+                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>" name="pessoa_finalizado">
                                                     <select class="form-select form-select-sm" aria-label="Default select example" name="profissional">
                                                         <?php
 
@@ -535,7 +535,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                                             echo "<option>" . $dados3[$i]['nome']."</option>";
                                                         }
                                                         ?>
-                                                        
+                                                       
                                                     </select>
                                                     
                                                 </div>
@@ -570,7 +570,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                         ?>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>" name="pessoa_finalizado">
+                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>" name="pessoa_finalizado"><!-- hidden -->
                                                     <select class="form-select form-select-sm" aria-label="Default select example" disabled>
                                                         <option value="<?php echo $dados3[0]['profissional']; ?>"><?php echo $dados3[0]['profissional']; ?></option>
                                                     </select>

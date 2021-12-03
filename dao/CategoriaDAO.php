@@ -871,4 +871,5 @@ class CategoriaDAO extends DAO
         }
         return $array;
     }
+    
 }
