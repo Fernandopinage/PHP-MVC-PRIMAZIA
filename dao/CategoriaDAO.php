@@ -2,6 +2,7 @@
 
 
 require_once __DIR__ . "../../mail/Mail.php";
+require_once __DIR__ . "../../mail/ClienteMail.php";
 include_once "../../class/ClassCategoria.php";
 include_once "../../dao/DAO.php";
 

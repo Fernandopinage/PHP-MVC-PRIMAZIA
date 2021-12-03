@@ -158,7 +158,7 @@ class Mail
 
             //Recipients
             $mail->setFrom('g2s@gotoservice.com.br', 'G2S - GoToService');
-            $mail->addAddress($email, $email);     //Add a recipient
+            //$mail->addAddress($email, $email);     //Add a recipient
             $mail->addAddress('atendimento@gotoservice.com.br');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
@@ -178,9 +178,7 @@ class Mail
                                 <b><h3>Endereço:</h3> </b>' . $cidade . ',' . $bairro . ',' . $rua . ',' . $numero . ',' . $complemento . '<br>
                                 <b><h3>Telefone:</h3> </b>' . $telefone . '<br>
                                 <b><h3>Data do pedido:</h3> </b>' . $data . '<br>' . $text . '<br>
-                                <b><h3>Profissionais que atendem os pedidos: </h3> </b> <span style="color:blue;">' . $emailP . ' </span><br><br>
-                                <b><h3>Agradecemos sua solicitação e nossa equipe entrará em contato com você.</h3><br><br>
-                                <b><h2>Agora é com a G2S!</b><h2>';
+                                <b><h3>Profissionais que atendem os pedidos: </h3> </b> <span style="color:blue;">' . $emailP . ' </span><br><br>';
                                 
 
 
