@@ -502,7 +502,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>"name="pessoa_finalizado">
-                                                    <select class="form-select form-select-sm"  aria-label="Default select example" disabled>
+                                                    <select class="form-select form-select-sm"  aria-label="Default select example">
                                                         <option value="<?php echo $dados3[0]['profissional']; ?>"><?php echo $dados3[0]['profissional']; ?></option>
                                                     </select>
                                                 </div>
@@ -511,13 +511,15 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <p><b>Forma de Pagamento</b></p>
-                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
-                                                        <option selected> <?php echo $dados3[0]['pagamento']; ?></option>
+                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm">
+                                                            <option <?php echo $dados3[0]['pagamento'] === 'Cartão Crédito'?'selected':''; ?> value="Cartão Crédito">Cartão Crédito</option>
+                                                            <option <?php echo $dados3[0]['pagamento'] === 'Cartão Débito'?'selected':''; ?>  value="Cartão Débito">Cartão Débito</option>
+                                                            <option <?php echo $dados3[0]['pagamento'] === 'PIX'?'selected':''; ?>            value="PIX">PIX</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p><b>Valor do Serviço</b></p>
-                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor']; ?>" onkeypress="return(moeda(this,'.',',',event))" name="valor" disabled>
+                                                    <input type="text" class="form-control form-control-sm" value="<?php echo $dados3[0]['valor']; ?>" onkeypress="return(moeda(this,'.',',',event))" name="valor">
                                                 </div>
                                             </div>
                                             <br>
@@ -525,7 +527,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             <div class="row">
                                                 <div class="mb-3">
                                                     <p><b>Descrição do Pedido</b></p>
-                                                    <textarea class="form-control" id="text" name="text" rows="3" disabled><?php echo $dados3[0]['text']; ?></textarea>
+                                                    <textarea class="form-control" id="text" name="text" rows="3"><?php echo $dados3[0]['text']; ?></textarea>
                                                 </div>
                                             </div>
                                         <?php
