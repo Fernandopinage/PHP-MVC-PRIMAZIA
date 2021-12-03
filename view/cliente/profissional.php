@@ -10,11 +10,6 @@ if (empty($_SESSION['user'])) {
     header('location: ../../view/cliente/login.php');
 }
 
-echo "<pre>";
-var_dump($_SESSION['user']);
-echo "</pre>";
-
-
 
 if (isset($_POST['salvarProfissional'])) {
 
