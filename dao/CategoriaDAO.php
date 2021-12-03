@@ -1,5 +1,6 @@
 <?php
 
+
 require_once __DIR__ . "../../mail/Mail.php";
 include_once "../../class/ClassCategoria.php";
 include_once "../../dao/DAO.php";
@@ -48,6 +49,9 @@ class CategoriaDAO extends DAO
 
         $mail = new Mail();
         $mail->Envio($nome, $email, $pedido, $telefone, $protodolo, $data, $cidade, $rua, $bairro, $complemento, $numero);
+
+        $Cemail = new ClienteMail();
+        $Cemail->CEnvio($nome, $email, $pedido, $telefone, $protodolo, $data, $cidade, $rua, $bairro, $complemento, $numero);
 
         try {
             $insert->execute();
