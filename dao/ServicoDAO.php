@@ -108,6 +108,36 @@ class ServicoDao extends Dao{
             
     }
 
+    public function updateServico($ClassServico){
+
+        $nome =  $ClassServico->GetNome();
+        $nome = explode('-',$nome);
+        $Email_Pro = $nome[3];
+
+        $sql = "SELECT * FROM `profissional` WHERE profissional_email ='".trim($Email_Pro)."' ";
+        $select = $this->con->prepare($sql);
+        $select->execute();
+    
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $id = $row['profissional_id'];
+
+            $query = "UPDATE `servico` SET servico_idprofissional=:servico_idprofissional, servico_pagamento=:servico_pagamento, servico_valor=:servico_valor, servico_text=:servico_text where servico_protocolo=:servico_protocolo ";
+            $update = $this->con->prepare($query);
+            $update->bindValue(':servico_protocolo',$ClassServico->GetProtocolo());
+            $update->bindValue(':servico_idprofissional',$id);
+            $update->bindValue(':servico_pagamento',$ClassServico->GetPagamento());
+            $update->bindValue(':servico_valor',$ClassServico->GetValor());
+            $update->bindValue(':servico_text',$ClassServico->GetText());
+            $update->execute();
+
+        }
+        
+      
+    }
+
+
     public function finalizarServico($ClassServico){
 
     

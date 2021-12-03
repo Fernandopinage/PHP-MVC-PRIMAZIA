@@ -865,7 +865,8 @@ class CategoriaDAO extends DAO
                 'pagamento' => $row['servico_pagamento'],
                 'text' => $row['servico_text'],
                 'valor' => $row['servico_valor'],
-                'profissional' => $row['servico_profissional']
+                'profissional' => $row['servico_profissional'],
+                'protocolo' => $row['servico_protocolo']
             );
         }
         return $array;

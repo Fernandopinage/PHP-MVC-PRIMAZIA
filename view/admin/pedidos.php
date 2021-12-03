@@ -90,13 +90,21 @@ if (isset($_POST['chamado_finalizado'])) {
 
     $Servico = new ServicoDao();
     $Servico->finalizarServico($ClassServico);
-    /*
-    */
+}
+
+if (isset($_POST['chamado_atualizado'])) {
+
+    $ClassServico = new Servico();
+    $ClassServico->SetProtocolo($_POST['protocolo']);
+    $ClassServico->SetNome($_POST['profissional']);
+    $ClassServico->SetPagamento($_POST['pagamento']);
+    $ClassServico->SetValor($_POST['valor']);
+    $ClassServico->SetText($_POST['text']);
+
+    $Servico = new ServicoDao();
+    $Servico->updateServico($ClassServico);
 
 
-    /********* aqui logica da star *************/
-    //        usar o numero do protocolo        /
-    /***************************************** */
 }
 
 
@@ -358,22 +366,22 @@ if (isset($_POST['chamado_finalizado'])) {
 
                                         <?php
                                         $pedido = $obj->tpservico;
-                                        
+
                                         $dados2 = $ClassPedido->listarProfissionalCategoria($pedido);
 
                                         $ClassPedido = new CategoriaDAO();
                                         $dados3 = $ClassPedido->listaServico($dados['protocolo']);
-
+                         
                                         ?>
 
                                         <?php
 
-                                        if ($dados['status'] === 'A'){
+                                        if ($dados['status'] === 'A') {
 
 
                                         ?>
 
-                                            <select class="form-select" name="pessoa" aria-label="Default select example"required >
+                                            <select class="form-select" name="pessoa" aria-label="Default select example" required>
 
 
                                                 <?php
@@ -430,81 +438,107 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 </div>
                                             </div>
                                         <?php
-                                        } 
+                                        }
 
 
-                                        if ($dados['status'] === 'C'){
+                                        if ($dados['status'] === 'C') {
 
 
-                                            ?>
-    
-                                                <select class="form-select" name="pessoa" aria-label="Default select example"required >
-    
-    
-                                                    <?php
-    
-                                                    $tamanho = count($dados2);
-    
-                                                    if ($tamanho > 0) {
-    
-                                                        if ($dados['status'] != 'C') {
-    
-                                                            if ($dados['status'] != 'F') {
-    
-                                                                echo " <option value=''>Selecione o profissional</option>";
-                                                                for ($i = 0; $i < $tamanho; $i++) {
-                                                                    echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
-                                                                }
-                                                            } else {
-                                                                echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
+                                        ?>
+
+                                            <select class="form-select" name="pessoa" aria-label="Default select example" required>
+
+
+                                                <?php
+
+                                                $tamanho = count($dados2);
+
+                                                if ($tamanho > 0) {
+
+                                                    if ($dados['status'] != 'C') {
+
+                                                        if ($dados['status'] != 'F') {
+
+                                                            echo " <option value=''>Selecione o profissional</option>";
+                                                            for ($i = 0; $i < $tamanho; $i++) {
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
                                                             }
                                                         } else {
-                                                            echo "<option>Cliente cancelado!</option>";
+                                                            echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
                                                         }
                                                     } else {
-                                                        echo "<option>Não possui profissional para essa demanda!</option>";
+                                                        echo "<option>Cliente cancelado!</option>";
                                                     }
-    
-    
-                                                    ?>
-    
-                                                </select>
-    
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <p><b>Forma de Pagamento</b><span style="color: red; font-size:16px"> *</span></p>
-                                                        <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
-                                                            <option selected></option>
-                                                            <option value="Cartão Crédito">Cartão Crédito</option>
-                                                            <option value="Cartão Débito">Cartão Débito</option>
-                                                            <option value="PIX">PIX</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <p><b>Valor do Serviço</b><span style="color: red; font-size:16px"> *</span></p>
-                                                        <input type="text" class="form-control form-control-sm" name="valor" onkeypress="return(moeda(this,'.',',',event))" disabled>
-                                                    </div>
+                                                } else {
+                                                    echo "<option>Não possui profissional para essa demanda!</option>";
+                                                }
+
+
+                                                ?>
+
+                                            </select>
+
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><b>Forma de Pagamento</b><span style="color: red; font-size:16px"> *</span></p>
+                                                    <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
+                                                        <option selected></option>
+                                                        <option value="Cartão Crédito">Cartão Crédito</option>
+                                                        <option value="Cartão Débito">Cartão Débito</option>
+                                                        <option value="PIX">PIX</option>
+                                                    </select>
                                                 </div>
-                                                <br>
-    
-                                                <div class="row">
-                                                    <div class="mb-3">
-                                                        <p><b>Descrição do Pedido</b></p>
-                                                        <textarea class="form-control" id="text" name="text" rows="3" disabled></textarea>
-                                                    </div>
+                                                <div class="col-md-3">
+                                                    <p><b>Valor do Serviço</b><span style="color: red; font-size:16px"> *</span></p>
+                                                    <input type="text" class="form-control form-control-sm" name="valor" onkeypress="return(moeda(this,'.',',',event))" disabled>
                                                 </div>
-                                            <?php
+                                            </div>
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="mb-3">
+                                                    <p><b>Descrição do Pedido</b></p>
+                                                    <textarea class="form-control" id="text" name="text" rows="3" disabled></textarea>
+                                                </div>
+                                            </div>
+                                        <?php
                                         }
-                                        
-                                        if($dados['status'] === 'E'){
+
+                                        if ($dados['status'] === 'E') {
                                         ?>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>"name="pessoa_finalizado">
-                                                    <select class="form-select form-select-sm"  aria-label="Default select example">
-                                                        <option value="<?php echo $dados3[0]['profissional']; ?>"><?php echo $dados3[0]['profissional']; ?></option>
+                                                    <input type="hidden" value="<?php echo $dados3[0]['protocolo']; ?>" name="protocolo">
+                                    
+                                                    <select class="form-select form-select-sm" aria-label="Default select example" name="profissional">
+                                                        <?php
+
+                                                        $tamanho = count($dados2);
+                                                        for ($i = 0; $i < $tamanho; $i++) {
+                                                            echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                        }
+                                                        ?>
+                                                        
                                                     </select>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-12" style="margin-top: 20px;">
+                                                    <p><b>Profissional  que está atendendo</b></p>
+
+
+                                                    <select class="form-select form-select-sm" aria-label="Default select example" disabled>
+                                                        <?php
+
+                                                        $tamanho = count($dados3);
+                                                        for ($i = 0; $i < $tamanho; $i++) {
+                                                            echo "<option>" . $dados3[$i]['nome']."</option>";
+                                                        }
+                                                        ?>
+                                                        
+                                                    </select>
+                                                    
+                                                </div>
                                                 </div>
                                             </div>
                                             <br>
@@ -512,9 +546,9 @@ if (isset($_POST['chamado_finalizado'])) {
                                                 <div class="col-md-4">
                                                     <p><b>Forma de Pagamento</b></p>
                                                     <select id="pagamento" name="pagamento" class="form-select form-select-sm">
-                                                            <option <?php echo $dados3[0]['pagamento'] === 'Cartão Crédito'?'selected':''; ?> value="Cartão Crédito">Cartão Crédito</option>
-                                                            <option <?php echo $dados3[0]['pagamento'] === 'Cartão Débito'?'selected':''; ?>  value="Cartão Débito">Cartão Débito</option>
-                                                            <option <?php echo $dados3[0]['pagamento'] === 'PIX'?'selected':''; ?>            value="PIX">PIX</option>
+                                                        <option <?php echo $dados3[0]['pagamento'] === 'Cartão Crédito' ? 'selected' : ''; ?> value="Cartão Crédito">Cartão Crédito</option>
+                                                        <option <?php echo $dados3[0]['pagamento'] === 'Cartão Débito' ? 'selected' : ''; ?> value="Cartão Débito">Cartão Débito</option>
+                                                        <option <?php echo $dados3[0]['pagamento'] === 'PIX' ? 'selected' : ''; ?> value="PIX">PIX</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -532,12 +566,12 @@ if (isset($_POST['chamado_finalizado'])) {
                                             </div>
                                         <?php
                                         }
-                                        if($dados['status'] === 'F'){
+                                        if ($dados['status'] === 'F') {
                                         ?>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>"name="pessoa_finalizado">
-                                                    <select class="form-select form-select-sm"  aria-label="Default select example" disabled>
+                                                    <input type="hidden" value="<?php echo $dados3[0]['profissional']; ?>" name="pessoa_finalizado">
+                                                    <select class="form-select form-select-sm" aria-label="Default select example" disabled>
                                                         <option value="<?php echo $dados3[0]['profissional']; ?>"><?php echo $dados3[0]['profissional']; ?></option>
                                                     </select>
                                                 </div>
@@ -608,6 +642,7 @@ if (isset($_POST['chamado_finalizado'])) {
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
                                                 <input type="submit" name="chamado_cancelado" class="btn btn-secondary" value="Cancelar" style="color: white;">
+                                                <input type="submit" name="chamado_atualizado" class="btn btn-success" value="Atualizar" style="color: white;">
                                                 <input type="submit" name="chamado_finalizado" class="btn btn-warning" value="Finalizar" style="color: white;">
                                             <?php
                                             }
