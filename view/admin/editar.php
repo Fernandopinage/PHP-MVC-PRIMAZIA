@@ -84,10 +84,10 @@ if (empty($_SESSION['admin'])) {
 
         if (isset($_POST['editar_admin_profissional'])) {
 
-            
-            
+
+
             if (isset($_FILES['imagemPRO']['name'])) {
-            
+
                 $imagem = $_FILES['imagemPRO']['name'];
                 $diretorio = '../../images/';
                 //$diretorioPDF = '../pdf/';
@@ -95,9 +95,9 @@ if (empty($_SESSION['admin'])) {
             }
             if ($_POST['senha'] === $_POST['confirmar']) {
 
-               
-               
-                
+
+
+
                 $ClassProfissional = new Profissional();
                 $ClassProfissional->SetId($_POST['admid']);
                 $ClassProfissional->SetOpcao($_POST['opt']);
@@ -115,11 +115,9 @@ if (empty($_SESSION['admin'])) {
                 //$ClassProfissional->SetEmail($_POST['email']);
                 $ClassProfissional->SetServico($_POST['servico']);
                 $ClassProfissional->SetFoto($_POST['imagemPRO']);
-                
-                 $Profissional = new ProfissionalDAO();
-                 $Profissional->updateProfissionalModal($ClassProfissional);
 
-
+                $Profissional = new ProfissionalDAO();
+                $Profissional->updateProfissionalModal($ClassProfissional);
             } else {
             ?>
 
@@ -140,6 +138,13 @@ if (empty($_SESSION['admin'])) {
 
 
         if (isset($_POST['editarCliente'])) {
+
+            if (isset($_FILES['imagem']['name'])) {
+                $imagem = $_FILES['imagem']['name'];
+                $diretorio = '../../images/';
+                //$diretorioPDF = '../pdf/';
+                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
+            }
 
             if (isset($_POST['clisenha']) === isset($_POST['cliconfirmar'])) {
 
@@ -233,7 +238,7 @@ if (empty($_SESSION['admin'])) {
                     elt.value = 2;
                 </script>
 
-        <?php
+            <?php
             }
         } else {
             $Profissional = new AdminDAO();
@@ -245,44 +250,44 @@ if (empty($_SESSION['admin'])) {
 
 
 
-    if (isset($_POST['filtror_cliente'])) {
+        if (isset($_POST['filtror_cliente'])) {
 
-        if (!empty($_POST['cliente_name']) or !empty($_POST['cliente_email']) or !empty($_POST['cliente_cpf'])) {
+            if (!empty($_POST['cliente_name']) or !empty($_POST['cliente_email']) or !empty($_POST['cliente_cpf'])) {
 
-            $nome = $_POST['cliente_name'];
-            $email = $_POST['cliente_email'];
-            $cpf = $_POST['cliente_cpf'];
+                $nome = $_POST['cliente_name'];
+                $email = $_POST['cliente_email'];
+                $cpf = $_POST['cliente_cpf'];
 
-            $Cliente = new AdminDAO();
-            $dadosCliente = $Cliente->ListarClienteFiltro($nome, $email, $cpf);
+                $Cliente = new AdminDAO();
+                $dadosCliente = $Cliente->ListarClienteFiltro($nome, $email, $cpf);
 
-    ?>
-            <script>
-                elt = document.getElementById('opcao');
-                var opt = elt.getElementsByTagName("option");
-                elt.value = 3;
-            </script>
+            ?>
+                <script>
+                    elt = document.getElementById('opcao');
+                    var opt = elt.getElementsByTagName("option");
+                    elt.value = 3;
+                </script>
+
+            <?php
+
+            } else {
+
+                $Cliente = new AdminDAO();
+                $dadosCliente = $Cliente->ListarCliente();
+            ?>
+                <script>
+                    elt = document.getElementById('opcao');
+                    var opt = elt.getElementsByTagName("option");
+                    elt.value = 3;
+                </script>
 
         <?php
-
+            }
         } else {
 
             $Cliente = new AdminDAO();
             $dadosCliente = $Cliente->ListarCliente();
-        ?>
-            <script>
-                elt = document.getElementById('opcao');
-                var opt = elt.getElementsByTagName("option");
-                elt.value = 3;
-            </script>
-
-    <?php
         }
-    } else {
-
-        $Cliente = new AdminDAO();
-        $dadosCliente = $Cliente->ListarCliente();
-    }
 
 
         ?>
@@ -482,36 +487,36 @@ if (empty($_SESSION['admin'])) {
                                 <form method="POST" id="editaProfissionalModal">
 
 
-                                    <?php 
-                                    
-                                    if(!empty($dadosProfissional['foto'])){
-                                       ?>
-                                       <div style="margin-bottom: 50px;">
+                                    <?php
 
-                                           <div class="col-6">
-                                               <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
-                                               <input class="form-control" type="file" name="imagemPRO"  id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+                                    if (!empty($dadosProfissional['foto'])) {
+                                    ?>
+                                        <div style="margin-bottom: 50px;">
+
+                                            <div class="col-6">
+                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
                                         </div>
-                                       <?php
-                                    }else{
-                                        ?>
-                                        
+                                    <?php
+                                    } else {
+                                    ?>
+
                                         <div style="margin-bottom: 50px;">
 
                                             <div class="col-6">
 
-                                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
-                                                 <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
                                         </div>
-                                        
-                                        <?php
+
+                                    <?php
                                     }
-                                    
+
                                     ?>
 
-                                
+
                                     <div class="mb-3">
                                         <input type="hidden" name="admid" value="<?php echo $dadosProfissional['id']; ?>">
 
@@ -676,7 +681,7 @@ if (empty($_SESSION['admin'])) {
 
     <?php
 
-    
+
     ?>
 
     <form method="POST">
@@ -702,16 +707,16 @@ if (empty($_SESSION['admin'])) {
 
             </div>
             <?php
-            
-            if(isset($dadosCliente)){
 
-                ?>
-                    <div class="col-md-1" style="margin-top: 31px;">
-                        <a href="../admin/cli_excel.php?p=<?php echo $dadosCliente[0]['excel']; ?>" name="gerarexcell" class="btn btn-success">Excel</a>
-                    </div>
-                <?php
+            if (isset($dadosCliente)) {
+
+            ?>
+                <div class="col-md-1" style="margin-top: 31px;">
+                    <a href="../admin/cli_excel.php?p=<?php echo $dadosCliente[0]['excel']; ?>" name="gerarexcell" class="btn btn-success">Excel</a>
+                </div>
+            <?php
             }
-            
+
             ?>
         </div>
     </form>
@@ -751,6 +756,38 @@ if (empty($_SESSION['admin'])) {
                                 <form method="POST">
 
                                     <input type="hidden" name="cliID" value="<?php echo $dadosCliente['id']; ?>">
+                                    <?php
+
+                                    if (!empty($dadosCliente['foto'])) {
+                                    ?>
+                                        <div style="margin-bottom: 50px;">
+
+                                            <div class="col-6">
+                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosCliente['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
+                                            </div>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+
+                                        <div style="margin-bottom: 50px;">
+
+                                            <div class="col-6">
+
+                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                    }
+
+                                    ?>
+
+
+
+
 
                                     <?php
 
@@ -1019,6 +1056,7 @@ if (empty($_SESSION['admin'])) {
         fileReader.readAsDataURL(file)
     });
 </script>
+
 
 <?php
 include_once "../../layout/footer.php";
