@@ -470,7 +470,7 @@ if(isset($_GET['pd'])){
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
-                <th scope="col">Excluir Registro</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -487,7 +487,10 @@ if(isset($_GET['pd'])){
                     <td class="text-center"><?php echo $dadosProfissional['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['telefone']; ?></td>
-                    <td scope="col"><a href="../admin/editar.php?pd=<?php echo $dadosProfissional['id']; ?>" class="btn btn-danger">X</a></td>
+                    <td scope="col">
+                        <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
+                        <a href="../admin/editar.php?pd=<?php echo $dadosProfissional['id']; ?>" class="btn btn-danger"><img src="../../icons/delete.png" width="22"></a>
+                    </td>
                 </tr>
                 <div class="modal fade" id="profissional<?php echo $dadosProfissional['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
