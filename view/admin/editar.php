@@ -84,15 +84,16 @@ if (empty($_SESSION['admin'])) {
 
         if (isset($_POST['editar_admin_profissional'])) {
 
-            if (isset($_FILES['imagem']['name'])) {
-                echo $imagem = $_FILES['imagem']['name'];
-                echo $diretorio = '../../images/';
-                //$diretorioPDF = '../pdf/';
-                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
-            }
-
-
+            
+            
             if ($_POST['senha'] === $_POST['confirmar']) {
+                
+                if (isset($_FILES['imagem']['name'])) {
+                    echo $imagem = $_FILES['imagem']['name'];
+                    echo $diretorio = '../../images/';
+                    //$diretorioPDF = '../pdf/';
+                    move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
+                }
 
                 $ClassProfissional = new Profissional();
                 $ClassProfissional->SetId($_POST['admid']);
