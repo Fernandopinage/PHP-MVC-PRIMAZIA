@@ -34,7 +34,7 @@ class ClienteMSG
 
             //Recipients
             $mail->setFrom('primaziateste2021@gmail.com', 'G2S - GoToService');
-
+            $mail->setFrom('g2s@gotoservice.com.br', 'G2S - GoToService'); // ambos vão receber emails 
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
             $mail->Subject = 'ATUALIZANDO PERFIL - '.$ClassCliente->GetNome();
