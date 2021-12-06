@@ -213,6 +213,47 @@ class ClienteDAO extends DAO
         }
     }
 
+    public function deleteCliente($ClassCliente){
+
+        $query = "DELETE FROM `cliente` WHERE `CLIENTE_ID` =:CLIENTE_ID";
+        $delete = $this->con->prepare($query);
+        $delete->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
+        try {
+            $delete->execute();
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro deletado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+
+        <?php
+         header('Refresh: 3.4; url=../admin/editar.php');
+        } catch (\Throwable $th) {
+            echo $th;
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro ao deletar registro',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+        <?php
+        }
+    }
+
     public function updateCliente($ClassCliente)
     {
 

@@ -341,9 +341,8 @@ class ProfissionalDAO extends DAO
                 })
             </script>
 
-
-
         <?php
+        header('Refresh: 3.4; url=../admin/editar.php');
         } catch (\Throwable $th) {
             echo $th;
             ?>

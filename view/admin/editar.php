@@ -25,6 +25,15 @@ if(isset($_GET['pd'])){
 
 }
 
+if(isset($_GET['cd'])){
+  
+    $ClassCliente = new Cliente();
+    $ClassCliente->SetId($_GET['cd']);
+    $Cliente = new ClienteDAO();
+    $Cliente->deleteCliente($ClassCliente);
+
+}
+
 
 
 ?>
@@ -747,6 +756,7 @@ if(isset($_GET['pd'])){
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
+                <th scope="col"></th>
             </tr>
 
 
@@ -762,6 +772,10 @@ if(isset($_GET['pd'])){
                     <td class="text-center"><?php echo $dadosCliente['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
+                    <td scope="col">
+                        <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
+                        <a href="../admin/editar.php?cd=<?php echo $dadosCliente['id']; ?>" class="btn btn-danger"><img src="../../icons/delete.png" width="22"></a>
+                    </td>
                 </tr>
                 <div class="modal fade" id="cliente<?php echo $dadosCliente['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
