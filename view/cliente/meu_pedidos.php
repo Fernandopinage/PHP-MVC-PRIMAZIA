@@ -8,27 +8,56 @@ if (empty($_SESSION['user'])) {
     header('location: ../../view/cliente/login.php');
 }
 
-
-
-
-
 $ClassPedido = new CategoriaDAO();
-$dados = $ClassPedido->pedidos($_SESSION['user']['email']);
+$dados = $ClassPedido->pedidos($_SESSION['user']['cpf']);
 
+if(isset($_POST['filtror'])){
 
+    $input = $_POST['status_filtro'];
 
+    if($input === 'P'){
+      
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedidos2($_SESSION['user']['email']);
+        
+
+    }else{
+        
+        $ClassPedido = new CategoriaDAO();
+        $dados = $ClassPedido->pedidos($_SESSION['user']['cpf']);
+        
+    }
+
+}
 
 
 ?>
 <link href="../../layout/css/cliente_painel.css" rel="stylesheet">
 <div id="logo">
-<a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
+    <a href="https://gotoservice.com.br/"><img src="../../images/primazia.png" alt="" width="250" height="190"></a>
 </div>
-
 
 <div class="container">
 
-    <h3 style="color:orangered; font-family: 'Montserrat';" >Meus pedidos</h3>
+    <form method="POST" class="row g-3" style="margin-left:0px;">
+        <div class="col-md-3">
+            <label for="validationServer01" class="form-label">Meus pedidos:</label>
+            <select class="form-select" name="status_filtro" aria-label="select example">
+                <option></option>
+                <option value="P">PROFISSIONAL</option>
+                <option value="C">CLIENTE</option>
+            </select>
+        </div>
+    
+        <div class="col-md-4" style="margin-top: 48px;">
+            <input type="submit" name="filtror" class="btn btn-secondary" value="Filtrar">
+    
+        </div>
+    </form>
+
+
+
+    <h3 style="color:orangered;margin-top:50px;">Meus pedidos</h3>
 
     <?php
 
@@ -37,20 +66,12 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
         foreach ($dados as $dados) {
 
-
-           $protocolo = $dados['protocolo'];
-           $dados2 = $ClassPedido->pedidosProfissionalFiltro($protocolo);
-
-           
-
             $obj = $dados['descricao'];
-
-
 
     ?>
 
-            <div class=" d-inline-block text-center" style="padding-right: 8px; margin-top:10px;">
-                <div class="card" style="width: 26rem;">
+            <div class=" d-inline-block text-center" style="padding: 8px;">
+                <div class="card" style="width: 22rem;">
                     <div class="card-body" style="text-align: left;">
                         <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"><b>Protocolo:</b> <span style="color: red;"> <?php echo $dados['protocolo']; ?></span></p>
                         <hr>
@@ -64,30 +85,19 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
                         <?php
                         foreach ($total as $total) {
 
-                            echo $total . ". ";
+                            echo $total . ", ";
                         }
 
                         ?>
                         <hr>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Profissional:
-                        
-                            <?php 
-                            if(@$dados2['nome_profissional'] > 0){
-                                echo $dados2['nome_profissional'];
-                            }  
-                                
-                            ?>
-                        </b></p>
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Cliente: </b><?php echo $dados['nome']; ?></p>
 
                         <?php
                         if ($dados['status'] === 'A') {
 
                         ?>
                             <div class="text-center">
-                                
-                                <div class="alert alert-primary" role="alert">
-                                Status: Em Aberto
-                                </div>
+                                <a href="#" class="btn btn-success" style="font-family: 'Montserrat', sans-serif;">Status: Em Aberto</a>
                             </div>
                         <?php
                         }
@@ -96,10 +106,7 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                         ?>
                             <div class="text-center">
-                                
-                                <div class="alert alert-warning" role="alert">
-                                Status: Em Atendimento
-                                </div>
+                                <a href="#" class="btn btn" style="background-color: #ffc107; color: white; font-family: 'Montserrat', sans-serif;">Em Atendimento</a>
                             </div>
                         <?php
 
@@ -109,26 +116,10 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
 
                         ?>
                             <div class="text-center">
-                                
-                                <div class="alert alert-success" role="alert">
-                                Status: Finalizado
-                                </div>
+                                <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Finalizado</a>
                             </div>
                         <?php
                         }
-
-                        if ($dados['status'] === 'C') {
-
-                            ?>
-                                <div class="text-center">
-                                   <!-- <a  class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Cancelado</a> -->
-                                   <div class="alert alert-danger" role="alert">
-                                        Status: Cancelado
-                                    </div>
-                                </div>
-                            <?php
-                            }
-                        
                         ?>
 
 
@@ -137,31 +128,62 @@ $dados = $ClassPedido->pedidos($_SESSION['user']['email']);
                 </div>
             </div>
 
-    <?php
+        <?php
         }
-    }else{
+    } else {
         ?>
-        
+
         <div class=" d-inline-block text-center" style="padding: 8px;">
-                <div class="card" style="width: 22rem;">
-                    <div class="card-body" style="text-align: left;">
-                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"></p>
-                        <hr>
-                        <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px">  </p>
-                        <div class="text-center">
+            <div class="card" style="width: 22rem;">
+                <div class="card-body" style="text-align: left;">
+                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"></p>
+                    <hr>
+                    <p class="card-title" style="font-family: 'Montserrat', sans-serif; font-size:20px"> </p>
+                    <div class="text-center">
                         <a href="#" class="btn btn-danger" style="color: white; font-family: 'Montserrat', sans-serif;">Não possui pedidos</a>
-                        </div>
                     </div>
                 </div>
             </div>
-        
-        
-        <?php
-        
+        </div>
+
+
+    <?php
+
     }
     ?>
 
 </div>
+
+<script>
+
+function select(){
+
+    var opc = document.getElementById('opcao').value
+            
+    if(opc == '1'){
+
+        document.getElementById('cliente').style.display = 'none';
+        document.getElementById('profissional').style.display = 'none';
+
+    }
+    if(opc == '2'){
+        document.getElementById('cliente').style.display = 'block';
+        document.getElementById('profissional').style.display = 'none';
+
+    }
+    if(opc == '3'){
+        document.getElementById('profissional').style.display = 'block';
+        document.getElementById('cliente').style.display = 'none';
+
+
+    }
+
+    
+}
+
+
+</script>
+
 
 <?php
 require "../../layout/footer.php";

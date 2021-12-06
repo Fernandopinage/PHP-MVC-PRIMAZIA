@@ -144,9 +144,9 @@ class CategoriaDAO extends DAO
     public function pedidos($email)
     {
 
-        $sql = "SELECT * FROM `pedido` where pedido_email = :pedido_email ORDER BY `pedido`.`pedido_id` DESC";
+        $sql = "SELECT * FROM `pedido` where pedido_cpf = :pedido_cpf ORDER BY `pedido`.`pedido_id` DESC";
         $select = $this->con->prepare($sql);
-        $select->bindValue(':pedido_email', $email);
+        $select->bindValue(':pedido_cpf', $email);
         $select->execute();
 
         $array = array();
@@ -179,6 +179,60 @@ class CategoriaDAO extends DAO
         return $array;
     }
 
+
+    public function pedidos2($email)
+    {
+      $sql = 'SELECT * FROM `profissional` WHERE `profissional_email` =:profissional_email';
+      $select = $this->con->prepare($sql);
+      $select->bindValue(':profissional_email', $email);
+      $select->execute();
+
+        if($row = $select->fetch(PDO::FETCH_ASSOC)){
+
+            $id = $row['profissional_id'];
+       
+
+            $query = "SELECT * FROM `servico` inner join pedido on servico_protocolo = pedido_protocolo WHERE `servico_idprofissional` =:servico_idprofissional";
+            $select = $this->con->prepare($query);
+            $select->bindValue(':servico_idprofissional', $id);
+            $select->execute();
+
+            $array = array();
+
+            while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+    
+    
+                $array[] = array(
+    
+                    'id' => $row['pedido_id'],
+                    'nome' => $row['pedido_nome'],
+                    'telefone' => $row['pedido_telefone'],
+                    'email' => $row['pedido_email'],
+                    'cpf' => $row['pedido_cpf'],
+                    'cep' => $row['pedido_cep'],
+                    'data' => $row['pedido_data'],
+                    'descricao' => json_decode($row['pedido_descricao']),
+                    'uf' => $row['pedido_uf'],
+                    'cidade' => $row['pedido_cidade'],
+                    'logradouro' => $row['pedido_logradouro'],
+                    'bairro' => $row['pedido_bairro'],
+                    'complemento' => $row['pedido_complemento'],
+                    'protocolo' => $row['pedido_protocolo'],
+                    'numero' => $row['pedido_numero'],
+                    'status' => $row['pedido_status']
+                );
+            }
+    
+    
+            return $array;
+
+
+        }
+
+
+
+    }
+
     public function pedidosProfissionalFiltro($id)
     {
 
@@ -208,6 +262,8 @@ class CategoriaDAO extends DAO
 
         return $array;
     }
+
+
 
     public function pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final)
     {
