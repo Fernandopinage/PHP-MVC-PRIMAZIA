@@ -166,7 +166,7 @@ if (empty($_SESSION['admin'])) {
                 $ClassCliente->SetComplemento($_POST['clicomplemento']);
                 $ClassCliente->SetTelefone($_POST['clitelefone']);
                 $ClassCliente->SetEmail($_POST['cliemail']);
-
+                $ClassCliente->SetFoto($_POST['imagem']);
                 $ClienteDao = new ClienteDAO();
                 $ClienteDao->updateCliente($ClassCliente);
             }
