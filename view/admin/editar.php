@@ -87,10 +87,12 @@ if (empty($_SESSION['admin'])) {
             
             
             if ($_POST['senha'] === $_POST['confirmar']) {
+
                 
-                if (isset($_FILES['imagem']['name'])) {
-                    echo $imagem = $_FILES['imagem']['name'];
-                    echo $diretorio = '../../images/';
+
+                if (!empty($_FILES['imagemPRO']['name'])) {
+                    $imagem = $_FILES['imagemPRO']['name'];
+                    $diretorio = '../../images/';
                     //$diretorioPDF = '../pdf/';
                     move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
                 }
@@ -111,10 +113,10 @@ if (empty($_SESSION['admin'])) {
                 $ClassProfissional->SetTelefone($_POST['telefone']);
                 //$ClassProfissional->SetEmail($_POST['email']);
                 $ClassProfissional->SetServico($_POST['servico']);
-                $ClassProfissional->SetFoto($_POST['imagem']);
-               
-                // $Profissional = new ProfissionalDAO();
-                // $Profissional->updateProfissionalModal($ClassProfissional);
+                $ClassProfissional->SetFoto($_POST['imagemPRO']);
+                var_dump($ClassProfissional);
+                 $Profissional = new ProfissionalDAO();
+                 $Profissional->updateProfissionalModal($ClassProfissional);
 
 
             } else {
@@ -487,7 +489,7 @@ if (empty($_SESSION['admin'])) {
 
                                            <div class="col-6">
                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
-                                               <input class="form-control" type="file" name="imagem" value="<?php echo $dadosProfissional['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+                                               <input class="form-control" type="file" name="imagemPRO" value="<?php echo $dadosProfissional['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
                                             </div>
                                         </div>
                                        <?php
@@ -499,7 +501,7 @@ if (empty($_SESSION['admin'])) {
                                             <div class="col-6">
 
                                                  <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
-                                                 <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+                                                 <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
                                             </div>
                                         </div>
                                         
