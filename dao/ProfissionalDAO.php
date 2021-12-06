@@ -321,6 +321,46 @@ class ProfissionalDAO extends DAO
         }
     }
 
+    public function DeleteProfissional($ClassProfissional){
+    
+        $query = "DELETE FROM `profissional` WHERE `profissional_id`:profissional_id";
+        $delete = $this->con->prepare($query);
+        $delete->bindValue(':profissional_id', $ClassProfissional->GetID());
+        
+        try {
+            $delete->execute();
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro deletado com sucesso',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+
+
+        <?php
+        } catch (\Throwable $th) {
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro ao deletar registro',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            </script>
+
+        <?php
+        }
+    }
+
     public function AdminInserirProfissional($ClassProfissional , $subcategoria)
     {
 

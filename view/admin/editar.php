@@ -14,6 +14,19 @@ if (empty($_SESSION['admin'])) {
     header('location: ../../view/admin/login.php');
 }
 
+if(isset($_GET['pd'])){
+  
+   
+    $ClassProfissional = new Profissional();
+    $ClassProfissional->SetId($_GET['pd']);
+
+    $Profissional = new ProfissionalDAO();
+    $Profissional->DeleteProfissional($ClassProfissional);
+
+}
+
+
+
 ?>
 <link href="../../layout/css/admin_painel2.css" rel="stylesheet">
 <div style="margin-left: 50px;">
@@ -457,6 +470,7 @@ if (empty($_SESSION['admin'])) {
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
+                <th scope="col">Excluir Registro</th>
             </tr>
         </thead>
         <tbody>
@@ -473,6 +487,7 @@ if (empty($_SESSION['admin'])) {
                     <td class="text-center"><?php echo $dadosProfissional['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['telefone']; ?></td>
+                    <td scope="col"><a href="../admin/editar.php?pd=<?php echo $dadosProfissional['id']; ?>" class="btn btn-danger">X</a></td>
                 </tr>
                 <div class="modal fade" id="profissional<?php echo $dadosProfissional['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
