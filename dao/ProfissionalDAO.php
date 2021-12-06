@@ -323,7 +323,7 @@ class ProfissionalDAO extends DAO
 
     public function DeleteProfissional($ClassProfissional){
     
-        $query = "DELETE FROM `profissional` WHERE `profissional_id`:profissional_id";
+        $query = "DELETE FROM `profissional` WHERE profissional_id =:profissional_id";
         $delete = $this->con->prepare($query);
         $delete->bindValue(':profissional_id', $ClassProfissional->GetID());
         
@@ -345,6 +345,7 @@ class ProfissionalDAO extends DAO
 
         <?php
         } catch (\Throwable $th) {
+            echo $th;
             ?>
 
             <script>
