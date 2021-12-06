@@ -84,6 +84,14 @@ if (empty($_SESSION['admin'])) {
 
         if (isset($_POST['editar_admin_profissional'])) {
 
+            if (isset($_FILES['imagem']['name'])) {
+                echo $imagem = $_FILES['imagem']['name'];
+                echo $diretorio = '../../images/';
+                //$diretorioPDF = '../pdf/';
+                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
+            }
+
+
             if ($_POST['senha'] === $_POST['confirmar']) {
 
                 $ClassProfissional = new Profissional();
@@ -100,10 +108,14 @@ if (empty($_SESSION['admin'])) {
                 $ClassProfissional->SetBairro($_POST['bairro']);
                 $ClassProfissional->SetComplemento($_POST['complemento']);
                 $ClassProfissional->SetTelefone($_POST['telefone']);
-                $ClassProfissional->SetEmail($_POST['email']);
+                //$ClassProfissional->SetEmail($_POST['email']);
                 $ClassProfissional->SetServico($_POST['servico']);
-                $Profissional = new ProfissionalDAO();
-                $Profissional->updateProfissionalModal($ClassProfissional);
+                $ClassProfissional->SetFoto($_POST['imagem']);
+               
+                // $Profissional = new ProfissionalDAO();
+                // $Profissional->updateProfissionalModal($ClassProfissional);
+
+
             } else {
             ?>
 
@@ -465,6 +477,37 @@ if (empty($_SESSION['admin'])) {
 
                                 <form method="POST" id="editaProfissionalModal">
 
+
+                                    <?php 
+                                    
+                                    if(!empty($dadosProfissional['foto'])){
+                                       ?>
+                                       <div style="margin-bottom: 50px;">
+
+                                           <div class="col-6">
+                                               <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                               <input class="form-control" type="file" name="imagem" value="<?php echo $dadosProfissional['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+                                            </div>
+                                        </div>
+                                       <?php
+                                    }else{
+                                        ?>
+                                        
+                                        <div style="margin-bottom: 50px;">
+
+                                            <div class="col-6">
+
+                                                 <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
+                                                 <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+                                            </div>
+                                        </div>
+                                        
+                                        <?php
+                                    }
+                                    
+                                    ?>
+
+                                
                                     <div class="mb-3">
                                         <input type="hidden" name="admid" value="<?php echo $dadosProfissional['id']; ?>">
 
