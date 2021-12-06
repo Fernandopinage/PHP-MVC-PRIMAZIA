@@ -90,8 +90,33 @@ if(isset($_POST['filtror'])){
 
                         ?>
                         <hr>
-                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Cliente: </b><?php echo $dados['nome']; ?></p>
+                        
+                        <?php 
+                        
+                        if($input == 'P'){
 
+                            ?>
+                          <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Profissional: </b>
+                        
+                        <?php echo $dados['profissional']; ?>
+                        
+                        </p>
+                            
+                            <?php
+
+                        }
+
+                        ?>
+
+
+
+                        <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Cliente: </b>
+                        
+                        <?php echo $dados['nome']; ?>
+                        
+                        </p>
+                        <?php
+                        ?>
                         <?php
                         if ($dados['status'] === 'A') {
 

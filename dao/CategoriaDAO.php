@@ -188,10 +188,10 @@ class CategoriaDAO extends DAO
       $select->execute();
 
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
-
+           
             $id = $row['profissional_id'];
-       
-
+            
+           
             $query = "SELECT * FROM `servico` inner join pedido on servico_protocolo = pedido_protocolo WHERE `servico_idprofissional` =:servico_idprofissional";
             $select = $this->con->prepare($query);
             $select->bindValue(':servico_idprofissional', $id);
@@ -219,12 +219,14 @@ class CategoriaDAO extends DAO
                     'complemento' => $row['pedido_complemento'],
                     'protocolo' => $row['pedido_protocolo'],
                     'numero' => $row['pedido_numero'],
-                    'status' => $row['pedido_status']
+                    'status' => $row['pedido_status'],
+                    'profissional' => $row['servico_profissional'],  
                 );
             }
     
     
             return $array;
+           
 
 
         }
