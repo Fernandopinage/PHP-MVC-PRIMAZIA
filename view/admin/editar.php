@@ -86,16 +86,17 @@ if (empty($_SESSION['admin'])) {
 
             
             
+            if (isset($_FILES['imagemPRO']['name'])) {
+            
+                $imagem = $_FILES['imagemPRO']['name'];
+                $diretorio = '../../images/';
+                //$diretorioPDF = '../pdf/';
+                move_uploaded_file($_FILES['imagemPRO']['tmp_name'], $diretorio . $imagem);
+            }
             if ($_POST['senha'] === $_POST['confirmar']) {
 
-
                
-                if (!empty($_FILES['imagemPRO']['name'])) {
-                    $imagem = $_FILES['imagemPRO']['name'];
-                    $diretorio = '../../images/';
-                    //$diretorioPDF = '../pdf/';
-                    move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
-                }
+               
                 
                 $ClassProfissional = new Profissional();
                 $ClassProfissional->SetId($_POST['admid']);
