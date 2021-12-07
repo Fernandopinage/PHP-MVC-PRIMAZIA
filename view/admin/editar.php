@@ -818,9 +818,6 @@ if(isset($_GET['cd'])){
                                     ?>
 
 
-
-
-
                                     <?php
 
 
@@ -885,18 +882,12 @@ if(isset($_GET['cd'])){
                                     <div class="mb-3">
                                         <input type="text" name="clicpf" id="cpf" value="<?php echo $dadosCliente['cpf']; ?>" class="form-control cpf-mask" placeholder="CPF/CNPJ" onkeypress="return somenteNumeros(event)" onfocus="javascript: retirarFormatacao(this);" onblur="javascript: formatarCampo(this);">
                                     </div>
-
-
-
                                     <div class="mb-3">
                                         <input type="password" name="clisenha" id="senha" class="form-control" placeholder="Senha" aria-label="">
                                     </div>
                                     <div class="mb-3">
                                         <input type="password" name="cliconfirmar" id="confirmar" class="form-control cpf-mask" placeholder="Confirmar senha">
                                     </div>
-
-
-
 
                                     <div class="mb-3">
                                         <input type="text" maxlength="9" name="clicep" value="<?php echo $dadosCliente['cep']; ?>" id="cep2" class="form-control" placeholder="CEP">
