@@ -2,7 +2,7 @@
 
 include_once "../../class/ClassServico.php";
 include_once "../../dao/DAO.php";
-include_once  "ClienteFinalizado.php";
+require_once __DIR__ . "../../mail/ClienteFinalizado.php";
 
 class ServicoDao extends Dao{
 
