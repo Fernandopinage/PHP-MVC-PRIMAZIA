@@ -2,7 +2,7 @@
 
 include_once "../../class/ClassServico.php";
 include_once "../../dao/DAO.php";
-
+include_once  "ClienteFinalizado.php";
 
 class ServicoDao extends Dao{
 
@@ -20,6 +20,7 @@ class ServicoDao extends Dao{
 
         if($row = $select->fetch(PDO::FETCH_ASSOC)){
            $id =  $row['profissional_id'];
+           $nome = $row['profissional_nome'];
         }
 
 
@@ -57,8 +58,10 @@ class ServicoDao extends Dao{
                 })
             </script>
 
-                
-         <?php
+            <!-- logica do email -->
+            
+            <?php
+
 
             header('Refresh: 3.4; url=../admin/pedidos.php');
 
@@ -211,7 +214,9 @@ class ServicoDao extends Dao{
 
                 'Email_CLi' => $row['pedido_email'],
                 'Email_Pro' => $Email_Pro,
-                'protocolo' => $row['pedido_protocolo']
+                'protocolo' => $row['pedido_protocolo'],
+                'nome' => $row['pedido_nome'],
+                'email' => $row['pedido_email']
             );
              $log['Email_Pro'];
 
@@ -252,6 +257,10 @@ class ServicoDao extends Dao{
 
 
         <?php
+            
+            $ClassAtender = new AtendimentoFinalizado();
+            $ClassAtender->finalizado($log); 
+
         header('Refresh: 3.4; url=../admin/pedidos.php');
 
 
