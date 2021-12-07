@@ -44,6 +44,7 @@ include_once "../../dao/CategoriaDAO.php";
                 <th scope="col">Serviço</th>
                 <th scope="col">Forma de Pagamento</th>
                 <th scope="col">Valor do Serviço</th>
+                <th scope="col">Observações</th>
 
             </tr>
         </thead>
@@ -98,6 +99,8 @@ include_once "../../dao/CategoriaDAO.php";
                         echo  "---";
                     }
                      ?></th>
+
+                <th scope="col"><?php echo $dados['text'];?></th>
             </tr>
                 
                 <?php

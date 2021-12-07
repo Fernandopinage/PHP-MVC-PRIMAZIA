@@ -221,7 +221,8 @@ class CategoriaDAO extends DAO
                     'protocolo' => $row['pedido_protocolo'],
                     'numero' => $row['pedido_numero'],
                     'status' => $row['pedido_status'],
-                    'profissional' => $row['servico_profissional'],  
+                    'profissional' => $row['servico_profissional'],
+                    'text' => @$row['servico_text'],  
                     'data_final' => @$row['servico_finalizado'],
                 );
             }
@@ -368,6 +369,7 @@ class CategoriaDAO extends DAO
                     'protocolo' => $row['pedido_protocolo'],
                     'numero' => $row['pedido_numero'],
                     'status' => $row['pedido_status'],
+                    'text' => @$row['servico_text'],
                     'data_final' => @$row['servico_finalizado'],
                     //'pagamento' => $row['servico_pagamento'],
                     //'text' => $row['servico_text'],
@@ -474,6 +476,7 @@ class CategoriaDAO extends DAO
                     'protocolo' => $row['pedido_protocolo'],
                     'numero' => $row['pedido_numero'],
                     'status' => $row['pedido_status'],
+                    'text' => @$row['servico_text'],
                     'data_final' => @$row['servico_finalizado'],
                     //'pagamento' => $row['servico_pagamento'],
                     //'text' => $row['servico_text'],
@@ -594,6 +597,7 @@ class CategoriaDAO extends DAO
                 'pagamento' => $row['servico_pagamento'],
                 'text' => $row['servico_text'],
                 'valor' => $row['servico_valor'],
+                'text' => @$row['servico_text'],
                 'data_final' => @$row['servico_finalizado'],
             );
         }
@@ -633,6 +637,7 @@ class CategoriaDAO extends DAO
                 'pagamento' => @$row['servico_pagamento'],
                 'text' => @$row['servico_text'],
                 'valor' => @$row['servico_valor'],
+                'text' => @$row['servico_text'],
                 'data_final' => @$row['servico_finalizado'],
             );
         }
