@@ -222,6 +222,7 @@ class CategoriaDAO extends DAO
                     'numero' => $row['pedido_numero'],
                     'status' => $row['pedido_status'],
                     'profissional' => $row['servico_profissional'],  
+                    'data_final' => @$row['servico_finalizado'],
                 );
             }
     
@@ -367,6 +368,7 @@ class CategoriaDAO extends DAO
                     'protocolo' => $row['pedido_protocolo'],
                     'numero' => $row['pedido_numero'],
                     'status' => $row['pedido_status'],
+                    'data_final' => @$row['servico_finalizado'],
                     //'pagamento' => $row['servico_pagamento'],
                     //'text' => $row['servico_text'],
                     //'valor' => $row['servico_valor']
@@ -472,6 +474,7 @@ class CategoriaDAO extends DAO
                     'protocolo' => $row['pedido_protocolo'],
                     'numero' => $row['pedido_numero'],
                     'status' => $row['pedido_status'],
+                    'data_final' => @$row['servico_finalizado'],
                     //'pagamento' => $row['servico_pagamento'],
                     //'text' => $row['servico_text'],
                     //'valor' => $row['servico_valor']
@@ -590,7 +593,8 @@ class CategoriaDAO extends DAO
                 'status' => $row['pedido_status'],
                 'pagamento' => $row['servico_pagamento'],
                 'text' => $row['servico_text'],
-                'valor' => $row['servico_valor']
+                'valor' => $row['servico_valor'],
+                'data_final' => @$row['servico_finalizado'],
             );
         }
 
@@ -628,7 +632,8 @@ class CategoriaDAO extends DAO
                 'status' => $row['pedido_status'],
                 'pagamento' => @$row['servico_pagamento'],
                 'text' => @$row['servico_text'],
-                'valor' => @$row['servico_valor']
+                'valor' => @$row['servico_valor'],
+                'data_final' => @$row['servico_finalizado'],
             );
         }
 

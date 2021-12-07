@@ -37,7 +37,8 @@ include_once "../../dao/CategoriaDAO.php";
         <thead>
             <tr>
                 <th scope="col">Status</th>
-                <th scope="col">Data</th>
+                <th scope="col">Data Início</th>
+                <th scope="col">Data Final</th>
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Serviço</th>
@@ -68,6 +69,7 @@ include_once "../../dao/CategoriaDAO.php";
                 
                 ?></th>
                 <th scope="col"><?php echo $dados['data'];?></th>
+                <th scope="col"><?php echo $dados['data_final'];?></th>
                 <th scope="col"><?php echo $dados['protocolo'];?></th>
                 <th scope="col"><?php echo $dados['nome'];?></th>
                 <th scope="col"><?php

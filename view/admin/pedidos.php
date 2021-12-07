@@ -171,7 +171,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
 
                 ?>
-                    <!--  <button type="submit" name="excel" class="btn btn-success" value="<?php echo $dados[0]['excel'] ?>">Gerar Excel</button>-->
+                    
                     <a href="../admin/excel.php?p=<?php echo $dados[0]['excel'] ?>" class="btn btn-success">Gerar Excel</a>
                 <?php
 
