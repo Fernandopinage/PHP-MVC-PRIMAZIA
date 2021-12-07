@@ -131,6 +131,8 @@ class CategoriaDAO extends DAO
                     'protocolo' => $row['pedido_protocolo'],
                     'numero' => $row['pedido_numero'],
                     'status' => $row['pedido_status'],
+                    'text' => @$row['servico_text'],  
+                    'data_final' => @$row['servico_finalizado'],
                     //'pagamento' => $row['servico_pagamento'],
                     //'valor' => $row['servico_valor'],
                 );
@@ -172,7 +174,9 @@ class CategoriaDAO extends DAO
                 'complemento' => $row['pedido_complemento'],
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status']
+                'status' => $row['pedido_status'],
+                'text' => @$row['servico_text'],  
+                'data_final' => @$row['servico_finalizado'],
             );
         }
 
@@ -835,7 +839,9 @@ class CategoriaDAO extends DAO
                 'complemento' => $row['pedido_complemento'],
                 'protocolo' => $row['pedido_protocolo'],
                 'numero' => $row['pedido_numero'],
-                'status' => $row['pedido_status']
+                'status' => $row['pedido_status'],
+                'text' => @$row['servico_text'],  
+                'data_final' => @$row['servico_finalizado'],
             );
         }
 
