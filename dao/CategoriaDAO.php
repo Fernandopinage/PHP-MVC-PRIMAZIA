@@ -3,6 +3,7 @@
 
 require_once __DIR__ . "../../mail/Mail.php";
 require_once __DIR__ . "../../mail/ClienteMail.php";
+require_once __DIR__ . "../../mail/ClienteCancel.php";
 include_once "../../class/ClassCategoria.php";
 include_once "../../dao/DAO.php";
 
@@ -688,9 +689,25 @@ class CategoriaDAO extends DAO
         $update = $this->con->prepare($sql);
         $update->bindValue(':pedido_status', 'C');
         $update->bindValue(':pedido_protocolo', $id);
-
+        
+        
+        
         try {
             $update->execute();
+
+            $query = "SELECT * FROM `pedido` where pedido_protocolo = :pedido_protocolo";
+            $select = $this->con->prepare($query);
+            $select->bindValue(':pedido_protocolo', $id);
+            $select->execute();
+
+            if($row = $select->fetch(PDO::FETCH_ASSOC)){
+                $email = $row['pedido_email'];
+                $nome = $row['pedido_nome'];
+                $Chamado = new AtendimentoCancelado();
+                $Chamado->Cancelado($email,$nome);
+
+            }
+
         ?>
 
             <script>
@@ -706,6 +723,9 @@ class CategoriaDAO extends DAO
 
 
         <?php
+
+
+
             header('Refresh: 3.4; url=../admin/pedidos.php');
         } catch (\Throwable $th) {
 
@@ -722,8 +742,10 @@ class CategoriaDAO extends DAO
                     timer: 3500
                 })
             </script>
-<?php
+        <?php
         }
+
+
     }
 
     public function pedidosProfissional($id)
