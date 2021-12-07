@@ -107,9 +107,6 @@ if(isset($_POST['filtror'])){
                         }
 
                         ?>
-
-
-
                         <p class="card-text" style="font-family: 'Montserrat', sans-serif;"><b>Cliente: </b>
                         
                         <?php echo $dados['nome']; ?>

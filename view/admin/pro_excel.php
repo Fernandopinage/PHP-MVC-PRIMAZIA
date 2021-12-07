@@ -36,7 +36,7 @@ include_once "../../dao/AdminDAO.php";
                 <th scope="col">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
-    
+                <th scope="col">Tipo de Serviço</th>
 
             </tr>
         </thead>
@@ -50,7 +50,7 @@ include_once "../../dao/AdminDAO.php";
                 <th scope="col"><?php echo $dados['cpf'];?></th>
                 <th scope="col"><?php echo $dados['email'];?></th>
                 <th scope="col"><?php echo $dados['telefone'];?></th>
-                
+                <th scope="col"><?php echo $dados['opt'];?></th>
                 </tr>
                 
                 <?php
