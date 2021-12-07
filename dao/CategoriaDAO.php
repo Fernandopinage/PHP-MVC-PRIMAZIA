@@ -684,13 +684,13 @@ class CategoriaDAO extends DAO
 
     public function updateStatus($id)
     {
+        $data =  date('Y/m/d');
 
         $sql = "UPDATE `pedido` SET `pedido_status` = :pedido_status WHERE pedido_protocolo = :pedido_protocolo";
         $update = $this->con->prepare($sql);
         $update->bindValue(':pedido_status', 'C');
         $update->bindValue(':pedido_protocolo', $id);
-        
-        
+               
         
         try {
             $update->execute();

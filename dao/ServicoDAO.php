@@ -24,7 +24,7 @@ class ServicoDao extends Dao{
         }
 
 
-        $sql = "INSERT INTO `servico`(`servico_id`, `servico_status`, `servico_protocolo`, `servico_profissional`, `servico_data` , `servico_idprofissional`, `servico_pagamento`, `servico_text`, `servico_valor`) VALUES (null, :servico_status, :servico_protocolo, :servico_profissional, :servico_data, :servico_idprofissional, :servico_pagamento, :servico_text, :servico_valor)";
+        $sql = "INSERT INTO `servico`(`servico_id`, `servico_status`, `servico_protocolo`, `servico_profissional`, `servico_data` , `servico_idprofissional`, `servico_pagamento`, `servico_text`, `servico_valor`, `servico_finalizado`) VALUES (null, :servico_status, :servico_protocolo, :servico_profissional, :servico_data, :servico_idprofissional, :servico_pagamento, :servico_text, :servico_valor, :servico_finalizado)";
         $insert = $this->con->prepare($sql);
         $insert->bindValue(':servico_status', 'E');
         $insert->bindValue(':servico_protocolo',$ClassServico->GetProtocolo());
@@ -34,7 +34,7 @@ class ServicoDao extends Dao{
         $insert->bindValue(':servico_text',$ClassServico->GetText());
         $insert->bindValue(':servico_valor',$ClassServico->GetValor());
         @$insert->bindValue(':servico_idprofissional',$id);
-        
+        @$insert->bindValue(':servico_finalizado','');
         
         try {
             $insert->execute();
@@ -236,11 +236,12 @@ class ServicoDao extends Dao{
         try {
             
             $update->execute();
-
-            $query = "UPDATE `servico` SET `servico_status`=:servico_status where servico_protocolo =:servico_protocolo " ;
+            $data = date('Y/m/d');
+            $query = "UPDATE `servico` SET `servico_status`=:servico_status,`servico_finalizado`=:servico_finalizado where servico_protocolo =:servico_protocolo " ;
             $update = $this->con->prepare($query);
             $update->bindValue(':servico_protocolo',$ClassServico->GetProtocolo());
             $update->bindValue(':servico_status','F');
+            $update->bindValue(':servico_finalizado',$data);
             $update->execute();
             ?>
 
