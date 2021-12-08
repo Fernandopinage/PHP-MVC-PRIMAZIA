@@ -562,6 +562,9 @@ if (isset($_POST['diaristafinal'])) {
 
         if ($id === 'avulso') {
             document.getElementById('divFinalizar').style.display = 'block';
+            var termo = document.getElementById('termo')
+            termo.removeAttribute("required");
+        
         }
 
 
