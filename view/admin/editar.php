@@ -138,8 +138,12 @@ if(isset($_GET['cd'])){
                 $ClassProfissional->SetServico($_POST['servico']);
                 $ClassProfissional->SetFoto($_POST['imagemPRO']);
 
-                $Profissional = new ProfissionalDAO();
-                $Profissional->updateProfissionalModal($ClassProfissional);
+                echo "<pre>";
+                var_dump($ClassProfissional);
+                echo "</pre>";
+
+                //$Profissional = new ProfissionalDAO();
+                //$Profissional->updateProfissionalModal($ClassProfissional);
             } else {
             ?>
 
@@ -518,16 +522,18 @@ if(isset($_GET['cd'])){
 
                                     if (!empty($dadosProfissional['foto'])) {
                                     ?>
+                                    a
                                         <div style="margin-bottom: 50px;">
 
                                             <div class="col-6">
-                                                <label for="formFile" class="form-label"><img id="editarProfissional" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagemPRO" id="formFileProfissional" style="display:none" accept=".png, .jpg, .jpeg">
+                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
                                         </div>
                                     <?php
                                     } else {
                                     ?>
+                                    b
 
                                         <div style="margin-bottom: 50px;">
 
@@ -1065,16 +1071,16 @@ if(isset($_GET['cd'])){
 </script>
 
 <script>
-    $('#editarProfissional').click(function() {
-        formFileProfissional.executar();
+    $('#editarusuario').click(function() {
+        formFile.executar();
     });
 
-    $('#formFileProfissional').change(function() {
+    $('#formFile').change(function() {
 
         const file = $(this)[0].files[0];
         const fileReader = new FileReader()
         fileReader.onloadend = function() {
-            $('#editarProfissional').attr('src', fileReader.result)
+            $('#editarusuario').attr('src', fileReader.result)
         }
         fileReader.readAsDataURL(file)
     });
