@@ -21,6 +21,14 @@ if (isset($_POST['salvarAdmin'])) {
 
         if ($_POST['admsenha'] === $_POST['admconfirmar']) {
 
+            var_dump($_FILES['imagem']);
+
+            if (isset($_FILES['imagem']['name'])) {
+                $imagem = $_FILES['imagem']['name'];
+                $diretorio = '../../images/';
+                //$diretorioPDF = '../pdf/';
+                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio . $imagem);
+            }
 
             $ClassAdmin = new Admin();
             $ClassAdmin->SetNome($_POST['admnome']);
@@ -28,7 +36,7 @@ if (isset($_POST['salvarAdmin'])) {
             $ClassAdmin->SetSenha($_POST['admsenha']);
             $ClassAdmin->SetEmail($_POST['admemail']);
             $ClassAdmin->SetTelefone($_POST['admtel']);
-
+            $ClassAdmin->SetFoto($imagem);
             $Admin = new AdminDAO();
             $Admin->AdminInsert($ClassAdmin);
         }
@@ -217,10 +225,18 @@ if (isset($_POST['salvarCliente'])) {
     </div>
 
     <div class="row ms-3 p-2">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
 
             <div id="administrador">
+            <div class="row" style="padding: 40px;">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
+                            <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                        </div>
 
+                    </div>
+                </div>
 
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
@@ -1214,6 +1230,21 @@ if (isset($_POST['salvarCliente'])) {
     }
 </script>
 
+<script>
+    $('#editarusuario').click(function() {
+        formFile.executar();
+    });
+
+    $('#formFile').change(function() {
+
+        const file = $(this)[0].files[0];
+        const fileReader = new FileReader()
+        fileReader.onloadend = function() {
+            $('#editarusuario').attr('src', fileReader.result)
+        }
+        fileReader.readAsDataURL(file)
+    });
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
