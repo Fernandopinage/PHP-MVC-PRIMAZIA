@@ -522,27 +522,26 @@ if(isset($_GET['cd'])){
 
                                     if (!empty($dadosProfissional['foto'])) {
                                     ?>
-                                    a
-                                        <div style="margin-bottom: 50px;">
+                                  
+                                  <div class="text-center">
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
+                                        <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                                    </div>
 
-                                            <div class="col-6">
-                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
-                                        </div>
+                                </div>
                                     <?php
                                     } else {
                                     ?>
-                                    b
+                                    
 
-                                        <div style="margin-bottom: 50px;">
-
-                                            <div class="col-6">
-
-                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
+                                    <div class="text-center">
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
+                                            <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
                                         </div>
+
+                                    </div>
 
                                     <?php
                                     }
