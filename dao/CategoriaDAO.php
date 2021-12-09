@@ -557,9 +557,9 @@ class CategoriaDAO extends DAO
 
         if(!empty($where)){
 
-            $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo where ".$where;
+            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo where ".$where;
         }else{
-            $sql = "SELECT * FROM `pedido` INNER join servico on servico_protocolo = pedido_protocolo";
+            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo";
         }
         $select = $this->con->prepare($sql);
         //$select->bindValue(':pedido_protocolo', $num);
