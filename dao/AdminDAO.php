@@ -18,7 +18,7 @@ class AdminDAO extends DAO
         $insert->bindValue(':admin_email', $ClassAdmin->GetEmail());
         $insert->bindValue(':admin_telefone', $ClassAdmin->GetTelefone());
         $insert->bindValue(':admin_cfp', $ClassAdmin->GetCpf());
-        $insert->bindValue(':admin_foto', '');
+        $insert->bindValue(':admin_foto', $ClassAdmin->GetFoto());
         
         
         try {
