@@ -521,8 +521,8 @@ if(isset($_GET['cd'])){
                                         <div style="margin-bottom: 50px;">
 
                                             <div class="col-6">
-                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
+                                                <label for="formFile" class="form-label"><img id="editarProfissional" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemPRO" id="formFileProfissional" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
                                         </div>
                                     <?php
@@ -1065,16 +1065,16 @@ if(isset($_GET['cd'])){
 </script>
 
 <script>
-    $('#editarusuario').click(function() {
-        formFile.executar();
+    $('#editarProfissional').click(function() {
+        formFileProfissional.executar();
     });
 
-    $('#formFile').change(function() {
+    $('#formFileProfissional').change(function() {
 
         const file = $(this)[0].files[0];
         const fileReader = new FileReader()
         fileReader.onloadend = function() {
-            $('#editarusuario').attr('src', fileReader.result)
+            $('#editarProfissional').attr('src', fileReader.result)
         }
         fileReader.readAsDataURL(file)
     });
