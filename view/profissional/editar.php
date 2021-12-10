@@ -65,7 +65,7 @@ if (isset($_POST['salvarProfissional'])) {
 
             $ClassProfissional->SetSexo($_POST['sexo']);
             $ClassProfissional->SetNascimento($_POST['data_nascimento']);
-            $ClassProfissional->SetTermo($_POST['termo']);
+            @$ClassProfissional->SetTermo($_POST['termo']);
 
             $subcategoria = $_POST['categoria'];
 
@@ -749,7 +749,7 @@ if (isset($_POST['salvarProfissional'])) {
                         <label class="form-check-label" for="">
                             Eu li e concordo com os <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">termos</a> de uso
                         </label>
-                        <input class="form-check-input" name="termo" <?php echo $dados['termo'] == "on" ? 'checked' : '' ?> type="checkbox" id="flexCheckDefault">
+                        <input class="form-check-input" name="termo" <?php echo $dados['termo'] == "on" ? 'checked' : '' ?> type="checkbox" id="flexCheckDefault" checked disabled>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
