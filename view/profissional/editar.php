@@ -867,7 +867,6 @@ if (isset($_POST['salvarProfissional'])) {
                         </div>
                     </div>
                 </div>
-            </div>
         </form>
     </div>
 
