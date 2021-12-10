@@ -21,7 +21,7 @@ if (isset($_POST['salvarAdmin'])) {
 
         if ($_POST['admsenha'] === $_POST['admconfirmar']) {
 
-            var_dump($_FILES['imagem']);
+           // var_dump($_FILES['imagem']);
 
             if (isset($_FILES['imagem']['name'])) {
                 $imagem = $_FILES['imagem']['name'];
