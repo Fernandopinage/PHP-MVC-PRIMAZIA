@@ -202,7 +202,7 @@ if(isset($_GET['cd'])){
                 $ClassCliente->SetComplemento($_POST['clicomplemento']);
                 $ClassCliente->SetTelefone($_POST['clitelefone']);
                 $ClassCliente->SetEmail($_POST['cliemail']);
-                $ClassCliente->SetFoto($_POST['imagem']);
+                $ClassCliente->SetFoto($imagem);
                 $ClienteDao = new ClienteDAO();
                 $ClienteDao->updateCliente($ClassCliente);
             }
@@ -842,9 +842,41 @@ if(isset($_GET['cd'])){
                                     <input type="hidden" name="cliID" value="<?php echo $dadosCliente['id']; ?>">
 
 
+
                                     <?php
 
+                                    if (!empty($dadosCliente['foto'])) {
+                                    ?>
+                                        <div style="margin-bottom: 50px;">
 
+                                            <div class="col-6">
+                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosCliente['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
+                                            </div>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+
+                                        <div style="margin-bottom: 50px;">
+
+                                            <div class="col-6">
+
+                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                    }
+
+                                    ?>
+
+
+
+
+
+                                    <?php
 
                                     if ($dadosCliente['opcao'] === 'J') {
 
@@ -1117,6 +1149,23 @@ if(isset($_GET['cd'])){
         const fileReader = new FileReader()
         fileReader.onloadend = function() {
             $('#editarusprofissional').attr('src', fileReader.result)
+        }
+        fileReader.readAsDataURL(file)
+    });
+</script>
+
+
+<script>
+    $('#editarusuario').click(function() {
+        formFile.executar();
+    });
+
+    $('#formFile').change(function() {
+
+        const file = $(this)[0].files[0];
+        const fileReader = new FileReader()
+        fileReader.onloadend = function() {
+            $('#editarusuario').attr('src', fileReader.result)
         }
         fileReader.readAsDataURL(file)
     });
