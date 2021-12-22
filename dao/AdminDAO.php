@@ -726,6 +726,44 @@ class AdminDAO extends DAO
          return $array;
     }
 
+    public function delete($ClasADM){
+
+       $sql = "DELETE FROM `admin` WHERE admin_id = :admin_id";
+       $delete = $this->con->prepare($sql);
+       $delete->bindValue(':admin_id', $ClasADM->GetId());
+
+       try {
+        $delete->execute();
+        ?>
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Registro deletado com sucesso',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+        <?php
+        header('Refresh: 3.4; url=../admin/editar.php');
+       } catch (\Throwable $th) {
+        ?>
+
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro ao deletar registro',
+                showConfirmButton: false,
+                timer: 3500
+            })
+        </script>
+
+    <?php
+       }
+    }
+
 
 }
 

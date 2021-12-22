@@ -14,6 +14,17 @@ if (empty($_SESSION['admin'])) {
     header('location: ../../view/admin/login.php');
 }
 
+if(isset($_GET['adm'])){
+  
+   
+    $ClasADM = new Admin();
+    $ClasADM->SetId($_GET['adm']);
+
+    $admin = new AdminDAO();
+    $admin->delete($ClasADM);
+}
+
+
 if(isset($_GET['pd'])){
   
    
@@ -373,6 +384,7 @@ if(isset($_GET['cd'])){
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Telefone</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -390,6 +402,10 @@ if(isset($_GET['cd'])){
                     <td class="text-center" scope="col"><?php echo $dadosAdmin['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['email']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['telefone']; ?></td>
+                    <td scope="col">
+                        <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
+                        <a href="../admin/editar.php?adm=<?php echo $dadosAdmin['id']; ?>" class="btn btn-danger"><img src="../../icons/delete.png" width="22"></a>
+                    </td>
                 </tr>
 
                 <div class="modal fade" id="admin<?php echo $dadosAdmin['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
