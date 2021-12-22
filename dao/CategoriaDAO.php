@@ -720,6 +720,8 @@ class CategoriaDAO extends DAO
                 $Chamado = new AtendimentoCancelado();
                 $Chamado->Cancelado($email,$nome);
 
+                //******** criar email do cancelamento G2S */
+
             }
 
         ?>
