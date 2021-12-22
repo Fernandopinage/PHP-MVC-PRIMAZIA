@@ -66,6 +66,17 @@ if(isset($_GET['cd'])){
 
         if (isset($_POST['editar_admin'])) {
 
+
+            if (isset($_FILES['imagemADM']['name'])) {
+
+                $imagem = $_FILES['imagemADM']['name'];
+                $diretorio = '../../images/';
+                //$diretorioPDF = '../pdf/';
+                move_uploaded_file($_FILES['imagemADM']['tmp_name'], $diretorio . $imagem);
+            }
+
+
+
             if ($_POST['admsenha'] === $_POST['admconfirmar']) {
 
 
@@ -79,6 +90,7 @@ if(isset($_GET['cd'])){
                 }
                 $ClassAdmin->SetEmail($_POST['admemail']);
                 $ClassAdmin->SetTelefone($_POST['admtel']);
+                $ClassAdmin->SetFoto($imagem);
 
                 $Admin = new AdminDAO();
                 $Admin->updateAdmin($ClassAdmin);
@@ -115,6 +127,7 @@ if(isset($_GET['cd'])){
                 //$diretorioPDF = '../pdf/';
                 move_uploaded_file($_FILES['imagemPRO']['tmp_name'], $diretorio . $imagem);
             }
+
             if ($_POST['senha'] === $_POST['confirmar']) {
 
 
@@ -136,7 +149,8 @@ if(isset($_GET['cd'])){
                 $ClassProfissional->SetTelefone($_POST['telefone']);
                 //$ClassProfissional->SetEmail($_POST['email']);
                 $ClassProfissional->SetServico($_POST['servico']);
-                $ClassProfissional->SetFoto($_POST['imagemPRO']);
+                $ClassProfissional->SetFoto($imagem);
+
 
                 $Profissional = new ProfissionalDAO();
                 $Profissional->updateProfissionalModal($ClassProfissional);
@@ -386,7 +400,40 @@ if(isset($_GET['cd'])){
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST">
+                                <form method="POST" enctype="multipart/form-data">
+
+
+                                    
+                                <?php
+
+                                if (!empty($dadosAdmin['foto'])) {
+                                ?>
+                                    <div style="margin-bottom: 50px;">
+
+                                        <div class="col-6">
+                                            <label for="formFileADM" class="form-label"><img id="editaradmin" src="../../images/<?php echo $dadosAdmin['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                            <input class="form-control" type="file" name="imagemADM" id="formFileADM" style="display:none" accept=".png, .jpg, .jpeg">
+                                        </div>
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+
+                                    <div style="margin-bottom: 50px;">
+
+                                        <div class="col-6">
+
+                                            <label for="formFileADM" class="form-label"><img id="editaradmin" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
+                                            <input class="form-control" type="file" name="imagemADM" id="formFileADM" style="display:none" accept=".png, .jpg, .jpeg">
+                                        </div>
+                                    </div>
+
+                                <?php
+                                }
+
+                                ?>
+
+
                                     <div class="mb-3">
                                         <input type="hidden" name="admid" value="<?php echo $dadosAdmin['id']; ?>">
                                         <label for="floatingInput">Nome de Usuário</label>
@@ -511,43 +558,48 @@ if(isset($_GET['cd'])){
                             <div class="modal-body">
 
 
-                                <form method="POST" id="editaProfissionalModal">
-
-
-                                    <?php
-
-                                    if (!empty($dadosProfissional['foto'])) {
-                                    ?>
-                                        <div style="margin-bottom: 50px;">
-
-                                            <div class="col-6">
-                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
-                                        </div>
-                                    <?php
-                                    } else {
-                                    ?>
-
-                                        <div style="margin-bottom: 50px;">
-
-                                            <div class="col-6">
-
-                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagemPRO" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
-                                        </div>
-
-                                    <?php
-                                    }
-
-                                    ?>
-
+                                <form method="POST" id="editaProfissionalModal" enctype="multipart/form-data">
 
                                     <div class="mb-3">
                                         <input type="hidden" name="admid" value="<?php echo $dadosProfissional['id']; ?>">
 
                                     </div>
+
+                                    <?php
+
+                                        if (!empty($dadosProfissional['foto'])) {
+                                        ?>
+                                            <div style="margin-bottom: 50px;">
+
+                                                <div class="col-6">
+                                                    <label for="formFilePro" class="form-label"><img id="editarusprofissional" src="../../images/<?php echo $dadosProfissional['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
+                                                    <input class="form-control" type="file" name="imagemPRO" id="formFilePro" style="display:none" accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                        <?php
+                                        } else {
+                                        ?>
+
+                                            <div style="margin-bottom: 50px;">
+
+                                                <div class="col-6">
+
+                                                    <label for="formFilePro" class="form-label"><img id="editarusprofissional" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
+                                                    <input class="form-control" type="file" name="imagemPRO" id="formFilePro" style="display:none" accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+
+                                        <?php
+                                        }
+
+                                    ?>
+
+
+
+
+
+
+
 
                                     <?php
 
@@ -785,37 +837,9 @@ if(isset($_GET['cd'])){
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST">
+                                <form method="POST" enctype="multipart/form-data">
 
                                     <input type="hidden" name="cliID" value="<?php echo $dadosCliente['id']; ?>">
-                                    <?php
-
-                                    if (!empty($dadosCliente['foto'])) {
-                                    ?>
-                                        <div style="margin-bottom: 50px;">
-
-                                            <div class="col-6">
-                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $dadosCliente['foto']; ?>" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
-                                        </div>
-                                    <?php
-                                    } else {
-                                    ?>
-
-                                        <div style="margin-bottom: 50px;">
-
-                                            <div class="col-6">
-
-                                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
-                                        </div>
-
-                                    <?php
-                                    }
-
-                                    ?>
 
 
                                     <?php
@@ -1065,16 +1089,34 @@ if(isset($_GET['cd'])){
 </script>
 
 <script>
-    $('#editarusuario').click(function() {
-        formFile.executar();
+    $('#editaradmin').click(function() {
+        formFileADM.executar();
     });
 
-    $('#formFile').change(function() {
-
+    $('#formFileADM').change(function() {
+      
         const file = $(this)[0].files[0];
         const fileReader = new FileReader()
         fileReader.onloadend = function() {
-            $('#editarusuario').attr('src', fileReader.result)
+            $('#editaradmin').attr('src', fileReader.result)
+        }
+        fileReader.readAsDataURL(file)
+    });
+</script>
+
+
+<script>
+    $('#editarusprofissional').click(function() {
+        formFilePro.executar();
+        alert('ok')
+    });
+
+    $('#formFilePro').change(function() {
+      
+        const file = $(this)[0].files[0];
+        const fileReader = new FileReader()
+        fileReader.onloadend = function() {
+            $('#editarusprofissional').attr('src', fileReader.result)
         }
         fileReader.readAsDataURL(file)
     });

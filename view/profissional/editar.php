@@ -42,10 +42,10 @@ if (isset($_POST['salvarProfissional'])) {
             $ClassProfissional->SetId($_POST['id']);
             if ($imagem != '') {
 
-                $ClassProfissional->SetFoto($imagem);
+                @$ClassProfissional->SetFoto($imagem);
             } else {
 
-                $ClassProfissional->SetFoto($_POST['img2']);
+                @$ClassProfissional->SetFoto($_POST['img2']);
             }
             @$ClassProfissional->SetOpcao($_POST['opt']);
             $ClassProfissional->SetRazao($_POST['razao']);

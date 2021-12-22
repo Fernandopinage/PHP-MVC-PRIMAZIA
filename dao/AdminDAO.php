@@ -217,9 +217,9 @@ class AdminDAO extends DAO
 
         if(!empty($ClassAdmin->GetSenha())){
 
-            $sql = "UPDATE `admin` SET `admin_nome`=:admin_nome, `admin_senha`=:admin_senha, `admin_telefone`=:admin_telefone,`admin_cfp`=:admin_cfp  WHERE admin_id = :admin_id";
+            $sql = "UPDATE `admin` SET `admin_nome`=:admin_nome, `admin_senha`=:admin_senha, `admin_telefone`=:admin_telefone,`admin_cfp`=:admin_cfp ,`admin_foto`=:admin_foto  WHERE admin_id = :admin_id";
         }else{
-            $sql = "UPDATE `admin` SET `admin_nome`=:admin_nome, `admin_telefone`=:admin_telefone,`admin_cfp`=:admin_cfp  WHERE admin_id = :admin_id";
+            $sql = "UPDATE `admin` SET `admin_nome`=:admin_nome, `admin_telefone`=:admin_telefone,`admin_cfp`=:admin_cfp ,`admin_foto`=:admin_foto  WHERE admin_id = :admin_id";
         }
         $update = $this->con->prepare($sql);
         $update->bindValue(':admin_id', $ClassAdmin->GetId());
@@ -230,7 +230,7 @@ class AdminDAO extends DAO
         }
         $update->bindValue(':admin_telefone', $ClassAdmin->GetTelefone());
         $update->bindValue(':admin_cfp', $ClassAdmin->GetCpf());
-
+        $update->bindValue(':admin_foto', $ClassAdmin->GetFoto());
         try {
             
             $update->execute();
