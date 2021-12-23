@@ -65,11 +65,16 @@ if (isset($_POST['chamado'])) {
 
 if (isset($_POST['chamado_cancelado'])) {
 
+    
+
     $ClassProtocolo = new Servico();
     $ClassProtocolo = $_POST['numero_protocolo'];
 
     $Protocolo = new CategoriaDAO();
     $Protocolo->updateStatus($ClassProtocolo);
+
+
+
 }
 
 if (isset($_POST['chamado_ativar'])) {

@@ -4,6 +4,7 @@
 require_once __DIR__ . "../../mail/Mail.php";
 require_once __DIR__ . "../../mail/ClienteMail.php";
 require_once __DIR__ . "../../mail/ClienteCancel.php";
+require_once __DIR__ . "../../mail/EmpresaCacencel.php";
 include_once "../../class/ClassCategoria.php";
 include_once "../../dao/DAO.php";
 
@@ -722,6 +723,8 @@ class CategoriaDAO extends DAO
 
                 //******** criar email do cancelamento G2S */
 
+                $Empresa = new AtendimentoCanceladoEmpresa();
+                $Empresa->CanceladoEmpresa($email,$nome);
             }
 
         ?>
@@ -742,10 +745,10 @@ class CategoriaDAO extends DAO
 
 
 
-            header('Refresh: 3.4; url=../admin/pedidos.php');
+           // header('Refresh: 3.4; url=../admin/pedidos.php');
         } catch (\Throwable $th) {
 
-            echo $th;
+            ///echo $th;
         ?>
 
             <script>
