@@ -66,16 +66,13 @@ if (isset($_POST['chamado'])) {
 
 if (isset($_POST['chamado_cancelado'])) {
 
-    
+
 
     $ClassProtocolo = new Servico();
     $ClassProtocolo = $_POST['numero_protocolo'];
 
     $Protocolo = new CategoriaDAO();
     $Protocolo->updateStatus($ClassProtocolo);
-
-
-
 }
 
 if (isset($_POST['chamado_ativar'])) {
@@ -109,8 +106,6 @@ if (isset($_POST['chamado_atualizado'])) {
 
     $Servico = new ServicoDao();
     $Servico->updateServico($ClassServico);
-
-
 }
 
 
@@ -178,7 +173,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
 
                 ?>
-                    
+
                     <a href="../admin/excel.php?p=<?php echo $dados[0]['excel'] ?>" class="btn btn-success">Gerar Excel</a>
                 <?php
 
@@ -325,204 +320,200 @@ if (isset($_POST['chamado_atualizado'])) {
                                         $id = $dados['cpf'];
                                         $perfil = $ClassPedido->cliente($id);
 
-                                            
+
                                         echo '<div id="principal">';
                                         if (!empty($perfil["foto"])) {
-                                             
+
                                             echo '<div class="text-center">';
                                             echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
                                             echo '<br>';
                                             $Star = new ClienteDAO();
                                             $star = $Star->selectStar($perfil["telefone"]);
 
-                                            if($star ==  0.00){
+                                            if ($star ==  0.00) {
 
-                                                ?>
+                                        ?>
                                                 <img src="../../icons/5pp.png" class="img" width="130">
-                                                <?php
-                                
+                                            <?php
+
                                                 echo 5;
                                             }
-                                                
-                                       
-                                            if($star >=  1.00 and $star <=  1.5){
-                                                ?>
+
+
+                                            if ($star >=  1.00 and $star <=  1.5) {
+                                            ?>
                                                 <img src="../../icons/1pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                
-                                
-                                            if($star >= 1.51 and $star <= 1.99){
-                                                ?>
+
+
+
+                                            if ($star >= 1.51 and $star <= 1.99) {
+                                            ?>
                                                 <img src="../../icons/1.5pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            
-                                            if($star >= 2.00 and $star <= 2.49 ){
-                                                ?>
+
+
+                                            if ($star >= 2.00 and $star <= 2.49) {
+                                            ?>
                                                 <img src="../../icons/2pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 2.50 and $star <= 2.99 ){
-                                                ?>
+
+                                            if ($star >= 2.50 and $star <= 2.99) {
+                                            ?>
                                                 <img src="../../icons/2.5pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 3.00 and $star <= 3.49 ){
-                                                ?>
+
+                                            if ($star >= 3.00 and $star <= 3.49) {
+                                            ?>
                                                 <img src="../../icons/3pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                
-                                            if($star >= 3.50 and $star <= 3.99 ){
-                                                ?>
+
+
+                                            if ($star >= 3.50 and $star <= 3.99) {
+                                            ?>
                                                 <img src="../../icons/3.5pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 4.00 and $star <= 4.49 ){
-                                                ?>
+
+                                            if ($star >= 4.00 and $star <= 4.49) {
+                                            ?>
                                                 <img src="../../icons/4pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 4.50 and $star <= 4.99){
-                                                ?>
+
+                                            if ($star >= 4.50 and $star <= 4.99) {
+                                            ?>
                                                 <img src="../../icons/4.5pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                            if($star == 5){
-                                                ?>
+                                            if ($star == 5) {
+                                            ?>
                                                 <img src="../../icons/5pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star= round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
                                             echo '</div>';
-
                                         } else {
 
-                                            
+
 
                                             echo '<div class="text-center">';
                                             echo '<img id="usuario" src="../../images/perfil.png" class="img" width="100px">';
                                             echo "<br>";
-                                            
-                                       
-                                            
+
+
+
                                             $Star = new ClienteDAO();
                                             $star = $Star->selectStar($perfil["telefone"]);
 
-                                            if($star ==  0.00){
+                                            if ($star ==  0.00) {
 
-                                                ?>
+                                            ?>
                                                 <img src="../../icons/5pp.png" class="img" width="130">
-                                                <?php
-                                
+                                            <?php
+
                                                 echo 5;
                                             }
-                                                
-                                       
-                                            if($star >=  1.00 and $star <=  1.5){
-                                                ?>
+
+
+                                            if ($star >=  1.00 and $star <=  1.5) {
+                                            ?>
                                                 <img src="../../icons/1pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                
-                                
-                                            if($star >= 1.51 and $star <= 1.99){
-                                                ?>
+
+
+
+                                            if ($star >= 1.51 and $star <= 1.99) {
+                                            ?>
                                                 <img src="../../icons/1.5pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            
-                                            if($star >= 2.00 and $star <= 2.49 ){
-                                                ?>
+
+
+                                            if ($star >= 2.00 and $star <= 2.49) {
+                                            ?>
                                                 <img src="../../icons/2pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 2.50 and $star <= 2.99 ){
-                                                ?>
+
+                                            if ($star >= 2.50 and $star <= 2.99) {
+                                            ?>
                                                 <img src="../../icons/2.5pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 3.00 and $star <= 3.49 ){
-                                                ?>
+
+                                            if ($star >= 3.00 and $star <= 3.49) {
+                                            ?>
                                                 <img src="../../icons/3pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                
-                                            if($star >= 3.50 and $star <= 3.99 ){
-                                                ?>
+
+
+                                            if ($star >= 3.50 and $star <= 3.99) {
+                                            ?>
                                                 <img src="../../icons/3.5pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 4.00 and $star <= 4.49 ){
-                                                ?>
+
+                                            if ($star >= 4.00 and $star <= 4.49) {
+                                            ?>
                                                 <img src="../../icons/4pp.png" class="img" width="130">
-                                                <?php
-                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                
-                                            if($star >= 4.50 and $star <= 4.99){
-                                                ?>
+
+                                            if ($star >= 4.50 and $star <= 4.99) {
+                                            ?>
                                                 <img src="../../icons/4.5pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star = round($star,2);
+                                            <?php
+
+                                                echo $star = round($star, 2);
                                             }
-                                            if($star == 5){
-                                                ?>
+                                            if ($star == 5) {
+                                            ?>
                                                 <img src="../../icons/5pp.png" class="img" width="130">
-                                                <?php
-                                                
-                                                echo $star= round($star,2);
+                                        <?php
+
+                                                echo $star = round($star, 2);
                                             }
 
                                             echo "</div>";
-
-
-
                                         }
                                         echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
                                         echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
@@ -536,14 +527,125 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                         echo '<span style=""><b>Profissional solicitado: </b>' . $obj->tpservico . '</span>';
                                         echo '<br>';
-                                        echo '<span style=""><b>Tipo de Serviço:  </b>';
-                                        $total = $obj->categoria;
-                                        foreach ($total as $total) {
 
-                                            echo $total . ": ";
+
+                                        if ($dados['status'] === 'A' or $dados['status'] === 'E' or $dados['status'] === 'F') {
+
+                                            if (isset($obj->categoria)) {
+                                                $total = $obj->categoria;
+
+                                                echo '<span style=""><b>Tipo de Serviço:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+
+
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
+                                            if (isset($obj->descricao)) {
+                                                $total = $obj->descricao;
+
+                                                echo '<span style=""><b>Descrição:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
+
+                                            
+                                            if (isset($obj->local)) {
+                                                $total = $obj->local;
+                                                echo '<span style=""><b>Local:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
+
+                                            if (isset($obj->serviço)) {
+                                                $total = $obj->serviço;
+
+                                                echo '<span style=""><b>Serviço:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
+                                        }elseif($dados['status'] === 'C'){
+
+
+                                            if (isset($obj->categoria)) {
+                                                $total = $obj->categoria;
+
+                                                echo '<span style=""><b>Tipo de Serviço:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+
+
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
+                                            if (isset($obj->descricao)) {
+                                                $total = $obj->descricao;
+
+                                                echo '<span style=""><b>Descrição:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
+
+                                            if (isset($obj->local)) {
+                                                $total = $obj->local;
+
+                                                echo '<span style=""><b>Local:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
+
+                                            if (isset($obj->serviço)) {
+                                                $total = $obj->serviço;
+
+                                                echo '<span style=""><b>Serviço:  </b>';
+                                                foreach ($total as $total) {
+
+                                                    echo $total . " ";
+                                                }
+                                                echo '</span>';
+                                                echo "<br>";
+                                            }
+
                                         }
-                                        echo '</span>';
+
+                                        
+
+
                                         ?>
+
+
 
                                     </div>
 
@@ -570,7 +672,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                         $ClassPedido = new CategoriaDAO();
                                         $dados3 = $ClassPedido->listaServico($dados['protocolo']);
-                         
+
                                         ?>
 
                                         <?php
@@ -718,37 +820,37 @@ if (isset($_POST['chamado_atualizado'])) {
                                                             echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
                                                         }
                                                         ?>
-                                                        
+
                                                     </select>
                                                 </div>
                                                 <div class="row">
-                                                <div class="col-md-12" style="margin-top: 20px;">
-                                                <hr>
-                                                    <p><b>Profissional  que está atendendo</b></p>
+                                                    <div class="col-md-12" style="margin-top: 20px;">
+                                                        <hr>
+                                                        <p><b>Profissional que está atendendo</b></p>
 
 
-                                                    <?php
-                                                    
-                                                    $protocolo = $dados3[0]['protocolo'];
-                                                    $update = new ServicoDao();
-                                                    $dados4 = $update->profissionalAtualizando($protocolo);
-
-                                                    ?>
-
-                                                    <select class="form-select form-select-sm" aria-label="Default select example" disabled>
                                                         <?php
-                                                                                                      
-                                                         
 
-                                                        $tamanho = count($dados4);
-                                                        for ($i = 0; $i < $tamanho; $i++) {
-                                                            echo "<option value='" . $dados4[$i]['nome'] . " - " . $dados4[$i]['telefone'] . " - " . $dados4[$i]['email'] . "'>" . $dados4[$i]['nome'] . " - " . $dados4[$i]['telefone'] . " - " . $dados4[$i]['email'] . "</option>";
-                                                        }
+                                                        $protocolo = $dados3[0]['protocolo'];
+                                                        $update = new ServicoDao();
+                                                        $dados4 = $update->profissionalAtualizando($protocolo);
+
                                                         ?>
-                                                       
-                                                    </select>
-                                                    
-                                                </div>
+
+                                                        <select class="form-select form-select-sm" aria-label="Default select example" disabled>
+                                                            <?php
+
+
+
+                                                            $tamanho = count($dados4);
+                                                            for ($i = 0; $i < $tamanho; $i++) {
+                                                                echo "<option value='" . $dados4[$i]['nome'] . " - " . $dados4[$i]['telefone'] . " - " . $dados4[$i]['email'] . "'>" . $dados4[$i]['nome'] . " - " . $dados4[$i]['telefone'] . " - " . $dados4[$i]['email'] . "</option>";
+                                                            }
+                                                            ?>
+
+                                                        </select>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                             <br>
