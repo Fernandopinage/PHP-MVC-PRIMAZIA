@@ -328,7 +328,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                             echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
                                             echo '<br>';
                                             $Star = new ClienteDAO();
-                                            $star = $Star->selectStar($perfil["telefone"]);
+                                            $star = $Star->selectStar($perfil["email"]);
 
                                             if ($star ==  0.00) {
 
@@ -516,6 +516,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                             echo "</div>";
                                         }
                                         echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
+                                        echo '<p style=""><b>E-mail: </b>' . $perfil["email"] . '</p>';
                                         echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';
                                         echo '</div>';
                                         echo '<hr>';
