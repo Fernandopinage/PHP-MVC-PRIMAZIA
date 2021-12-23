@@ -5,6 +5,7 @@ include_once "../../layout/heard.php";
 include_once "../../dao/CategoriaDAO.php";
 include_once "../../class/ClassServico.php";
 include_once "../../dao/ServicoDAO.php";
+include_once "../../dao/ClienteDAO.php";
 
 
 session_start();
@@ -328,8 +329,193 @@ if (isset($_POST['chamado_atualizado'])) {
                                         if (isset($perfil["foto"])) {
 
                                             echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
+                                            
+                                            $Star = new ClienteDAO();
+                                            $star = $Star->selectStar($perfil["telefone"]);
+
+                                            if($star ==  0.00){
+
+                                                ?>
+                                                <img src="../../icons/5pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo 5;
+                                            }
+                                                
+                                       
+                                            if($star >=  1.00 and $star <=  1.5){
+                                                ?>
+                                                <img src="../../icons/1pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                
+                                
+                                            if($star >= 1.51 and $star <= 1.99){
+                                                ?>
+                                                <img src="../../icons/1.5pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            
+                                            if($star >= 2.00 and $star <= 2.49 ){
+                                                ?>
+                                                <img src="../../icons/2pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 2.50 and $star <= 2.99 ){
+                                                ?>
+                                                <img src="../../icons/2.5pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 3.00 and $star <= 3.49 ){
+                                                ?>
+                                                <img src="../../icons/3pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                
+                                            if($star >= 3.50 and $star <= 3.99 ){
+                                                ?>
+                                                <img src="../../icons/3.5pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 4.00 and $star <= 4.49 ){
+                                                ?>
+                                                <img src="../../icons/4pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 4.50 and $star <= 4.99){
+                                                ?>
+                                                <img src="../../icons/4.5pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                            if($star == 5){
+                                                ?>
+                                                <img src="../../icons/5pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star= round($star,2);
+                                            }
+
+
                                         } else {
                                             echo '<img id="usuario" src="../../images/perfil.png" class="img">';
+
+                                            
+                                            echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
+                                            
+                                            $Star = new ClienteDAO();
+                                            $star = $Star->selectStar($perfil["telefone"]);
+
+                                            if($star ==  0.00){
+
+                                                ?>
+                                                <img src="../../icons/5pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo 5;
+                                            }
+                                                
+                                       
+                                            if($star >=  1.00 and $star <=  1.5){
+                                                ?>
+                                                <img src="../../icons/1pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                
+                                
+                                            if($star >= 1.51 and $star <= 1.99){
+                                                ?>
+                                                <img src="../../icons/1.5pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            
+                                            if($star >= 2.00 and $star <= 2.49 ){
+                                                ?>
+                                                <img src="../../icons/2pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 2.50 and $star <= 2.99 ){
+                                                ?>
+                                                <img src="../../icons/2.5pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 3.00 and $star <= 3.49 ){
+                                                ?>
+                                                <img src="../../icons/3pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                
+                                            if($star >= 3.50 and $star <= 3.99 ){
+                                                ?>
+                                                <img src="../../icons/3.5pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 4.00 and $star <= 4.49 ){
+                                                ?>
+                                                <img src="../../icons/4pp.png" class="img" width="130">
+                                                <?php
+                                
+                                                echo $star = round($star,2);
+                                            }
+                                
+                                            if($star >= 4.50 and $star <= 4.99){
+                                                ?>
+                                                <img src="../../icons/4.5pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star = round($star,2);
+                                            }
+                                            if($star == 5){
+                                                ?>
+                                                <img src="../../icons/5pp.png" class="img" width="130">
+                                                <?php
+                                                
+                                                echo $star= round($star,2);
+                                            }
+
+
+
+
                                         }
                                         echo '<p style=";margin-top:20px;"><b>Cliente: </b>' . $perfil["nome"] . '</p>';
                                         echo '<p style=""><b>Telefone: </b>' . $perfil["telefone"] . '</p>';

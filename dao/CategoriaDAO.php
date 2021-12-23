@@ -891,7 +891,8 @@ class CategoriaDAO extends DAO
                 'bairro' => $row['CLIENTE_BAIRRO'],
                 'complemento' => $row['CLIENTE_COMPLEMENTO'],
                 'numero' => $row['CLIENTE_NUM'],
-                'logradouro' => $row['CLIENTE_LOGRADOURO']
+                'logradouro' => $row['CLIENTE_LOGRADOURO'],
+                'email' => $row['CLIENTE_EMAIL'],
             );
         } else {
             echo "não";
