@@ -325,11 +325,13 @@ if (isset($_POST['chamado_atualizado'])) {
                                         $id = $dados['cpf'];
                                         $perfil = $ClassPedido->cliente($id);
 
-                                        echo '<div id="principal">';
-                                        if (isset($perfil["foto"])) {
-
-                                            echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
                                             
+                                        echo '<div id="principal">';
+                                        if (!empty($perfil["foto"])) {
+                                             
+                                            echo '<div class="text-center">';
+                                            echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
+                                            echo '<br>';
                                             $Star = new ClienteDAO();
                                             $star = $Star->selectStar($perfil["telefone"]);
 
@@ -417,13 +419,17 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 
                                                 echo $star= round($star,2);
                                             }
-
+                                            echo '</div>';
 
                                         } else {
-                                            echo '<img id="usuario" src="../../images/perfil.png" class="img">';
 
                                             
-                                            echo ' <img src="../../images/' . $perfil["foto"] . ' "width="100px">';
+
+                                            echo '<div class="text-center">';
+                                            echo '<img id="usuario" src="../../images/perfil.png" class="img" width="100px">';
+                                            echo "<br>";
+                                            
+                                       
                                             
                                             $Star = new ClienteDAO();
                                             $star = $Star->selectStar($perfil["telefone"]);
@@ -513,6 +519,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 echo $star= round($star,2);
                                             }
 
+                                            echo "</div>";
 
 
 
