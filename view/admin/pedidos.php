@@ -558,7 +558,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                             }
 
 
-                                            
+
                                             if (isset($obj->local)) {
                                                 $total = $obj->local;
                                                 echo '<span style=""><b>Local:  </b>';
@@ -582,8 +582,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 echo '</span>';
                                                 echo "<br>";
                                             }
-
-                                        }elseif($dados['status'] === 'C'){
+                                        } elseif ($dados['status'] === 'C') {
 
 
                                             if (isset($obj->categoria)) {
@@ -637,10 +636,9 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 echo '</span>';
                                                 echo "<br>";
                                             }
-
                                         }
 
-                                        
+
 
 
                                         ?>
