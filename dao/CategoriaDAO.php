@@ -333,9 +333,9 @@ class CategoriaDAO extends DAO
     
             if(!empty($where)){
     
-                $sql = "SELECT * FROM `pedido`  where ".$where;
+                $sql = "SELECT * FROM `pedido`  where ".$where." ORDER BY `pedido_id` DESC" ;
             }else{
-                $sql = "SELECT * FROM `pedido` ";
+                $sql = "SELECT * FROM `pedido` ORDER BY `pedido_id` DESC";
             }
             $select = $this->con->prepare($sql);
             //$select->bindValue(':pedido_protocolo', $num);
@@ -440,9 +440,9 @@ class CategoriaDAO extends DAO
     
             if(!empty($where)){
     
-                $sql = "SELECT * FROM `pedido`  where ".$where;
+                $sql = "SELECT * FROM `pedido`  where ".$where."ORDER BY `pedido_id` DESC";
             }else{
-                $sql = "SELECT * FROM `pedido` ";
+                $sql = "SELECT * FROM `pedido` ORDER BY `pedido_id` DESC";
             }
             $select = $this->con->prepare($sql);
             //$select->bindValue(':pedido_protocolo', $num);
@@ -558,9 +558,9 @@ class CategoriaDAO extends DAO
 
         if(!empty($where)){
 
-            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo where ".$where;
+            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo where ".$where." ORDER BY `pedido_id` DESC";
         }else{
-            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo";
+            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo ORDER BY `pedido_id` DESC";
         }
         $select = $this->con->prepare($sql);
         //$select->bindValue(':pedido_protocolo', $num);
