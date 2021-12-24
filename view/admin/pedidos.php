@@ -684,6 +684,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                         if ($dados['status'] === 'A') {
 
+                                            
 
                                         ?>
 
@@ -693,6 +694,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 <?php
 
                                                 $tamanho = count($dados2);
+                                                
 
                                                 if ($tamanho > 0) {
 
@@ -702,7 +704,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                                             echo " <option value=''>Selecione o profissional</option>";
                                                             for ($i = 0; $i < $tamanho; $i++) {
-                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - " . round($dados2[$i]['soma'],2) . "</option>";
                                                             }
                                                         } else {
                                                             echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
@@ -754,8 +756,9 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                             <select class="form-select" name="pessoa" aria-label="Default select example" required>
 
-
+                                                
                                                 <?php
+                                                
 
                                                 $tamanho = count($dados2);
 
@@ -821,9 +824,9 @@ if (isset($_POST['chamado_atualizado'])) {
                                                         <?php
 
                                                         $tamanho = count($dados2);
-                                                        for ($i = 0; $i < $tamanho; $i++) {
-                                                            echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
-                                                        }
+                                                            for ($i = 0; $i < $tamanho; $i++) {
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "</option>";
+                                                            }
                                                         ?>
 
                                                     </select>

@@ -936,11 +936,7 @@ class CategoriaDAO extends DAO
 
     public function listarProfissionalCategoria($pedido)
     {
-
-        echo $pedido;
-
-
-        $sql = 'SELECT  DISTINCT  profissional_id,profissional_nome,profissional_email,profissional_telefone FROM pedido inner JOIN profissional on profissional_servico = JSON_EXTRACT(pedido_descricao, "$.tpservico") WHERE JSON_EXTRACT(pedido_descricao, "$.tpservico") = :pedido_fun';
+        $sql = 'SELECT DISTINCT profissional_id,profissional_nome,profissional_email,profissional_telefone, sum(star_nota_pro)/COUNT(star_nota_pro) as soma FROM pedido INNER JOIN profissional on profissional_servico = JSON_EXTRACT(pedido_descricao, "$.tpservico") LEFT JOIN star on profissional_email = star_pro_email and star_nota_pro != 0  WHERE JSON_EXTRACT(pedido_descricao, "$.tpservico") = :pedido_fun group by star_pro_email';
         $select = $this->con->prepare($sql);
         $select->bindValue(':pedido_fun', $pedido);
         $select->execute();
@@ -953,6 +949,7 @@ class CategoriaDAO extends DAO
                 $nome = 'nome' => $row['profissional_nome'],
                 $email = 'email' => $row['profissional_email'],
                 $telefone = 'telefone' => $row['profissional_telefone'],
+                $soma = 'soma' => $row['soma'],
             );
         }
         return $array;
