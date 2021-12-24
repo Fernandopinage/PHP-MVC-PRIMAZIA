@@ -19,7 +19,7 @@ if (isset($_POST['filtror'])) {
 
     if (!empty($_POST['status_filtro']) or !empty($_POST['num_filtro']) or !empty($_POST['pagamento']) or !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {
 
-
+       
 
         $status =  $_POST['status_filtro'];
         $num =  $_POST['num_filtro'];
@@ -29,11 +29,17 @@ if (isset($_POST['filtror'])) {
 
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final);
+
     } else {
+
+        
+
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
 } else {
+
+    
 
     $ClassPedido = new CategoriaDAO();
     $dados = $ClassPedido->pedido();
@@ -719,8 +725,8 @@ if (isset($_POST['chamado_atualizado'])) {
                                                     <p><b>Forma de Pagamento</b><span style="color: red; font-size:16px"> *</span></p>
                                                     <select id="pagamento" name="pagamento" class="form-select form-select-sm" required>
                                                         <option selected></option>
-                                                        <option value="Cartão Crédito">Cartão Crédito</option>
-                                                        <option value="Cartão Débito">Cartão Débito</option>
+                                                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                                        <option value="Cartão de Débito">Cartão de Débito</option>
                                                         <option value="PIX">PIX</option>
                                                     </select>
                                                 </div>
@@ -784,8 +790,8 @@ if (isset($_POST['chamado_atualizado'])) {
                                                     <p><b>Forma de Pagamento</b><span style="color: red; font-size:16px"> *</span></p>
                                                     <select id="pagamento" name="pagamento" class="form-select form-select-sm" disabled>
                                                         <option selected></option>
-                                                        <option value="Cartão Crédito">Cartão Crédito</option>
-                                                        <option value="Cartão Débito">Cartão Débito</option>
+                                                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                                        <option value="Cartão de Débito">Cartão de Débito</option>
                                                         <option value="PIX">PIX</option>
                                                     </select>
                                                 </div>

@@ -341,10 +341,12 @@ class CategoriaDAO extends DAO
             //$select->bindValue(':pedido_protocolo', $num);
             //$select->bindValue(':pedido_status', $status);
             //$select->bindValue(':servico_pagamento', $pagamento);
-    
+
+        
+
             if(!empty($where)){
                 $excel = $sql;
-                $select->execute();
+               $select->execute();
             }
             //var_dump($select);
           
@@ -566,6 +568,12 @@ class CategoriaDAO extends DAO
         //$select->bindValue(':pedido_protocolo', $num);
         //$select->bindValue(':pedido_status', $status);
         //$select->bindValue(':servico_pagamento', $pagamento);
+
+        //echo "<pre>";
+        //var_dump($sql);
+        //echo "</pre>";
+
+
 
         if(!empty($where)){
             $excel = $sql;
