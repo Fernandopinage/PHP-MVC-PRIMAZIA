@@ -553,13 +553,13 @@ if (isset($_POST['chamado_atualizado'])) {
                                             }
 
                                             if (isset($obj->descricao)) {
-                                                $total = $obj->descricao;
+                                                    $total  = $obj->descricao;
 
-                                                echo '<span style=""><b>Descrição:  </b>';
-                                                foreach ($total as $total) {
+                                                     echo '<span style=""><b>Descrição:  </b>';
+                                              
 
-                                                    echo $total . " ";
-                                                }
+                                                    echo $total. " ";
+                                               
                                                 echo '</span>';
                                                 echo "<br>";
                                             }
@@ -704,7 +704,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                                             echo " <option value=''>Selecione o profissional</option>";
                                                             for ($i = 0; $i < $tamanho; $i++) {
-                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - " . round($dados2[$i]['soma'],2) . "</option>";
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - Classificação: " . round($dados2[$i]['soma'],2) . "</option>";
                                                             }
                                                         } else {
                                                             echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
