@@ -180,7 +180,7 @@ if (isset($_POST['salvarProfissional'])) {
                 <div class="row g-3 mt-1">
                     <div class="col-md-6">
                         <label>Data de Nascimento <span style="color: red;">*</span></label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" value="" class="form-control form-control-sm" aria-label="Data de Nascimento" required>
+                        <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo $_SESSION['user']['nascimento'] ?>" class="form-control form-control-sm" aria-label="Data de Nascimento" required>
                     </div>
                     <div class="col-md-6">
                         <label>Gênero <span style="color: red;">*</span></label>
@@ -222,7 +222,7 @@ if (isset($_POST['salvarProfissional'])) {
 
                     <div class="col-md-6">
                         <label>Complemento</label>
-                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm "  >
+                        <input type="text" name="complemento" id="complemento" class="form-control form-control-sm " value="<?php echo $_SESSION['user']['complemento'] ?>" >
                     </div>
                     <div class="col-md-6">
                         <label>Telefone <span style="color: red;">*</span></label>
@@ -230,7 +230,8 @@ if (isset($_POST['salvarProfissional'])) {
                     </div>
                     <div class="col-md-6">
                         <label>E-mail<span style="color: red;">*</span></label>
-                        <input type="email" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail" value="<?php echo $_SESSION['user']['email']; ?>" disabled>
+                        <input type="email"  class="form-control form-control-sm" aria-label="E-mail" value="<?php echo $_SESSION['user']['email']; ?>" disabled>
+                        <input type="hidden" name="email" id="email" class="form-control form-control-sm" aria-label="E-mail" value="<?php echo $_SESSION['user']['email']; ?>">
                     </div>
 
                     <div class="col-md-12">
