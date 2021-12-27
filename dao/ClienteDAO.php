@@ -60,7 +60,8 @@ class ClienteDAO extends DAO
                     'foto' => $row['CLIENTE_FOTO'],
                     'sexo' => $row['CLIENTE_SEXO'],
                     'termo' => $row['CLIENTE_TERMO'],
-                    'nascimento' => $row['CLIENTE_NASCIMENTO']
+                    'nascimento' => $row['CLIENTE_NASCIMENTO'],
+                    'option' => $row['CLIENTE_OPCAO']
                 );
             }
 
@@ -96,7 +97,8 @@ class ClienteDAO extends DAO
                     'foto' => $row['CLIENTE_FOTO'],
                     'sexo' => $row['CLIENTE_SEXO'],
                     'termo' => $row['CLIENTE_TERMO'],
-                    'nascimento' => $row['CLIENTE_NASCIMENTO']
+                    'nascimento' => $row['CLIENTE_NASCIMENTO'],
+                    'option' => $row['CLIENTE_OPCAO']
                 );
 
                 header('location: ../../view/cliente/painel.php');

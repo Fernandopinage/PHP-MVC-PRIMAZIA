@@ -104,26 +104,40 @@ if (isset($_POST['salvarProfissional'])) {
                 <p>REGISTRO PROFISSIONAL</p>
             </div>
 
-
             <div id="form-row">
                 <div class="row" style="padding: 40px;">
-                    <div class="text-center">
+                <div class="text-center">
                         <div class="mb-3">
-                            <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
-                            <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" placeholder="">
+                            <?php
+                            if (!empty($_SESSION['user']['foto'])) {
+
+                            ?>
+                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/<?php echo $_SESSION['user']['foto']; ?>" class="img" width="150" style="border-radius: 50%;"></label>
+                                <input class="form-control" type="file" name="imagem" value="<?php echo $_SESSION['user']['foto'] ?>" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+
+                            <?php
+                            } else {
+                            ?>
+
+                                <label for="formFile" class="form-label"><img id="editarusuario" src="../../images/usuario.png" class="img" width="150" style="border-radius: 50%;"></label>
+                                <input class="form-control" type="file" name="imagem" id="formFile" style="display:none" accept=".png, .jpg, .jpeg" >
+
+                            <?php
+                            }
+                            ?>
                         </div>
 
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" CHECKED>
+                        <input class="pessoa form-check-input" type="radio" name="opt" id="j" onclick="juridica()" value="J" <?php echo $_SESSION['user']['option'] =='J'?'checked':'' ;?>>
                         <label class="form-check-label" for="j" id="j">
                             Pessoa Juridica
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F">
+                        <input class="pessoa form-check-input" type="radio" name="opt" id="f" onclick="fisica()" value="F" <?php echo $_SESSION['user']['option'] =='F'?'checked':'' ;?>>
                         <label class="form-check-label" for="f" id="f">
                             Pessoa Fisica
                         </label>
