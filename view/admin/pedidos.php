@@ -553,12 +553,24 @@ if (isset($_POST['chamado_atualizado'])) {
                                             }
 
                                             if (isset($obj->descricao)) {
-                                                    $total  = $obj->descricao;
+                                                
+                                                $total  = $obj->descricao;
 
-                                                     echo '<span style=""><b>Descrição:  </b>';
-                                              
+                                                if(gettype($total) == 'string'){
 
+                                                    echo '<span style=""><b>Descrição:  </b>';
                                                     echo $total. " ";
+
+                                                }else{
+
+                                                    echo '<span style=""><b>Descrição:  </b>';
+                                                    foreach ($total as $total) {
+                                                        echo $total . " ";
+                                                    }
+                                                }
+
+
+                                    
                                                
                                                 echo '</span>';
                                                 echo "<br>";
