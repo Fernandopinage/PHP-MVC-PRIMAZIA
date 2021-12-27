@@ -129,12 +129,13 @@ class ClienteMail
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'mail.gotoservice.com.br';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'g2s@gotoservice.com.br';                     //SMTP username
+            $mail->Username   = 'g2smail@gotoservice.com.br';                     //SMTP username
             $mail->Password   = 'pr0gr!d@2021';                         //SMTP password
             $mail->SMTPSecure = 'SSL';            //Enable implicit TLS encryption
-            $mail->Port       = 587;              //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
+           
             $mail->setFrom('g2s@gotoservice.com.br', 'G2S - GoToService');
             $mail->addAddress($email, $email);     //Add a recipient
             //$mail->addAddress('atendimento@gotoservice.com.br');               //Name is optional

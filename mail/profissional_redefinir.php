@@ -24,17 +24,18 @@ class RedefinirProfissional
        
        try {
            
-        //Server settings
+            //Server settings
             //$mail->SMTPDebug = 1;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->Host       = 'mail.gotoservice.com.br';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'primaziateste2021@gmail.com';                     //SMTP username
+            $mail->Username   = 'g2smail@gotoservice.com.br';                     //SMTP username
             $mail->Password   = 'pr0gr!d@2021';                         //SMTP password
             $mail->SMTPSecure = 'SSL';            //Enable implicit TLS encryption
             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
+           
             $mail->setFrom('primaziateste2021@gmail.com', 'G2S - GoToService');
             $mail->addAddress($email, 'G2S - GoToService');     //Add a recipient
             //$mail->addAddress('ellen@example.com');               //Name is optional
