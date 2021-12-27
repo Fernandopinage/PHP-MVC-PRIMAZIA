@@ -55,7 +55,7 @@ class ClienteMSG
             // echo 'Message has been sent';
 
         } catch (\Throwable $th) {
-            //throw $th;
+            //echo $th;
         }
      
 
