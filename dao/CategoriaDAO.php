@@ -727,12 +727,12 @@ class CategoriaDAO extends DAO
                 $email = $row['pedido_email'];
                 $nome = $row['pedido_nome'];
                 $Chamado = new AtendimentoCancelado();
-                $Chamado->Cancelado($email,$nome);
+                $Chamado->cancelado($email,$nome);
 
                 //******** criar email do cancelamento G2S */
 
                 $Empresa = new AtendimentoCanceladoEmpresa();
-                $Empresa->CanceladoEmpresa($email,$nome);
+                $Empresa->canceladoEmpresa($email,$nome);
             }
 
         ?>

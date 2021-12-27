@@ -14,7 +14,7 @@ require "../../vendor/autoload.php";
 class AtendimentoCanceladoEmpresa
 {
 
-    public static function CanceladoEmpresa($email,$nome){
+    public static function canceladoEmpresa($email,$nome){
 
         $mail = new PHPMailer(true); // STOP
        
@@ -45,7 +45,7 @@ class AtendimentoCanceladoEmpresa
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
-            $mail->Subject = 'SERVIÇO FINALIZADO';
+            $mail->Subject = 'SERVIÇO CANCELADO';
 
             $mail->Body    = '
 
@@ -63,7 +63,7 @@ class AtendimentoCanceladoEmpresa
             // echo 'Message has been sent';
 
        } catch (\Throwable $th) {
-          echo $th;
+          //echo $th;
        }
        
     }
