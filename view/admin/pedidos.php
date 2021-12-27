@@ -700,7 +700,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                         ?>
 
-                                            <select class="form-select" name="pessoa" aria-label="Default select example" required>
+                                            <select class="form-select" name="pessoa" id="pessoa" aria-label="Default select example" required>
 
 
                                                 <?php
@@ -746,7 +746,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p><b>Valor do Serviço</b><span style="color: red; font-size:16px"> *</span></p>
-                                                    <input type="text" class="form-control form-control-sm" name="valor" onkeypress="return(moeda(this,'.',',',event))" required>
+                                                    <input type="text" class="form-control form-control-sm" name="valor" id="valor" onkeypress="return(moeda(this,'.',',',event))" required>
                                                 </div>
                                             </div>
                                             <br>
@@ -941,7 +941,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                             if ($dados['status'] === 'A') {
                                             ?>
                                                 <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
-                                                <input type="submit" name="chamado_cancelado" class="btn btn-secondary" value="Cancelar" style="color: white;">
+                                                <input type="submit" name="chamado_cancelado" onclick="Cancelado()" class="btn btn-secondary" value="Cancelar" style="color: white;">
                                                 <?php
                                                 if ($tamanho > 0) {
                                                 ?>
@@ -1069,6 +1069,13 @@ if (isset($_POST['chamado_atualizado'])) {
         return !1
     }
 </script>
+
+
+<script>
+
+
+</script>
+
 <?php
 require "../../layout/footer.php";
 ?>
