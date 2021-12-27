@@ -105,7 +105,7 @@ class CategoriaDAO extends DAO
     public function pedido()
     {
 
-            $query = "SELECT * FROM `pedido` where pedido_status ='A'";
+            $query = "SELECT * FROM `pedido` where pedido_status ='A' ORDER BY `pedido_id` DESC ";
             $excel = $query;
             $parametro = $this->con->prepare($query);
             $parametro->execute();
@@ -347,6 +347,7 @@ class CategoriaDAO extends DAO
             if(!empty($where)){
                 $excel = $sql;
                $select->execute();
+               
             }
             //var_dump($select);
           
