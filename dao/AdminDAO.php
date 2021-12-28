@@ -375,7 +375,7 @@ class AdminDAO extends DAO
 
     public function ListarAdmins(){
 
-        $sql = "SELECT * FROM `admin`";
+        $sql = "SELECT * FROM `admin` ORDER BY admin_nome ASC";
         $query = $sql;
         $select = $this->con->prepare($sql);
         $select->execute();
@@ -434,7 +434,7 @@ class AdminDAO extends DAO
     public function ListarAdminsFiltro($nome, $email, $cpf ){
 
          
-        $sql = "SELECT * FROM `admin` WHERE `admin_nome` = '{$nome}' or `admin_email` = '{$email}' or `admin_cfp` ='{$email}'";
+        $sql = "SELECT * FROM `admin` WHERE `admin_nome` = '{$nome}' or `admin_email` = '{$email}' or `admin_cfp` ='{$email}' ORDER BY admin_nome ASC ";
         $query = $sql;
         $select = $this->con->prepare($sql);
        // $select->bindValue(':admin_nome', $nome);
@@ -546,7 +546,7 @@ class AdminDAO extends DAO
 
     public function ListarProfissional(){
 
-        $sql = "SELECT * FROM `profissional`";
+        $sql = "SELECT * FROM `profissional` ORDER by profissional_nome ASC";
         $query = $sql;
         $select = $this->con->prepare($sql);
         $select->execute();
@@ -580,7 +580,7 @@ class AdminDAO extends DAO
 
     public function ListarProfissionalFiltro($nome, $email, $cpf){
 
-        $sql = "SELECT * FROM `profissional` where profissional_nome = :profissional_nome  or  profissional_email = :profissional_email or  profissional_cpf = :profissional_cpf ";
+        $sql = "SELECT * FROM `profissional` where profissional_nome = :profissional_nome  or  profissional_email = :profissional_email or  profissional_cpf = :profissional_cpf ORDER by profissional_nome ASC";
         $query = $sql;
         $select = $this->con->prepare($sql);
         $select->bindValue(':profissional_nome', $nome);
@@ -617,7 +617,7 @@ class AdminDAO extends DAO
 
     public function ListarCliente(){
 
-        $sql = "SELECT * FROM `cliente`";
+        $sql = "SELECT * FROM `cliente` ORDER by CLIENTE_NOME ASC";
         $query = $sql;
         $select = $this->con->prepare($sql);
         $select->execute();
@@ -653,7 +653,7 @@ class AdminDAO extends DAO
 
     public function ListarClienteFiltro($nome, $email, $cpf){
 
-        $sql = "SELECT * FROM `cliente` where CLIENTE_NOME = '{$nome}' or CLIENTE_EMAIL = '{$email}' or CLIENTE_CPF = '{$cpf}' ";
+        $sql = "SELECT * FROM `cliente` where CLIENTE_NOME = '{$nome}' or CLIENTE_EMAIL = '{$email}' or CLIENTE_CPF = '{$cpf}' ORDER by CLIENTE_NOME ASC ";
         $query = $sql;
         $select = $this->con->prepare($sql);
         // $select->bindValue(':CLIENTE_NOME', $nome);
