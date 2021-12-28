@@ -429,7 +429,7 @@ if(isset($_GET['cd'])){
                                 ?>
                                     <div style="margin-bottom: 50px;">
 
-                                        <div class="col-6">
+                                        <div class="text-center" class="col-6">
                                             <label for="formFileADM<?php echo $dadosAdmin['id']; ?>" class="form-label"><img id="editaradmin<?php echo $dadosAdmin['id']; ?>" src="../../images/<?php echo $dadosAdmin['foto']; ?>" onclick="FormADM(<?php echo $dadosAdmin['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
                                             <input class="form-control" type="file" name="imagemADM" id="formFileADM<?php echo $dadosAdmin['id']; ?>"  style="display:none" accept=".png, .jpg, .jpeg">
                                         </div>
@@ -440,7 +440,7 @@ if(isset($_GET['cd'])){
 
                                     <div style="margin-bottom: 50px;">
 
-                                        <div class="col-6">
+                                        <div class="text-center" class="col-6">
 
                                             <label for="formFileADM<?php echo $dadosAdmin['id']; ?>" class="form-label"><img id="editaradmin<?php echo $dadosAdmin['id']; ?>" src="../../images/usuario.png"  onclick="FormADM(<?php echo $dadosAdmin['id']; ?>)"  class="img" width="150" style="border-radius: 7%;"></label>
                                             <input class="form-control" type="file" name="imagemADM" id="formFileADM<?php echo $dadosAdmin['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
@@ -590,7 +590,7 @@ if(isset($_GET['cd'])){
                                         ?>
                                             <div style="margin-bottom: 50px;">
 
-                                                <div class="col-6">
+                                                <div class="text-center" class="col-6">
                                                     <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/<?php echo $dadosProfissional['foto']; ?>" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
                                                     <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
                                                 </div>
@@ -601,7 +601,7 @@ if(isset($_GET['cd'])){
 
                                             <div style="margin-bottom: 50px;">
 
-                                                <div class="col-6">
+                                                <div class="text-center" class="col-6">
 
                                                     <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/usuario.png" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
                                                     <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
@@ -612,13 +612,6 @@ if(isset($_GET['cd'])){
                                         }
 
                                     ?>
-
-
-
-
-
-
-
 
                                     <?php
 
@@ -868,7 +861,7 @@ if(isset($_GET['cd'])){
                                     ?>
                                         <div style="margin-bottom: 50px;">
 
-                                            <div class="col-6">
+                                            <div class="text-center" class="col-6">
                                                 <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/<?php echo $dadosCliente['foto']; ?>"  onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
                                                 <input class="form-control" type="file" name="imagem" id="formFile<?php echo $dadosCliente['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
@@ -877,9 +870,9 @@ if(isset($_GET['cd'])){
                                     } else {
                                     ?>
 
-                                        <div style="margin-bottom: 50px;">
+                                        <div  style="margin-bottom: 50px;">
 
-                                            <div class="col-6">
+                                            <div class="text-center" class="col-6">
 
                                                 <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/usuario.png" class="img" width="150" onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" style="border-radius: 7%;"></label>
                                                 <input class="form-control" type="file" name="imagem" id="formFile<?php echo $dadosCliente['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
