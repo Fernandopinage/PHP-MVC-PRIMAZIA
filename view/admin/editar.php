@@ -1011,14 +1011,16 @@ if (isset($_GET['cd'])) {
             foreach ($dadosCliente as $dadosCliente) {
             ?>
 
-                <tr data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>">
+                <tr>
                     <td class="text-left" scope="col"><?php echo $dadosCliente['nome']; ?></td>
                     <td class="text-center"><?php echo $dadosCliente['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
                     <td scope="col">
-                        <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
-                        <a href="../admin/editar.php?cd=<?php echo $dadosCliente['id']; ?>" class="btn btn-danger"><img src="../../icons/delete.png" width="22"></a>
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>" ><img src="../../icons/pencil.png" width="22"></button>
+                        <a class="btn btn-danger" onclick="excluirCliente(<?php echo $dadosCliente['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> <!-- ../admin/editar.php?pd=<?php echo $dadosCliente['id']; ?> -->
+
                     </td>
                 </tr>
                 <div class="modal fade" id="cliente<?php echo $dadosCliente['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1583,6 +1585,40 @@ if (isset($_GET['cd'])) {
             if (result.isConfirmed) {
 
                 document.location.href = 'editar.php?pd='+id;
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                
+            }
+        })
+
+    }
+
+    function excluirCliente(id){
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Você deseja',
+            text: "Excluir esse registro ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                document.location.href = 'editar.php?cd='+id;
+                //document.location.href = 'editar.php?cd='+id;
 
             } else if (
                 /* Read more about handling dismissals below */
