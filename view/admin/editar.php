@@ -1560,11 +1560,7 @@ if (isset($_GET['cd'])) {
 
 <script>
 
-
-
-
-
-
+    document.getElementsByClassName('swal2-actions').style.margin = '20px'
     
     function excluirProfissional(id){
 
