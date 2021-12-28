@@ -1556,6 +1556,8 @@ if (isset($_GET['cd'])) {
 
 
 <script>
+
+    document.getElementsByClassName('swal2-confirm').style.padding ="10px";
     
     function excluirProfissional(id){
 
