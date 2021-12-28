@@ -46,6 +46,7 @@ if (isset($_GET['cd'])) {
 
 
 ?>
+
 <link href="../../layout/css/admin_painel2.css" rel="stylesheet">
 <div style="margin-left: 50px;">
     <a id="retorne" href="../../view/admin/painel.php" class="btn" style="position: relative; top:50px;background-color:orangered"><img src="../../images/left-arrow.png" width="28px" alt=""></a>
@@ -1559,7 +1560,11 @@ if (isset($_GET['cd'])) {
 
 <script>
 
-    document.getElementsByClassName('swal2-confirm').style.padding ="10px";
+
+
+
+
+
     
     function excluirProfissional(id){
 
