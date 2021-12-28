@@ -753,7 +753,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                             <div class="row">
                                                 <div class="mb-3">
-                                                    <p><b>Descrição do Pedido</b></p>
+                                                    <p><b>Informações adicionais do administrador </b></p>
                                                     <textarea class="form-control" id="text" name="text" rows="3"></textarea>
                                                 </div>
                                             </div>
@@ -819,7 +819,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                             <div class="row">
                                                 <div class="mb-3">
-                                                    <p><b>Descrição do Pedido</b></p>
+                                                    <p><b>Informações adicionais do administrador </b></p>
                                                     <textarea class="form-control" id="text" name="text" rows="3" disabled></textarea>
                                                 </div>
                                             </div>
@@ -892,7 +892,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                             <div class="row">
                                                 <div class="mb-3">
-                                                    <p><b>Descrição do Pedido</b></p>
+                                                    <p><b>Informações adicionais do administrador </b></p>
                                                     <textarea class="form-control" id="text" name="text" rows="3"><?php echo $dados3[0]['text']; ?></textarea>
                                                 </div>
                                             </div>
@@ -925,7 +925,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                             <div class="row">
                                                 <div class="mb-3">
-                                                    <p><b>Descrição do Pedido</b></p>
+                                                    <p><b>Informações adicionais do administrador </b></p>
                                                     <textarea class="form-control" id="text" name="text" rows="3" disabled><?php echo $dados3[0]['text']; ?></textarea>
                                                 </div>
                                             </div>
