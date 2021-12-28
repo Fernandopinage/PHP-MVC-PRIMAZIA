@@ -96,7 +96,7 @@ include_once "../../dao/CategoriaDAO.php";
                     echo "<pre>";
                     var_dump($obj);
                     echo "</pre>";
-                    
+                     
                     if(!empty($obj->categoria)){
 
                         $categoria =  $obj->categoria;
