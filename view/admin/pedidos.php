@@ -19,7 +19,7 @@ if (isset($_POST['filtror'])) {
 
     if (!empty($_POST['status_filtro']) or !empty($_POST['num_filtro']) or !empty($_POST['pagamento']) or !empty($_POST['data_inicio_filtro']) or !empty($_POST['data_final_filtro'])) {
 
-       
+
 
         $status =  $_POST['status_filtro'];
         $num =  $_POST['num_filtro'];
@@ -29,17 +29,16 @@ if (isset($_POST['filtror'])) {
 
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedidosFiltro($status, $num, $pagamento, $data_inicio, $data_final);
-
     } else {
 
-        
+
 
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->pedido();
     }
 } else {
 
-    
+
 
     $ClassPedido = new CategoriaDAO();
     $dados = $ClassPedido->pedido();
@@ -114,7 +113,7 @@ if (isset($_POST['chamado_atualizado'])) {
     var_dump($ClassServico);
     echo "</pre>";
 
-    
+
     //$Servico = new ServicoDao();
     //$Servico->updateServico($ClassServico);
 }
@@ -558,15 +557,14 @@ if (isset($_POST['chamado_atualizado'])) {
                                             }
 
                                             if (isset($obj->descricao)) {
-                                                
+
                                                 $total  = $obj->descricao;
 
-                                                if(gettype($total) == 'string'){
+                                                if (gettype($total) == 'string') {
 
                                                     echo '<span style=""><b>Descrição:  </b>';
-                                                    echo $total. " ";
-
-                                                }else{
+                                                    echo $total . " ";
+                                                } else {
 
                                                     echo '<span style=""><b>Descrição:  </b>';
                                                     foreach ($total as $total) {
@@ -575,8 +573,8 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 }
 
 
-                                    
-                                               
+
+
                                                 echo '</span>';
                                                 echo "<br>";
                                             }
@@ -701,7 +699,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                         if ($dados['status'] === 'A') {
 
-                                            
+
 
                                         ?>
 
@@ -711,7 +709,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                                 <?php
 
                                                 $tamanho = count($dados2);
-                                                
+
 
                                                 if ($tamanho > 0) {
 
@@ -721,7 +719,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                                             echo " <option value=''>Selecione o profissional</option>";
                                                             for ($i = 0; $i < $tamanho; $i++) {
-                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - Classificação: " . round($dados2[$i]['soma'],2) . "</option>";
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - Classificação: " . round($dados2[$i]['soma'], 2) . "</option>";
                                                             }
                                                         } else {
                                                             echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
@@ -773,9 +771,9 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                             <select class="form-select" name="pessoa" aria-label="Default select example" required>
 
-                                                
+
                                                 <?php
-                                                
+
 
                                                 $tamanho = count($dados2);
 
@@ -787,7 +785,7 @@ if (isset($_POST['chamado_atualizado'])) {
 
                                                             echo " <option value=''>Selecione o profissional</option>";
                                                             for ($i = 0; $i < $tamanho; $i++) {
-                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - Classificação: " . round($dados2[$i]['soma'],2) . "</option>";
+                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - Classificação: " . round($dados2[$i]['soma'], 2) . "</option>";
                                                             }
                                                         } else {
                                                             echo "<option value='" . $dados2[$i]['nome'] . "'>Finalizado</option>";
@@ -840,11 +838,11 @@ if (isset($_POST['chamado_atualizado'])) {
                                                     <select class="form-select form-select-sm" aria-label="Default select example" name="profissional">
                                                         <?php
 
-                                                    
+
                                                         $tamanho = count($dados2);
-                                                            for ($i = 0; $i < $tamanho; $i++) {
-                                                                echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - Classificação: " . round($dados2[$i]['soma'],2) . "</option>";
-                                                            }
+                                                        for ($i = 0; $i < $tamanho; $i++) {
+                                                            echo "<option value='" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . "'>" . $dados2[$i]['nome'] . " - " . $dados2[$i]['telefone'] . " - " . $dados2[$i]['email'] . " - Classificação: " . round($dados2[$i]['soma'], 2) . "</option>";
+                                                        }
                                                         ?>
 
                                                     </select>
@@ -861,7 +859,7 @@ if (isset($_POST['chamado_atualizado'])) {
                                                         $update = new ServicoDao();
                                                         $dados4 = $update->profissionalAtualizando($protocolo);
 
-                                            
+
 
                                                         ?>
 
