@@ -14,9 +14,9 @@ if (empty($_SESSION['admin'])) {
     header('location: ../../view/admin/login.php');
 }
 
-if(isset($_GET['adm'])){
-  
-   
+if (isset($_GET['adm'])) {
+
+
     $ClasADM = new Admin();
     $ClasADM->SetId($_GET['adm']);
 
@@ -25,24 +25,22 @@ if(isset($_GET['adm'])){
 }
 
 
-if(isset($_GET['pd'])){
-  
-   
+if (isset($_GET['pd'])) {
+
+
     $ClassProfissional = new Profissional();
     $ClassProfissional->SetId($_GET['pd']);
 
     $Profissional = new ProfissionalDAO();
     $Profissional->DeleteProfissional($ClassProfissional);
-
 }
 
-if(isset($_GET['cd'])){
-  
+if (isset($_GET['cd'])) {
+
     $ClassCliente = new Cliente();
     $ClassCliente->SetId($_GET['cd']);
     $Cliente = new ClienteDAO();
     $Cliente->deleteCliente($ClassCliente);
-
 }
 
 
@@ -416,41 +414,42 @@ if(isset($_GET['cd'])){
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+
+                                <div class="text-center">
+
+
+                                    <?php
+                                    if (!empty($dadosAdmin['foto'])) {
+                                    ?>
+                                        <div style="margin-bottom: 50px;">
+
+                                            <div class="">
+                                                <label for="formFileADM<?php echo $dadosAdmin['id']; ?>" class="form-label"><img id="editaradmin<?php echo $dadosAdmin['id']; ?>" src="../../images/<?php echo $dadosAdmin['foto']; ?>" onclick="FormADM(<?php echo $dadosAdmin['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemADM" id="formFileADM<?php echo $dadosAdmin['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
+                                            </div>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
+
+                                        <div style="margin-bottom: 50px;">
+
+                                            <div class="">
+
+                                                <label for="formFileADM<?php echo $dadosAdmin['id']; ?>" class="form-label"><img id="editaradmin<?php echo $dadosAdmin['id']; ?>" src="../../images/usuario.png" onclick="FormADM(<?php echo $dadosAdmin['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemADM" id="formFileADM<?php echo $dadosAdmin['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                    }
+
+                                    ?>
+
+
+                                </div>
+
                                 <form method="POST" enctype="multipart/form-data">
-
-
-                                    
-                                <?php
-
-                                
-
-
-                                if (!empty($dadosAdmin['foto'])) {
-                                ?>
-                                    <div style="margin-bottom: 50px;">
-
-                                        <div class="col-6">
-                                            <label for="formFileADM<?php echo $dadosAdmin['id']; ?>" class="form-label"><img id="editaradmin<?php echo $dadosAdmin['id']; ?>" src="../../images/<?php echo $dadosAdmin['foto']; ?>" onclick="FormADM(<?php echo $dadosAdmin['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
-                                            <input class="form-control" type="file" name="imagemADM" id="formFileADM<?php echo $dadosAdmin['id']; ?>"  style="display:none" accept=".png, .jpg, .jpeg">
-                                        </div>
-                                    </div>
-                                <?php
-                                } else {
-                                ?>
-
-                                    <div style="margin-bottom: 50px;">
-
-                                        <div class="col-6">
-
-                                            <label for="formFileADM<?php echo $dadosAdmin['id']; ?>" class="form-label"><img id="editaradmin<?php echo $dadosAdmin['id']; ?>" src="../../images/usuario.png"  onclick="FormADM(<?php echo $dadosAdmin['id']; ?>)"  class="img" width="150" style="border-radius: 7%;"></label>
-                                            <input class="form-control" type="file" name="imagemADM" id="formFileADM<?php echo $dadosAdmin['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
-                                        </div>
-                                    </div>
-
-                                <?php
-                                }
-
-                                ?>
 
 
                                     <div class="mb-3">
@@ -586,30 +585,30 @@ if(isset($_GET['cd'])){
 
                                     <?php
 
-                                        if (!empty($dadosProfissional['foto'])) {
-                                        ?>
-                                            <div style="margin-bottom: 50px;">
+                                    if (!empty($dadosProfissional['foto'])) {
+                                    ?>
+                                        <div style="margin-bottom: 50px;">
 
-                                                <div class="col-6">
-                                                    <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/<?php echo $dadosProfissional['foto']; ?>" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
-                                                    <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
-                                                </div>
+                                            <div class="col-6">
+                                                <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/<?php echo $dadosProfissional['foto']; ?>" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
-                                        <?php
-                                        } else {
-                                        ?>
+                                        </div>
+                                    <?php
+                                    } else {
+                                    ?>
 
-                                            <div style="margin-bottom: 50px;">
+                                        <div style="margin-bottom: 50px;">
 
-                                                <div class="col-6">
+                                            <div class="col-6">
 
-                                                    <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/usuario.png" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
-                                                    <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
-                                                </div>
+                                                <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/usuario.png" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
+                                        </div>
 
-                                        <?php
-                                        }
+                                    <?php
+                                    }
 
                                     ?>
 
@@ -869,7 +868,7 @@ if(isset($_GET['cd'])){
                                         <div style="margin-bottom: 50px;">
 
                                             <div class="col-6">
-                                                <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/<?php echo $dadosCliente['foto']; ?>"  onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
+                                                <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/<?php echo $dadosCliente['foto']; ?>" onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
                                                 <input class="form-control" type="file" name="imagem" id="formFile<?php echo $dadosCliente['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
                                         </div>
@@ -1140,73 +1139,68 @@ if(isset($_GET['cd'])){
 </script>
 
 <script>
-
-    function FormADM(id){
+    function FormADM(id) {
 
         //alert(id)
 
-    $('#editaradmin'+id).click(function() {
+        $('#editaradmin' + id).click(function() {
 
-        formFileADM+id.executar();
-    });
+            formFileADM + id.executar();
+        });
 
-    $('#formFileADM'+id).change(function() {
-      
-        const file = $(this)[0].files[0];
-        const fileReader = new FileReader()
-        fileReader.onloadend = function() {
-            $('#editaradmin'+id).attr('src', fileReader.result)
-        }
-        fileReader.readAsDataURL(file)
-    });
+        $('#formFileADM' + id).change(function() {
 
-    }
-
-</script>
-
-
-<script>
-
-    function FormPRO(id){
-
-    $('#editarusprofissional'+id).click(function() {
-        formFilePro+id.executar();
-        
-    });
-
-    $('#formFilePro'+id).change(function() {
-      
-        const file = $(this)[0].files[0];
-        const fileReader = new FileReader()
-        fileReader.onloadend = function() {
-            $('#editarusprofissional'+id).attr('src', fileReader.result)
-        }
-        fileReader.readAsDataURL(file)
-    });
+            const file = $(this)[0].files[0];
+            const fileReader = new FileReader()
+            fileReader.onloadend = function() {
+                $('#editaradmin' + id).attr('src', fileReader.result)
+            }
+            fileReader.readAsDataURL(file)
+        });
 
     }
 </script>
 
 
 <script>
+    function FormPRO(id) {
 
-    function FormCLI(id){
+        $('#editarusprofissional' + id).click(function() {
+            formFilePro + id.executar();
 
-    $('#editarusuario'+id).click(function() {
-        formFile+id.executar();
-    });
+        });
 
-    $('#formFile'+id).change(function() {
+        $('#formFilePro' + id).change(function() {
 
-        const file = $(this)[0].files[0];
-        const fileReader = new FileReader()
-        fileReader.onloadend = function() {
-            $('#editarusuario'+id).attr('src', fileReader.result)
-        }
-        fileReader.readAsDataURL(file)
-    });
-}
+            const file = $(this)[0].files[0];
+            const fileReader = new FileReader()
+            fileReader.onloadend = function() {
+                $('#editarusprofissional' + id).attr('src', fileReader.result)
+            }
+            fileReader.readAsDataURL(file)
+        });
 
+    }
+</script>
+
+
+<script>
+    function FormCLI(id) {
+
+        $('#editarusuario' + id).click(function() {
+            formFile + id.executar();
+        });
+
+        $('#formFile' + id).change(function() {
+
+            const file = $(this)[0].files[0];
+            const fileReader = new FileReader()
+            fileReader.onloadend = function() {
+                $('#editarusuario' + id).attr('src', fileReader.result)
+            }
+            fileReader.readAsDataURL(file)
+        });
+    }
 </script>
 
 
