@@ -884,10 +884,6 @@ if(isset($_GET['cd'])){
 
                                     ?>
 
-
-
-
-
                                     <?php
 
                                     if ($dadosCliente['opcao'] === 'J') {
