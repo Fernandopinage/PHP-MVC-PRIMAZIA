@@ -556,14 +556,14 @@ if (isset($_GET['cd'])) {
 
             ?>
 
-                <tr data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>">
+                <tr>
                     <td class="text-left" scope="col"><?php echo $dadosProfissional['nome']; ?></td>
                     <td class="text-center"><?php echo $dadosProfissional['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['telefone']; ?></td>
                     <td scope="col">
-                        <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
-                        <a href="../admin/editar.php?pd=<?php echo $dadosProfissional['id']; ?>" class="btn btn-danger"><img src="../../icons/delete.png" width="22"></a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>" ><img src="../../icons/pencil.png" width="22"></button>
+                        <a class="btn btn-danger" onclick="excluirProfissional(<?php echo $dadosProfissional['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> <!-- ../admin/editar.php?pd=<?php echo $dadosProfissional['id']; ?> -->
                     </td>
                 </tr>
                 <div class="modal fade" id="profissional<?php echo $dadosProfissional['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -1553,6 +1553,49 @@ if (isset($_GET['cd'])) {
         });
     }
 </script>
+
+
+<script>
+    
+    function excluirProfissional(id){
+
+       
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Você deseja',
+            text: "Excluir esse registro ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                document.location.href = 'editar.php?pd='+id;
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                
+            }
+        })
+
+    }
+   
+
+
+</script>
+
 
 
 <?php
