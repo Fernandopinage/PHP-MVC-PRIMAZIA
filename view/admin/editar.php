@@ -858,8 +858,6 @@ if (isset($_GET['cd'])) {
                                 <form method="POST" enctype="multipart/form-data">
 
                                     <div class="text-center">
-
-
                                         <?php
 
                                         if (!empty($dadosCliente['foto'])) {
