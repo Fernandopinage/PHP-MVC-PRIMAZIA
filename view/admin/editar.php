@@ -576,12 +576,7 @@ if (isset($_GET['cd'])) {
                             <div class="modal-body">
 
 
-                                <form method="POST" id="editaProfissionalModal" enctype="multipart/form-data">
-
-                                    <div class="mb-3">
-                                        <input type="hidden" name="admid" value="<?php echo $dadosProfissional['id']; ?>">
-
-                                    </div>
+                                <div class="text-center">
 
                                     <?php
 
@@ -589,7 +584,7 @@ if (isset($_GET['cd'])) {
                                     ?>
                                         <div style="margin-bottom: 50px;">
 
-                                            <div class="col-6">
+                                            <div>
                                                 <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/<?php echo $dadosProfissional['foto']; ?>" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
                                                 <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
                                             </div>
@@ -600,7 +595,7 @@ if (isset($_GET['cd'])) {
 
                                         <div style="margin-bottom: 50px;">
 
-                                            <div class="col-6">
+                                            <div>
 
                                                 <label for="formFilePro<?php echo $dadosProfissional['id']; ?>" class="form-label"><img id="editarusprofissional<?php echo $dadosProfissional['id']; ?>" src="../../images/usuario.png" onclick="FormPRO(<?php echo $dadosProfissional['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
                                                 <input class="form-control" type="file" name="imagemPRO" id="formFilePro<?php echo $dadosProfissional['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
@@ -613,11 +608,16 @@ if (isset($_GET['cd'])) {
                                     ?>
 
 
+                                </div>
 
 
 
+                                <form method="POST" id="editaProfissionalModal" enctype="multipart/form-data">
 
+                                    <div class="mb-3">
+                                        <input type="hidden" name="admid" value="<?php echo $dadosProfissional['id']; ?>">
 
+                                    </div>
 
                                     <?php
 
