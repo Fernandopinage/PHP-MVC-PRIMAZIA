@@ -333,9 +333,9 @@ class CategoriaDAO extends DAO
     
             if(!empty($where)){
     
-                $sql = "SELECT * FROM `pedido` LEFT JOIN servico on servico_protocolo = pedido_protocolo INNER JOIN profissional on servico_idprofissional = profissional_id  where ".$where." ORDER BY `pedido_id` DESC" ;
+                $sql = "SELECT * FROM `pedido` LEFT JOIN servico on servico_protocolo = pedido_protocolo LEFT JOIN profissional on servico_idprofissional = profissional_id  where ".$where." ORDER BY `pedido_id` DESC" ;
             }else{
-                $sql = "SELECT * FROM `pedido` LEFT JOIN servico on servico_protocolo = pedido_protocolo INNER JOIN profissional on servico_idprofissional = profissional_id ORDER BY `pedido_id` DESC";
+                $sql = "SELECT * FROM `pedido` LEFT JOIN servico on servico_protocolo = pedido_protocolo LEFT JOIN profissional on servico_idprofissional = profissional_id ORDER BY `pedido_id` DESC";
             }
             $select = $this->con->prepare($sql);
             //$select->bindValue(':pedido_protocolo', $num);
@@ -345,7 +345,7 @@ class CategoriaDAO extends DAO
         
 
             if(!empty($where)){
-               $excel = $sql;
+               echo $excel = $sql;
                $select->execute();
                
             }
@@ -453,7 +453,7 @@ class CategoriaDAO extends DAO
             //$select->bindValue(':servico_pagamento', $pagamento);
     
             if(!empty($where)){
-                $excel = $sql;
+               echo $excel = $sql;
                 $select->execute();
             }
             //var_dump($select);
@@ -561,9 +561,9 @@ class CategoriaDAO extends DAO
 
         if(!empty($where)){
 
-            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo where ".$where." ORDER BY `pedido_id` DESC";
+            $sql = "SELECT * FROM `pedido` LEFT JOIN servico on servico_protocolo = pedido_protocolo LEFT JOIN profissional on servico_idprofissional = profissional_id where ".$where." ORDER BY `pedido_id` DESC";
         }else{
-            $sql = "SELECT * FROM `pedido` left join servico on servico_protocolo = pedido_protocolo ORDER BY `pedido_id` DESC";
+            $sql = "SELECT * FROM `pedido` LEFT JOIN servico on servico_protocolo = pedido_protocolo LEFT JOIN profissional on servico_idprofissional = profissional_id ORDER BY `pedido_id` DESC";
         }
         $select = $this->con->prepare($sql);
         //$select->bindValue(':pedido_protocolo', $num);
@@ -577,7 +577,7 @@ class CategoriaDAO extends DAO
 
 
         if(!empty($where)){
-            $excel = $sql;
+            echo $excel = $sql;
             $select->execute();
         }
         //var_dump($sql);
@@ -653,6 +653,8 @@ class CategoriaDAO extends DAO
                 'valor' => @$row['servico_valor'],
                 'text' => @$row['servico_text'],
                 'data_final' => @$row['servico_finalizado'],
+                'profissional_nome' => @$row['profissional_nome'],
+                'pedido_descricao' => json_decode(@$row['pedido_descricao']),
             );
         }
 

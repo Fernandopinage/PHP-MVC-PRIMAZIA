@@ -46,7 +46,7 @@ class AtendimentoCancelado
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
-            $mail->Subject = 'SERVIÇO CANCELADO';
+            $mail->Subject = 'PEDIDO CANCELADO';
 
             $mail->Body    = '
 

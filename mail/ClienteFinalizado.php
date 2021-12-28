@@ -46,7 +46,7 @@ class AtendimentoFinalizado
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->CharSet = 'utf-8';
-            $mail->Subject = 'SERVIÇO FINALIZADO';
+            $mail->Subject = 'PEDIDO FINALIZADO';
 
             $mail->Body    = '
 

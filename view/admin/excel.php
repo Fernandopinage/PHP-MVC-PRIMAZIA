@@ -23,11 +23,15 @@ include_once "../../dao/CategoriaDAO.php";
         $excel = $_GET['p'];
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->gerarExcel($excel);
+
+        echo "<pre>";
+        var_dump($dados['pedido_descricao']);
+        echo "</pre>";
         
     }
 
-        header ("Content-type: application/x-msexcel");
-        header ("Content-Disposition: attachment; filename=\"nome_arquivo.xls\"" );
+        //header ("Content-type: application/x-msexcel");
+        //header ("Content-Disposition: attachment; filename=\"nome_arquivo.xls\"" );
 
 
 
@@ -42,9 +46,11 @@ include_once "../../dao/CategoriaDAO.php";
                 <th scope="col">Nº Pedido</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Serviço</th>
+                <th scope="col">Profissional</th>
+                <th scope="col">Descrição do Pedido</th>
                 <th scope="col">Forma de Pagamento</th>
                 <th scope="col">Valor do Serviço</th>
-                <th scope="col">Observações</th>
+                <th scope="col">Informações adicionais</th>
 
             </tr>
         </thead>
@@ -79,6 +85,54 @@ include_once "../../dao/CategoriaDAO.php";
                             print_r($obj->tpservico);
 
                             ?></th>
+
+                <th scope="col">
+                    <?php echo $dados['profissional_nome'];?></th>
+
+                <th scope="col">
+                    <?php 
+                    $obj = $dados['pedido_descricao'];
+                    
+                    echo "<pre>";
+                    var_dump($obj);
+                    echo "</pre>";
+                    
+                    if(!empty($obj->categoria)){
+
+                        $categoria =  $obj->categoria;
+                        echo "CATEGORIA: ";
+                        foreach($categoria as $categoria){
+
+                            echo $categoria." ";
+                        }
+                        echo "<br>";
+                    }
+
+
+                    if(!empty($obj->descricao)){
+                        
+                        $descricao =  $obj->descricao;
+
+                        if(gettype($descricao) == 'string'){
+                            echo "DESCRIÇÃO: ";
+                            echo $descricao." ";
+                        }else{
+
+                            
+                            echo "DESCRIÇÃO: ";
+                            foreach($descricao as $descricao){
+                                
+                                echo $descricao." ";
+                            }
+                        }
+
+                        echo "<br>";
+                    }
+
+                    ?>
+                </th>
+
+
                 <th scope="col">
                     <?php
                     
