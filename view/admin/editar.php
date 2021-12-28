@@ -857,41 +857,43 @@ if (isset($_GET['cd'])) {
                             <div class="modal-body">
                                 <form method="POST" enctype="multipart/form-data">
 
+                                    <div class="text-center">
+
+
+                                        <?php
+
+                                        if (!empty($dadosCliente['foto'])) {
+                                        ?>
+                                            <div style="margin-bottom: 50px;">
+
+                                                <div>
+                                                    <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/<?php echo $dadosCliente['foto']; ?>" onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
+                                                    <input class="form-control" type="file" name="imagem" id="formFile<?php echo $dadosCliente['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+                                        <?php
+                                        } else {
+                                        ?>
+
+                                            <div style="margin-bottom: 50px;">
+
+                                                <div>
+
+                                                    <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/usuario.png" class="img" width="150" onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" style="border-radius: 7%;"></label>
+                                                    <input class="form-control" type="file" name="imagem" id="formFile<?php echo $dadosCliente['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
+                                                </div>
+                                            </div>
+
+                                        <?php
+                                        }
+
+                                        ?>
+
+
+
+                                    </div>
+
                                     <input type="hidden" name="cliID" value="<?php echo $dadosCliente['id']; ?>">
-
-
-
-                                    <?php
-
-                                    if (!empty($dadosCliente['foto'])) {
-                                    ?>
-                                        <div style="margin-bottom: 50px;">
-
-                                            <div class="col-6">
-                                                <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/<?php echo $dadosCliente['foto']; ?>" onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" class="img" width="150" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagem" id="formFile<?php echo $dadosCliente['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
-                                        </div>
-                                    <?php
-                                    } else {
-                                    ?>
-
-                                        <div style="margin-bottom: 50px;">
-
-                                            <div class="col-6">
-
-                                                <label for="formFile<?php echo $dadosCliente['id']; ?>" class="form-label"><img id="editarusuario<?php echo $dadosCliente['id']; ?>" src="../../images/usuario.png" class="img" width="150" onclick="FormCLI(<?php echo $dadosCliente['id']; ?>)" style="border-radius: 7%;"></label>
-                                                <input class="form-control" type="file" name="imagem" id="formFile<?php echo $dadosCliente['id']; ?>" style="display:none" accept=".png, .jpg, .jpeg">
-                                            </div>
-                                        </div>
-
-                                    <?php
-                                    }
-
-                                    ?>
-
-
-
 
 
                                     <?php
