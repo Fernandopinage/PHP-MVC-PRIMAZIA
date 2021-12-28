@@ -396,12 +396,13 @@ if (isset($_GET['cd'])) {
 
             ?>
 
-                <tr data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>">
+                <tr>
                     <td class="text-left" scope="col"><?php echo $dadosAdmin['nome']; ?></td>
                     <td class="text-center" scope="col"><?php echo $dadosAdmin['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['email']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['telefone']; ?></td>
                     <td scope="col">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>" ><img src="../../icons/view.png" width="22"></button>
                         <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
                         <a href="../admin/editar.php?adm=<?php echo $dadosAdmin['id']; ?>" class="btn btn-danger"><img src="../../icons/delete.png" width="22"></a>
                     </td>
@@ -563,6 +564,7 @@ if (isset($_GET['cd'])) {
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['telefone']; ?></td>
                     <td scope="col">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>" ><img src="../../icons/view.png" width="22"></button>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>" ><img src="../../icons/pencil.png" width="22"></button>
                         <a class="btn btn-danger" onclick="excluirProfissional(<?php echo $dadosProfissional['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> <!-- ../admin/editar.php?pd=<?php echo $dadosProfissional['id']; ?> -->
                     </td>
@@ -1018,7 +1020,7 @@ if (isset($_GET['cd'])) {
                     <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
                     <td scope="col">
-
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>" ><img src="../../icons/view.png" width="22"></button>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>" ><img src="../../icons/pencil.png" width="22"></button>
                         <a class="btn btn-danger" onclick="excluirCliente(<?php echo $dadosCliente['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> <!-- ../admin/editar.php?pd=<?php echo $dadosCliente['id']; ?> -->
 
