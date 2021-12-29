@@ -43,7 +43,7 @@ if (isset($_GET['cd'])) {
     $ClassCliente = new Cliente();
     $ClassCliente->SetId($_GET['cd']);
 
- 
+
     $Cliente = new ClienteDAO();
     $Cliente->VerificarCliente($ClassCliente);
 
@@ -410,9 +410,9 @@ if (isset($_GET['cd'])) {
                     <td scope="col"><?php echo $dadosAdmin['email']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['telefone']; ?></td>
                     <td scope="col">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>" ><img src="../../icons/view.png" width="22"></button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>"><img src="../../icons/view.png" width="22"></button>
                         <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
-                        <a href="../admin/editar.php?adm=<?php echo $dadosAdmin['id']; ?>" class="btn btn-danger"><img src="../../icons/delete.png" width="22"></a>
+                        <a class="btn btn-danger" onclick="excluirAdmin(<?php echo $dadosAdmin['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> 
                     </td>
                 </tr>
 
@@ -572,8 +572,8 @@ if (isset($_GET['cd'])) {
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['telefone']; ?></td>
                     <td scope="col">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>" ><img src="../../icons/view.png" width="22"></button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>" ><img src="../../icons/pencil.png" width="22"></button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>"><img src="../../icons/view.png" width="22"></button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profissional<?php echo $dadosProfissional['id']; ?>"><img src="../../icons/pencil.png" width="22"></button>
                         <a class="btn btn-danger" onclick="excluirProfissional(<?php echo $dadosProfissional['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> <!-- ../admin/editar.php?pd=<?php echo $dadosProfissional['id']; ?> -->
                     </td>
                 </tr>
@@ -1006,7 +1006,7 @@ if (isset($_GET['cd'])) {
 
     <table class="table table-hover">
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif;">
-            <tr  style="font-size:12px">
+            <tr style="font-size:12px">
                 <th class="text-center" scope="col">Nome</th>
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
@@ -1022,14 +1022,14 @@ if (isset($_GET['cd'])) {
             foreach ($dadosCliente as $dadosCliente) {
             ?>
 
-                <tr  style="font-size:12px">
+                <tr style="font-size:12px">
                     <td class="text-left" scope="col"><?php echo $dadosCliente['nome']; ?></td>
                     <td class="text-center"><?php echo $dadosCliente['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['email']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['telefone']; ?></td>
                     <td scope="col">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>" ><img src="../../icons/view.png" width="22"></button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>" ><img src="../../icons/pencil.png" width="22"></button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>"><img src="../../icons/view.png" width="22"></button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cliente<?php echo $dadosCliente['id']; ?>"><img src="../../icons/pencil.png" width="22"></button>
                         <a class="btn btn-danger" onclick="excluirCliente(<?php echo $dadosCliente['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> <!-- ../admin/editar.php?pd=<?php echo $dadosCliente['id']; ?> -->
 
                     </td>
@@ -1569,12 +1569,12 @@ if (isset($_GET['cd'])) {
 
 
 <script>
-
     document.getElementsByClassName('swal2-actions').style.margin = '20px'
-    
-    function excluirProfissional(id){
 
-       
+
+    function excluirAdmin(id) {
+
+
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -1595,19 +1595,22 @@ if (isset($_GET['cd'])) {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                document.location.href = 'editar.php?pd='+id; /*** */
+                
+               document.location.href = 'editar.php?adm=' + id; /*** */
 
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
             ) {
-                
+
             }
         })
 
     }
 
-    function excluirCliente(id){
+    function excluirProfissional(id) {
+
+
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -1628,21 +1631,51 @@ if (isset($_GET['cd'])) {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                document.location.href = 'editar.php?cd='+id;
+                document.location.href = 'editar.php?pd=' + id; /*** */
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+
+            }
+        })
+
+    }
+
+    function excluirCliente(id) {
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Você deseja',
+            text: "Excluir esse registro ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                document.location.href = 'editar.php?cd=' + id;
                 //document.location.href = 'editar.php?cd='+id;
 
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
             ) {
-                
+
             }
         })
 
     }
-   
-
-
 </script>
 
 
