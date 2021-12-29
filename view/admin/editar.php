@@ -378,7 +378,7 @@ if (isset($_GET['cd'])) {
 
     <table class="table table-hover">
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
-            <tr>
+            <tr style="font-size:12px">
                 <th class="text-center" scope="col">Nome</th>
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
@@ -396,7 +396,7 @@ if (isset($_GET['cd'])) {
 
             ?>
 
-                <tr>
+                <tr style="font-size:12px">
                     <td class="text-left" scope="col"><?php echo $dadosAdmin['nome']; ?></td>
                     <td class="text-center" scope="col"><?php echo $dadosAdmin['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosAdmin['email']; ?></td>
@@ -541,7 +541,7 @@ if (isset($_GET['cd'])) {
 
     <table class="table table-hover">
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif">
-            <tr>
+            <tr style="font-size:12px">
                 <th class="text-center" scope="col">Nome</th>
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
@@ -558,7 +558,7 @@ if (isset($_GET['cd'])) {
 
             ?>
 
-                <tr>
+                <tr style="font-size:12px">
                     <td class="text-left" scope="col"><?php echo $dadosProfissional['nome']; ?></td>
                     <td class="text-center"><?php echo $dadosProfissional['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosProfissional['email']; ?></td>
@@ -998,7 +998,7 @@ if (isset($_GET['cd'])) {
 
     <table class="table table-hover">
         <thead style="background-color: #e9781e; color:white; font-family: 'Montserrat', sans-serif;">
-            <tr>
+            <tr  style="font-size:12px">
                 <th class="text-center" scope="col">Nome</th>
                 <th class="text-center">CPF/CNPJ</th>
                 <th scope="col">E-mail</th>
@@ -1014,7 +1014,7 @@ if (isset($_GET['cd'])) {
             foreach ($dadosCliente as $dadosCliente) {
             ?>
 
-                <tr>
+                <tr  style="font-size:12px">
                     <td class="text-left" scope="col"><?php echo $dadosCliente['nome']; ?></td>
                     <td class="text-center"><?php echo $dadosCliente['cpf']; ?></td>
                     <td scope="col"><?php echo $dadosCliente['email']; ?></td>
