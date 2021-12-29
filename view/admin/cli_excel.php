@@ -63,8 +63,8 @@ include_once "../../dao/AdminDAO.php";
         
             <?php
                
-        header ("Content-type: application/x-msexcel");
-        header ("Content-Disposition: attachment; filename=\"cliente.xls\"" );
+                header ("Content-type: application/x-msexcel");
+                header ("Content-Disposition: attachment; filename=\"cliente.xls\"" );
             
          
             ?>
