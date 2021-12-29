@@ -32,7 +32,7 @@ if (isset($_POST['salvaBaba'])) {
 
         $dados = array(
 
-            'tpservico' => 'Cuidador de pessoas',
+            'tpservico' => 'Cuidador(a) de Pessoas',
             'categoria' => @$_POST['categoria'],
             'descricao' => @$_POST['descricao'],
 
