@@ -27,6 +27,10 @@ include_once "../../dao/AdminDAO.php";
     }
 
 
+    header ("Content-type: application/x-msexcel");
+    header ("Content-Disposition: attachment; filename=\"profissional.xls\"" );
+
+
     ?>
         
     <table border="1">
@@ -61,13 +65,7 @@ include_once "../../dao/AdminDAO.php";
         </tbody>
     </table>
         
-            <?php
-               
-        header ("Content-type: application/x-msexcel");
-        header ("Content-Disposition: attachment; filename=\"profissional.xls\"" );
-            
-         
-            ?>
+ 
 </body>
 
 </html>
