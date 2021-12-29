@@ -260,18 +260,13 @@ class ClienteDAO extends DAO
 
         //echo $ClassCliente->GetID();
 
-        $sql = "SELECT * FROM `cliente` inner join pedido on pedido_email = CLIENTE_EMAIL WHERE CLIENTE_ID = :CLIENTE_ID and pedido_status = :pedido_status";
+        $sql = "SELECT * FROM `cliente` inner join pedido on pedido_email = CLIENTE_EMAIL WHERE CLIENTE_ID = :CLIENTE_ID";
         $select = $this->con->prepare($sql);
         $select->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
-        $select->bindValue(':pedido_status', 'E');
         $select->execute();
 
         if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 
-            ClienteDAO::deleteCliente($ClassCliente);
-
-        }else{
-            
             ?>
 
             <script>
@@ -286,6 +281,11 @@ class ClienteDAO extends DAO
             </script>
             <?php
             header('Refresh: 4.4; url=../admin/editar.php');
+            
+
+        }else{
+            
+            ClienteDAO::deleteCliente($ClassCliente);
         }
 
     }
