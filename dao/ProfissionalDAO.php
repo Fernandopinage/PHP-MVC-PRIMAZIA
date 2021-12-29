@@ -361,6 +361,40 @@ class ProfissionalDAO extends DAO
         }
     }
 
+    public function VerificarProfissional($ClassProfissional){
+
+        //var_dump($ClassProfissional->GetID());
+
+        $sql = "SELECT * FROM `servico` WHERE servico_status = 'E' and servico_idprofissional  = :servico_idprofissional";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':servico_idprofissional', $ClassProfissional->GetID());
+        $select->execute();
+
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
+            ProfissionalDAO::DeleteProfissional($ClassProfissional);
+
+        }else{
+            
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro ao deletar registro',
+                    text: 'Existem pedidos amarrado ao profissional',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+            </script>
+            <?php
+            header('Refresh: 4.4; url=../admin/editar.php');
+        }
+        
+
+    }
+
     public function AdminInserirProfissional($ClassProfissional , $subcategoria)
     {
 

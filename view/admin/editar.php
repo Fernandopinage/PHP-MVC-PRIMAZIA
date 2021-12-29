@@ -32,15 +32,23 @@ if (isset($_GET['pd'])) {
     $ClassProfissional->SetId($_GET['pd']);
 
     $Profissional = new ProfissionalDAO();
-    $Profissional->DeleteProfissional($ClassProfissional);
+    $Profissional->VerificarProfissional($ClassProfissional);
+
+    //$Profissional = new ProfissionalDAO();
+    //$Profissional->DeleteProfissional($ClassProfissional);
 }
 
 if (isset($_GET['cd'])) {
 
     $ClassCliente = new Cliente();
     $ClassCliente->SetId($_GET['cd']);
+
+ 
     $Cliente = new ClienteDAO();
-    $Cliente->deleteCliente($ClassCliente);
+    $Cliente->VerificarCliente($ClassCliente);
+
+    //$Cliente = new ClienteDAO();
+    //$Cliente->deleteCliente($ClassCliente);
 }
 
 
@@ -1587,7 +1595,7 @@ if (isset($_GET['cd'])) {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                document.location.href = 'editar.php?pd='+id;
+                document.location.href = 'editar.php?pd='+id; /*** */
 
             } else if (
                 /* Read more about handling dismissals below */

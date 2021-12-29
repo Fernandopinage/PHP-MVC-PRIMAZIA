@@ -48,7 +48,7 @@ include_once "../../dao/CategoriaDAO.php";
                 <th scope="col">Descrição do Pedido</th>
                 <th scope="col">Forma de Pagamento</th>
                 <th scope="col">Valor do Serviço</th>
-                <th scope="col">Informações adicionais</th>
+                <th scope="col">Informações adicionais do administrador</th>
 
             </tr>
         </thead>

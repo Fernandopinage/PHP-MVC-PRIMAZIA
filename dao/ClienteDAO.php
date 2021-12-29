@@ -256,6 +256,40 @@ class ClienteDAO extends DAO
         }
     }
 
+    public function VerificarCliente($ClassCliente){
+
+        //echo $ClassCliente->GetID();
+
+        $sql = "SELECT * FROM `cliente` inner join pedido on pedido_email = CLIENTE_EMAIL WHERE CLIENTE_ID = :CLIENTE_ID and pedido_status = :pedido_status";
+        $select = $this->con->prepare($sql);
+        $select->bindValue(':CLIENTE_ID', $ClassCliente->GetId());
+        $select->bindValue(':pedido_status', 'E');
+        $select->execute();
+
+        if ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+
+            ClienteDAO::deleteCliente($ClassCliente);
+
+        }else{
+            
+            ?>
+
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro ao deletar registro',
+                    text: 'Existem pedidos amarrado ao cliente',
+                    showConfirmButton: false,
+                    timer: 4500
+                })
+            </script>
+            <?php
+            header('Refresh: 4.4; url=../admin/editar.php');
+        }
+
+    }
+
     public function updateCliente($ClassCliente)
     {
 
