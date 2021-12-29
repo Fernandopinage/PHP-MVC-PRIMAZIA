@@ -411,7 +411,7 @@ if (isset($_GET['cd'])) {
                     <td scope="col"><?php echo $dadosAdmin['telefone']; ?></td>
                     <td scope="col">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>"><img src="../../icons/view.png" width="22"></button>
-                        <button type="button" class="btn btn-primary"><img src="../../icons/pencil.png" width="22"></button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#admin<?php echo $dadosAdmin['id']; ?>"><img src="../../icons/pencil.png" width="22"></button>
                         <a class="btn btn-danger" onclick="excluirAdmin(<?php echo $dadosAdmin['id']; ?>)"><img src="../../icons/delete.png" width="22"></a> 
                     </td>
                 </tr>
