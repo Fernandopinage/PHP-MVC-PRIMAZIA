@@ -25,7 +25,8 @@ include_once "../../dao/AdminDAO.php";
         $dados = $ClassPedido->execelCli($sql);
 
     }
-
+               header ("Content-type: application/x-msexcel");
+               header ("Content-Disposition: attachment; filename=\"cliente.xls\"" );
 
     ?>
         
@@ -61,13 +62,7 @@ include_once "../../dao/AdminDAO.php";
         </tbody>
     </table>
         
-            <?php
-               
-                header ("Content-type: application/x-msexcel");
-                header ("Content-Disposition: attachment; filename=\"cliente.xls\"" );
-            
-         
-            ?>
+  
 </body>
 
 </html>
