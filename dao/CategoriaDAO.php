@@ -345,7 +345,7 @@ class CategoriaDAO extends DAO
         
 
             if(!empty($where)){
-               echo $excel = $sql;
+               $excel = $sql;
                $select->execute();
                
             }
@@ -453,7 +453,7 @@ class CategoriaDAO extends DAO
             //$select->bindValue(':servico_pagamento', $pagamento);
     
             if(!empty($where)){
-               echo $excel = $sql;
+                $excel = $sql;
                 $select->execute();
             }
             //var_dump($select);
@@ -577,7 +577,7 @@ class CategoriaDAO extends DAO
 
 
         if(!empty($where)){
-            echo $excel = $sql;
+            $excel = $sql;
             $select->execute();
         }
         //var_dump($sql);

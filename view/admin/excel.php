@@ -24,14 +24,12 @@ include_once "../../dao/CategoriaDAO.php";
         $ClassPedido = new CategoriaDAO();
         $dados = $ClassPedido->gerarExcel($excel);
 
-        echo "<pre>";
-        var_dump($dados['pedido_descricao']);
-        echo "</pre>";
+
         
     }
 
-        //header ("Content-type: application/x-msexcel");
-        //header ("Content-Disposition: attachment; filename=\"nome_arquivo.xls\"" );
+        header ("Content-type: application/x-msexcel");
+        header ("Content-Disposition: attachment; filename=\"nome_arquivo.xls\"" );
 
 
 
@@ -89,17 +87,20 @@ include_once "../../dao/CategoriaDAO.php";
                 <th scope="col">
                     <?php echo $dados['profissional_nome'];?></th>
 
-                <th scope="col">
+                <th scope="col" style="justify-content: center;">
                     <?php 
                     $obj = $dados['pedido_descricao'];
                     
+                    /*
                     echo "<pre>";
                     var_dump($obj);
                     echo "</pre>";
-                    
+                    */
+
                     if(!empty($obj->categoria)){
 
                         $categoria =  $obj->categoria;
+
                         echo "CATEGORIA: ";
                         foreach($categoria as $categoria){
 
@@ -129,8 +130,81 @@ include_once "../../dao/CategoriaDAO.php";
                         echo "<br>";
                     }
 
+                    if(!empty($obj->local)){
+
+                       $local =  $obj->local;
+
+                       if(gettype($local) == 'string'){
+                        echo "LOCAL: ";
+                        echo $local." ";
+                        }else{
+
+                        
+                        echo "LOCAL: ";
+                        foreach($local as $local){
+                            
+                            echo $local." ";
+                        }
+
+                        echo "<br>";
+                    }
+
+                 
+
+                    if(!empty($obj->dependente)){
+
+                        $dependente =  $obj->dependente;
+ 
+                        if(gettype($dependente) == 'string'){
+                         echo "DEPENDENTE: ";
+                         echo $dependente." ";
+                        }else{
+ 
+                         
+                         echo "DEPENDENTE: ";
+                         foreach($dependente as $dependente){
+                             
+                             echo $dependente." ";
+                         }
+
+                        }
+                        
+                        echo "<br>";
+
+                    }
+
+                    if(!empty($obj->serviço)){
+
+                        $serviço = $obj->serviço;
+
+                        if(gettype($serviço) == 'string'){
+                            echo "SERVIÇO: ";
+                            echo $serviço." ";
+                           }else{
+    
+                            
+                            echo "SERVIÇO: ";
+                            foreach($serviço as $serviço){
+                                
+                                echo $serviço." ";
+                            }
+
+                        }
+
+                        echo "<br>";
+
+                    }
+
+
+
+                }
+
                     ?>
                 </th>
+
+
+
+
 
 
                 <th scope="col">
