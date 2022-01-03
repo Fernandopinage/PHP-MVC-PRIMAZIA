@@ -109,13 +109,10 @@ if (isset($_POST['chamado_atualizado'])) {
     $ClassServico->SetValor($_POST['valor']);
     $ClassServico->SetText($_POST['text']);
 
-    echo "<pre>";
-    var_dump($ClassServico);
-    echo "</pre>";
 
 
-    //$Servico = new ServicoDao();
-    //$Servico->updateServico($ClassServico);
+    $Servico = new ServicoDao();
+    $Servico->updateServico($ClassServico);
 }
 
 

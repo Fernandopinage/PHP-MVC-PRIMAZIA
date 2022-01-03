@@ -906,7 +906,7 @@ class CategoriaDAO extends DAO
                 'email' => $row['CLIENTE_EMAIL'],
             );
         } else {
-            echo "não";
+            //echo "não";
         }
 
         return $array;
